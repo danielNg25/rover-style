@@ -21,6 +21,11 @@ Loại (skill 2, mục Phẳng hay khối: chia theo loại vật, không theo c
   khoi-rap   khối ráp bằng code từ B (nhà, sạp, quầy, toa xe): tranh chỉ là bản thiết kế
   tam-nen    lớp xa (núi, làng, rặng cây xa)
 
+TRANH BỐI CẢNH MẪU (Daniel 26/11/2026: gen một tranh của cả bối cảnh để dựng theo, "thay vì tự agent nghĩ ra"): file lời tả mở đầu bằng
+MỘT dòng   #CANH <tên bối cảnh>   và KHÔNG có dòng #MON, không nối gen/prompts/style.txt (tranh cả cảnh, không nền hồng). Công cụ thêm câu
+về góc nhìn sân khấu: ngang tầm mắt, có dải đất trống cho người đứng, không có người. Mẫu: gen/prompts/_mau-tranh-boi-canh.txt
+  python3 tools/kiem_loi_ta.py <file> --loai    in  canh  (tranh bối cảnh mẫu)  hoặc  mon  (tấm đồ)
+
 Luật soát: số món chạy 1..N; mỗi số có trong lời tả dạng "N)"; loại hợp lệ; cột kho có nội dung. Thoát 1 khi có LOI.
 Món là khối: công cụ dựng khối đùn viền ảnh và dán ảnh lên mặt trước, nên tranh phải vẽ CHÍNH DIỆN, không phối cảnh; câu đó được thêm tự động.
 """
@@ -33,19 +38,27 @@ LOAI = {'phang': 'phẳng', 'khoi-dun': 'khối đùn', 'khoi-tien': 'khối ti�
 DONG_NGHIA = {'hinh-phang': 'phang', '2d': 'phang', 'dun': 'khoi-dun', 'tien': 'khoi-tien', 'rap': 'khoi-rap', 'tam-nen-xa': 'tam-nen', 'nen-xa': 'tam-nen', 'lop-xa': 'tam-nen'}
 
 
+CAU_SAN_KHAU = ('STAGE VIEW (important): ONE wide 16:9 illustration of the whole place, seen at eye level and straight-on, like a theatre stage. '
+                'Layers overlap from far to near. A flat, open strip of ground runs from left to right across the lower third of the picture and is kept clear, '
+                'so that characters can stand and walk on it later. No road, river or row of objects running straight into the depth. '
+                'NO characters, no animals in the foreground, no text, no frame. A full scene with sky and ground: NOT a parts sheet and NOT on a magenta background.')
+
+
 def chuan(s):
     s = unicodedata.normalize('NFD', s.strip().lower().replace('đ', 'd'))
     return re.sub(r'[\s_]+', '-', ''.join(c for c in s if unicodedata.category(c) != 'Mn'))
 
 
 def doc(duong):
-    """trả (món[], lời tả không còn bảng, lỗi[], cảnh báo[]); món = {'so', 'ten', 'loai'}"""
+    """trả (món[], lời tả không còn bảng, lỗi[], cảnh báo[], tên bối cảnh khi là file #CANH); món = {'so', 'ten', 'loai'}"""
     p = Path(duong)
-    if not p.is_file(): return [], '', [f'LOI  khong-co-file  {duong}'], []
-    mon, than, loi, canh = [], [], [], []
+    if not p.is_file(): return [], '', [f'LOI  khong-co-file  {duong}'], [], None
+    mon, than, loi, canh, ten_canh = [], [], [], [], []
     for k, d in enumerate(p.read_text(encoding='utf-8').split('\n'), 1):
         if not d.lstrip().startswith('#'):
             than.append(d); continue
+        c = re.match(r'\s*#\s*CANH\b(.*)', d, re.I)
+        if c: ten_canh.append(c.group(1).strip(' |:')); continue
         m = re.match(r'\s*#\s*MON\b(.*)', d, re.I)
         if not m: continue                                   # dòng chú thích khác: bỏ, không gửi Codex
         o = [x.strip() for x in m.group(1).split('|')]
@@ -60,6 +73,12 @@ def doc(duong):
         if len(o[1]) < 2: loi.append(f'LOI  bang-mon  dòng {k}: thiếu tên món')
         mon.append({'so': int(o[0]), 'ten': o[1], 'loai': l})
     ta = '\n'.join(than).strip()
+    if ten_canh:                                             # tranh bối cảnh mẫu: tranh của cả cảnh, không có bảng món
+        if mon: loi.append('LOI  lan-loai  file có cả #CANH lẫn #MON: tranh bối cảnh mẫu và tấm đồ là hai file lời tả riêng')
+        if len(ten_canh) > 1 or len(ten_canh[0]) < 2: loi.append('LOI  canh  cần đúng MỘT dòng  #CANH <tên bối cảnh>')
+        if len(ta) < 200: loi.append('LOI  ta-ngan  lời tả tranh bối cảnh quá ngắn: tả nơi chốn, giờ và ánh sáng, từng lớp từ xa tới gần với các món của lớp, dải đất cho người đứng, bộ màu (theo bảng thiết kế của bối cảnh)')
+        if re.search(r'magenta|#FF00FF', ta, re.I): loi.append('LOI  nen-hong  tranh bối cảnh mẫu là tranh cả cảnh, không phải tấm đồ: bỏ đoạn nền hồng (không nối gen/prompts/style.txt)')
+        return [], ta, loi, canh, ten_canh[0]
     if not mon and not loi:
         loi.append('LOI  thieu-bang  file lời tả chưa có bảng món. Trước khi gen, từng món phải qua bước 1 (tra kho) và bước 2 (chọn loại) của Thẻ làm một món (skill 2). '
                    'Thêm vào ĐẦU file, mỗi món một dòng:  #MON <số> | <tên món> | <phang, khoi-dun, khoi-tien, khoi-rap hoặc tam-nen> | kho: <tra kho bằng từ gì, ra gì>')
@@ -70,7 +89,7 @@ def doc(duong):
     if thieu: loi.append(f'LOI  so-trong-loi-ta  lời tả không có "{thieu[0]})"' + (f' và {len(thieu) - 1} số nữa' if len(thieu) > 1 else '') + ': mỗi món trong bảng phải được tả trong lời tả, đánh số dạng "N) …"')
     if 0 < len(mon) < 3 and not all(m['loai'] == 'tam-nen' for m in mon):
         canh.append(f'CANH it-mon  tấm chỉ có {len(mon)} món: hạn mức Codex tính theo số lần gen, gom thêm món vào tấm (skill 2, mục Vẽ đồ bằng Codex)')
-    return mon, ta, loi, canh
+    return mon, ta, loi, canh, None
 
 
 def cau_huong(mon):
@@ -86,18 +105,22 @@ def cau_huong(mon):
 
 
 def main(args):
-    in_ra = '--in' in args; args = [a for a in args if a != '--in']
+    in_ra = '--in' in args; in_loai = '--loai' in args; args = [a for a in args if a not in ('--in', '--loai')]
     if len(args) != 1: print(__doc__); return 1
-    mon, ta, loi, canh = doc(args[0])
+    mon, ta, loi, canh, ten_canh = doc(args[0])
+    if in_loai: print('canh' if ten_canh else 'mon'); return 0
     if loi:
         for d in loi + canh: print(d, file=sys.stderr)
         print(f'\nLỜI TẢ CHƯA ĐƯỢC GEN: {len(loi)} lỗi ở {args[0]}. Cách ghi bảng món:  python3 tools/kiem_loi_ta.py', file=sys.stderr)
         return 1
-    huong = cau_huong(mon)
+    huong = CAU_SAN_KHAU if ten_canh else cau_huong(mon)
     day_du = ta + ('\n' + huong if huong else '')
     if in_ra:
         for d in canh: print(d, file=sys.stderr)
         print(day_du); return 0
+    if ten_canh:
+        print(f'ĐẠT: tranh bối cảnh mẫu "{ten_canh}" (tranh cả cảnh, không cắt). Câu về góc nhìn sân khấu sẽ được thêm vào lời tả gửi Codex:  ' + huong)
+        return 0
     for m in sorted(mon, key=lambda m: m['so']): print(f"  {m['so']:>2}  {LOAI[m['loai']]:<9} {m['ten']}")
     for d in canh: print(d)
     dem = {l: sum(1 for m in mon if m['loai'] == l) for l in LOAI}

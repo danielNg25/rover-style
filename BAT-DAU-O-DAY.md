@@ -86,7 +86,7 @@ Từ 26/11/2026 phần chung nằm trong một repo git, gốc repo là `cutout3
 
 ## Luật làm việc với chủ kênh (Daniel), tóm tắt
 
-- Trả lời bằng tiếng Việt. Các chỗ chờ ông duyệt: bảng ở `CLAUDE.md` (lời đọc, danh sách cảnh, bảng thiết kế của bối cảnh mới, bảng phân cảnh, video); bước 4–7 làm theo lô 5 chương, cả lô gửi một lần.
+- Trả lời bằng tiếng Việt. Các chỗ chờ ông duyệt: bảng ở `CLAUDE.md` (lời đọc, danh sách cảnh, tranh mẫu và bảng thiết kế của bối cảnh mới, bảng phân cảnh, video); bước 4–7 làm theo lô 5 chương, cả lô gửi một lần.
 - Hỏi trước khi chạy hơn 7 agent hoặc agent trên mức vừa. Đừng thuật lại từng báo cáo của agent: chỉ nhắn khi có thứ để xem hoặc cần quyết.
 - Đổi gì ở code hay kho chung thì ghi ngay một dòng vào `CHANGELOG.md` rồi lưu lên repo (mục Repo git của phần chung). Luật trong skill chỉ sửa khi Daniel đã xác nhận (luật 25a). Món mới theo Thẻ làm một món.
 - Lỗi ông đã chỉ thì tự mở ảnh phóng to soi trước khi gửi lại.

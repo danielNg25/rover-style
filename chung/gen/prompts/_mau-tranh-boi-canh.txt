@@ -1,0 +1,12 @@
+#CANH bờ vực trên hồ lúc chạng vạng
+# MẪU file lời tả TRANH BỐI CẢNH MẪU. Dòng bắt đầu bằng # không gửi cho Codex.
+# Soát:  python3 tools/kiem_loi_ta.py gen/prompts/_mau-tranh-boi-canh.txt        Lời tả gửi Codex:  thêm --in
+# Tả ĐÚNG bảng thiết kế của bối cảnh: nơi chốn, giờ và ánh sáng, từng lớp từ xa tới gần, dải đất cho người đứng, bộ màu.
+# KHÔNG nối style.txt (đó là cho tấm đồ nền hồng). Ảnh mẫu kiểu vẽ: 2–3 khung của bộ cảnh mẫu cùng loại cảnh.
+A concept picture for a cut-paper stage set, drawn in exactly the art style of the attached reference frames: flat shapes, 2-4 close tones per object, a few inner lines, no outlines, soft gradients only in the sky and water.
+PLACE AND TIME: a rocky cliff edge above a quiet lake in old rural Japan, at dusk just after sunset. The sky goes from warm orange at the horizon to violet above, with a pale moon and a few fireflies. The light is low and soft; lit windows glow warm.
+FAR LAYER: two or three ranges of rounded hills in flat violet tones, each range one tone, lighter with distance.
+MIDDLE LAYER: on the far shore, a small village of tiled-roof wooden houses on a dark cliff, a few windows lit; the lake below reflects the orange sky in one calm band.
+NEAR LAYER, LEFT: a tall leaning pine with flat dark-green needle pads and a warm brown trunk. NEAR LAYER, RIGHT: two large rounded boulders stacked, with a patch of moss, and a low dark bush.
+ON THE GROUND STRIP: a broad flat ledge of grey-brown stone slabs running across the whole width; on it, towards the right, a small stone lantern with a lit flame, and towards the left a mossy fallen log with a few tufts of dry grass. The middle of the ledge stays empty.
+COLOURS: muted violets and slate blues for rock and hills, deep greens for the pine and moss, warm orange only in the sky, the water band and the small lights.

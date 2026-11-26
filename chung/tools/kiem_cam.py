@@ -35,7 +35,7 @@ BO_QUA = ('/_thu-mau/', 'node_modules', '/out/', '/_luu/', '.bak', '/cong-cu/', 
 LOI_MA = {'tat-bong', 'loc-mau', 'ep-thu-tu', 'tam-anh-tu-viet'}
 LOI_TA = {
     'tat-bong': 'tắt bóng của một món không phải khối B: vật đứng phải đổ bóng (thẻ luật 5). Chi tiết mỏng thì ráp bằng B; cố ý thì ghi  bong:ok <lý do>',
-    'loc-mau': 'lọc màu bằng bộ lọc canvas/CSS: không lọc màu hậu kỳ, không tô lại ảnh món (thẻ luật 11). Sửa màu ở nguồn: lời tả Codex, màu vật liệu, đèn',
+    'loc-mau': 'lọc màu bằng bộ lọc canvas/CSS: không lọc màu hậu kỳ, không tô lại ảnh món (thẻ luật 11). Chỉnh nhẹ màu một ảnh thì dùng tham số chinh của Pic2D; còn lại sửa ở nguồn: lời tả Codex, màu vật liệu, đèn',
     'ep-thu-tu': 'renderOrder ghi tay: vật nào che vật nào do vị trí 3D quyết định (thẻ luật 3). Đặt vật ở đúng độ sâu của nó',
     'tam-anh-tu-viet': 'tấm ảnh đứng tự viết (planeGeometry + map, không castShadow): dùng Sprite / Pic2D / Plate của engine, tự viết thì mất bóng và lớp che (skill 2)',
     'den-diem': '<pointLight> tự đặt: đèn bàn, đèn lồng, lửa lấy món kho có sẵn đèn; engine giữ trần sáng (thẻ luật 5)',

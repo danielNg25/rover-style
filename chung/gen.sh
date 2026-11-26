@@ -22,8 +22,13 @@ if grep -qi "usage limit" "gen/$OUT.log"; then
   printf 'Create ONE image, landscape 16:9.\n%s\n' "$PROMPT" > "gen/$OUT.loi-ta.txt"
   echo "  1. lời tả ĐÃ SOÁT, dán NGUYÊN VĂN trong khối code: $PWD/gen/$OUT.loi-ta.txt   (KHÔNG gửi file gốc $TA: file đó còn bảng món và thiếu câu về hướng vẽ)"
   for r in "$@"; do echo "  2. ảnh mẫu kiểu vẽ, gửi thẳng bằng SendUserFile: $PWD/$r"; done
-  echo "  3. nơi Daniel lưu ảnh gen được: $PWD/gen/$OUT   (một tấm ngang 16:9, nền hồng phẳng #FF00FF)"
-  echo "Có file đó rồi thì cắt như thường bằng tools/cut.py. Agent trong workflow không nhắn được Daniel: điền ba thứ trên vào cho_gen của báo cáo rồi dừng bối cảnh này."
+  if [ "$(python3 tools/kiem_loi_ta.py "$TA" --loai 2>/dev/null)" = canh ]; then
+    echo "  3. nơi Daniel lưu tranh gen được: $PWD/gen/$OUT   (một tấm ngang 16:9, tranh CẢ bối cảnh, không nền hồng)"
+    echo "Đây là TRANH BỐI CẢNH MẪU: không cắt. Có file rồi thì gửi Daniel xem cùng bảng thiết kế của bối cảnh. Agent trong workflow không nhắn được Daniel: ghi tranh_co: false rồi trả kết quả."
+  else
+    echo "  3. nơi Daniel lưu ảnh gen được: $PWD/gen/$OUT   (một tấm ngang 16:9, nền hồng phẳng #FF00FF)"
+    echo "Có file đó rồi thì cắt như thường bằng tools/cut.py. Agent trong workflow không nhắn được Daniel: điền ba thứ trên vào cho_gen của báo cáo rồi dừng bối cảnh này."
+  fi
   exit 3
 fi
 echo "KHÔNG RA ẢNH MỚI, không phải do hạn mức: đọc gen/$OUT.log"; exit 1

@@ -16,7 +16,7 @@ BUOC = [
     ('kich-ban', 'Kịch bản qua workflow video-script (video dài: dàn ý trước)', 'tap', 'gửi Daniel dàn ý (video dài) rồi lời đọc, DỪNG chờ duyệt'),
     ('giong', 'Thu giọng', 'tap', 'HỎI Daniel trước khi thu (tốn tiền)'),
     ('danh-sach', 'Danh sách cảnh và phiếu ngoại hình nhân vật', 'lo', 'gửi Daniel danh sách cảnh và phiếu ngoại hình, DỪNG chờ duyệt'),
-    ('boi-canh', 'Nhân vật và bối cảnh', 'lo', 'bối cảnh MỚI: gửi Daniel bảng thiết kế của bối cảnh (các lớp, từng món, màu; không lấy bố cục của khung mẫu nào), DỪNG chờ duyệt rồi mới dựng; món mới vào kho chung cũng chờ duyệt'),
+    ('boi-canh', 'Nhân vật và bối cảnh', 'lo', 'bối cảnh MỚI: gửi Daniel TRANH BỐI CẢNH MẪU (gen bằng Codex) cùng bảng thiết kế của bối cảnh (các lớp, từng món, màu), DỪNG chờ duyệt rồi mới dựng theo tranh đó; món mới vào kho chung cũng chờ duyệt'),
     ('bang-phan-canh', 'Bảng phân cảnh PDF: mỗi cảnh một ảnh người đứng ở mốc', 'lo', 'gửi Daniel bảng phân cảnh của cả lô, DỪNG chờ duyệt rồi mới diễn'),
     ('dien', 'Diễn, kiểm, video chương 1440p', 'lo', 'gửi Daniel video chương cỡ 2, DỪNG chờ duyệt'),
     ('ghep', 'Ghép cả tập, video 1440p', 'tap', 'gửi Daniel video cả tập cỡ 2, DỪNG chờ duyệt'),
