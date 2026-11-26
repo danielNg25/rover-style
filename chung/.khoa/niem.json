@@ -6,20 +6,20 @@
    "co": 2137
   },
   ".claude/workflows/dung-canh-3d.js": {
-   "bam": "a2c423e00acffbbb1b5c33cca4254cb1f97664cdd0cac8d9f51777a9d20117e6",
-   "co": 41156
+   "bam": "34b45d9f418bccf71f481445f8d39a465aae325d753b49a99d554b367153aa94",
+   "co": 45102
   },
   ".claude/workflows/video-script.js": {
    "bam": "c60d2aba968ca1ba49137daccc89188d864e38ee2929680d91067ffa12d0a662",
    "co": 39191
   },
   "BAT-DAU-O-DAY.md": {
-   "bam": "9457e6ab843eba04bfff9884009ef36ccb1b0a308a26ff734daf5795f86c3eed",
-   "co": 11629
+   "bam": "64430a4ce5bc3bc1310a18da2b71b00b4d9b3a95ee970bd466d8388ee294341f",
+   "co": 11698
   },
   "CLAUDE.md": {
-   "bam": "dcc36332ef232a1f037f1342235e19ae9c098999c811eb2a462164425688efd1",
-   "co": 7416
+   "bam": "952de1493b09de2b545149261fc97afee84084dcaa273a5360f0f88c5406ffaf",
+   "co": 7538
   },
   "chung/compare.sh": {
    "bam": "93fdda1711eadadca8b5241612c7e13aab8565241f80f03395effec7e467a3d3",
@@ -82,28 +82,28 @@
    "co": 38762
   },
   "chung/skills/1-dung-canh.md": {
-   "bam": "f28637d7d1f115a0c4f8edc2f09447f31b406e7604a22b6d44e2ef17cf0babea",
-   "co": 44525
+   "bam": "9359bbf709d80be4a3216f92f076f5e9e11cce464a34d8c2ee2d2857fe120af3",
+   "co": 45238
   },
   "chung/skills/2-chuan-mon-do.md": {
-   "bam": "e6be3a7e7df76d9dca011672477571cc88151ba2d4bec20f1d2d8e1a53049e98",
-   "co": 22469
+   "bam": "7d0581a5080db78e130f46d15b32efbd2c368aa8761a767cfd3386b391db4458",
+   "co": 22466
   },
   "chung/skills/3-nhan-vat-dien-xuat.md": {
    "bam": "5423642665e7bf1501577b416852f8c8224d8f7ee82bc051001428856a3c2502",
    "co": 42489
   },
   "chung/skills/4-quy-trinh.md": {
-   "bam": "efe643366e822ef08e564603ed6d7727a52f2776f60f38e3f99ba3958c9917f7",
-   "co": 23806
+   "bam": "8eaa844221075a545b5236dfd2d54c20c0a71840bb0a0ac4c13f3044cbfdfea0",
+   "co": 24080
   },
   "chung/skills/LUAT-RUT-GON.md": {
-   "bam": "ed98a587661ceda72dfdca259ed9c5ac4797bc5c459a039299003cccf561d23c",
-   "co": 14667
+   "bam": "4a7da796445b69669eefc44e8b7252f39a90223ee09a33d9ad1f6e60fe87189b",
+   "co": 14751
   },
   "chung/skills/THE-LUAT-CUNG.md": {
-   "bam": "228bc6fdf76aa2d37e7f6c46b347cccd1d240a9ba7e4c7e27231ff49dcbad4f6",
-   "co": 6482
+   "bam": "eb5545944c0a687b0b0199897c23a6d59e77e9744366f1c0ec535e6588146381",
+   "co": 6796
   },
   "chung/skills/bang-cham/BANG-CHAM.md": {
    "bam": "e50eb323a4873c7537646a431f507b088c1968576d3495dbf83c38f89e5d182a",
@@ -1102,8 +1102,8 @@
    "co": 4371
   },
   "chung/tools/buoc.py": {
-   "bam": "8f28cf2428b09eb42aa12beab0bee0f0979bbb35b8ac4db024ac5449f7673f2d",
-   "co": 8544
+   "bam": "d8a3e697640caa99bdec3a19c1151a7e018dc77313dcaad20d324e2f1b1a06cb",
+   "co": 8627
   },
   "chung/tools/cadence.py": {
    "bam": "a08b8203ad6542716ebcaeae60e4b6f80c2f40fb8dde9d230cc5c3d39d1c041e",
@@ -1158,8 +1158,8 @@
    "co": 8047
   },
   "chung/tools/do_mau_khuon.py": {
-   "bam": "f36ff0159970a73077126ff9a6c863072bb57c55f56a01aa5c01875a2b6d90a1",
-   "co": 6280
+   "bam": "02798ab473e0a87fbadfbd1f3c368bbbdcbbda573d804dfa630ded630477178b",
+   "co": 7326
   },
   "chung/tools/do_nhay.py": {
    "bam": "65313aaa42ae2c10ac5339ad7f86d883e3963736666810d73d739adee5b3228b",

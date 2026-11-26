@@ -1,23 +1,27 @@
 #!/usr/bin/env python3
-"""So MÀU của ảnh dựng ra với KHUNG KHUÔN (khung của video gốc được chọn làm bản thiết kế cho bối cảnh đó).
+"""So MÀU của ảnh dựng ra với BỘ KHUNG MẪU cùng loại cảnh của video gốc. Kết quả để THAM KHẢO, không phải cổng.
 
 Daniel 25/11/2026 về cảnh thử khe suối: "các màu được chọn bị chói quá (chỗ lá cây, màu đất)"; đo ra đúng vậy và ông xác nhận
 "đúng rồi là lỗi này". Hai nguyên nhân: agent tự chọn màu vật liệu quá nhạt, quá tươi; và đèn đẩy mặt nhận sáng nhạt thêm
-(cát tô #e2c58c ra khung thành #f8d69f). Vì vậy màu phải lấy THEO KHUÔN và đo trên ẢNH DỰNG RA, không tin mã màu trong code.
+(cát tô #e2c58c ra khung thành #f8d69f). Vì vậy màu đo trên ẢNH DỰNG RA, không tin mã màu trong code.
 
-  python3 tools/do_mau_khuon.py <ảnh>                 in số đo theo vai của một ảnh (dùng để đọc màu của khung khuôn)
-  python3 tools/do_mau_khuon.py <ảnh của mình> <khuôn>  in hai bên cạnh nhau, rồi các dòng LOI / CANH
+Sửa 26/11/2026 (Daniel: "cảnh mẫu là để nhìn vào học hỏi chứ ko phải là tái sử dụng lại như vậy"): không còn so với MỘT khung khuôn và
+không còn dòng LOI. So với KHOẢNG (nhỏ nhất tới lớn nhất) của NHIỀU khung mẫu cùng loại cảnh; nằm ngoài khoảng thì in CANH để người dựng
+và người rà xem lại màu vật liệu và đèn. Con số không phải đích: không lọc màu ảnh, không bỏ món, không thêm món để vào khoảng.
+
+  python3 tools/do_mau_khuon.py <ảnh>                                        in số đo theo vai của một ảnh
+  python3 tools/do_mau_khuon.py <ảnh của mình> <khung mẫu> [<khung mẫu> …]   so với khoảng của các khung mẫu (nên từ 3 khung cùng loại cảnh)
 
 Vai (tách bằng sắc màu và vị trí, chỉ gần đúng): lá cây cỏ (sắc xanh lá), mặt đất hoặc sàn (phần màu ấm ở đáy khung), trời (sắc lam ở
 đỉnh khung), nước (sắc ngọc ở nửa dưới), đỏ cam rực. L = độ sáng (0 đen, 1 trắng); C = độ đậm màu (dưới 0,03 gần xám, trên 0,12 là rực).
-LOI khi một vai có ở cả hai ảnh mà lệch độ sáng quá 0,08, hoặc cả khung sáng, rực hơn khuôn rõ rệt. Đây là thước so với MỘT khung
-khuôn đã chọn cho cảnh đó, không phải công thức chung; không bỏ đồ, không thêm đồ để đạt số: chỉ đổi màu vật liệu và đèn.
+Luôn thoát 0.
 """
 import sys
 import numpy as np
 from PIL import Image
 
 VAI = ['lá cây, cỏ', 'mặt đất, sàn (đáy khung)', 'trời', 'nước', 'đỏ cam rực']
+NOI = 0.04       # nới khoảng độ sáng một chút: bộ mẫu chỉ có vài khung
 
 
 def oklab(a):
@@ -46,33 +50,41 @@ def dong(ten, ai, d):
     return f"{ten:26}{ai:7}{d['pt'] * 100:7.1f} %   L {d['L']:.2f}   C {d['C']:.3f}   màu giữa {d['mau']}   10 % sáng nhất L {d['L90']:.2f}"
 
 
+def khoang(K, k, truong):
+    """(nhỏ nhất, lớn nhất) của một số đo trên các khung mẫu có vai đó; None khi không khung nào có"""
+    v = [d[k][truong] for d in K if d[k]]
+    return (min(v), max(v)) if v else None
+
+
 def main(a):
     if not a: sys.exit(__doc__)
-    A = do(a[0]); K = do(a[1]) if len(a) > 1 else None
-    for ai, d in ((('khuôn', K),) if K else ()) + ((('mình' if K else 'ảnh', A),)):
-        c = d['ca']; print(f"{'cả khung':26}{ai:7}          L {c['L']:.2f}   C {c['C']:.3f}   phần rất sáng (L > 0,85) {c['sang'] * 100:.0f} %   phần rực (C > 0,12) {c['ruc'] * 100:.0f} %")
+    A = do(a[0]); K = [do(p) for p in a[1:]]; ai = 'mình' if K else 'ảnh'
+    c = A['ca']; print(f"{'cả khung':26}{ai:7}          L {c['L']:.2f}   C {c['C']:.3f}   phần rất sáng (L > 0,85) {c['sang'] * 100:.0f} %   phần rực (C > 0,12) {c['ruc'] * 100:.0f} %")
+    if K:
+        ca = {t: khoang(K, 'ca', t) for t in ('L', 'C', 'sang', 'ruc')}
+        print(f"{'cả khung':26}{'bộ mẫu':7}          L {ca['L'][0]:.2f}–{ca['L'][1]:.2f}   C {ca['C'][0]:.3f}–{ca['C'][1]:.3f}   phần rất sáng {ca['sang'][0] * 100:.0f}–{ca['sang'][1] * 100:.0f} %   phần rực {ca['ruc'][0] * 100:.0f}–{ca['ruc'][1] * 100:.0f} %   ({len(K)} khung)")
     for k in VAI:
-        if K: print(dong(k, 'khuôn', K[k]))
-        print(dong(k, 'mình' if K else 'ảnh', A[k]))
+        print(dong(k, ai, A[k]))
+        if K:
+            l, cc = khoang(K, k, 'L'), khoang(K, k, 'C')
+            print(f"{k:26}{'bộ mẫu':7}" + (f"            L {l[0]:.2f}–{l[1]:.2f}   C {cc[0]:.3f}–{cc[1]:.3f}   ({sum(1 for d in K if d[k])}/{len(K)} khung có vai này)" if l else '  (không khung nào có)'))
     if not K: return 0
-    loi, canh = [], []
+    canh = []
     for k in VAI[:3]:
-        if A[k] and K[k] and min(A[k]['pt'], K[k]['pt']) > 0.03:
-            dl = A[k]['L'] - K[k]['L']; dc = A[k]['C'] - K[k]['C']
-            if abs(dl) > 0.08: loi.append(f"LOI  mau-khuon   {k}: độ sáng {A[k]['L']:.2f}, khuôn {K[k]['L']:.2f} ({'sáng' if dl > 0 else 'tối'} hơn {abs(dl):.2f}); màu giữa {A[k]['mau']} so với {K[k]['mau']}")
-            elif abs(dl) > 0.045: canh.append(f"CANH mau-khuon   {k}: độ sáng {A[k]['L']:.2f}, khuôn {K[k]['L']:.2f}")
-            if dc > 0.03: canh.append(f"CANH mau-khuon   {k}: đậm màu hơn khuôn ({A[k]['C']:.3f} so với {K[k]['C']:.3f})")
-            if A[k]['L90'] - K[k]['L90'] > 0.08: canh.append(f"CANH mau-khuon   {k}: sắc sáng nhất {A[k]['L90']:.2f}, khuôn {K[k]['L90']:.2f}")
-    if A[VAI[3]] and A[VAI[3]]['L'] > 0.84: canh.append(f"CANH mau-khuon   nước gần trắng (L {A[VAI[3]]['L']:.2f}); nước của video gốc là sắc trầm")
-    if A[VAI[4]] and A[VAI[4]]['pt'] > (K[VAI[4]]['pt'] if K[VAI[4]] else 0) + 0.03: canh.append(f"CANH mau-khuon   mảng đỏ cam rực chiếm {A[VAI[4]]['pt'] * 100:.1f} % khung, khuôn {(K[VAI[4]]['pt'] if K[VAI[4]] else 0) * 100:.1f} %: xem có phải áo nhân vật hay vật của câu chuyện không")
-    ca, ck = A['ca'], K['ca']
-    if ca['sang'] > ck['sang'] + 0.08 or ca['L'] > ck['L'] + 0.08: loi.append(f"LOI  mau-khuon   cả khung sáng hơn khuôn: L {ca['L']:.2f} so với {ck['L']:.2f}, phần rất sáng {ca['sang'] * 100:.0f} % so với {ck['sang'] * 100:.0f} %")
-    if ca['ruc'] > ck['ruc'] + 0.10: loi.append(f"LOI  mau-khuon   cả khung rực hơn khuôn: {ca['ruc'] * 100:.0f} % so với {ck['ruc'] * 100:.0f} %")
-    if ca['L'] < ck['L'] - 0.10: canh.append(f"CANH mau-khuon   cả khung tối hơn khuôn: L {ca['L']:.2f} so với {ck['L']:.2f}")
-    if ca['C'] < ck['C'] - 0.03: canh.append(f"CANH mau-khuon   cả khung xám hơn khuôn: C {ca['C']:.3f} so với {ck['C']:.3f}")
-    for d in loi + canh: print(d)
-    print(f'\ndo_mau_khuon: {len(loi)} lỗi, {len(canh)} cảnh báo')
-    return 1 if loi else 0
+        l, cc = khoang(K, k, 'L'), khoang(K, k, 'C')
+        if not (A[k] and l and A[k]['pt'] > 0.03): continue
+        if A[k]['L'] > l[1] + NOI: canh.append(f"CANH mau-ngoai-khoang  {k}: độ sáng {A[k]['L']:.2f}, sáng hơn cả bộ mẫu ({l[0]:.2f}–{l[1]:.2f}); màu giữa {A[k]['mau']}")
+        elif A[k]['L'] < l[0] - NOI: canh.append(f"CANH mau-ngoai-khoang  {k}: độ sáng {A[k]['L']:.2f}, tối hơn cả bộ mẫu ({l[0]:.2f}–{l[1]:.2f}); màu giữa {A[k]['mau']}")
+        if A[k]['C'] > cc[1] + 0.03: canh.append(f"CANH mau-ngoai-khoang  {k}: đậm màu hơn cả bộ mẫu ({A[k]['C']:.3f} so với {cc[0]:.3f}–{cc[1]:.3f})")
+    if A[VAI[3]] and A[VAI[3]]['L'] > 0.84: canh.append(f"CANH mau-ngoai-khoang  nước gần trắng (L {A[VAI[3]]['L']:.2f}); nước của video gốc là sắc trầm")
+    if c['L'] > ca['L'][1] + NOI or c['sang'] > ca['sang'][1] + 0.08: canh.append(f"CANH mau-ngoai-khoang  cả khung sáng hơn cả bộ mẫu: L {c['L']:.2f} so với {ca['L'][0]:.2f}–{ca['L'][1]:.2f}, phần rất sáng {c['sang'] * 100:.0f} % so với tối đa {ca['sang'][1] * 100:.0f} %")
+    if c['ruc'] > ca['ruc'][1] + 0.10: canh.append(f"CANH mau-ngoai-khoang  cả khung rực hơn cả bộ mẫu: {c['ruc'] * 100:.0f} % so với tối đa {ca['ruc'][1] * 100:.0f} %")
+    if c['L'] < ca['L'][0] - 0.10: canh.append(f"CANH mau-ngoai-khoang  cả khung tối hơn cả bộ mẫu: L {c['L']:.2f} so với {ca['L'][0]:.2f}–{ca['L'][1]:.2f}")
+    if c['C'] < ca['C'][0] - 0.03: canh.append(f"CANH mau-ngoai-khoang  cả khung xám hơn cả bộ mẫu: C {c['C']:.3f} so với {ca['C'][0]:.3f}–{ca['C'][1]:.3f}")
+    if len(K) < 3: canh.append(f"CANH it-khung-mau  chỉ so với {len(K)} khung: một hai khung không đủ làm thước, đưa từ 3 khung cùng loại cảnh")
+    for d in canh: print(d)
+    print(f'\ndo_mau_khuon: {len(canh)} cảnh báo, để THAM KHẢO: xem lại màu vật liệu và đèn; không lọc màu ảnh, không thêm bớt món để vào khoảng')
+    return 0
 
 
 if __name__ == '__main__':

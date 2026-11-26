@@ -19,7 +19,7 @@ cutout3d/
 │  ├─ src/mould/nguoi-mau.ts  người mẫu cho các bảng của kho chung
 │  ├─ assets/            kho CHUNG: ảnh xem trước + catalog.json + DANH-MUC.md (mục lục)
 │  ├─ skills/            cách làm, đọc theo vai: 0 đạo diễn, 1 dựng cảnh, 2 chuẩn món đồ và kho, 3 nhân vật và diễn, 4 quy trình; bang-cham/ (chuẩn bằng hình), canh-mau/ (khung video gốc)
-│  ├─ tools/             buoc.py (tập đang ở bước nào); kho.py (kho); kiem_bong.py, kiem_canh.py, kiem_mat.py, kiem_kho.py (cổng kiểm); canh_mau.py, do_mau_khuon.py (cảnh mẫu, màu theo khuôn); vatly.py (kiểm vật lý); thu_giong.py (thu giọng)
+│  ├─ tools/             buoc.py (tập đang ở bước nào); kho.py (kho); kiem_bong.py, kiem_canh.py, kiem_mat.py, kiem_kho.py (cổng kiểm); canh_mau.py, do_mau_khuon.py (cảnh mẫu để nhìn và học, đo màu tham khảo); vatly.py (kiểm vật lý); thu_giong.py (thu giọng)
 │  ├─ dang-lam.yaml      kênh và tập mặc định; ghi đè cho một lệnh bằng KENH=<kênh> TAP=<tập> (bắt buộc khi hai phiên làm hai kênh)
 │  └─ NHAT-KY-THAY-DOI.md   nhật ký dựng bối cảnh, cảnh quay; thay đổi phần chung tới 26/11/2026 (từ đó ghi ở CHANGELOG.md, gốc repo)
 └─ kenh/
@@ -58,7 +58,7 @@ python3 tools/kho.py kiem | anh <id…> | muc-luc
 python3 tools/kiem_bong.py <file…>            rà bóng (không được có LOI)
 python3 tools/kiem_canh.py <file…>            rà máy quay, hạt, vật lặp đều (không được có LOI)
 python3 tools/canh_mau.py tim … | ghep … | luoi …   tra thư viện cảnh mẫu của video gốc, ghép tấm, làm lưới đoán mù
-python3 tools/do_mau_khuon.py <ảnh> [khung khuôn]  đo màu theo vai, so với khung khuôn của bối cảnh (không được có LOI)
+python3 tools/do_mau_khuon.py <ảnh> [khung mẫu…]   đo màu theo vai, so với khoảng của nhiều khung mẫu cùng loại cảnh (để tham khảo, không phải cổng)
 python3 tools/kho.py tim <từ> [--nhom <nhóm>]     TRA KHO trước khi làm một món; python3 tools/kiem_kho.py <file> báo món tự vẽ lại
 ./gen.sh <tên>.png gen/prompts/<tên>.txt <ảnh mẫu kiểu vẽ>   Codex vẽ MỘT tấm KÍN 12–20 món (ngoài sandbox; hạn mức tính theo số lần gen); rồi python3 tools/cut.py gen/<tên>.png public/<thư mục> <tiền tố> --mong=<số món>
 npx tsc --noEmit -p .                        kiểm kiểu
@@ -86,7 +86,7 @@ Từ 26/11/2026 phần chung nằm trong một repo git, gốc repo là `cutout3
 
 ## Luật làm việc với chủ kênh (Daniel), tóm tắt
 
-- Trả lời bằng tiếng Việt. Các chỗ chờ ông duyệt: bảng ở `CLAUDE.md` (lời đọc, danh sách cảnh, bảng đổi món của bối cảnh mới, bảng phân cảnh, video); bước 4–7 làm theo lô 5 chương, cả lô gửi một lần.
+- Trả lời bằng tiếng Việt. Các chỗ chờ ông duyệt: bảng ở `CLAUDE.md` (lời đọc, danh sách cảnh, bảng thiết kế của bối cảnh mới, bảng phân cảnh, video); bước 4–7 làm theo lô 5 chương, cả lô gửi một lần.
 - Hỏi trước khi chạy hơn 7 agent hoặc agent trên mức vừa. Đừng thuật lại từng báo cáo của agent: chỉ nhắn khi có thứ để xem hoặc cần quyết.
 - Đổi gì ở code hay kho chung thì ghi ngay một dòng vào `CHANGELOG.md` rồi lưu lên repo (mục Repo git của phần chung). Luật trong skill chỉ sửa khi Daniel đã xác nhận (luật 25a). Món mới theo Thẻ làm một món.
 - Lỗi ông đã chỉ thì tự mở ảnh phóng to soi trước khi gửi lại.
