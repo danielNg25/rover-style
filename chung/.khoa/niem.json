@@ -6,8 +6,8 @@
    "co": 2137
   },
   ".claude/workflows/dung-canh-3d.js": {
-   "bam": "e78c0e4cb5359ba9728629d323e35a9a979a4d92fea8c2b3cb801c259fbec733",
-   "co": 50051
+   "bam": "1f83b3031a82611599c7b346b535f99f86167013af5071c6b974512bf0ffdc2d",
+   "co": 49941
   },
   ".claude/workflows/video-script.js": {
    "bam": "c60d2aba968ca1ba49137daccc89188d864e38ee2929680d91067ffa12d0a662",
@@ -30,8 +30,8 @@
    "co": 1200
   },
   "chung/gen.sh": {
-   "bam": "7618f10ace9085c5b27325769c87df9df5c0400cae6de2e34c6c58f9c635c64b",
-   "co": 4028
+   "bam": "5b9044e863bafc3d2f1c832db8331a92162990600ce6fddcdc9dc43c443d3de1",
+   "co": 4221
   },
   "chung/gravepairs.sh": {
    "bam": "6f317117d885a83dedba184299718a4481271c4d35b650be549e8b8b2aab51fb",
@@ -86,8 +86,8 @@
    "co": 46353
   },
   "chung/skills/2-chuan-mon-do.md": {
-   "bam": "30f3225de79ae588b4c56dcae81935777cffbf532ef44d9824005bf15d1f79dc",
-   "co": 22163
+   "bam": "702c10a44d95d0e327672394121c87a24fcb8122b25037033720d105acfda2fa",
+   "co": 22124
   },
   "chung/skills/3-nhan-vat-dien-xuat.md": {
    "bam": "5423642665e7bf1501577b416852f8c8224d8f7ee82bc051001428856a3c2502",
@@ -102,8 +102,8 @@
    "co": 14751
   },
   "chung/skills/THE-LUAT-CUNG.md": {
-   "bam": "ab2d675fd2e1061d3d5d070691d9e21397d8aae1a1fd32736de6d6ae2c3e013d",
-   "co": 6942
+   "bam": "b8c5c01c662b131900dc154a02c708905c734e63504c4b322c3d7ceae76adbec",
+   "co": 6964
   },
   "chung/skills/bang-cham/BANG-CHAM.md": {
    "bam": "e50eb323a4873c7537646a431f507b088c1968576d3495dbf83c38f89e5d182a",

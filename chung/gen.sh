@@ -24,7 +24,8 @@ ls -la "gen/$OUT" 2>&1 | tail -1
 [ "$MOI" = 1 ] && exit 0
 if grep -qi "usage limit" "gen/$OUT.log"; then
   echo "CODEX HẾT HẠN MỨC ($(grep -oiE 'try again at [^.]*' "gen/$OUT.log" | head -1)). KHÔNG chờ, KHÔNG vẽ thay bằng code, KHÔNG bỏ món."
-  echo "Gửi Daniel NGAY ba thứ sau để Daniel gen ở chỗ khác (skill 2, mục Vẽ đồ bằng Codex):"
+  echo "Việc đã xếp vào hàng chờ gen/cho-gen/ cho extension flow-gen: báo Daniel NGAY TÊN VIỆC (${OUT%.png}), không dán lời tả, không gửi ảnh mẫu vào chat (skill 2, mục Vẽ đồ bằng Codex)."
+  echo "Ba thứ dưới đây chỉ dùng khi extension không chạy được:"
   printf 'Create ONE image, landscape 16:9.\n%s\n' "$PROMPT" > "gen/$OUT.loi-ta.txt"
   python3 tools/xep_gen.py "$OUT" "$TA" "$@" | head -1   # cũng xếp vào hàng chờ gen/cho-gen/ cho extension flow-gen
   echo "  1. lời tả ĐÃ SOÁT, dán NGUYÊN VĂN trong khối code: $PWD/gen/$OUT.loi-ta.txt   (KHÔNG gửi file gốc $TA: file đó còn bảng món và thiếu câu về hướng vẽ)"
