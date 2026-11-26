@@ -10,6 +10,12 @@ cd "$(dirname "$0")"
 OUT="$1"; TA="$2"; shift 2
 PROMPT="$(python3 tools/kiem_loi_ta.py "$TA" --in)" || { echo "KHÔNG GEN (mã thoát 4): lời tả chưa qua bước tra kho và chọn loại của Thẻ làm một món (skill 2). Sửa bảng món ở đầu $TA theo các dòng LOI ở trên; mẫu: gen/prompts/_mau-tam-kin.txt"; exit 4; }
 ARGS=(); for r in "$@"; do ARGS+=(-i "$PWD/$r"); done
+# GEN_QUA=flow (26/11/2026): không gọi Codex; xếp việc vào hàng chờ gen/cho-gen/ để Daniel gen trên web bằng extension (tools/xep_gen.py).
+if [ "${GEN_QUA:-}" = flow ]; then
+  python3 tools/xep_gen.py "$OUT" "$TA" "$@" || exit 4
+  echo "CHƯA CÓ ẢNH: việc đã nằm trong hàng chờ. Báo Daniel tên việc, làm phần không cần ảnh này; agent trong workflow điền cho_gen (hoặc tranh_co: false) rồi dừng bối cảnh."
+  exit 3
+fi
 MOC="gen/.moc-$OUT"; : > "$MOC"
 codex exec --skip-git-repo-check -s workspace-write -C "$PWD/gen" "${ARGS[@]}" -- \
   "Use your image generation tool to create ONE image and save it as $OUT in the current directory. Do not write code and do not draw with scripts; it must come from the image generation tool. $PROMPT After saving, reply with just the file path." > "gen/$OUT.log" 2>&1 < /dev/null
@@ -20,6 +26,7 @@ if grep -qi "usage limit" "gen/$OUT.log"; then
   echo "CODEX HẾT HẠN MỨC ($(grep -oiE 'try again at [^.]*' "gen/$OUT.log" | head -1)). KHÔNG chờ, KHÔNG vẽ thay bằng code, KHÔNG bỏ món."
   echo "Gửi Daniel NGAY ba thứ sau để Daniel gen ở chỗ khác (skill 2, mục Vẽ đồ bằng Codex):"
   printf 'Create ONE image, landscape 16:9.\n%s\n' "$PROMPT" > "gen/$OUT.loi-ta.txt"
+  python3 tools/xep_gen.py "$OUT" "$TA" "$@" | head -1   # cũng xếp vào hàng chờ gen/cho-gen/ cho extension flow-gen
   echo "  1. lời tả ĐÃ SOÁT, dán NGUYÊN VĂN trong khối code: $PWD/gen/$OUT.loi-ta.txt   (KHÔNG gửi file gốc $TA: file đó còn bảng món và thiếu câu về hướng vẽ)"
   for r in "$@"; do echo "  2. ảnh mẫu kiểu vẽ, gửi thẳng bằng SendUserFile: $PWD/$r"; done
   if [ "$(python3 tools/kiem_loi_ta.py "$TA" --loai 2>/dev/null)" = canh ]; then

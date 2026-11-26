@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><title>Hàng chờ gen ảnh</title>
+<style>
+  :root { --nen: #fbfaf7; --chu: #22201c; --mo: #6d675d; --vien: #dcd6ca; --nhan: #1f5fa8; --xong: #2f7d4f; --loi: #b3402a; }
+  @media (prefers-color-scheme: dark) { :root { --nen: #1d1c1a; --chu: #ece8df; --mo: #a39c8f; --vien: #3a3732; --nhan: #7fb2ee; --xong: #7cc79a; --loi: #ee8d78; } }
+  body { margin: 0; padding: 12px; background: var(--nen); color: var(--chu); font: 14px/1.45 system-ui, sans-serif; }
+  h1 { font-size: 15px; margin: 0 0 8px; }
+  button { font: inherit; padding: 6px 10px; border: 1px solid var(--vien); border-radius: 6px; background: transparent; color: var(--chu); cursor: pointer; }
+  button.chinh { border-color: var(--nhan); color: var(--nhan); font-weight: 600; }
+  button:disabled { opacity: .45; cursor: default; }
+  .mo { color: var(--mo); font-size: 12.5px; }
+  .viec { border: 1px solid var(--vien); border-radius: 8px; padding: 9px; margin: 8px 0; }
+  .viec.dang { border-color: var(--nhan); }
+  .viec h2 { font-size: 14px; margin: 0 0 3px; overflow-wrap: anywhere; }
+  .hang { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
+  .anh { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; } .anh img { height: 46px; border-radius: 4px; border: 1px solid var(--vien); }
+  .xong { color: var(--xong); } .loi { color: var(--loi); }
+  #bao { margin: 8px 0; min-height: 1.4em; white-space: pre-wrap; overflow-wrap: anywhere; }
+  select { font: inherit; padding: 4px; background: var(--nen); color: var(--chu); border: 1px solid var(--vien); border-radius: 6px; }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 130px; overflow: auto; border: 1px solid var(--vien); border-radius: 6px; padding: 6px; font-size: 12px; margin: 6px 0 0; }
+</style></head>
+<body>
+  <h1>Hàng chờ gen ảnh (cutout3d)</h1>
+  <div class="hang"><button id="chon" class="chinh">Chọn thư mục chung/gen</button><button id="tai" disabled>Đọc lại</button></div>
+  <div class="mo" id="dau" style="margin-top:6px">Chọn thư mục <b>chung/gen</b> của dự án (bên trong có <b>cho-gen</b>). Chỉ phải chọn một lần.</div>
+  <div style="margin-top:8px" class="mo">Cách đính ảnh mẫu:
+    <select id="cach"><option value="dan">dán vào ô nhập</option><option value="file">ô chọn file của trang</option><option value="tha">thả vào ô nhập</option></select>
+  </div>
+  <div id="bao"></div>
+  <div id="ds"></div>
+  <script src="bang.js"></script>
+</body></html>

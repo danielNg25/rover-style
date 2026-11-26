@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "cutout3d: hàng chờ gen ảnh",
+  "version": "0.1.0",
+  "description": "Đọc hàng chờ chung/gen/cho-gen của dự án cutout3d, dán lời tả và đính ảnh mẫu vào trang gen ảnh đang mở.",
+  "permissions": ["sidePanel", "scripting", "activeTab", "storage"],
+  "host_permissions": ["https://flow.google.com/*", "https://labs.google/*", "https://gemini.google.com/*", "https://aistudio.google.com/*"],
+  "background": {"service_worker": "nen.js"},
+  "action": {"default_title": "Mở hàng chờ gen ảnh"},
+  "side_panel": {"default_path": "bang.html"},
+  "content_scripts": [{"matches": ["https://flow.google.com/*", "https://labs.google/*", "https://gemini.google.com/*", "https://aistudio.google.com/*"], "js": ["trang.js"], "run_at": "document_idle"}]
+}

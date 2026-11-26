@@ -30,8 +30,8 @@
    "co": 1200
   },
   "chung/gen.sh": {
-   "bam": "2b3f7f40186fdb3f15012b3e8a526915985d7a1b79fcdb3dfa82856870407ed1",
-   "co": 3432
+   "bam": "7618f10ace9085c5b27325769c87df9df5c0400cae6de2e34c6c58f9c635c64b",
+   "co": 4028
   },
   "chung/gravepairs.sh": {
    "bam": "6f317117d885a83dedba184299718a4481271c4d35b650be549e8b8b2aab51fb",
@@ -86,8 +86,8 @@
    "co": 46353
   },
   "chung/skills/2-chuan-mon-do.md": {
-   "bam": "bb71e6782cc7833dcf89ead58664896b96dd20e20d7d491609aeaf9a8da68834",
-   "co": 21731
+   "bam": "30f3225de79ae588b4c56dcae81935777cffbf532ef44d9824005bf15d1f79dc",
+   "co": 22163
   },
   "chung/skills/3-nhan-vat-dien-xuat.md": {
    "bam": "5423642665e7bf1501577b416852f8c8224d8f7ee82bc051001428856a3c2502",
@@ -1384,6 +1384,10 @@
   "chung/tools/kiem_cam.py": {
    "bam": "29c01734de592de5578895eb0a1b94b8e0517d9ebdd76aca451ded7f1b09e6e2",
    "co": 9601
+  },
+  "chung/tools/xep_gen.py": {
+   "bam": "8ca189d507b26a099aab308683ec5a0b1920b53a309fd4e7bf39b6cb9b60e144",
+   "co": 3664
   }
  }
 }
