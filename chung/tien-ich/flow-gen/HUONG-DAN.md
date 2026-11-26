@@ -1,6 +1,6 @@
-# Extension hàng chờ gen ảnh (bản 0.5)
+# Extension hàng chờ gen ảnh (bản 0.6)
 
-Bảng bên cạnh trang gen, đọc hàng chờ `chung/gen/cho-gen/`. Từ bản 0.5, mặc định extension không đọc và không sửa trang web nào (Flow báo "hoạt động bất thường" khi extension tự điền, 26/11/2026): cách chính là làm tay. Hai nút tự động vẫn giữ, chỉ chạm vào trang khi bạn bấm.
+Bảng bên cạnh trang gen, đọc hàng chờ `chung/gen/cho-gen/`. Extension KHÔNG đọc và KHÔNG sửa trang web nào: Flow chặn lượt tạo khi extension tự điền ("hoạt động bất thường", 26/11/2026), nên hai nút tự động đã bỏ ở bản 0.6. Mọi thao tác trên trang do tay bạn làm.
 
 ## Cài (một lần)
 1. Chrome → `chrome://extensions` → bật **Developer mode** → **Load unpacked** → chọn thư mục `chung/tien-ich/flow-gen`.
@@ -12,8 +12,6 @@ Bảng bên cạnh trang gen, đọc hàng chờ `chung/gen/cho-gen/`. Từ bả
 2. Bấm từng **hình mẫu** trong thẻ để chép ảnh đó, sang trang gen bấm Cmd+V. Mỗi lần chép một ảnh.
 3. Tạo ảnh trên trang, tải tấm ưng ý về.
 4. **Lưu ảnh đã tải về**, chọn file vừa tải: ảnh được ghi vào `chung/gen/<tên>.png`. Thẻ chuyển sang xanh.
-
-Hai nút viền cam **Tự đưa vào trang gen** và **Tự lấy ảnh mới nhất trên trang** vẫn có: chúng tự điền lời tả, đính ảnh mẫu và đọc ảnh kết quả ngay trên trang. Lần đầu bấm, Chrome hỏi cấp quyền với trang gen. Flow từng báo "hoạt động bất thường" khi dùng hai nút này; gặp lại thì quay về cách làm tay.
 
 Việc không cần nữa: **Bỏ việc này** (khôi phục lại được).
 

@@ -7,7 +7,6 @@
   h1 { font-size: 15px; margin: 0 0 8px; }
   button { font: inherit; padding: 6px 10px; border: 1px solid var(--vien); border-radius: 6px; background: transparent; color: var(--chu); cursor: pointer; }
   button.chinh { border-color: var(--nhan); color: var(--nhan); font-weight: 600; }
-  button.tu { border-color: #c77a1e; color: #c77a1e; }
   button:disabled { opacity: .45; cursor: default; }
   .mo { color: var(--mo); font-size: 12.5px; }
   .viec { border: 1px solid var(--vien); border-radius: 8px; padding: 9px; margin: 8px 0; }
@@ -31,8 +30,7 @@
   <h1>Hàng chờ gen ảnh (cutout3d)</h1>
   <div class="hang"><button id="chon" class="chinh">Chọn thư mục cutout3d</button><button id="tai" disabled>Đọc lại</button></div>
   <div class="mo" id="dau" style="margin-top:6px">Chọn thư mục <b>cutout3d</b> của dự án (chọn <b>chung</b> hay <b>gen</b> cũng được). Chỉ phải chọn một lần.</div>
-  <div style="margin-top:8px" class="mo">Làm tay (an toàn): chép lời tả rồi dán; bấm từng hình mẫu để chép rồi dán; tải ảnh về rồi bấm lưu.<br>Hai nút viền cam "Tự …" tự điền và tự lấy ảnh trên trang; Flow từng báo hoạt động bất thường khi dùng. Cách tự đính ảnh mẫu:
-    <select id="cach"><option value="dan">dán vào ô nhập</option><option value="file">ô chọn file của trang</option><option value="tha">thả vào ô nhập</option></select></div>
+  <div style="margin-top:8px" class="mo">Extension không đụng vào trang gen: chép lời tả rồi dán (Cmd+V); bấm từng hình mẫu để chép rồi dán; tải ảnh về rồi bấm lưu.</div>
   <div id="bao"></div>
   <div id="ds"></div>
   <script src="bang.js"></script>

@@ -1,14 +1,12 @@
 {
   "manifest_version": 3,
   "name": "cutout3d: hàng chờ gen ảnh",
-  "version": "0.5.1",
-  "description": "Đọc hàng chờ chung/gen/cho-gen của dự án cutout3d: chép lời tả và ảnh mẫu để dán tay vào trang gen, lưu ảnh đã tải về đúng chỗ. Hai nút tự động chỉ chạm vào trang gen khi được bấm.",
+  "version": "0.6.0",
+  "description": "Đọc hàng chờ chung/gen/cho-gen của dự án cutout3d: chép lời tả và ảnh mẫu để dán tay vào trang gen, lưu ảnh đã tải về đúng chỗ. Không đọc, không sửa trang web nào.",
   "permissions": [
     "sidePanel",
     "nativeMessaging",
-    "clipboardWrite",
-    "scripting",
-    "storage"
+    "clipboardWrite"
   ],
   "background": {
     "service_worker": "nen.js"
@@ -18,11 +16,5 @@
   },
   "side_panel": {
     "default_path": "bang.html"
-  },
-  "optional_host_permissions": [
-    "https://flow.google.com/*",
-    "https://labs.google/*",
-    "https://*.googleusercontent.com/*",
-    "https://storage.googleapis.com/*"
-  ]
+  }
 }
