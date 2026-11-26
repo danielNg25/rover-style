@@ -54,16 +54,18 @@ function veViec({v, h, xong, bo}) {
   const hang = document.createElement('div'); hang.className = 'hang';
   const nut = (chu, lop, lam) => { const b = document.createElement('button'); b.textContent = chu; if (lop) b.className = lop; b.onclick = async () => { try { await lam(b); } catch (e) { bao('Lỗi: ' + (e.message || e), 'loi'); } }; hang.append(b); return b; };
   nut('Đưa vào trang gen', 'chinh', async () => { document.querySelectorAll('.viec').forEach((e) => e.classList.remove('dang')); o.classList.add('dang'); await duaVao(v, h); });
-  nut('Chép lời tả', '', async () => { await navigator.clipboard.writeText(await docChu(h, 'loi-ta.txt')); bao('Đã chép lời tả của ' + v.ten + '.'); });
   nut('Lấy ảnh mới nhất trên trang', 'chinh', async () => { await layAnhTrang(v, o); });
   nut('Lưu ảnh đã tải về', '', async () => { await luuAnh(v); });
+  if (xong) nut('Xem ảnh đã lưu', '', async () => {
+    const f = await (await goc.getFileHandle(v.luu_vao.replace(/^gen\//, ''))).getFile();
+    await chrome.tabs.create({url: URL.createObjectURL(f)}); bao(`Đã mở chung/${v.luu_vao} (${Math.round(f.size / 1024)} KB) ở thẻ mới.`);
+  });
   if (bo) nut('Khôi phục', '', async () => { await h.removeEntry('da-bo.txt'); bao('Đã khôi phục việc ' + v.ten + '.'); await docHangCho(); });
   else nut('Bỏ việc này', '', async () => {
     if (!confirm(`Bỏ việc "${v.ten}"? Việc sẽ ẩn khỏi hàng chờ; phiên xem hàng chờ sẽ thấy nó ghi "đã bỏ". Khôi phục lại được.`)) return;
     const w = await (await h.getFileHandle('da-bo.txt', {create: true})).createWritable(); await w.write('Daniel bỏ việc này trong extension flow-gen, ' + new Date().toLocaleString('vi-VN') + '\n'); await w.close();
     bao('Đã bỏ việc ' + v.ten + '.'); await docHangCho();
   });
-  nut('Xem lời tả', '', async (b) => { let p = o.querySelector('pre'); if (p) { p.remove(); return; } p = document.createElement('pre'); p.textContent = await docChu(h, 'loi-ta.txt'); o.append(p); });
   o.append(hang); $('ds').append(o);
 }
 

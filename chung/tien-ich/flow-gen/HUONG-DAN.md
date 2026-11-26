@@ -15,6 +15,8 @@ Dán lời tả và đính ảnh mẫu của một việc trong hàng chờ `chu
 
 Việc không cần nữa: bấm **Bỏ việc này** (ẩn khỏi hàng chờ, khôi phục lại được).
 
-Ảnh mẫu không vào trang: đổi **Cách đính ảnh mẫu** (dán, ô chọn file, thả) rồi thử lại; không cách nào được thì dùng **Chép lời tả** và tự kéo ảnh trong `cho-gen/<tên>/`.
+Ảnh mẫu không vào trang: đổi **Cách đính ảnh mẫu** (dán, ô chọn file, thả) rồi thử lại; không cách nào được thì mở `cho-gen/<tên>/` lấy `loi-ta.txt` và ảnh mẫu bằng tay.
+
+Việc đã có ảnh: nút **Xem ảnh đã lưu** mở ảnh ở thẻ mới.
 
 Phiên xếp việc: `GEN_QUA=flow ./gen.sh <tên>.png gen/prompts/<tên>.txt <ảnh mẫu…>` hoặc `python3 tools/xep_gen.py …`; xem hàng chờ: `python3 tools/xep_gen.py --xem`.
