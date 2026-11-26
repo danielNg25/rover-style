@@ -30,6 +30,7 @@ __pycache__/
 /chung/dang-lam.yaml
 /chung/qa.json.lock
 /chung/gen/.moc-*
+/chung/gen/*.loi-ta.txt
 
 # Khoá phần chung: bản niêm (niem.json, goc/) LÊN repo; phiếu, sổ và bộ nhớ đệm ở lại máy.
 /chung/.khoa/phieu/

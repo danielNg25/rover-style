@@ -1,0 +1,27 @@
+# MẪU file lời tả một TẤM KÍN (skill 2, mục Vẽ đồ bằng Codex). Dòng bắt đầu bằng # không gửi cho Codex.
+# Soát:  python3 tools/kiem_loi_ta.py gen/prompts/_mau-tam-kin.txt        Lời tả gửi Codex:  thêm --in
+# Danh sách ban đầu có 19 món. Ba món KHÔNG vào tấm vì kho đã có, gọi lại từ kho: rương vòm (do-trong-nha/ruong-go-nap-vom-dai-sat-dinh-tan),
+# va li da (do-trong-nha/va-li-da-nau-dung-mo-nhu-canh-tu-dai-khoa-dong), bao tải (do-ngoai-troi/bao-tai-buoc-mieng).
+#MON 1 | cây bồ đề non có khung sắt quanh gốc | phang | kho: không có cây phố (tìm "cây phố", "cây bồ đề")
+#MON 2 | cột quảng cáo tròn mái vòm | khoi-tien | kho: không có (tìm "cột quảng cáo")
+#MON 3 | sạp báo gỗ mái che sọc | khoi-rap | kho: không có (tìm "sạp báo")
+#MON 4 | cột đèn khí bằng gang | khoi-tien | kho: không có cột đèn rời (tìm "đèn đường": chỉ ra hiệu ứng đoàn đuốc)
+#MON 5 | cây cọ trong chậu gốm | phang | kho: không có (tìm "cây cọ")
+#MON 6 | đồng hồ quả lắc treo tường | khoi-dun | kho: không có (tìm "đồng hồ": chỉ ra giảng đường có tháp đồng hồ)
+#MON 7 | xe kéo tay hai bánh chở bao | khoi-dun | kho: không có (tìm "xe kéo")
+#MON 8 | ghế băng công viên chân gang | khoi-dun | kho: có ban-dai-go-soi-sam-ghe-bang-giang-duong, là bàn ghế giảng đường, khác loại
+#MON 9 | xe đẩy hành lý sân ga | khoi-dun | kho: không có (tìm "xe hành lý")
+#MON 10 | ghế dài sân ga đầu gang | khoi-dun | kho: không có (tìm "ghế băng": xem món 8)
+#MON 11 | tranh phong cảnh khung mạ vàng | khoi-dun | kho: có tranh-vai-thangka-mandala-xanh-vien-do, là tranh Tây Tạng, sai kiểu
+#MON 12 | đèn bàn chụp thuỷ tinh xanh | khoi-dun | kho: có ban-lam-viec-den-chup-xanh (cả bàn); cảnh cần đèn rời
+#MON 13 | quả địa cầu để bàn | khoi-tien | kho: có hieu-ung/qua-dia-cau-quay, là hiệu ứng nền vũ trụ, không phải đồ để bàn
+#MON 14 | chồng sách lộn xộn có giấy rời | khoi-dun | kho: có ke-sach-treo-tuong-lech (kệ treo tường), không có chồng sách rời
+#MON 15 | chậu dương xỉ đất nung | phang | kho: không có (tìm "dương xỉ")
+#MON 16 | hộp đàn vĩ cầm đóng nắp | khoi-dun | kho: không có (tìm "hộp đàn")
+A DENSE parts sheet of SIXTEEN separate props for Berlin around 1915-1920 (a street, a railway platform, a study), drawn in exactly the art style of the attached reference images: flat shapes, 2-4 close tones per object with a lighter and a darker tone, a few inner lines, no outlines.
+LAYOUT: pack the objects closely in 3 rows that together fill the whole image from edge to edge. Leave only a narrow clear gap of plain background (about 2-3% of the image width) between neighbouring objects. Every object is complete, not cropped by the image edge, and does NOT touch or overlap any other object. Do not leave large empty areas. Tall objects use the full height of their row; small objects are drawn large enough to fill their place.
+Row 1 (tall things, 6 objects): 1) a young linden street tree with a lobed rounded canopy in three greens and a thin trunk with a small iron tree guard; 2) a round advertising column with a dark green domed cap, covered with posters shown only as plain coloured rectangles (no letters); 3) a small green wooden newspaper kiosk with a striped awning, papers shown as plain shapes (no letters); 4) a tall cast-iron gas street lamp with a four-sided glass lantern; 5) a tall potted palm in a round ceramic pot; 6) a pendulum wall clock in a dark wooden case.
+Row 2 (medium things, 5 objects): 7) a wooden two-wheeled handcart with a few sacks; 8) a wooden park bench with cast-iron legs; 9) a flat wooden luggage trolley with iron wheels carrying two trunks and a hatbox; 10) a long wooden platform bench with cast-iron ends; 11) a framed landscape painting (hills and a lake) in a carved gilt frame.
+Row 3 (small things, 5 objects): 12) a green-glass banker's desk lamp with a brass stand; 13) a desk globe on a curved wooden stand; 14) an untidy stack of books with loose papers on top; 15) a potted fern in a terracotta pot; 16) a closed violin case in dark brown with a handle.
+No characters, no ground, no cast shadows.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

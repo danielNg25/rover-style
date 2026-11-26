@@ -2,12 +2,12 @@
  "lap": "2026-11-26 12:47",
  "file": {
   ".claude/settings.json": {
-   "bam": "a5486a3ae15fb7ffe7e87f690c5410281bad5546511e237d94c0180dff6ade91",
-   "co": 1641
+   "bam": "2c81f65cb1ac160ecf48abf809ca6f4c461b65fe00125e6dff46614028df60c3",
+   "co": 2137
   },
   ".claude/workflows/dung-canh-3d.js": {
-   "bam": "8b220b907f624ccb31174ef5ba1f34a77b41951e593bf4ef258cb3fdaa0c98d8",
-   "co": 38764
+   "bam": "0910b15c24e4405decd22961b601479c7a9ac054b84a9b69d1f9c7194eadfcee",
+   "co": 39893
   },
   ".claude/workflows/video-script.js": {
    "bam": "c60d2aba968ca1ba49137daccc89188d864e38ee2929680d91067ffa12d0a662",
@@ -30,8 +30,8 @@
    "co": 1200
   },
   "chung/gen.sh": {
-   "bam": "67df199f265a98d8882f9da747db66835ba5b80fc01835b9e65dc3debfbb4c2d",
-   "co": 2023
+   "bam": "c54a3d0352aab2a18faf20ea77ab10938661687e6cb6a5ba18b9ef18d984fe1d",
+   "co": 2954
   },
   "chung/gravepairs.sh": {
    "bam": "6f317117d885a83dedba184299718a4481271c4d35b650be549e8b8b2aab51fb",
@@ -86,8 +86,8 @@
    "co": 44525
   },
   "chung/skills/2-chuan-mon-do.md": {
-   "bam": "6d316ba1d6381f374fbf36d02fb6f15ff30a4ecbd3bff70194effa467161afa8",
-   "co": 20941
+   "bam": "e6be3a7e7df76d9dca011672477571cc88151ba2d4bec20f1d2d8e1a53049e98",
+   "co": 22469
   },
   "chung/skills/3-nhan-vat-dien-xuat.md": {
    "bam": "5423642665e7bf1501577b416852f8c8224d8f7ee82bc051001428856a3c2502",
@@ -1376,6 +1376,10 @@
   "chung/tools/git-hooks/pre-commit": {
    "bam": "c6a38aabe865d4fcc86a4b145c8e0c4942eac80a1b536809053be299a4ee8573",
    "co": 427
+  },
+  "chung/tools/kiem_loi_ta.py": {
+   "bam": "897490d98d6c3b334652ac195639ac917f74b130a87d1298246ec1cffacc88f4",
+   "co": 7888
   }
  }
 }
