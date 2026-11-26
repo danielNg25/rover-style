@@ -11,11 +11,15 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 - Mở phiên Claude Code ở đúng thư mục `cutout3d/`. Mở ở thư mục khác thì hook của khoá và thẻ luật không nạp.
 - Phiên mở từ trước chưa có luật mới: mở phiên mới, hoặc bảo phiên đọc lại `CLAUDE.md` và `chung/skills/THE-LUAT-CUNG.md`.
 - `chung/package.json` không đổi từ 20/11: không phải cài lại `node_modules`.
+- Cài chốt trước commit, một lần cho mỗi máy: `git config core.hooksPath chung/tools/git-hooks` (lệnh `khoa_chung.py luu` tự cài khi chưa có).
+- Gọi workflow `dung-canh-3d` phải truyền `goc` (đường dẫn thư mục `cutout3d` của máy đó); thiếu thì workflow dừng ngay và in cách lấy.
 - Video đã duyệt không dựng lại. Cảnh dựng lại sau ngày này sẽ khác bản cũ ở các điểm ghi trong mục Engine.
 
 ### Repo và khoá
 
 - **Phần chung lên git.** Repo ở gốc `cutout3d/`, remote `https://github.com/danielNg25/rover-style`, nhánh `main`. `kenh/`, `chung/node_modules`, `chung/qa`, `chung/out`, `chung/dang-lam.yaml` ở lại từng máy (`.gitignore`). Thôi dùng gói `goi-update/*.tar.gz`. File `CHANGELOG.md` này bắt đầu từ đây.
+- **Ghi thay đổi và lưu lên repo (phiếu P1126-03).** Đổi phần chung hay kho chung thì ghi một dòng vào file này rồi chạy `python3 tools/khoa_chung.py luu "<đổi gì>" [món kho đã duyệt…]`: commit và đẩy lên GitHub. Lệnh đóng phiếu đòi dòng mới ở file này (trước đòi ở `NHAT-KY`); `NHAT-KY` từ nay chỉ ghi việc dựng bối cảnh, cảnh quay của kênh. Chốt trước commit `chung/tools/git-hooks/pre-commit` chặn file đã niêm lệch bản niêm và commit thiếu dòng changelog. Luật: `CLAUDE.md`, `BAT-DAU-O-DAY.md` mục Repo git, skill 4. Hình không đổi.
+- **Workflow `dung-canh-3d` bỏ đường dẫn ghi cứng (phiếu P1126-04).** `args.goc` thành bắt buộc; không file nào trong repo còn ghi đường dẫn của một máy. Hình không đổi.
 - **Khoá phần chung.** `chung/tools/khoa_chung.py` cùng hook trong `.claude/settings.json` niêm 343 file engine, công cụ, luật, workflow. Sửa file đã niêm phải có phiếu Daniel duyệt; file engine kèm ảnh cùng một khung KHÔNG SỬA và CÓ SỬA. Luật: `CLAUDE.md`, thẻ luật điều 15. Hình không đổi.
 - **Quy trình một tập vào `CLAUDE.md`.** Bảng 9 bước và các chỗ chờ Daniel duyệt, tự nạp mọi phiên. `chung/tools/buoc.py` ghi tập đang ở bước nào và không cho mở bước sau khi bước trước chưa xong. Workflow `dung-canh-3d` đòi tham số `duyet`. Hook mở phiên in bước hiện tại của các tập đang dở.
 
@@ -35,24 +39,18 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 - **Trần cho nguồn sáng tự phát.** `src/lib3/look.tsx`: `NGUON_SANG = {tranDenGan: 1.4, tranQuang: 0.2}`. Cảnh có lửa, đèn, nến dựng lại sẽ bớt cháy và bớt ánh ấm quanh nguồn sáng.
 - **Bộ màu da đo từ video gốc.** `src/mould/palettes.ts`: `SKINS` là bảy tông (`porcelain`, `warm`, `light`, `fair`, `tan`, `brown`, `dark`). Nhân vật dùng `SKINS.*` đổi màu da khi dựng lại.
 - **`Sprite` đứng trước người che được người.** `src/lib3/depth.tsx`: mỗi `Sprite` ghi thêm chiều sâu, prop mới `che` (mặc định bật). Chỉ cảnh có `Sprite` đứng trước người mới khác bản cũ.
+- **Bỏ lớp ấm hậu kỳ mặc định.** `src/lib3/look.tsx`: `Finish` mặc định không còn phủ `#f3e2c4` 6 %. Mọi `Shot` không truyền `finish` dựng lại sẽ bớt ngả vàng. (Phiên shisui-1 sửa; Daniel cho giữ.)
+- **Bóng người không còn cụt ở phiến lát, mép sàn.** `src/lib3/kit.tsx`: mặt đất thấp hơn chân tới 15 cm hoặc cao hơn tới 8 cm vẫn tính là đất (trước ±6 cm). (Phiên shisui-1 sửa; Daniel cho giữ.)
+- **Núi một sắc.** `src/lib3/depth.tsx`: `paintPeak` thêm tuỳ chọn `motSac` (mặc định tắt, nơi khác không đổi). `src/demo/NuiTuyet.tsx`: dãy núi xa một sắc, bỏ 40 vệt tam giác, sườn không còn mảng chia dọc; bối cảnh núi tuyết dựng lại sẽ khác. (Phiên shisui-1 sửa; Daniel cho giữ.)
 
 ### Công cụ
 
-- `chung/tools/kiem_mat.py`: thêm LOI `da-ngoai-bo` (mã màu da tự ghi, không thuộc `SKINS`).
+- `chung/tools/kiem_mat.py`: thêm LOI `da-ngoai-bo` (mã màu da tự ghi, không thuộc `SKINS`); thêm cảnh báo `mat-mac-dinh`, `khep-mi`.
+- `chung/tools/kiem_bong.py`: `xoay-nguoi` bắt cả `rotY` đi qua component bọc `Puppet3`. Cảnh báo `hai-den-bong` đếm thêm `DenBongPhong` của kênh lich-su. LOI mới `nguoc-sang-hai-den`: đèn khai ngược sáng có đổ bóng mà file còn đèn đổ bóng khác (kiểu lỗi bóng hai hướng ở phòng Berlin); chưa bắt đèn ngược sáng khai bằng `<Sun nguocSang>`, và soát theo file nên file chứa hai cảnh riêng có thể bị báo oan (ghi `hai-den:ok`). Chạy trên cả dự án không thêm lỗi nào.
 - `chung/tools/khoa_chung.py`, `chung/tools/buoc.py`: mới (xem mục Repo và khoá).
 
 ### Kho chung
 
 - Daniel duyệt giữ 13 món hang Kabuto (`src/lib3/khoiTuAnh.tsx`): đá vách hang, nhũ đá, tảng đá, bàn đá, giá gỗ, nến, lọ, bình gốm, hộp gỗ, cuộn giấy, kệ gỗ.
-
-### Chưa vào repo
-
-Sáu file phiên shisui-1 sửa trưa 26/11, sau lúc niêm. Repo giữ bản đã niêm; bản sửa nằm ở máy chính và vào repo khi Daniel cho niêm.
-
-- `src/lib3/look.tsx`: `Finish` bỏ lớp ấm hậu kỳ mặc định (trước `#f3e2c4`, 6 %). Áp cho mọi `Shot` không truyền `finish`.
-- `src/lib3/kit.tsx`: bóng người không còn cụt ở phiến lát và mép sàn (đất thấp hơn chân tới 15 cm hoặc cao hơn tới 8 cm vẫn tính là đất).
-- `src/lib3/depth.tsx`, `src/demo/NuiTuyet.tsx`: `paintPeak` thêm `motSac`; núi tuyết một sắc, bỏ 40 vệt tam giác, sườn không còn mảng chia dọc.
-- `tools/kiem_bong.py`: phép `xoay-nguoi` bắt `rotY` đi qua component bọc `Puppet3`.
-- `tools/kiem_mat.py`: thêm cảnh báo `mat-mac-dinh`, `khep-mi`.
 
 Thay đổi trước 26/11/2026: `chung/NHAT-KY-THAY-DOI.md`.

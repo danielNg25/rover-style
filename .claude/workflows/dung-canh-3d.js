@@ -16,7 +16,7 @@ export const meta = {
 //   mau?: ['đường dẫn ảnh đã duyệt để so', …]                     ảnh cảnh của dự án mà Daniel đã duyệt (nếu có)
 //   sua?: true                                                        mặc định true: nhóm HỎNG được một vòng sửa
 //   model?: 'opus'                                                    mặc định sonnet; 'opus' chỉ khi Daniel yêu cầu
-//   goc?: '/đường/dẫn/tới/cutout3d'                                 mặc định là đường dẫn trên máy của Daniel
+//   goc: '/đường/dẫn/tới/cutout3d'                                  bắt buộc: đường dẫn tuyệt đối của thư mục cutout3d trên máy đang chạy (trong chung/: cd .. && pwd)
 //   chi_khuon?: true                                                  chỉ chạy bước chọn mẫu rồi dừng: trả về khung khuôn, bảng đổi món, màu theo vai để gửi Daniel duyệt trước khi dựng
 //   duyet: { danh_sach: '…', bang_doi?: '…', bang_phan_canh?: '…' }   bắt buộc (26/11/2026): NGUYÊN VĂN lời Daniel duyệt ở từng cổng của quy trình (CLAUDE.md), kèm ngày.
 //                                                                     danh_sach: luôn cần; bang_doi: cần khi có nhóm 'boi-canh' và không phải lượt chi_khuon; bang_phan_canh: cần khi có nhóm 'dien'.
@@ -43,7 +43,9 @@ const TIEP = A.chi_khuon ? "VIỆC KẾ: gửi Daniel khung khuôn và bảng đ
   : coViec('dien') ? 'VIỆC KẾ: soi ảnh từng nhóm, chạy tools/kiem-canh.sh, ghép chương và dựng cỡ 2 (2560×1440), gửi Daniel rồi DỪNG chờ duyệt. Ghi: python3 tools/buoc.py dat dien cho-duyet.'
   : coViec('canh-quay') ? "VIỆC KẾ: ghép bảng phân cảnh PDF (python3 tools/bang_phan_canh.py), soi theo bảng chấm, gửi Daniel rồi DỪNG. Chưa có lời duyệt bảng phân cảnh thì KHÔNG chạy nhóm 'dien'. Ghi: python3 tools/buoc.py dat bang-phan-canh cho-duyet."
   : "VIỆC KẾ: soi ảnh bối cảnh cạnh khung khuôn; món mới xin vào kho chung thì gửi Daniel ảnh từng món và chờ duyệt. Sau đó chạy nhóm 'canh-quay' để làm bảng phân cảnh."
-const ROOT = A.goc ||'/Users/daniel/WorkStation/Personal/video/shorts-claude/cutout3d'   // args.goc: thư mục cutout3d trên máy đang chạy (máy khác đặt dự án ở chỗ khác thì truyền vào)
+// args.goc (bắt buộc từ 26/11/2026): workflow không tự biết dự án nằm ở đâu và không ghi sẵn đường dẫn của máy nào; phiên chính truyền vào.
+if (typeof A.goc !== 'string' || !/^(\/|[A-Za-z]:[\\/])/.test(A.goc)) throw new Error('CHƯA ĐƯỢC CHẠY, thiếu args.goc: truyền đường dẫn TUYỆT ĐỐI của thư mục cutout3d trên máy đang chạy (thư mục chứa CLAUDE.md của dự án; đang đứng trong chung/ thì là kết quả của lệnh: cd .. && pwd). Chưa agent nào chạy; thêm goc rồi gọi lại.')
+const ROOT = A.goc.replace(/[\\/]+$/, '')
 const NHOM = A.nhom.slice(0, 3)
 if (A.nhom.length > 3) log(`chỉ chạy 3 nhóm đầu; bỏ: ${A.nhom.slice(3).map((n) => n.ten).join(', ')}`)
 const SUA = A.sua !== false

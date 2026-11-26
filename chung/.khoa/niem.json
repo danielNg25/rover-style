@@ -6,20 +6,20 @@
    "co": 1641
   },
   ".claude/workflows/dung-canh-3d.js": {
-   "bam": "7e882caf8808e6f3c07b0a29dcc1d1d3954f788959c28247b8dded142a10100b",
-   "co": 38290
+   "bam": "8b220b907f624ccb31174ef5ba1f34a77b41951e593bf4ef258cb3fdaa0c98d8",
+   "co": 38764
   },
   ".claude/workflows/video-script.js": {
    "bam": "c60d2aba968ca1ba49137daccc89188d864e38ee2929680d91067ffa12d0a662",
    "co": 39191
   },
   "BAT-DAU-O-DAY.md": {
-   "bam": "2e51a6b202fad8b639b006d22c5bdad04d8ceef6eda5411741c55763f73706e0",
-   "co": 8859
+   "bam": "9e5614d213018369cc9d21fa0b338483a1e055e32687907be2f23861b17831c1",
+   "co": 11383
   },
   "CLAUDE.md": {
-   "bam": "020fd544c1de18284cad6047664b7d0b1483e9c19daa90a2f312dfe6fc96aae8",
-   "co": 6943
+   "bam": "dcc36332ef232a1f037f1342235e19ae9c098999c811eb2a462164425688efd1",
+   "co": 7416
   },
   "chung/compare.sh": {
    "bam": "93fdda1711eadadca8b5241612c7e13aab8565241f80f03395effec7e467a3d3",
@@ -94,8 +94,8 @@
    "co": 42489
   },
   "chung/skills/4-quy-trinh.md": {
-   "bam": "c15a1f5ad25b1c0d242708cb65041a1015f4052936d3e485e6bb4bc8fc68b863",
-   "co": 23507
+   "bam": "efe643366e822ef08e564603ed6d7727a52f2776f60f38e3f99ba3958c9917f7",
+   "co": 23806
   },
   "chung/skills/LUAT-RUT-GON.md": {
    "bam": "ed98a587661ceda72dfdca259ed9c5ac4797bc5c459a039299003cccf561d23c",
@@ -322,8 +322,8 @@
    "co": 4989
   },
   "chung/src/demo/NuiTuyet.tsx": {
-   "bam": "5a68e0dba2dc6e48510e73a6306fc7ea56e035a4f3e0fb71d0cd13d9302831ba",
-   "co": 38655
+   "bam": "6b949fb46d7c2f3b0d122c42b497859178091222364e1afdde7f8841a473983a",
+   "co": 38042
   },
   "chung/src/demo/NyStreet.tsx": {
    "bam": "8f5749342ab3f88123e6379f75c7167bbcbbab9b2f5b4160a220570ec2a1bcea",
@@ -606,8 +606,8 @@
    "co": 34783
   },
   "chung/src/lib3/depth.tsx": {
-   "bam": "81beb972bbd79ed01800207855fe26e804c79e6ecb494b92a331617f066ff04b",
-   "co": 44124
+   "bam": "df7b179d5ce7a68ad514a594856d45109f2bf8cb26ae1c9cb17a2b1a95903049",
+   "co": 44631
   },
   "chung/src/lib3/detail.tsx": {
    "bam": "e7599dfeb35d9cb87a35f5466746aa16602dbe6c67c6f5e311f738c0d60eb9d8",
@@ -634,8 +634,8 @@
    "co": 8519
   },
   "chung/src/lib3/kit.tsx": {
-   "bam": "4f5494b9601c0720baac3c719534167b849e98977a64e8419d029372f9cd4644",
-   "co": 103509
+   "bam": "73354427b2b5941eb4285c93fb48c94f142066d0a3e765fa5636b84a6a8e1554",
+   "co": 103744
   },
   "chung/src/lib3/kitBanDo.tsx": {
    "bam": "cd0e9801ee3f9ac2353b2d29ff3dda44ead1c7ca086df0fbd3966418f3526b31",
@@ -762,8 +762,8 @@
    "co": 32724
   },
   "chung/src/lib3/look.tsx": {
-   "bam": "840e99ef4bec8e7bbb52002ce9af8092f0ad342e85c6725b855eedc83ebc1bd6",
-   "co": 28491
+   "bam": "74b8387d78871319cc1c2913c77703a83feca971a4762f74c11885284a807f86",
+   "co": 28481
   },
   "chung/src/lib3/mauBui.ts": {
    "bam": "2d6a84c07bba69e455bf4fc9704f7f96103302be39da492db961bbee8d1fbb10",
@@ -1222,16 +1222,16 @@
    "co": 13520
   },
   "chung/tools/khoa_chung.py": {
-   "bam": "b1cfd3cc876e13925c28d8e0f67e352d1a32aeae8d7cda708328cee9caf41f17",
-   "co": 31174
+   "bam": "e97e0bf1dd94d781a39c5d065e2dd0d37b0ad8650143101cb8fd5901346097ba",
+   "co": 38219
   },
   "chung/tools/kiem-canh.sh": {
    "bam": "ca069439c0447ae2ae1beb517b2555f140ffaff6f9f080bd313578de23a9f438",
    "co": 1898
   },
   "chung/tools/kiem_bong.py": {
-   "bam": "01bf615466a3d1db0e306ec3fd26cba98b180520fe6a8f64c6d16dfb2e130915",
-   "co": 11211
+   "bam": "c1cf727ba222a44760d03ad0a23a797d4ae192924c8ca3f76c111332dfd2ad28",
+   "co": 15775
   },
   "chung/tools/kiem_canh.py": {
    "bam": "06a28ba2be6fc9ca636def67a1427c25db3973e8211d2503a05a4b8491e87f2b",
@@ -1242,8 +1242,8 @@
    "co": 7093
   },
   "chung/tools/kiem_mat.py": {
-   "bam": "45814b8f10aa3967cdf6fe651a66e2633c9393d30cacb3b5980a5ed6eff32326",
-   "co": 9001
+   "bam": "20be970e6e2fa1bf205c457b7737a121551950adace903f1313fc410b1975681",
+   "co": 11691
   },
   "chung/tools/kit-check.ts": {
    "bam": "5671869ed22a4293f4d06ab441faae6bc1f2dc4d549b6dc0becddfce1d54fdec",
@@ -1372,6 +1372,10 @@
   "chung/tsconfig.json": {
    "bam": "5f3d4e9dd8effc9babbb46dfac231dc264c4a59f98b113f81c49eda49bcb4c66",
    "co": 286
+  },
+  "chung/tools/git-hooks/pre-commit": {
+   "bam": "c6a38aabe865d4fcc86a4b145c8e0c4942eac80a1b536809053be299a4ee8573",
+   "co": 427
   }
  }
 }

@@ -21,7 +21,7 @@ cutout3d/
 │  ├─ skills/            cách làm, đọc theo vai: 0 đạo diễn, 1 dựng cảnh, 2 chuẩn món đồ và kho, 3 nhân vật và diễn, 4 quy trình; bang-cham/ (chuẩn bằng hình), canh-mau/ (khung video gốc)
 │  ├─ tools/             buoc.py (tập đang ở bước nào); kho.py (kho); kiem_bong.py, kiem_canh.py, kiem_mat.py, kiem_kho.py (cổng kiểm); canh_mau.py, do_mau_khuon.py (cảnh mẫu, màu theo khuôn); vatly.py (kiểm vật lý); thu_giong.py (thu giọng)
 │  ├─ dang-lam.yaml      kênh và tập mặc định; ghi đè cho một lệnh bằng KENH=<kênh> TAP=<tập> (bắt buộc khi hai phiên làm hai kênh)
-│  └─ NHAT-KY-THAY-DOI.md   mọi thay đổi, mới nhất ở cuối phần đầu
+│  └─ NHAT-KY-THAY-DOI.md   nhật ký dựng bối cảnh, cảnh quay; thay đổi phần chung tới 26/11/2026 (từ đó ghi ở CHANGELOG.md, gốc repo)
 └─ kenh/
    ├─ phim-tv/           kênh hiện có: kenh.yaml, ghi-chu.md, cast/ (dàn nhân vật), kho/ (kho riêng của kênh),
    │                     tap/doom-1/ (cảnh quay; dung-canh/ = người đứng ở mốc trong các bối cảnh chung; dai-hoc/), out/
@@ -36,7 +36,7 @@ cutout3d/
 - **Làm một tập (mới hay đang dở):** theo `CLAUDE.md`. Tập đang ở bước nào: `python3 tools/buoc.py` (trong `chung/`); quyết định và ghi chú của tập: `kenh/<kênh>/tap/<tập>/STATUS.md`.
 - **Việc của từng vai** (đạo diễn, dựng cảnh, diễn xuất, ghép), file nào của ai, ngân sách dựng hình: `chung/skills/4-quy-trinh.md`.
 - **Mở kênh mới:** `kenh/_khung-kenh-moi/README.md`.
-- **Sửa bộ khuôn hay thư viện chung:** `chung/skills/3-nhan-vat-dien-xuat.md` và cuối `chung/NHAT-KY-THAY-DOI.md`; sửa xong dựng lại ảnh kho liên quan và so với ảnh cũ.
+- **Sửa bộ khuôn hay thư viện chung:** `chung/skills/3-nhan-vat-dien-xuat.md`, `CHANGELOG.md` và cuối `chung/NHAT-KY-THAY-DOI.md`; sửa xong dựng lại ảnh kho liên quan và so với ảnh cũ.
 - **Hiểu vì sao cấu trúc như thế này, còn nợ gì:** `BAO-CAO-TACH.md` (tách 22/11) và `BAO-CAO-GO-PHU-THUOC.md` (gỡ phần chung khỏi kênh, 23/11).
 
 ## Ba luật chung/kênh (từ 23/11/2026, ghi ở skill 1, 2, 3)
@@ -52,6 +52,7 @@ cutout3d/
 ./render-video.sh <composition> [cỡ]         video một cảnh (mặc định cỡ 1 để kiểm; bản gửi Daniel dùng cỡ 2 = 2560×1440)
 python3 tools/buoc.py [dat <bước> dang|cho-duyet|xong …]   tập đang ở bước nào; ghi một bước, bước có cổng kèm --duyet "<lời Daniel>"
 python3 tools/khoa_chung.py [xin … | duyet <mã> | dong <mã>]   PHẦN CHUNG BỊ KHOÁ: soát file lệch bản niêm; lập phiếu xin sửa kèm ảnh KHÔNG SỬA / CÓ SỬA (--help)
+python3 tools/khoa_chung.py luu "<đổi gì>" [món kho đã duyệt…]   lưu thay đổi phần chung lên repo: commit và đẩy lên GitHub (chạy ngoài sandbox; phải có dòng mới trong CHANGELOG.md)
 python3 tools/kho.py kiem | anh <id…> | muc-luc
 python3 tools/kiem_bong.py <file…>            rà bóng (không được có LOI)
 python3 tools/kiem_canh.py <file…>            rà máy quay, hạt, vật lặp đều (không được có LOI)
@@ -64,6 +65,17 @@ python3 tools/thu_giong.py                   thu giọng cho tập trong dang-la
 ```
 Kiểm vật lý: xem đầu file `tools/vatly.py` (chạy bằng `uv`).
 
+## Repo git của phần chung
+
+Từ 26/11/2026 phần chung nằm trong một repo git, gốc repo là `cutout3d/`, nhánh `main`, remote `https://github.com/danielNg25/rover-style`. Máy khác nhận thay đổi bằng `git pull`; không còn gói tar.
+
+- **Trong repo:** `chung/` (engine, công cụ, luật, kho `assets/` `public/` `gen/`, bản niêm của khoá), `CLAUDE.md`, `BAT-DAU-O-DAY.md`, `CHANGELOG.md`, `.claude/settings.json`, `.claude/workflows/`. **Ở lại từng máy** (`.gitignore`): `kenh/`, `chung/node_modules`, `chung/qa`, `chung/out`, `chung/dang-lam.yaml`, phiếu và sổ của khoá.
+- **Lưu một thay đổi:** ghi một dòng vào `CHANGELOG.md` (ngày mới nhất ở trên), rồi trong `chung/`: `python3 tools/khoa_chung.py luu "<đổi gì>" [món kho đã duyệt…]`. Lệnh tự đưa vào commit các file đã niêm đang khớp bản niêm, sổ niêm và `CHANGELOG.md`; món kho, ảnh gen, file mới phải kể tên. Nó từ chối file đã niêm lệch bản niêm (chưa có phiếu đóng) và commit thiếu dòng changelog. `git commit` bằng tay cũng qua chốt đó (`chung/tools/git-hooks/pre-commit`).
+- **Lệnh git ghi vào `.git`** (add, commit, pull) bị sandbox của phiên chặn: chạy ngoài sandbox.
+- **Lấy bản mới về:** chỉ khi Daniel bảo. `git pull`, rồi đọc phần mới của `CHANGELOG.md`, mục "Sau khi lấy về".
+- **Máy chưa nối với repo** (đang có thư mục `cutout3d/` từ gói tar): trong `cutout3d/` chạy `git init -b main`, `git remote add origin https://github.com/danielNg25/rover-style.git`, `git fetch origin`, `git reset --hard origin/main`, `git branch -u origin/main`, `git config core.hooksPath chung/tools/git-hooks`. Lệnh `reset` ghi đè file phần chung bằng bản trên repo; `kenh/`, `node_modules`, `dang-lam.yaml` không bị đụng. Có `chung/.git` cũ thì dời ra trước.
+- **Đường dẫn:** không file nào trong repo ghi đường dẫn của một máy. Hook dùng `$CLAUDE_PROJECT_DIR` (mở phiên ở đúng `cutout3d/`); workflow `dung-canh-3d` nhận `goc` do phiên truyền vào.
+
 ## Hai phiên làm hai kênh cùng lúc
 
 - Mỗi kênh có file vào riêng `kenh/<kênh>/entry.ts`; các lệnh dựng hình tự chọn file đó theo kênh đang làm, nên code dở dang của kênh này không làm hỏng lệnh dựng của kênh kia. `chung/src/index.ts` chứa mọi kênh, chỉ dùng cho kiểm kiểu.
@@ -75,7 +87,7 @@ Kiểm vật lý: xem đầu file `tools/vatly.py` (chạy bằng `uv`).
 
 - Trả lời bằng tiếng Việt. Các chỗ chờ ông duyệt: bảng ở `CLAUDE.md` (lời đọc, danh sách cảnh, bảng đổi món của bối cảnh mới, bảng phân cảnh, video); bước 4–7 làm theo lô 5 chương, cả lô gửi một lần.
 - Hỏi trước khi chạy hơn 7 agent hoặc agent trên mức vừa. Đừng thuật lại từng báo cáo của agent: chỉ nhắn khi có thứ để xem hoặc cần quyết.
-- Đổi gì ở code hay kho thì ghi ngay vào `NHAT-KY-THAY-DOI.md`. Luật trong skill chỉ sửa khi Daniel đã xác nhận (luật 25a). Món mới theo Thẻ làm một món.
+- Đổi gì ở code hay kho chung thì ghi ngay một dòng vào `CHANGELOG.md` rồi lưu lên repo (mục Repo git của phần chung). Luật trong skill chỉ sửa khi Daniel đã xác nhận (luật 25a). Món mới theo Thẻ làm một món.
 - Lỗi ông đã chỉ thì tự mở ảnh phóng to soi trước khi gửi lại.
 - Bối cảnh thì được dùng lại; nhân vật có tên phải có dáng mặt và đồ mặc riêng. Người trong khung phải diễn. Vật nóng phải có đủ lớp sáng và hạt.
 - Chi tiết nằm trong các skill và trong bộ nhớ của Claude Code cho dự án `shorts-claude`.

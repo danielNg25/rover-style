@@ -94,8 +94,18 @@ export const Sprite: React.FC<{name: string; art: (c: Ctx, W: number, H: number)
 // ---------------------------------------------------------------- painters (usable on plates at any size and in sprites)
 export type Two = {light: string; dark: string};
 /** A mountain: one big massif, light face left of its ridge, dark face right, an optional broad band of snow down the lit slope. */
-export const paintPeak = (c: Ctx, x: number, yt: number, hw: number, base: number, t: Two & {snow?: string; snowShade?: string}) => {
+export const paintPeak = (c: Ctx, x: number, yt: number, hw: number, base: number, t: Two & {snow?: string; snowShade?: string; motSac?: boolean}) => {
   const h = base - yt, L = [x - hw, base], Rr = [x + hw * 1.08, base], ls = [x - hw * 0.5, yt + h * 0.54], rs = [x + hw * 0.46, yt + h * 0.4], A = [x, yt];
+  if (t.motSac) {
+    // luật 13 (26/11/2026): núi xa MỘT SẮC, không sống dọc chia hai màu; chỏm tuyết một sắc, mép dưới gãy khúc
+    P(c, [L, ls, A, rs, Rr], t.light);
+    if (t.snow) {
+      const a = mix(A, ls, 0.62), b = mix(A, rs, 0.7), n = 6, mep: number[][] = [];
+      for (let i = 1; i < n; i++) { const u = i / n, q = mix(a, b, u); mep.push([q[0], q[1] + (i % 2 ? h * 0.07 : -h * 0.02)]); }
+      P(c, [A, a, ...mep, b], t.snow);
+    }
+    return;
+  }
   P(c, [L, ls, A, rs, Rr], t.dark);
   const ridge = [[x + hw * 0.07, yt + h * 0.28], [x - hw * 0.06, yt + h * 0.56], [x + hw * 0.1, base]];
   P(c, [L, ls, A, ...ridge], t.light);

@@ -1,0 +1,5 @@
+#!/bin/sh
+# Chốt của khoá phần chung trước mỗi commit. Cài một lần cho mỗi bản clone:
+#   git config core.hooksPath chung/tools/git-hooks      (lệnh "khoa_chung.py luu" tự cài khi chưa có)
+# Chặn commit có file đã niêm khác bản niêm, hoặc đổi phần chung mà CHANGELOG.md không có dòng mới.
+exec python3 "$(git rev-parse --show-toplevel)/chung/tools/khoa_chung.py" truoc-commit

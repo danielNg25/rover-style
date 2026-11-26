@@ -13,6 +13,10 @@ Ba loại báo:
                 Bỏ qua mặt nằm (plane/circle xoay -PI/2), mesh có userData noRecv. Cố ý không đổ bóng thì thêm
                 chú thích  {/* bong:ok */}  hoặc  // bong:ok  trên cùng dòng.
   CANH canvas?  canvas chỉ chứa {children}: là khung bọc, xét ở nơi gọi nó.
+  LOI  xoay-nguoi  tấm người (<Puppet3>, <Nguoi>) xoay quá 0,15 rad bằng số cụ thể; tính cả khi rotY đi QUA một component bọc
+                (const Person = ({rotY}) => <Puppet3 rotY={rotY} />, rồi <Person rotY={0.25} />). Qua component bọc thì mọi số KHÁC 0 đều báo (không có ngưỡng 0,15: người xoay nhẹ 0,1 vẫn lệch sáng); bọc trong cùng file, hoặc component
+                `export` ở file khác mà file này import theo tên. Chưa bắt: rotY là biến/biểu thức (rotY={rotA}), component bọc hai tầng
+                hay bọc bằng tên khác không import trực tiếp. Miễn trừ: bong:ok trên cùng dòng.
 """
 import re
 import sys
@@ -22,6 +26,7 @@ GOC = Path(__file__).resolve().parent.parent          # chung/
 BO_QUA = ('/_thu-mau/', 'node_modules', '/out/', '/_luu/', '.bak', '/demo-before/')
 VAT_SANG = re.compile(r'<mesh(Lambert|Phong|Standard|Physical|Toon)Material\b')
 DINH_NGHIA = re.compile(r'(?:export\s+)?(?:const|function)\s+([A-Z]\w*)\b')
+CO_EXPORT = re.compile(r'export\s+(?:const|function)\s+([A-Z]\w*)\b')
 
 
 def cac_file(args):
@@ -54,6 +59,16 @@ def khoi_component(src):
     """{tên component: đoạn mã của nó} — đoạn từ định nghĩa tới định nghĩa kế tiếp"""
     m = list(DINH_NGHIA.finditer(src))
     return {a.group(1): src[a.start(): (m[k + 1].start() if k + 1 < len(m) else len(src))] for k, a in enumerate(m)}
+
+
+def bao_puppet(doan):
+    """component này bọc <Puppet3>/<Nguoi> và chuyển tiếp một prop sang rotY? Trả tập tên prop (thường {'rotY'})"""
+    ra = set()
+    for m in re.finditer(r'<(Puppet3|Nguoi)\b', doan):
+        tag = the_mo(doan, m.start())[1]
+        r = re.search(r'\brotY=\{\s*-?\s*([A-Za-z_]\w*)\s*\}', tag)
+        if r and re.search(r'\b' + r.group(1) + r'\b', doan[:m.start()]): ra.add(r.group(1))
+    return ra
 
 
 def main(args):
@@ -103,6 +118,16 @@ def main(args):
             if 'castShadow' in tag: continue
             if re.search(r'<(plane|circle)Geometry', vl + tag) and re.search(r'rotation=\{\[\s*-\s*Math\.PI\s*/\s*2', tag): continue
             canh.append(f'CANH cast    {ten_f}:{dong(s, m.start())}  mesh nhận sáng không castShadow')
+    # component bọc Puppet3 chuyển rotY: {tên: tập prop}, riêng từng file và chung (chỉ component export)
+    bao_f, bao_chung = {}, {}
+    for f, s in ma.items():
+        bao_f[f] = {}
+        dn = list(DINH_NGHIA.finditer(s)); xp = {a.group(1) for a in CO_EXPORT.finditer(s)}
+        for k, a in enumerate(dn):
+            pr = bao_puppet(s[a.start(): dn[k + 1].start() if k + 1 < len(dn) else len(s)])
+            if pr:
+                bao_f[f][a.group(1)] = pr
+                if a.group(1) in xp: bao_chung.setdefault(a.group(1), set()).update(pr)
     # 3. lỗi ánh sáng trên NGƯỜI và bóng vẽ chồng (25/11/2026, cảnh thử khe suối; Daniel: "Itachi tối mà Shisui sáng, bóng thì một cục tròn dưới chân")
     for f, s in ma.items():
         ten_f = f.relative_to(GOC.parent) if GOC.parent in f.parents else f
@@ -110,15 +135,37 @@ def main(args):
         for m in re.finditer(r'<(Puppet3|Nguoi)\b[^>]*\brotY=\{\s*(-?\d*\.?\d+)\s*\}', s):
             if abs(float(m.group(2))) > 0.15 and 'bong:ok' not in s[s.rfind('\n', 0, m.start()) + 1: s.find('\n', m.end())]:
                 loi.append(f'LOI  xoay-nguoi {ten_f}:{dong(s, m.start())}  tấm người xoay {m.group(2)} rad: cả người tối đi so với người khác. Quay mặt bằng flip và hướng mắt, không xoay tấm')
+        # cùng lỗi đó khi rotY đi qua component bọc: <Person rotY={0.25} />
+        bao = dict(bao_f.get(f, {}))
+        for im in re.finditer(r'import\s*\{([^}]*)\}\s*from', s):
+            for ten in re.findall(r'\b([A-Z]\w*)\b(?!\s+as\b)', im.group(1)):
+                if ten in bao_chung and ten not in bao: bao[ten] = bao_chung[ten]
+        for ten, props in bao.items():
+            for m in re.finditer(r'<' + ten + r'\b', s):
+                tag = the_mo(s, m.start())[1]
+                for pr in props:
+                    for r in re.finditer(r'\b' + pr + r'=\{\s*(-?\d*\.?\d+)\s*\}', tag):
+                        d0 = m.start() + r.start(); ln = dong(s, d0)
+                        if float(r.group(1)) != 0 and 'bong:ok' not in s[s.rfind('\n', 0, d0) + 1: s.find('\n', m.start() + r.end())]:
+                            loi.append(f'LOI  xoay-nguoi {ten_f}:{ln}  <{ten}> xoay tấm người {r.group(1)} rad (rotY đi qua component bọc Puppet3): cả người tối đi so với người khác. Quay mặt bằng flip và hướng mắt, không xoay tấm')
         # vệt tròn vẽ dưới chân đã bỏ cho cả người lẫn đồ vật (Daniel 25/11/2026: "chỉ dùng 1 bóng, bỏ vệt tròn"): ContactShade đã tắt trong engine, lời gọi còn sót là thừa
         if '/kenh/' in str(f):
             for m in re.finditer(r'<ContactShade\b', s):
                 canh.append(f'CANH bong-chong {ten_f}:{dong(s, m.start())}  <ContactShade> đã tắt trong engine (không còn vệt tròn dưới chân người hay đồ vật): bỏ lời gọi này; bóng của người do engine vẽ')
         # hai đèn cùng đổ bóng trong một bối cảnh của kênh: đồ vật ra hai bóng lệch hướng (video gốc: một hướng bóng cho cả cảnh)
         if '/kenh/' in str(f) and 'hai-den:ok' not in s:
-            den = [m.start() for m in re.finditer(r'<Sun\b|<SceneLight\b|<Scene3\b', s)] + [m.start() for m in re.finditer(r'<(?:directionalLight|spotLight)\b[^>]*\bcastShadow', s)]
+            den = [m.start() for m in re.finditer(r'<Sun\b|<SceneLight\b|<Scene3\b|<DenBongPhong\b', s)] + [m.start() for m in re.finditer(r'<(?:directionalLight|spotLight)\b[^>]*\bcastShadow', s)]   # DenBongPhong (kenh lich-su lib/denPhong): đèn chiếu đổ bóng bọc trong component (26/11/2026)
             if len(den) > 1:
                 canh.append(f'CANH hai-den-bong {ten_f}:{dong(s, sorted(den)[1])}  file có {len(den)} đèn cùng đổ bóng: nếu chúng cùng bật trong một cảnh thì đồ vật ra hai bóng lệch hướng; soát lại, đèn phụ nên bỏ castShadow. Cố ý (hai trạng thái của một bối cảnh, vệt nắng nhiều cửa sổ) thì ghi  hai-den:ok  ở bất cứ đâu trong file')
+        # NGƯỢC SÁNG + một đèn đổ bóng khác (Daniel 26/11/2026, phòng Berlin và sân ga: "bóng đổ linh tinh", rồi "sửa cả hai"): đèn khai nguocSang
+        # kéo bóng NGƯỜI về phía máy, còn đèn đổ bóng thứ hai (thường là đèn phòng phía máy, DenBongPhong) đẩy bóng ĐỒ VẬT ra sau: bóng hai hướng chồng
+        # nhau quanh chân người. Một cảnh chỉ một đèn đổ bóng; ngược sáng thì chính đèn đó là đèn đổ bóng duy nhất. Cố ý thì ghi  hai-den:ok .
+        if '/kenh/' in str(f) and 'hai-den:ok' not in s:
+            ns = [m for m in re.finditer(r'<directionalLight\b', s) if 'nguocSang' in the_mo(s, m.start())[1] and 'castShadow' in the_mo(s, m.start())[1]]
+            if ns:
+                khac = [m.start() for m in re.finditer(r'<(?:Sun|SceneLight|Scene3|DenBongPhong)\b', s)] + [m.start() for m in re.finditer(r'<(?:directionalLight|spotLight)\b', s) if 'castShadow' in the_mo(s, m.start())[1] and 'nguocSang' not in the_mo(s, m.start())[1]]
+                if khac:
+                    loi.append(f'LOI  nguoc-sang-hai-den {ten_f}:{dong(s, ns[0].start())}  đèn khai nguocSang có đổ bóng, mà file còn {len(khac)} đèn đổ bóng khác (dòng {", ".join(str(dong(s, k)) for k in sorted(khac)[:3])}): bóng người kéo về phía máy, bóng đồ vật ra sau, hai hướng chồng nhau. Giữ MỘT đèn đổ bóng: bỏ castShadow và nguocSang của nắng cửa sổ (chỉ chiếu sáng), hoặc bỏ đèn bóng phía máy. Cố ý thì ghi  hai-den:ok')
         # đèn đổ bóng đặt PHÍA SAU sân khấu: bóng đổ về phía máy (Daniel 25/11/2026: "bóng đổ ra phía trước mặt, đáng ra nó phải phía sau").
         # Đọc được khi hướng là số cụ thể hoặc hằng [x, y, z] khai trong cùng file. Cảnh ngược sáng thật thì khai nguocSang trên đèn.
         for m in re.finditer(r'<(Sun|SceneLight|directionalLight)\b', s):

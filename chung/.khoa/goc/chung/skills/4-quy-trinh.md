@@ -42,7 +42,7 @@ Mọi đường dẫn tính từ thư mục `cutout3d/chung/` (phần chung; đ�
 ## Việc ai cũng phải làm
 
 - **Làm một món:** theo skill 2, mục Thẻ làm một món (tra kho; chọn loại phẳng, khối, khối tiện, tấm nền; lấy nét từ Codex; vào kho, kho chung cần Daniel duyệt). Cổng: `python3 tools/kiem_kho.py <file>` xử lý hết dòng `tu-ve-lai`, `trung-mon`; `python3 tools/kho.py kiem`.
-- **Ghi nhật ký:** mỗi thay đổi ở thư viện, mỗi bối cảnh, mỗi nhóm cảnh quay thêm một dòng vào `NHAT-KY-THAY-DOI.md` (đổi gì | code ở đâu | ghi ở skill hay kho nào).
+- **Ghi thay đổi, mỗi việc một chỗ:** thay đổi của phần chung (engine, công cụ, luật, kho chung) ghi một dòng vào `CHANGELOG.md` ở gốc repo, dưới ngày hôm đó (đổi gì; file chính; dựng lại thì hình có đổi không), rồi lưu lên repo bằng `python3 tools/khoa_chung.py luu "<đổi gì>"`. Mỗi bối cảnh, mỗi nhóm cảnh quay của kênh thêm một dòng vào `NHAT-KY-THAY-DOI.md` (đổi gì | code ở đâu | ghi ở skill hay kho nào).
 - **Kiểm kiểu:** `npx tsc --noEmit -p . 2>&1 | grep -E "src/(lib3|demo|mould|episodes|catalog)"` phải im lặng.
 - **Dựng hình:** một khung `./still.sh <comp> <khung>` (ra `out/<comp>-<khung>.png`); video kiểm `./render-video.sh <comp> 1` (720 dòng, ra `out/<comp>.mp4`); video gửi Daniel `./render-video.sh <comp> 2` (2560×1440). Chrome không khởi động được trong sandbox của Bash nên các lệnh này phải chạy ngoài sandbox. Nếu bị từ chối thì dừng và báo; không tìm đường khác để dựng.
 - **Tự soi bằng mắt:** mở ảnh ra xem (đổi sang JPEG rồi đọc), đi hết danh sách tự soi của skill mình dùng, sửa điều thấy được. Không ai xem được video chạy; phải nói rõ điều đó trong báo cáo.

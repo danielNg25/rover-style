@@ -8,11 +8,19 @@ mặt mới cạnh video gốc, nên cả dàn lệch mà không bị bắt.
 
   python3 tools/kiem_mat.py [kênh ...] [--ghi-chu]     không nêu kênh thì rà mọi kênh; --ghi-chu in cả file được miễn
 
-Ba phép kiểm, chỉ đọc code, không dựng hình (tools/kiem_canh.py tự gọi các phép này cho kênh của file đang rà):
+Năm phép kiểm, chỉ đọc code, không dựng hình (tools/kiem_canh.py tự gọi các phép này cho kênh của file đang rà):
  1. số của MẮT CHUẨN (src/mould/matChuan.ts) còn trong khoảng đo từ video gốc và hai mắt còn chạm nhau;
  2. mắt mặc định của bộ khuôn (EYE trong src/mould/draw.ts) còn trong khoảng đó;
  3. không file nào của kênh TỰ VẼ MẮT: file có lớp cắm (registerAddOn, headFull) đọc hướng nhìn, mí hoặc nhắm mắt rồi tự vẽ hình tròn
     mà không lấy từ mould/matChuan là LOI. Kiểu mặt riêng mà Daniel đã duyệt thì ghi trong file một dòng `mat:da-duyet <ngày>`.
+ 4. (mat-mac-dinh, CANH) file dàn nhân vật của kênh (cast/…, có khai báo `: Spec =` kèm outfit/faceShape) mà không dùng mắt chuẩn: nhân vật nhận mắt mặc định
+    EYE của bộ khuôn (cỡ cũ 86/80, hai mắt tách nhau). Một Spec dùng mắt chuẩn khi đi qua `matChuan(spec)` (đặt noEyes: true và cắm lớp
+    `mat-chuan`) hoặc tự đặt `noEyes: true` rồi cắm lớp vẽ bằng `veMat` của mould/matChuan (kiểu `matNho` của lich-su, file nào gọi `matNho(` được coi là đạt). Chưa có cờ nào trong Spec
+    để "chọn mắt chuẩn" mà không qua hai đường đó, nên phép này chỉ nhận ra bằng chữ: file nhắc matChuan(/matNho(/mat-chuan/veMat/mould/matChuan,
+    `noEyes: true`, `mat:da-duyet`, hoặc ở CO_TU_TRUOC thì không báo. Chỉ CANH, một dòng cho mỗi file (không biết file nào thật sự đi qua
+    matChuan ở nơi khác, ví dụ ở tập); miễn trừ bằng `mat:da-duyet <ngày>` trong file.
+ 5. (khep-mi, CANH) `khepMi: <số khác 0>` trong code của kênh (opt của nhân vật, hạ mí cho mọi nét trừ shock): luật mặt chuẩn là mặt bình
+    thường mắt mở tròn, mí chỉ hạ khi giận, buồn, chán, nheo (đã có nét riêng). Miễn trừ bằng `mat:da-duyet <ngày>` trong file hoặc `khep:ok` trên dòng.
 Muốn đổi kiểu mặt: đặt mặt cạnh skills/bang-cham/mat-chuan.jpg, làm mẫu nhỏ, hỏi Daniel (skill 3, mục Mặt chuẩn).
 
 Màu da (26/11/2026): mã màu da tự ghi trong dàn nhân vật mà không thuộc bộ SKINS của src/mould/palettes.ts (bộ đo từ video gốc)
@@ -112,6 +120,13 @@ def kiem(kenh=None, ghi_chu=False):
                     if ten in DA_TU_TRUOC:
                         if ghi_chu: canh.append('ghi chú da-ngoai-bo ' + dong + '. Dàn của tập đã xong; dùng cho tập mới thì đổi sang SKINS')
                     else: loi.append('LOI  da-ngoai-bo ' + dong + '. Da người chỉ lấy từ bộ đo từ video gốc: palette: {...SKINS.<tông>} (chung/src/mould/palettes.ts). Không phải da người thì ghi `da:ok <lý do>` trên dòng đó; màu da riêng Daniel đã duyệt thì ghi `da:da-duyet <ngày>`')
+                for m in re.finditer(r'\bkhepMi\s*:\s*(-?\d*\.?\d+)', s):
+                    ln = s[s.rfind('\n', 0, m.start()) + 1: s.find('\n', m.start())]
+                    if float(m.group(1)) != 0 and 'khep:ok' not in ln and 'mat:da-duyet' not in s:
+                        canh.append(f'CANH khep-mi      {ten}:{s.count(chr(10), 0, m.start()) + 1}  khepMi: {m.group(1)} hạ mí cả khi nét mặt bình thường; luật mặt chuẩn: mặt bình thường mắt mở tròn, chỉ giận, buồn, chán, nheo mới hạ mí. Bỏ khepMi, hoặc nếu Daniel đã duyệt thì ghi `mat:da-duyet <ngày>`')
+                if (thu_muc == 'cast' and re.search(r':\s*Spec\s*=', s) and re.search(r'\boutfit:|faceShape', s) and not re.search(r'matChuan\(|matNho\(|mat-chuan|veMat|mould/matChuan|noEyes:\s*true|mat:da-duyet', s)
+                        and ten not in CO_TU_TRUOC and not tu_ve_mat(s) and '/_luu/' not in ten):
+                    canh.append(f'CANH mat-mac-dinh  {ten}: dàn nhân vật không đi qua matChuan(spec) / noEyes + veMat: nhân vật nhận mắt mặc định EYE của bộ khuôn (draw.ts, cỡ cũ), không phải mắt chuẩn. Bọc matChuan(spec) (chung/src/mould/matChuan.ts) hoặc, nếu đã bọc ở nơi khác, ghi `mat:da-duyet <ngày>`')
                 if not tu_ve_mat(s) or re.search(r'mould/matChuan', s): continue
                 if 'mat:da-duyet' in s:
                     if ghi_chu: canh.append(f'ghi chú mat-rieng   {ten}: kiểu mặt riêng, có dòng mat:da-duyet')
@@ -127,5 +142,5 @@ if __name__ == '__main__':
     a = sys.argv[1:]; gc = '--ghi-chu' in a
     loi, canh = kiem([x for x in a if not x.startswith('--')] or None, gc)
     for d in loi + canh: print(d)
-    print(f'\nkiem_mat: {len(loi)} lỗi' + (f', {len(canh)} ghi chú' if gc else ''))
+    print(f'\nkiem_mat: {len(loi)} lỗi, {len(canh)} ' + ('cảnh báo và ghi chú' if gc else 'cảnh báo'))
     sys.exit(1 if loi else 0)

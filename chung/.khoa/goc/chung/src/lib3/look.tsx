@@ -221,7 +221,7 @@ export const Scene3: React.FC<{grade: Grade; dir?: V3; gain?: number; reach?: nu
  *  grain and a gentle soft-focus look; muted, warm, dusty" against our "crisp flat vector"). Wraps the canvas:
  *  a slight softening, a little less saturation and contrast, large soft mottling inside flat areas, a paper grain coarse
  *  enough to survive video compression, and a warm dusty cast. warm = the cast colour ('' for none, e.g. night scenes). */
-export const Finish: React.FC<{children: React.ReactNode; soft?: number; grain?: number; mottle?: number; warm?: string; warmAmount?: number}> = ({children, soft = 0, grain = 0.12, mottle = 0.1, warm = '#f3e2c4', warmAmount = 0.06}) => (
+export const Finish: React.FC<{children: React.ReactNode; soft?: number; grain?: number; mottle?: number; warm?: string; warmAmount?: number}> = ({children, soft = 0, grain = 0.12, mottle = 0.1, warm = '', warmAmount = 0}) => (
   // panel of three judges (fifth blend test), points made by at least two: keep every layer SHARP (no softening on wides),
   // do not wash the colours out, shadows firm rather than airbrushed. So: no blur and no desaturation by default.
   // defaults after the fourth blend test: with grain 0.3 and a 0.22 warm cast a judge called the frame "a noisy paper filter,

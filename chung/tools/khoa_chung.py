@@ -25,8 +25,10 @@ CÁCH XIN SỬA (làm đủ, đúng thứ tự; chạy trong chung/):
      khi đóng phiếu phải nộp ảnh CÓ SỬA và lời duyệt cuối, không thì trả lại.
   4. Gửi Daniel tấm so sánh công cụ ghép ra cùng nội dung phiếu, rồi DỪNG.
   5. Daniel duyệt:   python3 tools/khoa_chung.py duyet <mã> --loi "<nguyên văn lời Daniel>"     (hiện hộp hỏi cho Daniel)
-  6. Sửa đúng các file trong phiếu bằng Edit/Write; thêm một dòng vào chung/NHAT-KY-THAY-DOI.md.
+  6. Sửa đúng các file trong phiếu bằng Edit/Write; thêm một dòng vào CHANGELOG.md ở gốc repo (dưới ngày hôm đó: đổi gì, file chính,
+     dựng lại thì hình có đổi không).
   7. python3 tools/khoa_chung.py dong <mã>        niêm lại các file của phiếu
+  8. python3 tools/khoa_chung.py luu "<đổi gì>"   commit phần chung và đẩy lên GitHub (lệnh git ghi vào .git: chạy NGOÀI sandbox)
 
 LỆNH KHÁC:
   python3 tools/khoa_chung.py                     soát: file nào lệch bản niêm, phiếu nào đang mở (mã thoát 1 khi có file lệch không phiếu)
@@ -35,6 +37,12 @@ LỆNH KHÁC:
   python3 tools/khoa_chung.py niem [file…] --loi "<lời Daniel>"   nhận trạng thái hiện giờ làm bản niêm (hộp hỏi Daniel)
   python3 tools/khoa_chung.py khoi-tao [--goc-khac <thư mục>]     lập bản niêm lần đầu (chỉ chạy được khi chưa có)
   python3 tools/khoa_chung.py hook                dùng trong .claude/settings.json (đọc JSON của hook ở stdin)
+
+LƯU LÊN REPO (phần chung là repo git ở gốc cutout3d/; máy khác nhận bằng git pull):
+  python3 tools/khoa_chung.py luu "<đổi gì>" [file hoặc thư mục…] [--duoi "<dòng cuối lời commit>"]
+      Tự đưa vào commit: file đã niêm đang KHỚP bản niêm, sổ niêm, CHANGELOG.md, NHAT-KY. Thứ khác (món kho Daniel đã duyệt,
+      ảnh gen, file mới) phải kể tên. TỪ CHỐI khi có file đã niêm lệch bản niêm, hoặc đổi phần chung mà CHANGELOG.md không có dòng mới.
+  python3 tools/khoa_chung.py truoc-commit        chốt của git trước mỗi commit (chung/tools/git-hooks/pre-commit gọi): cùng hai điều trên
 """
 import argparse
 import hashlib
@@ -42,6 +50,7 @@ import json
 import os
 import re
 import shutil
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -50,7 +59,9 @@ GOC = Path(__file__).resolve().parents[2]
 KHOA = GOC / 'chung/.khoa'
 F_NIEM, D_GOC, D_PHIEU = KHOA / 'niem.json', KHOA / 'goc', KHOA / 'phieu'
 F_BAO, F_NHO, F_SO = KHOA / 'da-bao.json', KHOA / 'luc.json', KHOA / 'so-viec.jsonl'
-NHAT_KY = GOC / 'chung/NHAT-KY-THAY-DOI.md'
+GHI_DOI = GOC / 'CHANGELOG.md'       # chỗ ghi mọi thay đổi của phần chung (từ 26/11/2026; trước đó là chung/NHAT-KY-THAY-DOI.md)
+GHI_RIENG = ('CHANGELOG.md', 'chung/NHAT-KY-THAY-DOI.md')
+MOC_GIT = 'chung/tools/git-hooks'
 D_ANH = GOC / 'chung/out/phieu-chung'
 HAN = 24 * 3600                    # phiếu đã duyệt mà không đóng thì hết hiệu lực sau 24 giờ
 CO_BAN_GOC = 3 * 1024 * 1024       # file lớn hơn mức này chỉ ghi mã băm, không giữ bản gốc
@@ -66,7 +77,7 @@ def loai(rel):
     if rel.startswith('chung/src/'): return None if rel.startswith('chung/src/thu/') else 'hinh'
     if rel == 'chung/remotion.config.ts': return 'hinh'
     if rel.startswith('chung/skills/'): return None if rel.startswith('chung/skills/canh-mau/') else 'luat'
-    if rel.startswith('chung/tools/'): return 'luat' if ten.endswith(MA_CODE) else None
+    if rel.startswith('chung/tools/'): return 'luat' if ten.endswith(MA_CODE) or rel.startswith(MOC_GIT + '/') else None
     if re.fullmatch(r'chung/[^/]+\.sh', rel) or rel in ('chung/package.json', 'chung/tsconfig.json'): return 'luat'
     if rel.startswith('.claude/workflows/') or rel in ('.claude/settings.json', 'CLAUDE.md', 'BAT-DAU-O-DAY.md'): return 'luat'
     return None
@@ -235,7 +246,7 @@ def lenh_duyet(a):
     if len(a.loi.strip()) < 2: chet('Thiếu --loi "<nguyên văn lời Daniel duyệt phiếu này>".')
     p.update(trang_thai='da-duyet', luc_duyet=time.time(), loi_daniel=a.loi.strip()); ghi(D_PHIEU / f'{a.ma}.json', p); so_viec('duyet', ma=a.ma, loi=a.loi.strip())
     print(f"ĐÃ MỞ KHOÁ theo phiếu {a.ma} cho {len(p['file'])} file, trong 24 giờ: " + ', '.join(p['file']))
-    print('Chỉ sửa các file đó, bằng Edit/Write (lệnh Bash không ghi được vào chung/src). Sửa xong: thêm một dòng vào chung/NHAT-KY-THAY-DOI.md, rồi')
+    print('Chỉ sửa các file đó, bằng Edit/Write (lệnh Bash không ghi được vào chung/src). Sửa xong: thêm một dòng vào CHANGELOG.md ở gốc repo, rồi')
     print(f'  python3 tools/khoa_chung.py dong {a.ma}' + ('   --co-sua <ảnh…> --loi "<lời Daniel sau khi xem cặp ảnh>"   (phiếu sửa thử)' if p.get('thu') else ''))
 
 
@@ -261,14 +272,15 @@ def lenh_dong(a):
                  f'  python3 tools/khoa_chung.py dong {a.ma} --co-sua <ảnh…> --loi "<nguyên văn lời Daniel>"', f'Daniel không duyệt thì trả lại:  python3 tools/khoa_chung.py tra-lai {a.ma}')
         kiem_anh(p['khong_sua'], cs)
         p.update(co_sua=cs, tam_so_sanh=str(D_ANH / f'{a.ma}-so-sanh.jpg'), loi_cuoi=a.loi.strip()); ghep_so_sanh(list(zip(p['khong_sua'], cs)), p['tam_so_sanh'], f'Phiếu {a.ma}: {p["ly_do"][:150]}')
-    if not NHAT_KY.is_file() or NHAT_KY.stat().st_mtime < p['luc_duyet']:
-        chet('Chưa thấy dòng mới trong chung/NHAT-KY-THAY-DOI.md kể từ lúc phiếu được duyệt.', 'Thêm một dòng: đổi gì, vì sao, lời Daniel, mã phiếu. Rồi chạy lại lệnh đóng.')
+    if not GHI_DOI.is_file() or GHI_DOI.stat().st_mtime < p['luc_duyet']:
+        chet('Chưa thấy dòng mới trong CHANGELOG.md (gốc repo) kể từ lúc phiếu được duyệt.', 'Thêm một dòng dưới ngày hôm nay: đổi gì, file chính, dựng lại thì hình có đổi không, mã phiếu. Rồi chạy lại lệnh đóng.')
     so = doc(F_NIEM)
     khong_doi = [f for f in p['file'] if f in so['file'] and (GOC / f).is_file() and bam(GOC / f) == so['file'][f]['bam']]
     for f in p['file']: niem_mot(so, f)
     ghi(F_NIEM, so); p.update(trang_thai='dong', luc_dong=time.time()); ghi(D_PHIEU / f'{a.ma}.json', p); so_viec('dong', ma=a.ma, file=p['file'])
     print(f"Đã đóng phiếu {a.ma}; {len(p['file'])} file đã niêm lại theo nội dung mới.")
     if khong_doi: print('GHI CHÚ: các file này nằm trong phiếu nhưng không đổi gì: ' + ', '.join(khong_doi))
+    print(f'VIỆC KẾ, lưu lên repo (chạy NGOÀI sandbox):  python3 tools/khoa_chung.py luu "{a.ma}: <đổi gì>"')
 
 
 def lenh_tra_lai(a):
@@ -311,6 +323,90 @@ def lenh_khoi_tao(a):
     ghi(F_NIEM, so); ghi(F_BAO, {rel: bam(GOC / rel) for rel in khac}); so_viec('khoi-tao', so_file=len(so['file']), lech_tu_dau=khac)
     print(f"Đã niêm {len(so['file'])} file của phần chung.")
     if khac: print(f'{len(khac)} file niêm theo bản trong {a.goc_khac}, nên đang LỆCH bản niêm và chờ Daniel quyết: ' + ', '.join(khac))
+
+
+# ---------------------------------------------------------------- lưu lên repo git
+def git(*a):
+    return subprocess.run(['git', '-C', str(GOC), *a], capture_output=True)
+
+
+def soat_hang_cho():
+    """Hàng chờ commit (index) có được commit không. None: không có gì trong hàng chờ; []: được; [lý do…]: bị chặn."""
+    r = git('diff', '--cached', '--name-status', '-z', '--no-renames')
+    muc = [x for x in r.stdout.decode('utf-8', 'replace').split('\0') if x]
+    cap = list(zip(muc[0::2], muc[1::2]))
+    if not cap: return None
+    s = git('show', ':chung/.khoa/niem.json')
+    try: so = json.loads(s.stdout)['file'] if s.returncode == 0 else (doc(F_NIEM) or {'file': {}})['file']
+    except ValueError: return ['chung/.khoa/niem.json trong hàng chờ không đọc được']
+    loi = []
+    for tt, rel in cap:
+        if loai(rel) not in ('hinh', 'luat'): continue
+        if tt == 'D':
+            if rel in so: loi.append(f'{rel}: xoá file đã niêm (bản niêm vẫn ghi file này)')
+        elif rel in so and hashlib.sha256(git('show', ':' + rel).stdout).hexdigest() != so[rel]['bam']:
+            loi.append(f'{rel}: khác bản niêm, tức là sửa phần chung chưa có phiếu Daniel duyệt và đóng')
+    ten = [rel for _, rel in cap]
+    can_ghi = [rel for rel in ten if loai(rel) in ('hinh', 'luat') or (rel.startswith('chung/') and not rel.startswith('chung/.khoa/') and rel not in GHI_RIENG)]
+    if can_ghi and 'CHANGELOG.md' not in ten:
+        loi.append(f'thiếu dòng mới trong CHANGELOG.md cho {len(can_ghi)} file của phần chung (ví dụ {can_ghi[0]})')
+    return loi
+
+
+LOI_CHAN = ('Sửa file đã niêm phải có phiếu Daniel duyệt và đã đóng (python3 tools/khoa_chung.py --help). Mỗi thay đổi của phần chung ghi một dòng vào CHANGELOG.md.',
+            'Lưu đúng cách:  python3 tools/khoa_chung.py luu "<đổi gì>" [file…]')
+
+
+def lenh_truoc_commit(_a):
+    loi = soat_hang_cho()
+    if loi: chet('KHOÁ PHẦN CHUNG: commit này bị chặn.', *('  - ' + x for x in loi), *LOI_CHAN)
+    return 0
+
+
+def lenh_luu(a):
+    if git('rev-parse', '--is-inside-work-tree').returncode:
+        chet('Thư mục cutout3d ở máy này chưa nối với repo git của phần chung.', 'Cách nối: BAT-DAU-O-DAY.md, mục Repo git.')
+    r = soat() or chet('Chưa có bản niêm.')
+    cam = {x[0] for x in r['lech']} | {x[0] for x in r['theo_phieu']}
+    them = ['chung/.khoa/niem.json', 'chung/.khoa/goc', *GHI_RIENG] + sorted(rel for rel in r['so']['file'] if rel not in cam)
+    for f in a.file:
+        rel = rel_cua(f) or chet(f'{f} nằm ngoài cutout3d.')
+        dinh = sorted(c for c in cam if c == rel or c.startswith(rel.rstrip('/') + '/'))
+        if dinh: chet(f'Không lưu được {rel}: có file đã niêm đang lệch bản niêm hoặc đang sửa dở theo phiếu chưa đóng: ' + ', '.join(dinh[:5]), *LOI_CHAN)
+        them.append(rel)
+    them = [x for x in them if (GOC / x).exists()]
+    if git('config', '--get', 'core.hooksPath').stdout.decode().strip() != MOC_GIT and (GOC / MOC_GIT / 'pre-commit').is_file(): git('config', 'core.hooksPath', MOC_GIT)
+    for i in range(0, len(them), 80):
+        x = git('add', '-A', '--', *them[i:i + 80])
+        if x.returncode:
+            e = x.stderr.decode('utf-8', 'replace')
+            if 'not permitted' in e or 'index.lock' in e: chet('Lệnh git không ghi được vào .git (sandbox của phiên chặn).', 'Chạy lại đúng lệnh này NGOÀI sandbox.')
+            chet('git add lỗi:', e.strip()[-600:])
+    loi = soat_hang_cho()
+    if loi:
+        git('reset', '-q')
+        chet('KHÔNG LƯU: hàng chờ đã được trả lại như cũ.', *('  - ' + x for x in loi), *LOI_CHAN)
+    if loi is None: print('Không có thay đổi nào của phần chung cần commit.')
+    else:
+        lenh = ['commit', '-q', '-m', a.mo_ta.strip()]
+        if a.duoi: lenh += ['-m', '\n'.join(a.duoi)]
+        x = git(*lenh)
+        if x.returncode: git('reset', '-q'); chet('git commit lỗi:', (x.stderr + x.stdout).decode('utf-8', 'replace').strip()[-800:])
+        print('Đã commit: ' + git('log', '-1', '--format=%h %s').stdout.decode('utf-8', 'replace').strip())
+        print(git('show', '--stat', '--format=', 'HEAD').stdout.decode('utf-8', 'replace').rstrip()[-900:])
+    con = [d[3:] for d in git('status', '--porcelain').stdout.decode('utf-8', 'replace').splitlines() if d.strip()]
+    if con:
+        print(f'CHƯA LƯU {len(con)} mục (không tự lưu: món kho mới phải được Daniel duyệt, file đã niêm lệch bản niêm phải có phiếu). Muốn lưu thì kể tên sau lời mô tả:')
+        for d in con[:12]: print('  ' + d)
+        if len(con) > 12: print(f'  … và {len(con) - 12} mục nữa (git status)')
+    if git('remote', 'get-url', 'origin').returncode:
+        print('Repo chưa có remote origin: chưa đẩy đi đâu.'); return 0
+    x = git('push', '-q', 'origin', 'HEAD')
+    if x.returncode:
+        print('CHƯA ĐẨY ĐƯỢC lên GitHub (commit vẫn nằm ở máy này; chạy lại lệnh luu hoặc git push khi có mạng, đăng nhập):', file=sys.stderr)
+        print(x.stderr.decode('utf-8', 'replace').strip()[-500:], file=sys.stderr); return 2
+    print('Đã đẩy lên ' + git('remote', 'get-url', 'origin').stdout.decode().strip() + '. Máy khác nhận bằng: git pull')
+    return 0
 
 
 # ---------------------------------------------------------------- soát
@@ -445,11 +541,12 @@ def main():
     s = sub.add_parser('niem'); s.add_argument('file', nargs='*'); s.add_argument('--loi', required=True)
     s = sub.add_parser('khoi-tao'); s.add_argument('--goc-khac')
     s = sub.add_parser('phieu'); s.add_argument('ma')
-    sub.add_parser('hook')
+    sub.add_parser('hook'); sub.add_parser('truoc-commit')
+    s = sub.add_parser('luu'); s.add_argument('mo_ta'); s.add_argument('file', nargs='*'); s.add_argument('--duoi', action='append', default=[])
     a = ap.parse_args()
     if a.lenh is None: a = ap.parse_args(['kiem'])
     if a.lenh == 'phieu': in_phieu(lay_phieu(a.ma)); return 0
-    return {'kiem': lenh_kiem, 'xin': lenh_xin, 'duyet': lenh_duyet, 'dong': lenh_dong, 'tra-lai': lenh_tra_lai, 'niem': lenh_niem, 'khoi-tao': lenh_khoi_tao, 'hook': lenh_hook}[a.lenh](a) or 0
+    return {'kiem': lenh_kiem, 'xin': lenh_xin, 'duyet': lenh_duyet, 'dong': lenh_dong, 'tra-lai': lenh_tra_lai, 'niem': lenh_niem, 'khoi-tao': lenh_khoi_tao, 'hook': lenh_hook, 'luu': lenh_luu, 'truoc-commit': lenh_truoc_commit}[a.lenh](a) or 0
 
 
 if __name__ == '__main__':

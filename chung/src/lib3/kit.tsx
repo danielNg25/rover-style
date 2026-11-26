@@ -76,8 +76,9 @@ const _tia = new THREE.Raycaster(), XUONG = new THREE.Vector3(0, -1, 0), nhoBong
 /** Bóng chỉ nằm trên chỗ CÓ ĐẤT: dò vài điểm dọc theo bóng (30, 50, 75, 100 % độ dài); tới điểm nào dưới đó không còn mặt đất ngang chân người
  *  (mép bờ sông, mép bục, mép bậc) thì bóng dừng ở điểm trước đó, không vắt ra ngoài mép. Kết quả nhớ theo chỗ đứng và hướng. */
 const coDat = (x: number, y0: number, z: number, cacMesh: THREE.Object3D[]) => {
-  _tia.set(_a.set(x, y0 + 0.25, z), XUONG); _tia.near = 0; _tia.far = 0.5;
-  for (const h of _tia.intersectObjects(cacMesh, false)) if (Math.abs(h.point.y - y0) <= 0.06) return true;
+  _tia.set(_a.set(x, y0 + 0.25, z), XUONG); _tia.near = 0; _tia.far = 0.45;
+  // K2 (Daniel duyệt 26/11/2026): phiến lát, mép sàn lệch vài cm vẫn là đất; chỉ dừng bóng khi mặt đất TỤT xuống quá 15 cm (mép bờ, mép bậc thật) hoặc cao hơn chân quá 8 cm
+  for (const h of _tia.intersectObjects(cacMesh, false)) if (h.point.y >= y0 - 0.15 && h.point.y <= y0 + 0.08) return true;
   return false;
 };
 const datBongNguoi = (ds: THREE.Mesh[], den: THREE.Light | null, cacMesh: THREE.Object3D[]) => {

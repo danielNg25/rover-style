@@ -136,9 +136,8 @@ const sky = (p: Pal) => (c: Ctx) => {
 /** loose clouds racing across in a storm (a separate layer that the scene slides with the frame) */
 const scud = (p: Pal) => (c: Ctx) => { const r = rnd(77); for (let i = 0; i < 9; i++) { const x = -300 + r() * 2200, y = -60 + r() * 300, w = 300 + r() * 400, h = 20 + r() * 26; c.fillStyle = p.cloud[0]; c.globalAlpha = 0.75; c.beginPath(); c.roundRect(x, y, w, h, h / 2); c.fill(); c.fillStyle = p.cloud[1]; c.beginPath(); c.roundRect(x + w * 0.1, y - h * 0.3, w * 0.6, h * 0.7, h / 2); c.fill(); c.globalAlpha = 1; } };
 const farRange = (p: Pal) => (c: Ctx) => {
-  paintPeak(c, 1000, 40, 520, 600, p.peak); paintPeak(c, 330, 120, 420, 600, p.peak); paintPeak(c, 1560, 90, 430, 600, p.peak); paintPeak(c, -200, 170, 330, 600, p.peak); paintPeak(c, 1900, 190, 300, 600, p.peak);
-  // gullies of snow and rock ribs on the big faces, so no face is one flat colour
-  const r = rnd(5); for (let i = 0; i < 40; i++) { const x = -200 + r() * 2100, y = 160 + r() * 300; c.fillStyle = r() < 0.5 ? p.peak.snowShade : p.peak.dark; c.globalAlpha = 0.5; c.beginPath(); c.moveTo(x, y); c.lineTo(x + 8 + r() * 14, y + 50 + r() * 90); c.lineTo(x - 4, y + 40 + r() * 70); c.closePath(); c.fill(); c.globalAlpha = 1; }
+  { const pk = {...p.peak, motSac: true}; paintPeak(c, 1000, 40, 520, 600, pk); paintPeak(c, 330, 120, 420, 600, pk); paintPeak(c, 1560, 90, 430, 600, pk); paintPeak(c, -200, 170, 330, 600, pk); paintPeak(c, 1900, 190, 300, 600, pk); }   // luật 13: núi xa một sắc (K6, 26/11)
+  // (K6, 26/11/2026) bỏ 40 vệt tam giác tuyết và đá trên mặt núi: luật 13, núi xa mỗi lớp một sắc
   const g = c.createLinearGradient(0, 260, 0, 520); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, p.peakHaze); c.fillStyle = g; c.fillRect(-300, 260, 2200, 400);
 };
 /** the shoulder on the left with the landmark (the Baron's castle) */
@@ -161,11 +160,8 @@ const SLOPE_D = 41;
 const slope = (p: Pal) => (c: Ctx) => {
   const ridge = [[-320, 470], [120, 452], [420, 410], [700, 330], [880, 296], [1080, 270], [1320, 300], [1560, 352], [1920, 396]];
   P(c, [...ridge, [1920, 900], [-320, 900]], p.slope.mid);
-  // big facets: the faces turned to the upper left lit, the others in shade; a few long wind-ridges
-  const facets = [[[-320, 470], [120, 452], [300, 900], [-320, 900]], [[120, 452], [420, 410], [560, 900], [300, 900]], [[420, 410], [700, 330], [760, 560], [560, 900]], [[700, 330], [880, 296], [960, 520], [760, 560]],
-    [[880, 296], [1080, 270], [1180, 470], [960, 520]], [[1080, 270], [1320, 300], [1360, 520], [1180, 470]], [[1320, 300], [1560, 352], [1700, 600], [1360, 520]], [[1560, 352], [1920, 396], [1920, 700], [1700, 600]]];
-  facets.forEach((f, i) => P(c, f, i % 3 === 0 ? p.slope.lit : i % 3 === 1 ? p.slope.mid : p.slope.shade));
-  P(c, [[700, 330], [880, 296], [1080, 270], [1000, 330], [820, 360]], p.slope.lit);
+  // (K6, 26/11/2026, Daniel: "phần đất ở dưới núi … vẫn nhiều màu dọc") sườn MỘT sắc nền; chỉ một dải sáng chạy ngang bám dưới đỉnh sườn, không chia mảng dọc
+  const lech = 70; P(c, [...ridge, ...ridge.slice().reverse().map(([x, y]) => [x, y + lech + (x % 7) * 2])], p.slope.lit);
   const r = rnd(23);
   for (let i = 0; i < 18; i++) { const x = -200 + r() * 2000, y = 380 + r() * 160; c.strokeStyle = r() < 0.5 ? 'rgba(255,255,255,0.18)' : 'rgba(40,46,70,0.16)'; c.lineWidth = 3 + r() * 4; c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo(x + 120, y - 20 - r() * 20, x + 260 + r() * 120, y + 10); c.stroke(); }
   // rock bands: dark angular outcrops with snow on their tops
@@ -187,7 +183,7 @@ const mist = (p: Pal) => (c: Ctx) => { const r = rnd(3); for (let i = 0; i < 7; 
 /** Tibet only: a middle ridge of dark rock and snow ribs between the far range and the monastery's shoulder, kept to the right so the monastery stands clear */
 const midRidge = (p: Pal) => (c: Ctx) => {
   const r = rnd(61);
-  [[820, 150, 300], [1090, 120, 330], [1380, 170, 300], [1700, 140, 340], [610, 230, 220]].forEach(([x, y, hw]) => paintPeak(c, x, y, hw, 520, {light: p.shoulder.shade, dark: p.shoulder.rock, snow: p.peak.snow, snowShade: p.peak.snowShade}));
+  [[820, 150, 300], [1090, 120, 330], [1380, 170, 300], [1700, 140, 340], [610, 230, 220]].forEach(([x, y, hw]) => paintPeak(c, x, y, hw, 520, {light: p.shoulder.shade, dark: p.shoulder.rock, snow: p.peak.snow, snowShade: p.peak.snowShade, motSac: true}));
   for (let i = 0; i < 46; i++) { const x = 560 + r() * 1300, y = 200 + r() * 220, h = 40 + r() * 90; c.fillStyle = r() < 0.5 ? p.shoulder.rock : p.peak.snowShade; c.globalAlpha = 0.55; c.beginPath(); c.moveTo(x, y); c.lineTo(x + 6 + r() * 14, y + h); c.lineTo(x - 7, y + h * 0.8); c.closePath(); c.fill(); c.globalAlpha = 1; }
   const g = c.createLinearGradient(0, 300, 0, 520); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, p.peakHaze); c.fillStyle = g; c.fillRect(-300, 300, 2200, 300);
 };
