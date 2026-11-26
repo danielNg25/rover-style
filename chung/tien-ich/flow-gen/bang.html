@@ -12,6 +12,7 @@
   .viec { border: 1px solid var(--vien); border-radius: 8px; padding: 9px; margin: 8px 0; }
   .viec.co { border-color: var(--xong); border-left-width: 6px; background: color-mix(in srgb, var(--xong) 14%, var(--nen)); }
   .viec.chua { border-color: var(--loi); border-left-width: 6px; background: color-mix(in srgb, var(--loi) 12%, var(--nen)); }
+  .viec.bo { opacity: .6; border-style: dashed; } .bo .nhan { background: var(--mo); }
   .viec.dang { outline: 2px solid var(--nhan); outline-offset: 1px; }
   .nhan { display: inline-block; font-size: 12px; font-weight: 700; padding: 1px 7px; border-radius: 10px; color: var(--nen); margin-bottom: 4px; }
   .co .nhan { background: var(--xong); } .chua .nhan { background: var(--loi); }
@@ -25,8 +26,8 @@
 </style></head>
 <body>
   <h1>Hàng chờ gen ảnh (cutout3d)</h1>
-  <div class="hang"><button id="chon" class="chinh">Chọn thư mục chung/gen</button><button id="tai" disabled>Đọc lại</button></div>
-  <div class="mo" id="dau" style="margin-top:6px">Chọn thư mục <b>chung/gen</b> của dự án (bên trong có <b>cho-gen</b>). Chỉ phải chọn một lần.</div>
+  <div class="hang"><button id="chon" class="chinh">Chọn thư mục cutout3d</button><button id="tai" disabled>Đọc lại</button></div>
+  <div class="mo" id="dau" style="margin-top:6px">Chọn thư mục <b>cutout3d</b> của dự án (chọn <b>chung</b> hay <b>gen</b> cũng được). Chỉ phải chọn một lần.</div>
   <div style="margin-top:8px" class="mo">Cách đính ảnh mẫu:
     <select id="cach"><option value="dan">dán vào ô nhập</option><option value="file">ô chọn file của trang</option><option value="tha">thả vào ô nhập</option></select>
   </div>

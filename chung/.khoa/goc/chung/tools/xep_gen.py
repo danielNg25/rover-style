@@ -26,8 +26,8 @@ def xem():
     viec = sorted(CHO.glob('*/viec.json')) if CHO.is_dir() else []
     if not viec: print('Hàng chờ trống.'); return 0
     for f in viec:
-        v = json.loads(f.read_text(encoding='utf-8')); co = (GOC / v['luu_vao']).is_file()
-        print(f"  {'ĐÃ CÓ ẢNH' if co else 'chờ gen  '}  {v['ten']:36} {v['loai']:5} {len(v['anh_mau'])} ảnh mẫu → {v['luu_vao']}")
+        v = json.loads(f.read_text(encoding='utf-8')); co = (GOC / v['luu_vao']).is_file(); bo = (f.parent / 'da-bo.txt').is_file()   # da-bo.txt: Daniel bỏ việc này trong extension
+        print(f"  {'DANIEL ĐÃ BỎ (không nhắc lại, không gen)' if bo else 'ĐÃ CÓ ẢNH' if co else 'chờ gen  '}  {v['ten']:36} {v['loai']:5} {len(v['anh_mau'])} ảnh mẫu → {v['luu_vao']}")
     return 0
 
 

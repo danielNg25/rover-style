@@ -11,25 +11,41 @@ const lay = async () => { const d = await kho(); return new Promise((ok) => { co
 const coFile = async (thuMuc, ten) => { try { await thuMuc.getFileHandle(ten); return true; } catch { return false; } };
 const docChu = async (thuMuc, ten) => (await (await thuMuc.getFileHandle(ten)).getFile()).text();
 
+// Người dùng chọn cutout3d, chung hay gen đều được: tự tìm tới thư mục gen (nơi có cho-gen).
+async function timGen(h) {
+  for (const duong of [[], ['gen'], ['chung', 'gen']]) {
+    try { let t = h; for (const d of duong) t = await t.getDirectoryHandle(d); await t.getDirectoryHandle('cho-gen'); return t; } catch { /* thử đường kế */ }
+  }
+  for (const duong of [['chung', 'gen'], ['gen']]) {   // chưa có cho-gen (chưa phiên nào xếp việc): vẫn nhận thư mục gen
+    try { let t = h; for (const d of duong) t = await t.getDirectoryHandle(d); return t; } catch { /* thử đường kế */ }
+  }
+  return null;
+}
+
 async function docHangCho() {
   $('ds').textContent = '';
   let cho;
   try { cho = await goc.getDirectoryHandle('cho-gen'); }
-  catch { bao('Thư mục này không có "cho-gen". Hãy chọn đúng thư mục chung/gen; hàng chờ có khi một phiên đã xếp việc (python3 tools/xep_gen.py --xem).', 'loi'); return; }
+  catch { bao('Hàng chờ trống: chưa phiên nào xếp việc (thư mục gen chưa có "cho-gen").'); return; }
   const viec = [];
   for await (const [ten, h] of cho.entries()) {
     if (h.kind !== 'directory' || !(await coFile(h, 'viec.json'))) continue;
-    try { const v = JSON.parse(await docChu(h, 'viec.json')); viec.push({v, h, xong: await coFile(goc, v.luu_vao.replace(/^gen\//, ''))}); } catch { /* việc hỏng: bỏ qua */ }
+    try { const v = JSON.parse(await docChu(h, 'viec.json')); viec.push({v, h, xong: await coFile(goc, v.luu_vao.replace(/^gen\//, '')), bo: await coFile(h, 'da-bo.txt')}); } catch { /* việc hỏng: bỏ qua */ }
   }
   viec.sort((a, b) => (a.xong - b.xong) || a.v.ten.localeCompare(b.v.ten));
   if (!viec.length) { bao('Hàng chờ trống.'); return; }
-  bao(`${viec.filter((x) => !x.xong).length} việc chờ gen, ${viec.filter((x) => x.xong).length} việc đã có ảnh.`);
-  for (const x of viec) veViec(x);
+  const con = viec.filter((x) => !x.bo), daBo = viec.filter((x) => x.bo);
+  bao(`${con.filter((x) => !x.xong).length} việc chờ gen, ${con.filter((x) => x.xong).length} việc đã có ảnh` + (daBo.length ? `, ${daBo.length} việc đã bỏ.` : '.'));
+  for (const x of con) veViec(x);
+  if (daBo.length) {
+    const n = document.createElement('button'); n.textContent = `Hiện ${daBo.length} việc đã bỏ`; n.style.marginTop = '6px';
+    n.onclick = () => { n.remove(); for (const x of daBo) veViec(x); }; $('ds').append(n);
+  }
 }
 
-function veViec({v, h, xong}) {
-  const o = document.createElement('div'); o.className = 'viec ' + (xong ? 'co' : 'chua');
-  const nhan = document.createElement('span'); nhan.className = 'nhan'; nhan.textContent = xong ? 'ĐÃ CÓ ẢNH' : 'CHƯA CÓ ẢNH'; o.append(nhan);
+function veViec({v, h, xong, bo}) {
+  const o = document.createElement('div'); o.className = 'viec ' + (bo ? 'bo' : xong ? 'co' : 'chua');
+  const nhan = document.createElement('span'); nhan.className = 'nhan'; nhan.textContent = bo ? 'ĐÃ BỎ' : xong ? 'ĐÃ CÓ ẢNH' : 'CHƯA CÓ ẢNH'; o.append(nhan);
   const tieu = document.createElement('h2'); tieu.textContent = v.ten; o.append(tieu);
   const mo = document.createElement('div'); mo.className = 'mo';
   mo.textContent = `${v.loai === 'canh' ? 'tranh bối cảnh mẫu' : 'tấm đồ nền hồng'} · ${v.anh_mau.length} ảnh mẫu · lưu vào ${v.luu_vao}`; o.append(mo);
@@ -40,6 +56,12 @@ function veViec({v, h, xong}) {
   nut('Đưa vào trang gen', 'chinh', async () => { document.querySelectorAll('.viec').forEach((e) => e.classList.remove('dang')); o.classList.add('dang'); await duaVao(v, h); });
   nut('Chép lời tả', '', async () => { await navigator.clipboard.writeText(await docChu(h, 'loi-ta.txt')); bao('Đã chép lời tả của ' + v.ten + '.'); });
   nut('Lưu ảnh đã tải về', '', async () => { await luuAnh(v); });
+  if (bo) nut('Khôi phục', '', async () => { await h.removeEntry('da-bo.txt'); bao('Đã khôi phục việc ' + v.ten + '.'); await docHangCho(); });
+  else nut('Bỏ việc này', '', async () => {
+    if (!confirm(`Bỏ việc "${v.ten}"? Việc sẽ ẩn khỏi hàng chờ; phiên xem hàng chờ sẽ thấy nó ghi "đã bỏ". Khôi phục lại được.`)) return;
+    const w = await (await h.getFileHandle('da-bo.txt', {create: true})).createWritable(); await w.write('Daniel bỏ việc này trong extension flow-gen, ' + new Date().toLocaleString('vi-VN') + '\n'); await w.close();
+    bao('Đã bỏ việc ' + v.ten + '.'); await docHangCho();
+  });
   nut('Xem lời tả', '', async (b) => { let p = o.querySelector('pre'); if (p) { p.remove(); return; } p = document.createElement('pre'); p.textContent = await docChu(h, 'loi-ta.txt'); o.append(p); });
   o.append(hang); $('ds').append(o);
 }
@@ -101,7 +123,11 @@ async function luuAnh(v) {
 }
 
 $('chon').onclick = async () => {
-  try { goc = await showDirectoryPicker({mode: 'readwrite'}); await nho(goc); $('tai').disabled = false; $('dau').textContent = 'Thư mục: ' + goc.name; await docHangCho(); }
+  try {
+    const h = await showDirectoryPicker({mode: 'readwrite'}), g = await timGen(h);
+    if (!g) { bao('Không thấy thư mục gen trong "' + h.name + '". Hãy chọn thư mục cutout3d của dự án.', 'loi'); return; }
+    goc = g; await nho(goc); $('tai').disabled = false; $('dau').textContent = 'Đã chọn: ' + h.name + (h.name === 'gen' ? '' : ' (dùng thư mục gen bên trong)'); await docHangCho();
+  }
   catch (e) { if (e.name !== 'AbortError') bao('Lỗi: ' + e.message, 'loi'); }
 };
 $('tai').onclick = async () => { if ((await goc.requestPermission({mode: 'readwrite'})) === 'granted') await docHangCho(); };
