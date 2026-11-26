@@ -151,6 +151,13 @@ def main(args):
         c2, _ = kiem_kho([str(f) for f in files]); canh.extend(c2)
     except ImportError:
         canh.append('CANH kiem-kho    không nạp được tools/kiem_kho.py: chạy tay `python3 tools/kiem_kho.py`')
+    # 8. kiểm cấm (26/11/2026; Daniel: "agent tự tắt các tính năng ko theo engine nữa"): file của kênh tắt bóng, lọc màu, ép thứ tự vẽ,
+    #    tự viết tấm ảnh. Code có từ trước mốc của kênh (kenh/<kênh>/kiem-cam-moc.json) không tính. Chi tiết: tools/kiem_cam.py
+    try:
+        from kiem_cam import kiem as kiem_cam
+        l3, c3, _ = kiem_cam([str(f) for f in files]); loi.extend(l3); canh.extend(c3)
+    except ImportError:
+        loi.append('LOI  kiem-cam    không nạp được tools/kiem_cam.py: chạy tay `python3 tools/kiem_cam.py <file>`')
     for d in loi + canh:
         print(d)
     print(f'\n{len(files)} file; {len(loi)} lỗi, {len(canh)} cảnh báo')

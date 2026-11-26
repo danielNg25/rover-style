@@ -52,6 +52,7 @@ cutout3d/
 ./render-video.sh <composition> [cỡ]         video một cảnh (mặc định cỡ 1 để kiểm; bản gửi Daniel dùng cỡ 2 = 2560×1440)
 python3 tools/buoc.py [dat <bước> dang|cho-duyet|xong …]   tập đang ở bước nào; ghi một bước, bước có cổng kèm --duyet "<lời Daniel>"
 python3 tools/khoa_chung.py [xin … | duyet <mã> | dong <mã>]   PHẦN CHUNG BỊ KHOÁ: soát file lệch bản niêm; lập phiếu xin sửa kèm ảnh KHÔNG SỬA / CÓ SỬA (--help)
+python3 tools/kiem_cam.py [file…]                              KIỂM CẤM (kiem_canh.py tự gọi): file của kênh tắt bóng, lọc màu, ép renderOrder, tự viết tấm ảnh; code cũ tính theo mốc kenh/<kênh>/kiem-cam-moc.json
 python3 tools/khoa_chung.py luu "<đổi gì>" [món kho đã duyệt…]   lưu thay đổi phần chung lên repo: commit và đẩy lên GitHub (chạy ngoài sandbox; phải có dòng mới trong CHANGELOG.md)
 python3 tools/kho.py kiem | anh <id…> | muc-luc
 python3 tools/kiem_bong.py <file…>            rà bóng (không được có LOI)

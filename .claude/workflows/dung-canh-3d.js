@@ -144,7 +144,16 @@ Tấm cắt cận đồ vật: ${m.cat_can.join(', ')}${m.ghi_chu ? `\nGhi chú 
 ${VAI_MAU}`
 
 // ---------- Dựng ----------
-const dung = (n) => { const m = mauCua(n); return agent(`${CHUNG}
+// Khối CẤM đặt ở ĐẦU lời giao người dựng và người sửa (26/11/2026; Daniel: "agent tự tắt các tính năng ko theo engine nữa"). tools/kiem_cam.py giữ bằng code.
+const CAM = `CẤM, đọc trước mọi thứ khác (tools/kiem_canh.py báo LOI các mẫu này và bài không qua được cổng; code cũ của tập còn các mẫu này KHÔNG phải mẫu để chép):
+(1) không tắt bóng của cây, bụi, tấm ảnh, món kho: cast={false} chỉ dành cho chi tiết mỏng ráp bằng B;
+(2) không lọc màu bằng bộ lọc canvas hay CSS (hue-rotate, saturate, brightness, contrast, sepia): màu sai thì sửa ở nguồn (lời tả Codex, màu vật liệu, đèn);
+(3) không ghi renderOrder: vật nào che vật nào do vị trí 3D quyết định;
+(4) không tự viết tấm ảnh bằng mesh + planeGeometry + map: dùng Sprite, Pic2D, Plate của engine;
+(5) không ghi ảnh mới hay ảnh chỉnh màu vào chung/public: món mới đi qua tools/cut.py và chờ Daniel duyệt.
+Engine thiếu thứ bạn cần thì GHI VÀO BÁO CÁO (con_yeu), không đi vòng, không tự vá. Trước khi báo xong: python3 tools/kiem_canh.py <các file vừa sửa> phải không còn LOI.
+`
+const dung = (n) => { const m = mauCua(n); return agent(`${CAM}${CHUNG}
 ${docVai(n)}
 
 Vai: ${VAI[n.viec] || n.viec}. Nhóm "${n.ten}", mã đoạn ${A.ma}. Cảnh của nhóm: ${(n.canh || []).join(', ') || '(xem danh sách)'}.${n.ghi_chu ? `\nGhi chú: ${n.ghi_chu}` : ''}
@@ -177,7 +186,7 @@ ket_luan HONG khi: một mục bảng chấm HỎNG, hoặc có LOI${m ? ', ho�
   { ...OPT, label: `rà ${n.ten} v${vong}`, phase: 'Rà', schema: CHAM }) }
 
 // ---------- Sửa ----------
-const sua = (n, bc, cham) => { const m = mauCua(n); return agent(`${CHUNG}
+const sua = (n, bc, cham) => { const m = mauCua(n); return agent(`${CAM}${CHUNG}
 ${docVai(n)}
 
 Vai: ${VAI[n.viec] || n.viec}. Nhóm "${n.ten}" vừa bị người rà chấm HỎNG. Báo cáo người dựng:

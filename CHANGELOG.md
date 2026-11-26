@@ -12,6 +12,8 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 - Phiên mở từ trước chưa có luật mới: mở phiên mới, hoặc bảo phiên đọc lại `CLAUDE.md` và `chung/skills/THE-LUAT-CUNG.md`.
 - `chung/package.json` không đổi từ 20/11: không phải cài lại `node_modules`.
 - Cài chốt trước commit, một lần cho mỗi máy: `git config core.hooksPath chung/tools/git-hooks` (lệnh `khoa_chung.py luu` tự cài khi chưa có).
+- Lập mốc kiểm cấm, một lần cho các kênh của máy đó: trong `chung/`, `python3 tools/kiem_cam.py --lap-moc`. Chưa có mốc thì code cũ của kênh bị `kiem_canh.py` báo LOI.
+- File lời tả Codex đang dở phải thêm bảng món mới gen tiếp được (`python3 tools/kiem_loi_ta.py`).
 - Gọi workflow `dung-canh-3d` phải truyền `goc` (đường dẫn thư mục `cutout3d` của máy đó); thiếu thì workflow dừng ngay và in cách lấy.
 - Video đã duyệt không dựng lại. Cảnh dựng lại sau ngày này sẽ khác bản cũ ở các điểm ghi trong mục Engine.
 
@@ -49,6 +51,7 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 
 - `chung/tools/kiem_mat.py`: thêm LOI `da-ngoai-bo` (mã màu da tự ghi, không thuộc `SKINS`); thêm cảnh báo `mat-mac-dinh`, `khep-mi`.
 - `chung/tools/kiem_bong.py`: `xoay-nguoi` bắt cả `rotY` đi qua component bọc `Puppet3`. Cảnh báo `hai-den-bong` đếm thêm `DenBongPhong` của kênh lich-su. LOI mới `nguoc-sang-hai-den`: đèn khai ngược sáng có đổ bóng mà file còn đèn đổ bóng khác (kiểu lỗi bóng hai hướng ở phòng Berlin); chưa bắt đèn ngược sáng khai bằng `<Sun nguocSang>`, và soát theo file nên file chứa hai cảnh riêng có thể bị báo oan (ghi `hai-den:ok`). Chạy trên cả dự án không thêm lỗi nào.
+- `chung/tools/kiem_cam.py` mới (phiếu P1126-07; Daniel: "agent tự tắt các tính năng ko theo engine nữa"): KIỂM CẤM cho file của kênh, `kiem_canh.py` tự gọi nên cổng trước khi gửi Daniel và người rà của workflow đều bắt. LOI `tat-bong` (`cast={false}` trên món không phải khối `B`), `loc-mau` (bộ lọc màu canvas/CSS), `ep-thu-tu` (`renderOrder` ghi tay), `tam-anh-tu-viet` (mesh phẳng có `map`, không đổ bóng); CANH `den-diem`, `lop-am`. Miễn một dòng: `cam:ok <lý do>`. Code có từ trước tính theo mốc `kenh/<kênh>/kiem-cam-moc.json` (lập 26/11: anime-analyst 324 chỗ, lich-su 330, phim-tv 297; năm file bối cảnh đang dựng dở không vào mốc và đang báo 15 lỗi). Workflow `dung-canh-3d`: khối CẤM ở đầu lời giao người dựng và người sửa. Hình không đổi.
 - `chung/tools/khoa_chung.py`, `chung/tools/buoc.py`: mới (xem mục Repo và khoá).
 
 ### Kho chung

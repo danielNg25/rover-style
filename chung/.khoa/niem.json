@@ -6,16 +6,16 @@
    "co": 2137
   },
   ".claude/workflows/dung-canh-3d.js": {
-   "bam": "0910b15c24e4405decd22961b601479c7a9ac054b84a9b69d1f9c7194eadfcee",
-   "co": 39893
+   "bam": "a2c423e00acffbbb1b5c33cca4254cb1f97664cdd0cac8d9f51777a9d20117e6",
+   "co": 41156
   },
   ".claude/workflows/video-script.js": {
    "bam": "c60d2aba968ca1ba49137daccc89188d864e38ee2929680d91067ffa12d0a662",
    "co": 39191
   },
   "BAT-DAU-O-DAY.md": {
-   "bam": "9e5614d213018369cc9d21fa0b338483a1e055e32687907be2f23861b17831c1",
-   "co": 11383
+   "bam": "9457e6ab843eba04bfff9884009ef36ccb1b0a308a26ff734daf5795f86c3eed",
+   "co": 11629
   },
   "CLAUDE.md": {
    "bam": "dcc36332ef232a1f037f1342235e19ae9c098999c811eb2a462164425688efd1",
@@ -1234,8 +1234,8 @@
    "co": 15775
   },
   "chung/tools/kiem_canh.py": {
-   "bam": "06a28ba2be6fc9ca636def67a1427c25db3973e8211d2503a05a4b8491e87f2b",
-   "co": 10689
+   "bam": "7f16e0d795ea0b63da56024f1c7dba697c133f6749144787918c0973b478e6c4",
+   "co": 11298
   },
   "chung/tools/kiem_kho.py": {
    "bam": "23bfc4192334050924d0d8aebc47cec3142bbe1b4145b0d534d3eef4e4a2b529",
@@ -1380,6 +1380,10 @@
   "chung/tools/kiem_loi_ta.py": {
    "bam": "897490d98d6c3b334652ac195639ac917f74b130a87d1298246ec1cffacc88f4",
    "co": 7888
+  },
+  "chung/tools/kiem_cam.py": {
+   "bam": "2d61c8a8997658461ee4ee688637dfcc229869fcae8a6ed6c63d1e64f5896daa",
+   "co": 9524
   }
  }
 }
