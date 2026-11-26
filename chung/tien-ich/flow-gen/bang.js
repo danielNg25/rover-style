@@ -28,11 +28,11 @@ async function docHangCho() {
 }
 
 function veViec({v, h, xong}) {
-  const o = document.createElement('div'); o.className = 'viec';
+  const o = document.createElement('div'); o.className = 'viec ' + (xong ? 'co' : 'chua');
+  const nhan = document.createElement('span'); nhan.className = 'nhan'; nhan.textContent = xong ? 'ĐÃ CÓ ẢNH' : 'CHƯA CÓ ẢNH'; o.append(nhan);
   const tieu = document.createElement('h2'); tieu.textContent = v.ten; o.append(tieu);
   const mo = document.createElement('div'); mo.className = 'mo';
   mo.textContent = `${v.loai === 'canh' ? 'tranh bối cảnh mẫu' : 'tấm đồ nền hồng'} · ${v.anh_mau.length} ảnh mẫu · lưu vào ${v.luu_vao}`; o.append(mo);
-  if (xong) { const d = document.createElement('div'); d.className = 'xong'; d.textContent = 'Đã có ảnh.'; o.append(d); }
   const anh = document.createElement('div'); anh.className = 'anh'; o.append(anh);
   (async () => { for (const t of v.anh_mau) { const f = await (await h.getFileHandle(t)).getFile(); const i = document.createElement('img'); i.src = URL.createObjectURL(f); i.title = t; anh.append(i); } })();
   const hang = document.createElement('div'); hang.className = 'hang';
