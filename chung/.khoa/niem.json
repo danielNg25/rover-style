@@ -82,12 +82,12 @@
    "co": 38762
   },
   "chung/skills/1-dung-canh.md": {
-   "bam": "130bc570501065fe974381e4ca6ef0c55d92ea991ffd450cfd5865191a319ee5",
-   "co": 46353
+   "bam": "116d406b97eb783a4a542cc1bca4a1ef5a5a649ee21bada512ed125297f71797",
+   "co": 46475
   },
   "chung/skills/2-chuan-mon-do.md": {
-   "bam": "702c10a44d95d0e327672394121c87a24fcb8122b25037033720d105acfda2fa",
-   "co": 22124
+   "bam": "33587461b49d4088cbcf0be45df4a36fce424408c797ac3a14a86bed2fab6bd3",
+   "co": 22322
   },
   "chung/skills/3-nhan-vat-dien-xuat.md": {
    "bam": "5423642665e7bf1501577b416852f8c8224d8f7ee82bc051001428856a3c2502",
@@ -1158,8 +1158,8 @@
    "co": 8047
   },
   "chung/tools/do_mau_khuon.py": {
-   "bam": "d7379b2497dc401b03728a631020514d29dcf521f0ad3394aea798e4946559f4",
-   "co": 9092
+   "bam": "3363f551ef204521e0d39ceef3a772159804bae792b5ac0e76c8ba82fe73b228",
+   "co": 9684
   },
   "chung/tools/do_nhay.py": {
    "bam": "65313aaa42ae2c10ac5339ad7f86d883e3963736666810d73d739adee5b3228b",
@@ -1378,8 +1378,8 @@
    "co": 427
   },
   "chung/tools/kiem_loi_ta.py": {
-   "bam": "8456f60986232ab9692993e758fbf181272ceff8c6deb532806544593349ab3e",
-   "co": 14537
+   "bam": "72f34e6ea9f5cb4072083c11d277d7084c30cb004958cf3615cb505a7f235881",
+   "co": 14771
   },
   "chung/tools/kiem_cam.py": {
    "bam": "29c01734de592de5578895eb0a1b94b8e0517d9ebdd76aca451ded7f1b09e6e2",

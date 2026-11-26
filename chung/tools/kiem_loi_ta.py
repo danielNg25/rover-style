@@ -53,9 +53,11 @@ CAU_KIEU_VE = ('STYLE (must follow, overrides anything else in this prompt): CUT
                'NO gradients of any kind, no soft shading, no airbrush, no glow, no blur. '
                'Shapes are big and simple, with clean scissor-cut edges and slightly softened corners: no wavy, bubbly or ornate outlines, and no low-poly faceting into many small polygons. '
                'Very faint matte paper grain; no outlines, no ink lines, no painted texture. '
-               'COLOUR MOOD: muted and slightly greyed, low contrast, like coloured craft paper; no saturated pure colours. '
-               # bảng màu của kênh gốc (đo 573 khung, 26/11/2026; Daniel: "đưa luôn quy tắc màu vào prompt")
-               'Large areas (sky, ground, walls) are low in saturation, close to grey. A strong colour is kept dark; a light colour is kept pale; no colour is both bright and saturated. '
+               'COLOUR MOOD: like coloured craft paper, matte and low in contrast. '
+               # bảng màu của kênh gốc (đo 573 khung, 26/11/2026); nới 27/11 (Daniel: "hướng đúng, cách áp quá cứng"): chỉ MẶT LỚN phải trầm,
+               # màu nhận diện (áo nhân vật, cờ, lửa, nguồn sáng) được rực
+               'LARGE areas (sky, ground, walls, floors) are muted, low in saturation and slightly greyed. '
+               'Identity and accent colours (a costume, a flag or sign, fire, lamps, a key story object) keep their own strong colour, as long as they stay small in area. '
                'Do not make the whole picture one warm family: keep some grey or cool areas. Daylight is neutral, with no orange or yellow cast unless the description says sunset or dusk.')
 CAU_GIAY_CANH = ('LAYERS: the picture must look like a small stage diorama made of cut paper: each hill range, cliff, water band, rock, tree, bush and the ground ledge is its own paper piece, '
                  'laid in front of the piece behind it at a slightly different depth. Where one paper piece overlaps another, a thin dark shadow line shows along its edge, so the stacked layers read clearly. '
@@ -99,7 +101,7 @@ def doc(duong):
     for cau in re.split(r'(?<=[.;:!?])\s+', ta):                 # màu rực: chỉ bắt khi câu đó không phải câu cấm
         r = DOI_MAU_RUC.search(cau)
         if r and not re.search(r'\b(no|not|never|avoid|without)\b', cau, re.I):
-            loi.append(f'LOI  mau-ruc  lời tả đòi màu "{r.group(0)}": màu của kênh gốc trầm, ngả xám, tương phản thấp như giấy thủ công. Đổi tên màu sang bản trầm (muted peach-orange, dusty violet, slate blue-grey…)'); break
+            canh.append(f'CANH mau-ruc  lời tả có chữ "{r.group(0)}": chỉ dùng cho màu nhận diện ở vùng nhỏ (áo, cờ, lửa, nguồn sáng). Mặt lớn (trời, đất, tường, sàn) viết tên màu bản trầm (muted peach-orange, dusty violet, slate blue-grey…)'); break
     if ten_canh:                                         # tranh bối cảnh mẫu: tranh của cả cảnh, không có bảng món
         if mon: loi.append('LOI  lan-loai  file có cả #CANH lẫn #MON: tranh bối cảnh mẫu và tấm đồ là hai file lời tả riêng')
         if len(ten_canh) > 1 or len(ten_canh[0]) < 2: loi.append('LOI  canh  cần đúng MỘT dòng  #CANH <tên bối cảnh>')

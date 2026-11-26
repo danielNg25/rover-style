@@ -76,10 +76,12 @@ def main(a):
     canh = []
     if am > 0.85: canh.append(f"CANH bang-mau  cả khung ngả ấm ({am * 100:.0f} % là màu ấm rõ): xem đèn có phải đèn chiều muộn / đèn vàng không, mặt lớn có quá vàng cam không")
     if xam < 0.05: canh.append(f"CANH bang-mau  gần như không có vùng xám hay trầm ({xam * 100:.0f} %): cho một mặt lớn (đất, tường, trời) về gần xám")
-    if ruc > 0.30: canh.append(f"CANH bang-mau  vùng rực chiếm {ruc * 100:.0f} % khung: mặt lớn chọn ở phần ba bên trái của bảng màu")
-    if goc > 0.03: canh.append(f"CANH bang-mau  màu vừa sáng vừa rực chiếm {goc * 100:.1f} % khung: rực thì kéo tối xuống, sáng thì kéo nhạt đi")
+    # Nới 27/11/2026 (Daniel: "hướng đúng, cách áp quá cứng"): luật màu chỉ cho MẶT LỚN. Máy đo không biết màu nào là màu nhận diện
+    # (áo nhân vật, lửa, cờ, nguồn sáng), nên không còn cảnh báo "góc sáng-rực", và cảnh báo vùng rực phải do người nhìn ảnh mà xét.
+    if ruc > 0.30: canh.append(f"CANH bang-mau  vùng rực chiếm {ruc * 100:.0f} % khung: NHÌN ẢNH xem đó là mặt lớn (tường, sàn, trời, đất) hay màu nhận diện. Mặt lớn thì cho trầm lại; áo nhân vật, lửa, cờ, nguồn sáng thì GIỮ NGUYÊN")
     if not K:
         for d in canh: print(d)
+        if canh: print('(Cảnh báo để NHÌN LẠI ẢNH, không phải đích phải đạt: không dìm màu nhận diện cho hết cảnh báo; thứ đã duyệt không sửa theo luật màu.)')
         return 0
     for k in VAI[:3]:
         l, cc = khoang(K, k, 'L'), khoang(K, k, 'C')
@@ -94,7 +96,7 @@ def main(a):
     if c['C'] < ca['C'][0] - 0.03: canh.append(f"CANH mau-ngoai-khoang  cả khung xám hơn cả bộ mẫu: C {c['C']:.3f} so với {ca['C'][0]:.3f}–{ca['C'][1]:.3f}")
     if len(K) < 3: canh.append(f"CANH it-khung-mau  chỉ so với {len(K)} khung: một hai khung không đủ làm thước, đưa từ 3 khung cùng loại cảnh")
     for d in canh: print(d)
-    print(f'\ndo_mau_khuon: {len(canh)} cảnh báo, để THAM KHẢO: xem lại màu vật liệu và đèn; không lọc màu ảnh, không thêm bớt món để vào khoảng')
+    print(f'\ndo_mau_khuon: {len(canh)} cảnh báo, để THAM KHẢO, không phải đích: nhìn lại ảnh, xét mặt lớn và đèn; giữ màu nhận diện (áo, lửa, cờ, nguồn sáng); không lọc màu ảnh, không thêm bớt món để vào khoảng')
     return 0
 
 

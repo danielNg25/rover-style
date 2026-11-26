@@ -4,6 +4,12 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 
 **Cách ghi.** Đổi phần chung thì thêm một dòng dưới ngày hôm đó, trước khi commit: đổi gì; file chính; dựng lại thì hình có đổi không. Việc máy khác phải làm sau khi lấy về ghi ở mục "Sau khi lấy về" của ngày đó. Viết ngắn. Số đo, nguyên nhân, ảnh trước sau và lời Daniel của các thay đổi tới hết 26/11/2026 nằm ở `chung/NHAT-KY-THAY-DOI.md`.
 
+## 2026-11-27
+
+### Luật
+
+- **Nới luật màu (phiếu P1127-01, P1127-02; Daniel: "hướng của luật thì đúng, nhưng cách áp đang quá cứng, và áp cho Doom là sai chỗ").** Luật chọn màu của 26/11 chỉ còn áp cho MẶT LỚN (tường, sàn, trời, đất). Màu nhận diện của nhân vật, nơi chốn, lửa và nguồn sáng được miễn, giữ rực. Số đo của `chung/tools/do_mau_khuon.py` chỉ là cảnh báo để nhìn lại ảnh: không đặt làm đích trong phiếu giao; bỏ cảnh báo "góc sáng-rực", cảnh báo vùng rực ghi rõ phải giữ màu nhận diện. Thứ đã duyệt (tập Doom) không sửa theo luật màu. `chung/tools/kiem_loi_ta.py`: câu màu trong lời tả gen cho màu nhận diện rực ở vùng nhỏ; chữ vivid, saturated chỉ còn là cảnh báo. Sửa ở skill 1 (dòng Màu), skill 2 (dòng Kiểu vẽ của ảnh gen). Hình không đổi.
+
 ## 2026-11-26
 
 ### Sau khi lấy về
