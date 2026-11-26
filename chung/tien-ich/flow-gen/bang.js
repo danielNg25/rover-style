@@ -91,6 +91,7 @@ async function trongTrang(loiTa, anh, cach) {
   const o = window.__c3dONhap && document.contains(window.__c3dONhap) ? window.__c3dONhap : document.activeElement;
   const laONhap = o && (o.tagName === 'TEXTAREA' || o.tagName === 'INPUT' || o.isContentEditable);
   if (!laONhap) return {ok: false, bao: 'Chưa biết ô nhập lời tả: bấm một lần vào ô nhập trên trang gen, rồi bấm lại "Đưa vào trang gen".'};
+  window.__c3dCu = new Set([...document.querySelectorAll('img')].map((i) => i.currentSrc).filter(Boolean)); window.__c3dMoc = Date.now();   // mốc: ảnh có sau lúc này là ảnh mới gen
   const files = await Promise.all(anh.map(async (a) => new File([await (await fetch(a.du)).blob()], a.ten, {type: a.kieu})));
   const goi = () => { const d = new DataTransfer(); files.forEach((f) => d.items.add(f)); return d; };
   o.focus();
@@ -117,19 +118,23 @@ async function trongTrang(loiTa, anh, cach) {
   return {ok: true, bao: ghi};
 }
 
-// Chạy TRONG trang gen: các ảnh lớn trên trang, mới xuất hiện xếp trước.
+// Chạy TRONG trang gen: ảnh lớn xuất hiện SAU lần "Đưa vào trang gen" gần nhất (không có mốc thì mọi ảnh lớn).
+// Ảnh được đọc ngay trong trang (trang có sẵn đăng nhập) và gửi về bảng dưới dạng dữ liệu, nên bảng luôn hiện được hình.
 async function anhTrenTrang() {
-  const ds = [...document.querySelectorAll('img')].filter((i) => i.complete && i.naturalWidth >= 500 && i.naturalHeight >= 280 && i.currentSrc)
-    .map((i, k) => ({i, t: i.__c3dT || 0, k})).sort((a, b) => (b.t - a.t) || (a.k - b.k)).slice(0, 8);
-  const ra = [];
-  for (const {i, t} of ds) {
-    let src = i.currentSrc;
-    if (/^(blob|data):/.test(src)) {   // nguồn chỉ trang đọc được: đổi sang dữ liệu để gửi về bảng
-      try { const b = await (await fetch(src)).blob(); src = await new Promise((ok) => { const r = new FileReader(); r.onload = () => ok(r.result); r.readAsDataURL(b); }); } catch { continue; }
-    }
-    ra.push({src, w: i.naturalWidth, h: i.naturalHeight, moi: t > 0});
+  const cu = window.__c3dCu || null;
+  let ds = [...document.querySelectorAll('img')].filter((i) => i.complete && i.naturalWidth >= 700 && i.naturalHeight >= 380 && i.currentSrc);
+  const moi = cu ? ds.filter((i) => !cu.has(i.currentSrc)) : [];
+  const coMoc = !!cu, chiMoi = moi.length > 0;
+  if (chiMoi) ds = moi;
+  const thay = new Set(), ra = [];
+  for (const i of ds.sort((a, b) => b.naturalWidth * b.naturalHeight - a.naturalWidth * a.naturalHeight)) {
+    if (thay.has(i.currentSrc) || ra.length >= 6) continue; thay.add(i.currentSrc);
+    let du = null;
+    try { const bl = await (await fetch(i.currentSrc, {credentials: 'include'})).blob(); if (/^image\//.test(bl.type)) du = await new Promise((ok) => { const r = new FileReader(); r.onload = () => ok(r.result); r.readAsDataURL(bl); }); } catch { /* thử cách vẽ lại bên dưới */ }
+    if (!du) { try { const c = document.createElement('canvas'); c.width = i.naturalWidth; c.height = i.naturalHeight; c.getContext('2d').drawImage(i, 0, 0); du = c.toDataURL('image/png'); } catch { /* ảnh khác nguồn, trang không cho đọc */ } }
+    ra.push({du, src: i.currentSrc, w: i.naturalWidth, h: i.naturalHeight});
   }
-  return ra;
+  return {coMoc, chiMoi, ds: ra};
 }
 
 async function ghiAnh(v, blob, nguon) {
@@ -144,25 +149,30 @@ async function ghiAnh(v, blob, nguon) {
 async function layAnhTrang(v, o) {
   const [tab] = await chrome.tabs.query({active: true, currentWindow: true});
   const [kq] = await chrome.scripting.executeScript({target: {tabId: tab.id}, func: anhTrenTrang});
-  const ds = (kq && kq.result) || [];
+  const r = (kq && kq.result) || {ds: []};
   o.querySelector('.chon-anh')?.remove();
-  if (!ds.length) { bao('Không thấy ảnh lớn nào trên trang. Chờ ảnh gen xong (hoặc bấm mở ảnh to) rồi bấm lại; không được thì tải về và dùng "Lưu ảnh đã tải về".', 'loi'); return; }
+  // ảnh trang không tự đọc được: thử đọc từ bảng (extension có quyền với máy chủ ảnh của Google)
+  const ds = [];
+  for (const a of r.ds) {
+    if (!a.du) { try { const bl = await (await fetch(a.src, {credentials: 'include'})).blob(); if (/^image\//.test(bl.type)) a.blob = bl; } catch { /* bỏ tấm này */ } }
+    if (a.du || a.blob) ds.push(a);
+  }
+  if (!ds.length) { bao((r.ds.length ? 'Thấy ảnh trên trang nhưng không đọc được tấm nào.' : 'Không thấy ảnh lớn nào trên trang.') + ' Chờ ảnh gen xong (hoặc bấm mở ảnh to) rồi bấm lại; không được thì tải về và dùng "Lưu ảnh đã tải về".', 'loi'); return; }
   const khung = document.createElement('div'); khung.className = 'chon-anh';
-  const nhac = document.createElement('div'); nhac.className = 'mo'; nhac.textContent = 'Bấm vào tấm muốn lưu (mới nhất ở đầu):'; khung.append(nhac);
+  const nhac = document.createElement('div'); nhac.className = 'mo';
+  nhac.textContent = r.chiMoi ? 'Ảnh xuất hiện SAU lần "Đưa vào trang gen" gần nhất. Bấm vào tấm muốn lưu:' : r.coMoc ? 'Chưa thấy ảnh nào mới sau lần "Đưa vào trang gen"; dưới đây là mọi ảnh lớn trên trang, có thể là ảnh cũ:' : 'Chưa bấm "Đưa vào trang gen" ở thẻ này nên không biết ảnh nào mới; dưới đây là mọi ảnh lớn trên trang:';
+  khung.append(nhac);
   for (const a of ds) {
-    const b = document.createElement('button'); b.className = 'tam' + (a.moi ? ' moi' : ''); b.title = `${a.w}×${a.h}`;
-    const im = document.createElement('img'); im.src = a.src; b.append(im);
-    const c = document.createElement('span'); c.textContent = `${a.w}×${a.h}` + (a.moi ? ' · mới' : ''); b.append(c);
+    const b = document.createElement('button'); b.className = 'tam' + (r.chiMoi ? ' moi' : ''); b.title = `${a.w}×${a.h}`;
+    const im = document.createElement('img'); im.src = a.du || URL.createObjectURL(a.blob); b.append(im);
+    const c = document.createElement('span'); c.textContent = `${a.w}×${a.h}`; b.append(c);
     b.onclick = async () => {
-      try {
-        const blob = await (await fetch(a.src, /^https?:/.test(a.src) ? {credentials: 'include'} : {})).blob();
-        if (!/^image\//.test(blob.type)) throw new Error('trang không cho lấy ảnh này trực tiếp');
-        await ghiAnh(v, blob, `ảnh ${a.w}×${a.h} trên trang`);
-      } catch (e) { bao('Không lấy được ảnh này (' + (e.message || e) + '). Tải ảnh về rồi dùng "Lưu ảnh đã tải về".', 'loi'); }
+      try { if (!(await coQuyen())) return; await ghiAnh(v, a.blob || await (await fetch(a.du)).blob(), `ảnh ${a.w}×${a.h} trên trang`); }
+      catch (e) { bao('Không lưu được ảnh này (' + (e.message || e) + '). Tải ảnh về rồi dùng "Lưu ảnh đã tải về".', 'loi'); }
     };
     khung.append(b);
   }
-  o.append(khung); bao(`Thấy ${ds.length} ảnh lớn trên trang. Ảnh trên trang có thể là bản xem trước nhỏ hơn bản tải về: xem kích cỡ ghi dưới mỗi tấm.`);
+  o.append(khung); bao(`${ds.length} ảnh. Ảnh trên trang có thể nhỏ hơn bản tải về: xem kích cỡ ghi dưới mỗi tấm.`);
 }
 
 async function luuAnh(v) {
