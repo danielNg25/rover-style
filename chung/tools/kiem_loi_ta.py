@@ -53,7 +53,10 @@ CAU_KIEU_VE = ('STYLE (must follow, overrides anything else in this prompt): CUT
                'NO gradients of any kind, no soft shading, no airbrush, no glow, no blur. '
                'Shapes are big and simple, with clean scissor-cut edges and slightly softened corners: no wavy, bubbly or ornate outlines, and no low-poly faceting into many small polygons. '
                'Very faint matte paper grain; no outlines, no ink lines, no painted texture. '
-               'COLOUR MOOD: muted and slightly greyed, low contrast, like coloured craft paper; no saturated pure colours.')
+               'COLOUR MOOD: muted and slightly greyed, low contrast, like coloured craft paper; no saturated pure colours. '
+               # bảng màu của kênh gốc (đo 573 khung, 26/11/2026; Daniel: "đưa luôn quy tắc màu vào prompt")
+               'Large areas (sky, ground, walls) are low in saturation, close to grey. A strong colour is kept dark; a light colour is kept pale; no colour is both bright and saturated. '
+               'Do not make the whole picture one warm family: keep some grey or cool areas. Daylight is neutral, with no orange or yellow cast unless the description says sunset or dusk.')
 CAU_GIAY_CANH = ('LAYERS: the picture must look like a small stage diorama made of cut paper: each hill range, cliff, water band, rock, tree, bush and the ground ledge is its own paper piece, '
                  'laid in front of the piece behind it at a slightly different depth. Where one paper piece overlaps another, a thin dark shadow line shows along its edge, so the stacked layers read clearly. '
                  'The sky and the water are flat horizontal paper bands. Distant layers are paler and greyer, as if seen through a light haze.')
