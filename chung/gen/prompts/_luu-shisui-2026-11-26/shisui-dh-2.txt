@@ -1,0 +1,10 @@
+A sheet of 7 separate objects for a grassy hilltop above a ninja village, in a fantasy feudal-Japan ninja village world, drawn in exactly the art style of the attached reference frame: the same flat shapes, 2-4 close tones per object, the same calm level of detail and finish as the trees, rocks and props in that frame. Arrange them in 2 rows, well separated by wide gaps, each object complete and not cropped:
+1) a big old tree stump with a flat cut top and a metal throwing star stuck in its side, bark in 2-3 browns;
+2) a slim young pine tree;
+3) a short low wooden fence segment with four posts;
+4) a clump of tall grass with small white flowers;
+5) a clump of grass with small yellow flowers;
+6) a low tuft of grass;
+7) a clump of red spider lilies with thin stems;
+Near objects keep their own natural colours (do not tint them with the sky colour). No characters, no people, no animals unless listed, no ground strip, no cast shadows, no text.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

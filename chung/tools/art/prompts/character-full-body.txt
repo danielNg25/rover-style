@@ -1,0 +1,13 @@
+# TEMPLATE: one new character, full body, neutral standing front view (the "front sheet", sheet 1 of at most 3).
+# Reference image to pass: an APPROVED picture of our own art for the finish (gen/doom-front.png or gen/queen.png).
+#   Never a crop of the reference video (gen.sh refuses ref/ and ref-*): describe the character in words.
+# Rules that worked:
+#   - say what the attached picture is for ("shows only the approved finish; do NOT draw that character");
+#   - give the proportions in words: big head, about 2.4 heads tall, large white round eyes, short limbs;
+#   - list clothing top to bottom with colours; name what is hidden;
+#   - standing, straight front view, arms down: poses are made in the rig, never asked from the image tool
+#     (a seated figure was refused; gen.sh refuses seated / sitting / walking / running);
+#   - "Portrait 2:3, centred with a small margin" keeps the figure off the border.
+# After generating: keycheck.py, then key.py (single subject), then proportions.py against the model sheet.
+# Fill every {{...}} and delete nothing else.
+The attached image shows only the approved rendering style and finish (it is a different character; do NOT draw that character). Draw ONE new character, {{WHO: e.g. a sad young queen}}, full body, standing, straight front view, in exactly that style: big round head, about 2.4 heads tall overall, {{FACE: eyes, pupils colour, lids, brows, mouth}}, {{HAIR_AND_HEADWEAR}}, {{CLOTHING_TOP_TO_BOTTOM_WITH_COLOURS}}, arms hanging down at the sides, {{HANDS}}, {{LEGS_AND_SHOES}}. Short limbs, tiny body. The whole figure is visible from the top of the head to the soles, nothing cropped. Portrait 2:3, centred with a small margin.

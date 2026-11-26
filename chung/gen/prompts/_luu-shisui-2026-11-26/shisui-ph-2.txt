@@ -1,0 +1,10 @@
+A sheet of 7 separate objects for the small props of a traditional Japanese village street, in a fantasy feudal-Japan ninja village world, drawn in exactly the art style of the attached reference frame: the same flat shapes, 2-4 close tones per object, the same calm level of detail and finish as the trees, rocks and props in that frame. Arrange them in 2 rows, well separated by wide gaps, each object complete and not cropped:
+1) a wooden barrel with dark iron hoops;
+2) two stacked wooden crates;
+3) a wooden water bucket with a rope handle;
+4) a woven bamboo basket full of daikon radishes and greens;
+5) a wooden standing street lantern post with a white paper box lantern on top (unlit);
+6) a round red paper chochin lantern hanging from a short cord (unlit, plain, no crest, no writing);
+7) a low wooden bench with two thick legs;
+Near objects keep their own natural colours (do not tint them with the sky colour). No characters, no people, no animals unless listed, no ground strip, no cast shadows, no text.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

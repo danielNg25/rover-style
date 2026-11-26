@@ -1,0 +1,193 @@
+{
+ "tool": "art/template/slice.py",
+ "mode": "standalone",
+ "time": "2026-11-21T01:13:58",
+ "inputs": {
+  "sheet": "tools/art/template/extra-v1.png",
+  "id": "_template-extra",
+  "template": "extra-v1"
+ },
+ "thresholds": {
+  "tolerance": {
+   "centre_px": 40,
+   "size_lo": 0.75,
+   "size_hi": 1.3,
+   "free_slots": [],
+   "free_size_hi": 1.6,
+   "edge_px": 2
+  },
+  "spill": {
+   "alpha_visible": 24,
+   "edge_px": 2,
+   "interior_px": 4,
+   "bleed_px": 12,
+   "fix_excess": 0.05,
+   "max_spill_frac": 0.005,
+   "hole_min_px": 30,
+   "max_hole_frac": 0.03,
+   "lost_min_dist": 30,
+   "lost_open_px": 2,
+   "max_lost_frac": 0.03,
+   "strong_excess": 0.45,
+   "faint_excess": 0.15,
+   "max_faint_frac": 0.35,
+   "warn_faint_frac": 0.05,
+   "max_faint_frac_strict": 0.05,
+   "key_like_dist": 60,
+   "max_key_blob_px": 8,
+   "solid_alpha": 230,
+   "solid_min_dist": 150,
+   "max_faded_frac": 0.01,
+   "max_lost_blob_px": 60,
+   "max_fringe_run_px_strict": 24,
+   "max_translucent_interior_frac": 0.02,
+   "legacy_list": "tools/art/legacy-pieces.json",
+   "_doc": "Strict gate (max_faint_frac_strict, max_fringe_run_px_strict) is the default. The loose max_faint_frac applies only to pieces whose sha256 is in legacy_list (approved before the tool existed; they measure faint 0.08-0.28, fringe runs up to 351 px). Calibrated 2026-11-20: approved pieces and fresh cuts have key_blob 0 px, lost_blob 0 px, faded 0.0, translucent_interior <= 0.0031; fresh cuts have fringe_run 0 px. Mutants: 20x10 key slab = 200 px blob, 1 px purple bottom line = run 137 px, 50x50 hole = lost_blob 2500 px, alpha x0.55 = faded 1.0."
+  }
+ },
+ "checks": [
+  {
+   "name": "sheet_size",
+   "value": [
+    1536,
+    1024
+   ],
+   "threshold": "== [1536, 1024] (or the same aspect)",
+   "verdict": "PASS"
+  },
+  {
+   "name": "background_flat",
+   "value": 0.0,
+   "threshold": "<= 6.0",
+   "verdict": "PASS"
+  },
+  {
+   "name": "key_is_expected",
+   "value": 0.0,
+   "threshold": "<= 40 from #FF00FF",
+   "verdict": "PASS"
+  },
+  {
+   "name": "slots_filled",
+   "value": [],
+   "threshold": "[] (required slots)",
+   "verdict": "PASS",
+   "absent_optional": []
+  },
+  {
+   "name": "slots_inside_box",
+   "value": [],
+   "threshold": "[]",
+   "verdict": "PASS"
+  },
+  {
+   "name": "stray_art",
+   "value": [],
+   "threshold": "[]",
+   "verdict": "PASS"
+  },
+  {
+   "name": "slot_deviation",
+   "value": [],
+   "threshold": "[] (centre <= 40 px, size 0.75..1.3; free slots up to 1.6)",
+   "verdict": "PASS"
+  },
+  {
+   "name": "spill_frac_worst",
+   "value": 0,
+   "threshold": "<= 0.005",
+   "verdict": "PASS"
+  },
+  {
+   "name": "faint_fringe_frac_worst",
+   "value": 0,
+   "threshold": "<= 0.05",
+   "verdict": "PASS"
+  },
+  {
+   "name": "key_blob_px_worst",
+   "value": 0,
+   "threshold": "<= 8",
+   "verdict": "PASS"
+  },
+  {
+   "name": "fringe_run_px_worst",
+   "value": 0,
+   "threshold": "<= 24",
+   "verdict": "PASS"
+  },
+  {
+   "name": "lost_art_worst",
+   "value": {
+    "frac": 0,
+    "blob_px": 0,
+    "faded": 0
+   },
+   "threshold": "frac <= 0.03, blob <= 60 px, faded <= 0.01",
+   "verdict": "PASS"
+  }
+ ],
+ "warnings": [],
+ "not_checked": [
+  "whether each slot really shows the piece it is meant to (a mouth in the brow slot passes): look at overview.jpg",
+  "whether the joints close when the limbs turn: render the model-sheet still (CHARACTERS.md, step 5)"
+ ],
+ "evidence": [
+  "public/_template-extra/overview.jpg"
+ ],
+ "measured": {
+  "deviation": {
+   "front": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 1.0,
+    "h": 1.0
+   },
+   "startled": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 1.0,
+    "h": 1.0
+   },
+   "back": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 1.0,
+    "h": 1.0
+   }
+  },
+  "pieces": {
+   "front": {
+    "spill_frac": 0.0,
+    "faint_frac": 0.0,
+    "key_blob_px": 0.0,
+    "fringe_run_px": 0.0,
+    "lost_frac": 0.0,
+    "lost_blob_px": 0.0,
+    "faded_frac": 0.0
+   },
+   "startled": {
+    "spill_frac": 0.0,
+    "faint_frac": 0.0,
+    "key_blob_px": 0.0,
+    "fringe_run_px": 0.0,
+    "lost_frac": 0.0,
+    "lost_blob_px": 0.0,
+    "faded_frac": 0.0
+   },
+   "back": {
+    "spill_frac": 0.0,
+    "faint_frac": 0.0,
+    "key_blob_px": 0.0,
+    "fringe_run_px": 0.0,
+    "lost_frac": 0.0,
+    "lost_blob_px": 0.0,
+    "faded_frac": 0.0
+   }
+  },
+  "colours": {
+   "front": "#9C9CA4"
+  }
+ },
+ "verdict": "PASS"
+}

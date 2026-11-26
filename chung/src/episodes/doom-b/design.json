@@ -1,0 +1,451 @@
+{
+  "concept": "Revised final design (the 'character' design with the judges' grafts and all eleven review fixes applied). The scar is shown literally but only through one eye slit of the mask (no mask-off image); he mends a cracked column with one thought and then stops his own hand short of his face (no green glow anywhere). A bored flick of his hand calls clouds and snow over his open terrace, and that snow becomes the film's own time device: on 'leave' it hangs in the air, on 'throne' it starts to rise, the towers behind the throne un-build one by one in a tight long-lens view, and the same mountains stand over a poor camp where the snow falls normally again. There a small boy in a too-big green shawl already has the mask's scowl (until a snowflake lands on his nose). The close is a strict before/after pair on one triangle: a gold cradle with a white bundle under a pointed red-and-gold canopy in the ordinary king's stone room, crowned on 'born'; then a patched tent with its peak on the same screen point, a mother's shadow rocking the same bundle shape, crowned only by a slab of snow on 'tent'.",
+  "paragraph_pass": "CONVENTION: f0 is a shot's first frame, f1 is the first frame of the next shot (exclusive). Tiling: 0-60-132-194-256-305-349-391-435-480-545 (lengths 60, 72, 62, 62, 49, 44, 42, 44, 45, 65 = 545). The segment starts 22.5 s into the film, so rule 2.1.5 (2.5 s minimum) binds until segment frame 180: S1-S3 are 60 f or longer.\n\nPARAGRAPH A (f0-256, 'Under it ... hates the most?'), S1-S4. Place: throne hall only (existing hub, an open-air terrace with 2 lanterns). People: the ruler; the queen as bystander in S3. Props: the mask's eye slit, one cracked column, conjured clouds and snow. Set budget: no new set; hall states 'cracked column' (S2) and 'clouds and snow' (from S3 on). The paragraph's last line 'keep the one thing he hates the most?' = S4, a REACTION close with a two-part emotional turn (2.6.11: hate on 'hates'@221, grief on 'most'@231). It is NOT a button: the next shot stays on the hall. Reaction slots: the queen's hop in S3; S4 is the reaction close. Planted: the snow (S3) returns as the time device in S5-S7 and as the camp's weather; the clouds return drifting backwards in S6.\n\nPARAGRAPH B (f256-545, 'To answer that ... born in a tent.'), S5-S10. Places: throne hall (leaving), a tight long-lens view of the hall's own towers against its mountains (towers un-build), mountain camp (the ONE new hub: S7, S8, S10 now, and the childhood chapters return to it), the ordinary king's stone throne room (existing, standing in for 'castles'). People: ruler and queen small from behind, two camp folk (existing villagers, tinted), boy Victor (new), bearded king (existing), a mother seen only as a shadow. Button line: 'was born in a tent' = S10, the segment's ONLY button; the snow slab falls on 'tent'@526 where the crown popped in S9. The next segment MUST open with a set change. Reaction slot: the boy's own face in S8. Planted: the tiny seated figure by the fire point in S6, the boy from behind and the hero tent with its green patch and crooked stovepipe in S7; all pay within three shots.\n\nPATTERNS: P3 in S1-S4 (fact, act, step out, face); P9 depart-route-arrive in S5-S6-S7; P6 plant (S6 tiny, S7 back view) and tagged close (S8); P7 before/after in S9-S10; P12 button in S10 only.\n\nFRAMING ORDER: extreme close, medium, wide, close, wide, tight object view, wide, close, medium, medium. No two neighbours alike except the deliberate matched pair S9/S10 (different sets).\n\nOPENS as a hard step-in from the previous built shot (him with the small Earth, chin on fist) to an extreme close of one eye slit in the same hall and night light; his pupil starts off-left where the Earth was. CLOSES on a held drift on the lit tent in heavy snow, stovepipe knocked crooked, shadow curled round the bundle, 15 f of tail after the last event.\n\nREUSE (honest count): 6 of 10 shots stand on sets that existed before this segment (S1-S5 hall, S9 king's room) = 60 percent. S8 and S10 revisit the camp opened in S7 (8 of 10 if within-segment revisits count). S6 is a small new build made of copies of the hall's far cards.",
+  "fps": 24,
+  "frames": 545,
+  "narration": [
+    {"w": "Under", "f": 4}, {"w": "it,", "f": 10}, {"w": "his", "f": 23}, {"w": "face", "f": 27}, {"w": "is", "f": 33}, {"w": "scarred.", "f": 36},
+    {"w": "He", "f": 59}, {"w": "could", "f": 62}, {"w": "fix", "f": 65}, {"w": "that", "f": 70}, {"w": "with", "f": 76}, {"w": "a", "f": 81}, {"w": "single", "f": 84}, {"w": "thought,", "f": 89}, {"w": "but", "f": 109}, {"w": "he", "f": 116}, {"w": "hasn't.", "f": 119},
+    {"w": "So", "f": 129}, {"w": "why", "f": 143}, {"w": "would", "f": 149}, {"w": "a", "f": 153}, {"w": "man", "f": 156}, {"w": "with", "f": 159}, {"w": "the", "f": 165}, {"w": "power", "f": 167}, {"w": "to", "f": 172}, {"w": "do", "f": 176}, {"w": "anything", "f": 179}, {"w": "keep", "f": 190}, {"w": "the", "f": 201}, {"w": "one", "f": 204}, {"w": "thing", "f": 211}, {"w": "he", "f": 216}, {"w": "hates", "f": 221}, {"w": "the", "f": 227}, {"w": "most?", "f": 231},
+    {"w": "To", "f": 252}, {"w": "answer", "f": 254}, {"w": "that,", "f": 259}, {"w": "we", "f": 273}, {"w": "have", "f": 275}, {"w": "to", "f": 278}, {"w": "leave", "f": 280}, {"w": "the", "f": 286}, {"w": "throne.", "f": 291},
+    {"w": "We", "f": 311}, {"w": "have", "f": 312}, {"w": "to", "f": 315}, {"w": "go", "f": 317}, {"w": "back", "f": 321}, {"w": "a", "f": 327}, {"w": "long", "f": 337}, {"w": "way", "f": 343}, {"w": "to", "f": 350}, {"w": "a", "f": 365}, {"w": "camp", "f": 369}, {"w": "in", "f": 374}, {"w": "the", "f": 380}, {"w": "mountains", "f": 382}, {"w": "and", "f": 389}, {"w": "a", "f": 400}, {"w": "boy", "f": 403}, {"w": "named", "f": 408}, {"w": "Victor.", "f": 426},
+    {"w": "Kings", "f": 443}, {"w": "are", "f": 448}, {"w": "usually", "f": 452}, {"w": "born", "f": 458}, {"w": "in", "f": 466}, {"w": "castles.", "f": 470},
+    {"w": "Victor", "f": 488}, {"w": "von", "f": 491}, {"w": "Doom", "f": 496}, {"w": "was", "f": 501}, {"w": "born", "f": 514}, {"w": "in", "f": 520}, {"w": "a", "f": 524}, {"w": "tent.", "f": 526}
+  ],
+  "shots": [
+    {
+      "id": "S1",
+      "group": "A",
+      "f0": 0,
+      "f1": 60,
+      "narration": "Under it, his face is scarred. (6 words, f4-55; 'He'@59 falls 1 f before the cut) [OPENING, 60 f = 2.50 s]",
+      "anchor": {"w": "scarred", "f": 36, "type": "verdict about a face", "cut_lead_f": null},
+      "link": "Anchor 'scarred'@36 (verdict about a face, shown as the face itself changing state: shadow to lit). 'Under it'@10 = we are looking under the metal, through the slit. Segment start, so no cut lead. P3 start. Differs from the previous built shot (medium, Earth on palm) in framing (extreme close), prop state (no Earth), eye line.",
+      "mode": "Literal (face transformation seen through the mask); extreme close spent on a face change",
+      "framing": "Extreme close: upper half of the mask fills the frame; the screen-left eye slit is 38 percent of frame width, left of centre; brow ridge on top, nose bridge at right-centre, a strip of green hood on the left edge, a sliver of hall at the far right edge",
+      "set": "Throne hall, night, position 3 pushed in to extreme close",
+      "set_status": "reused",
+      "picture": "The grey mask plate so close that only the brow ridge, two rivets, the screen-left eye slit and the start of the second slit are in frame. This mask is DRAWN IN CODE for this shot (flat polygons copied from the raster mask: plate in 2 grey tones, brow piece, rivets, slit as a real hole), because the 410 px raster would be enlarged 4 times. Behind the slit hole: a flat skin block, an upper eyelid, the pupil, and three raised scar ridges (two crossing the brow and lid diagonally, one under the eye). Until f36 everything inside the slit is one flat dark-brown shadow tone with the scars barely one step apart, so only the bright pupil reads. Far right, sharp: a sliver of cream hall with one lantern (flat cream flame shape, no halo) and navy sky with 2-3 constant stars. No blur anywhere.",
+      "characters": ["Ruler: code-drawn mask (plate, brow, slit hole) plus inside-the-slit layers (skin, lid, pupil, 3 scars); front; face only"],
+      "beats": [
+        {"f": 0, "who": "Ruler", "what": "Pupil rests off screen-left (where the small Earth was in the previous shot); hood edge sways on twos"},
+        {"f": 10, "who": "Ruler", "what": "On 'it': pupil snaps to camera (1 f)"},
+        {"f": 27, "who": "Ruler", "what": "On 'face': head turns a few degrees toward the lantern, 3 staged steps on twos over 6 f (mask layers shift about 12 px, hood edge lags 3 f)"},
+        {"f": 36, "who": "Slit interior", "what": "On 'scarred': a flat lighter parallelogram of lantern light slides across the INSIDE of the slit only (clipped to the hole, 8 f on twos); skin switches to lit tan, the three scar ridges switch to pale salmon with a darker edge and are plainly readable. Nothing sweeps across the metal"},
+        {"f": 48, "who": "Ruler", "what": "The scarred upper lid drops halfway (1 f), brow piece lowers one step; at f52 the pupil darts down and away: he dislikes being looked at"}
+      ],
+      "camera": "Push in 3 percent per second, constant, aimed at the screen-left slit, running on frame 0 and at the cut. No shake.",
+      "liveness": ["camera push", "ruler: pupil snap, head turn, lid drop, pupil dart", "hood edge cloth sway (lags the turn)", "lantern flame at far right, one deforming mass on twos (sharp background element)", "light state change inside the slit"],
+      "fx": ["Light/colour state swap inside the slit at f36 (flat shapes; no glow, no glint, no sparkle)"],
+      "text": "none",
+      "feel": "There is a hurt man in there, and we just saw it."
+    },
+    {
+      "id": "S2",
+      "group": "A",
+      "f0": 60,
+      "f1": 132,
+      "narration": "He could fix that with a single thought, but he hasn't. (11 words, f59-128; 'So'@129 falls 3 f before the next cut) [OPENING, 72 f = 3.00 s exactly, not over the 3 s ceiling; one shot with an in-shot turn because rule 2.1.5 forbids a 1.2 s half]",
+      "anchor": {"w": "single (thought)", "f": 84, "type": "abstraction made one visible act", "cut_lead_f": 24},
+      "link": "Anchor 'single thought'@84/89 (abstraction made one visible act: something else is fixed by thought alone); second beat on the negation 'hasn't'@119 as the almost-action (2.6.18). Cut 24 f before 'single' (1.0 s, the limit), 5 f before 'fix'. Differs from S1 in framing (medium vs extreme close), cast extent (whole figure), new prop state (cracked column).",
+      "mode": "Literal + negation (almost-action), two-beat template",
+      "framing": "Medium, front: ruler 62 percent of frame height in the left third; the cracked column in the right third, mid-distance; a sharp cream column edge at the left frame edge as the foreground edge",
+      "set": "Throne hall, night, position 2 (medium by the big throne); redress state 'cracked column'",
+      "set_status": "redressed",
+      "picture": "He stands on the gold floor lane at left, arms down, mask on (existing rig). At the very left frame edge, nearest the camera and SHARP (blur 0): the edge of one of the hall's cream front columns (the hall's frontColumns), a vertical strip about 6 percent of frame width that slides against the scene as the camera drifts. Right third, sharp: one cream hall column with a jagged dark crack running up a third of its height and two fallen stone chips at its base (code decal and two small polygons). Between him and that column, further back: the small throne with its green drape, whose loose edge sways, and one lantern on its plinth; navy sky with about 15 constant stars, a lilac tower with two lit windows (one switches off at f104), the white peaks. No hand is raised for the 'thought': only a brow moves. No blur.",
+      "characters": ["Ruler: full rig, front, standing, 62 percent, left third"],
+      "beats": [
+        {"f": 60, "who": "Ruler", "what": "Neutral face, eyes forward, hands at sides; cloak hem sways"},
+        {"f": 65, "who": "Ruler", "what": "On 'fix': pupils dart right to the cracked column, head tilts 3 degrees toward it"},
+        {"f": 84, "who": "Ruler", "what": "On 'single': one brow lifts (1 f snap). Nothing else moves"},
+        {"f": 89, "who": "Column", "what": "On 'thought': the crack zips shut bottom to top over 8 f on twos; the two chips fly back UP into the column; a flat 6-point cream-gold spark sits at the top of the crack for 8 f and is gone"},
+        {"f": 100, "who": "Ruler", "what": "Pupils return to front, head level, brow back"},
+        {"f": 104, "who": "Tower window", "what": "One of the two lit tower windows switches off (flat swap, 1 f): an extra background event"},
+        {"f": 109, "who": "Ruler", "what": "On 'but': his right open hand rises toward the jaw edge of his own mask (arm eases 8 f on twos, one in-between pose); fingertips stop a hand's width short at f117 and hold"},
+        {"f": 119, "who": "Ruler", "what": "On 'hasn't': the hand drops (8 f), swaps to fist at his side at f127; face to the 'sad' preset, pupils lower; cloak lags 3 f. Held through 'So'@129 to the cut"}
+      ],
+      "camera": "Hold with drift-push 1 percent per second toward the space between him and the column, constant, first frame to last (allowed: the picture changes six times); the left foreground column edge moves faster than the scene. No shake.",
+      "liveness": ["camera drift-push with foreground column-edge parallax", "ruler: pupils, tilt, brow, arm rise, drop, face flip (7 changes)", "cloak hem and hood sway (puppet, not counted as background)", "AMBIENT 1 (flame): lantern flame, one deforming mass on twos", "AMBIENT 2 (cloth): the small throne's green drape edge sway, unconditional", "extra event: tower window off at f104", "column crack and chips (prop state change) and the spark"],
+      "density": "Prop kinds: cracked column, small throne with drape, lantern on plinth, lilac tower (4) plus ONE foreground edge (cream front column, sharp).",
+      "fx": ["Crack draw-on run in reverse at f89 (8 f)", "Flat cream-gold spark event f89-97 (not green, no soft glow)"],
+      "text": "none",
+      "feel": "Mending things costs him nothing. He reaches for his own face and stops."
+    },
+    {
+      "id": "S3",
+      "group": "A",
+      "f0": 132,
+      "f1": 194,
+      "narration": "why would a man with the power to do anything (10 words, f143-189; 'So'@129 was spoken over the end of S2; 'keep'@190 falls 4 f before the next cut) [OPENING, 62 f = 2.58 s]",
+      "anchor": {"w": "man", "f": 156, "type": "role noun (priority c)", "cut_lead_f": 24},
+      "link": "Anchor 'man'@156 (role noun, priority c, outranks the abstraction 'power'): the cut is 24 f = 1.0 s before it (the limit), and the first thing the eye catches lands on the word. 'power'@167 (the sky obeys a flick of his hand) and 'anything'@179 (snow) are in-shot events. P2 step out. Differs from S2 in framing (wide vs medium), cast (queen in), state (weather changes).",
+      "mode": "Literal demonstration; irony acting (the act is grand, he is bored)",
+      "framing": "Wide; ruler 28 percent of frame height, centre-left on the lane below the steps, FRONT view; queen 22 percent at right by the small throne",
+      "set": "Throne hall, position 1 (establishing wide, slightly off axis, a cream column edge at the right frame edge); states night, then 'clouds and snow'",
+      "set_status": "redressed",
+      "picture": "The whole terrace as the viewer knows it: gold floor lane, three gold-edged steps, big and small thrones under the gold ring, two lanterns, armillary at left, lilac towers with lit windows, green hill band and white peaks under a clear navy sky with about 30 constant stars. He stands small, facing front (the existing front rig, as in S2), head down. The queen in white stands by the small throne. He raises his head to the sky once, gives one low sideways flick of an open hand at hip height (no glow, hand never above the waist), and three flat pale clouds pop into the clear sky above the hall; a moment later snow falls from them. He has already looked back at the floor. The queen has not.",
+      "characters": ["Ruler: full rig, FRONT (the rig has no three-quarter art), 28 percent, centre-left", "Queen: single picture, front, 22 percent, right"],
+      "beats": [
+        {"f": 132, "who": "Ruler", "what": "Standing, head down, fist at his side (carried from S2); idle offset on twos, hem sway"},
+        {"f": 143, "who": "Queen", "what": "On 'why': tilts 4 degrees toward him"},
+        {"f": 156, "who": "Ruler", "what": "On 'man': head AND shoulders lift toward the sky (head up 12 px, shoulders 6 px, hood follows; 3 staged steps on twos): the first thing the eye catches"},
+        {"f": 167, "who": "Ruler + sky", "what": "On 'power': his right forearm flicks out sideways from the hip to about 45 degrees, hand swapped to open (ease 6 f on twos), and returns by f177; three flat clouds pop in over the hall with small puffs at f167, 169, 171, covering part of the stars"},
+        {"f": 172, "who": "Queen", "what": "Startled hop (8 px up, settle over 4 f on twos)"},
+        {"f": 179, "who": "Ruler + snow", "what": "On 'anything': his head drops back to the floor (3 steps); on the same frame the first snowflakes leave the clouds (weather on, 2 depth layers, 48 crisp flakes)"},
+        {"f": 186, "who": "Queen", "what": "Tilts her head back to watch the snow, small sink"}
+      ],
+      "camera": "Truck right 2 percent of width per second, eased, past the foreground column edge, running throughout; he starts 40 percent across and ends at 36. No shake.",
+      "liveness": ["camera truck with column parallax", "ruler: head lift, hand flick, head drop, idle, hem", "queen: tilt, hop, look up", "2 lantern flames (deforming on twos)", "armillary rings (mechanical loop)", "clouds popping in, then drifting slowly right", "snow from f179 (weather)", "green throne drape edge sway"],
+      "fx": ["Pop-in with puff x3 (clouds) at f167-171", "Weather: snow from f179, few crisp flakes; no sky colour change, no glow"],
+      "text": "none",
+      "feel": "Calling a snowstorm costs him a flick of the wrist and does not interest him. So the scar is a choice."
+    },
+    {
+      "id": "S4",
+      "group": "A",
+      "f0": 194,
+      "f1": 256,
+      "narration": "keep the one thing he hates the most? (8 words, f190-245), then 'To'@252 and the start of 'answer'@254 are heard over the held face [62 f = 2.58 s]",
+      "anchor": {"w": "one (thing)", "f": 204, "type": "noun shown as where his eyes go; then feeling word 'hates'@221", "cut_lead_f": 10},
+      "link": "Anchor 'one thing'@204 (the scar, shown as where his eyes go); flip on the feeling word 'hates'@221; release on 'most'@231. Cut 10 f before 'one'. REACTION close with a two-part emotional turn (2.6.11); P3 'face'. Not a button (the next shot is still the hall). Last event f240, then a 16 f held tail; the first two words of the next sentence play over it (trade-off taken so the S5 cut sits 1.0 s before 'leave'). Differs from S3 in framing (close vs wide), cast (queen out), state (snow now falling past him).",
+      "mode": "Reaction (two-part emotional turn; the quiet contradiction that poses the question)",
+      "framing": "Close, front: masked face 80 percent of frame height, slightly right of centre (the same scale as the already-built name close-up, so the existing raster rig holds; not an extreme close)",
+      "set": "Throne hall, position 3 (single close), state 'clouds and snow'",
+      "set_status": "reused",
+      "picture": "The whole mask inside the green hood, shoulders at the bottom edge. Behind him, sharp: the green diamond-pattern throne panel at left, one lantern flame at right, navy sky with about 6 stars and the edge of one conjured cloud, slow snow in two layers. His pupils travel down and sideways toward his own cheek, toward what is under the metal. One snowflake lands on the cheek plate and stays (cold metal). The brows slam down in hatred, then let go into something much sadder, and the flake slides off like the tear the mask cannot make.",
+      "characters": ["Ruler: full rig, front, face 80 percent"],
+      "beats": [
+        {"f": 194, "who": "Ruler", "what": "Slits half closed, pupils low (carry-over of 'sad')"},
+        {"f": 198, "who": "Ruler", "what": "Lids open fully (the one blink-like move, placed before a look)"},
+        {"f": 204, "who": "Ruler", "what": "On 'one thing': pupils slide down-left toward his own cheek (2 steps on twos) and hold"},
+        {"f": 208, "who": "Snowflake", "what": "One flake lands on the cheek plate just below the screen-left slit and sits"},
+        {"f": 221, "who": "Ruler", "what": "On 'hates': 1 f snap to 'angry': brows slam down and in, slits to the squint preset; head jolts 3 px, shoulders rise 6 px over 4 f"},
+        {"f": 231, "who": "Ruler", "what": "On 'most': brows release to 'sad', slits soften, pupils drop; head lowers 5 px on twos, hood lags 3 f"},
+        {"f": 240, "who": "Snowflake", "what": "The flake slides down the cheek plate and off the jaw line. Face then held (idle on twos, snow, flame, push) for 16 f to the cut"}
+      ],
+      "camera": "Push in 2 percent per second, constant, first frame to last. No shake.",
+      "liveness": ["camera push", "ruler face track (lids, pupils, brows: 4 flips) and shoulders", "background snow in 2 layers", "lantern flame behind (sharp)", "the landed snowflake (land, sit, slide)", "hood edge cloth lag"],
+      "fx": ["Weather: snow continues", "No glow, no light band, no glint on the metal"],
+      "text": "none",
+      "feel": "Hatred that turns into grief in one second; the question is now personal."
+    },
+    {
+      "id": "S5",
+      "group": "A",
+      "f0": 256,
+      "f1": 305,
+      "narration": "[To answer] that, we have to leave the throne. ('To'@252 and 'answer'@254 begin over the end of S4; in this shot f259-303) [49 f = 2.04 s]",
+      "anchor": {"w": "leave", "f": 280, "type": "action (the camera does the leaving)", "cut_lead_f": 24},
+      "link": "Anchor 'leave (the throne)'@280 (action; the camera does the leaving). Cut at f256, 24 f = 1.0 s before 'leave' (the limit). In-shot events on 'that'@259 (left lantern off), f266 (right lantern off), 'leave'@280 and 'throne'@291. P9 depart; returns to the film's early image (him from behind before the throne) with variables changed. Differs from S4 in framing (wide vs close), facing (back), cast (queen back), state (lights going out).",
+      "mode": "Literal (departure) with callback framing",
+      "framing": "Wide, axial, intentionally 'small and alone': ruler from behind 24 percent of frame height falling to about 22.5, dead centre; queen 20 falling to about 18.8 percent at right",
+      "set": "Throne hall, position 6 (axial wide down the gold floor lane, slightly raised); state 'lights out, snow hangs'",
+      "set_status": "redressed",
+      "picture": "Straight up the gold lane at the big throne under its ring. He stands with his back to us before the steps (existing back-view picture); the queen is a small white figure by the small throne. Snow falls across the whole terrace under the three clouds. As we back away, a cream column slides in at each frame edge; the left lantern goes dark, then the right, and the floor drops one cool step so the white peaks at screen-left are the brightest thing left. He turns his hood toward those peaks. Every snowflake stops in the air, and then begins, slowly, to go up.",
+      "characters": ["Ruler: back-view picture, 24 to 22.5 percent, centre", "Queen: single picture, front, 20 to 18.8 percent, right of the small throne"],
+      "beats": [
+        {"f": 256, "who": "Ruler", "what": "Back view, still, hem sway on twos; snow falling"},
+        {"f": 259, "who": "Left lantern", "what": "On 'that': switches off (flat cream shape to slate grey, 1 f, flame gone)"},
+        {"f": 266, "who": "Right lantern", "what": "Switches off; floor and steps drop one cool tone; sky and peaks unchanged"},
+        {"f": 280, "who": "Ruler + snow", "what": "On 'leave': his hood turns toward the peaks at screen-left (card tilt 4 degrees plus 6 px shoulder shift, 3 steps on twos): a pointer to where we go next. On the same frame every flake decelerates over 4 f and hangs"},
+        {"f": 286, "who": "Queen", "what": "Tilts her head up at the hanging snow"},
+        {"f": 291, "who": "Snow", "what": "On 'throne': all flakes begin to rise, slowly, accelerating; the clouds start drifting the other way"}
+      ],
+      "camera": "Pull back 3 percent per second along the axis, constant, the two foreground columns entering the frame edges; running at f256 and still running at the cut. No shake.",
+      "liveness": ["camera pull with column parallax", "snow: fall, hang, rise (weather)", "2 lanterns switching off (light state change), their flames until then", "armillary rings (mechanical loop)", "ruler: hem sway, hood turn", "queen: idle, tilt up", "green throne drape sway; clouds reversing"],
+      "fx": ["Light state swap at f259 and f266 (flat, no fade)", "Weather reversal: hang at f280, rise from f291 (the segment's time device)"],
+      "text": "none",
+      "feel": "We are leaving him alone with his question; the answer is out by those mountains, and the world starts to rewind."
+    },
+    {
+      "id": "S6",
+      "group": "C",
+      "f0": 305,
+      "f1": 349,
+      "narration": "We have to go back a long way (8 words, f311-348) [44 f = 1.83 s]",
+      "anchor": {"w": "back", "f": 321, "type": "time", "cut_lead_f": 16},
+      "link": "Anchor 'back'@321 (time), further events on 'long'@337 and 'way'@343. Cut 16 f before 'back', 6 f before the sentence starts. P9 route, done as rule 2.6.12 (the same place losing one structure at a time). Differs from S5 in FRAMING (tight long-lens object view vs wide), cast (no figures), camera direction (push toward the towers vs pull down the aisle), set state (towers un-build).",
+      "mode": "Literal (time passing by redress); the segment's one no-character shot (a tiny code figure appears at f343)",
+      "framing": "Tight long-lens object view of the tower group: the tallest lilac tower about 70 percent of frame height, just left of centre; the two shorter towers at 55 and 45 percent beside it; the green hill band and the FOOT of the tallest white peak fill the frame behind; a strip of navy sky with about 8 constant stars across the top. No parapet, no foreground object, no blur",
+      "set": "Hall outlook: the hall's own far background (lilac towers, green hill band, white peak) seen as if through a long lens from the terrace, state 'rewind'; built from exact copies of the hall's far cards in its own shot file",
+      "set_status": "new (small build from copied hall cards; no new design)",
+      "picture": "The towers that have stood behind the thrones all film, now close and filling the picture: three lilac towers with lit cream windows, the green hill band behind their feet, the lower slope and pale blue shadow facet of the tallest white peak behind that, navy sky and a few stars above, exactly the hall's shapes and colours. The night does not change. Snow rises instead of falling, crisp and sparse, in two depth layers in front of and behind the towers; the edge of one conjured cloud slides backwards across the top. The tower windows go dark, then the towers pop out of existence one by one, tallest first; three flat dark-green pines pop up on the bare hill where they stood. In the gap the tallest tower left, on the peak's foot, one small warm point appears with a thread of smoke, and beside it one tiny seated two-tone figure: a fire, and someone at it.",
+      "characters": ["Tiny seated figure by the fire point: code polygon in 2 tones (dark green body, darker head), 2-3 percent of frame height, from f343; not a puppet"],
+      "beats": [
+        {"f": 305, "who": "Snow and cloud", "what": "Snow rising in 2 layers; cloud edge drifting right-to-left"},
+        {"f": 309, "who": "Tower windows", "what": "Lit windows of the three towers go dark in a stagger (f309, 311, 313)"},
+        {"f": 321, "who": "Tallest tower", "what": "On 'back': pops out with a flat puff; bare hill and the peak's foot behind it"},
+        {"f": 327, "who": "Second tower", "what": "Pops out with a puff"},
+        {"f": 333, "who": "Third tower", "what": "Pops out with a puff; only hill and peak remain"},
+        {"f": 337, "who": "Pines", "what": "On 'long': three flat pines pop up where the towers stood (stagger f337, 339, 341), leaving the tallest tower's gap open"},
+        {"f": 343, "who": "Fire point + tiny figure", "what": "On 'way': in the gap the tallest tower left, a small flat warm-yellow shape appears on the peak's foot, flickering on twos, with a thin thread of 3 smoke circles; on the same frame a tiny seated two-tone figure sits beside it and shifts 1-2 px on twos (leans to the fire at f346)"}
+      ],
+      "camera": "Push forward 3 percent per second toward the tallest tower's base (where the fire point will appear), constant, running throughout; towers, hill band, peak and the two snow layers separate in parallax. No shake.",
+      "liveness": ["camera push with 4-band parallax (near snow, towers and pines, hill band, peak and sky)", "rising snow (weather)", "cloud edge drifting backwards (sky mover)", "tower windows switching off (light)", "three tower pop-outs and three pine pop-ins (state events)", "fire point flicker and smoke thread from f343", "tiny figure shifting from f343"],
+      "density": "Object view: the tower group plus context props (hill band, peak foot, pines, cloud edge, stars): 6 kinds in 3 depth bands.",
+      "fx": ["Pop-out with puff x3 (f321, 327, 333); pop-in x3 (pines, f337-341)", "Weather reversed (kit Weather with f run backwards)", "No blur in this shot (the parapet strip and its NearBlur are removed): the whole segment now has blur 0"],
+      "text": "none",
+      "feel": "Years falling away; his kingdom was not always here, but these mountains were, and someone small is sitting by a fire under them."
+    },
+    {
+      "id": "S7",
+      "group": "B",
+      "f0": 349,
+      "f1": 391,
+      "narration": "to a camp in the mountains (6 words, f350-388; 'and'@389 falls 2 f before the next cut) [42 f = 1.75 s]",
+      "anchor": {"w": "camp", "f": 369, "type": "place", "cut_lead_f": 20},
+      "link": "Anchor 'camp'@369 (place); 'mountains'@382 confirmed by the same peaks and by the boy looking up at them. Cut 20 f (0.83 s) before 'camp'. P9 arrive + P6 silent plant. Differs from S6 in framing (wide vs tight object view), set (camp vs hall outlook), cast (three figures vs none), weather (snow now falls), light (dusk vs night).",
+      "mode": "Establishing (new hub)",
+      "framing": "Wide exterior; two camp folk 20 percent of frame height at the fire, right of centre; the boy 20 percent from behind, seated, left of centre and a step nearer the camera",
+      "set": "Mountain camp, position 1 (establishing wide); state 'dusk, light snow'",
+      "set_status": "new",
+      "picture": "A clearing under the same white peaks (the hall's own peak cards, now with no towers and a dusk tone), the three pines of S6 at the tree line. Slate-blue dusk sky in three flat bands, no stars. In the clearing: three patched canvas prism tents (the hero tent centre-right, sagging, with one big GREEN patch and a crooked tin stovepipe), one box wagon with a canvas arch at the far left, a washing line with four cloths from wagon to tent, a campfire with a hanging pot at centre. Two camp folk at the fire. Apart from them, on an upturned crate, a small figure in a green shawl far too big for him sits with his back to us (the tiny figure of S6, now readable). Snow falls the normal way from the first frame. A snowy pine branch crosses the top-right corner (sharp).",
+      "characters": ["Camp folk A (existing villager, calm drawing, cool-tinted): front, 20 percent, at the pot", "Camp folk B (existing villager, calm drawing, cool-tinted): front, 20 percent, right of the fire", "Boy Victor: new back-view piece, seated, 20 percent, left of centre"],
+      "beats": [
+        {"f": 349, "who": "Snow", "what": "Falling normally from frame one: the rewind is over (no hang)"},
+        {"f": 358, "who": "Camp folk B", "what": "Stamps against the cold: whole card hops 3 px twice on twos (f358-361, f362-365), then settles to its idle offset"},
+        {"f": 369, "who": "Camp folk A", "what": "On 'camp': leans to the pot and back (whole drawing tilts 6 degrees on twos); the fire steps one size up"},
+        {"f": 382, "who": "Boy", "what": "On 'mountains': his head tips back to look up at the peaks (back-view card tilt 6 degrees, 3 steps), shawl hem lags 3 f. The one thing the eye lands on"}
+      ],
+      "camera": "Truck left 2.5 percent of width per second, eased, the pine branch sliding right across the corner; ends with the boy nearer centre, pointing the eye at him for the cut. No shake.",
+      "liveness": ["camera truck with branch and band parallax", "snow, 48 flakes in 2 layers (weather)", "campfire: 3 fat tongues as one mass on twos, and pot steam circles (light/flame)", "washing line cloths and tent flap sway (cloth)", "stovepipe smoke circles from the hero tent", "camp folk B stamp (f358), camp folk A lean (f369), boy head tilt (f382): one beat per puppet; all three idle on twos"],
+      "fx": ["Weather: snow", "Smoke and steam circles (4-6)", "Fire is flat yellow and orange shapes, no halo"],
+      "text": "none",
+      "feel": "Small, cold, poor, a long way from any throne; and one child sitting apart, looking up."
+    },
+    {
+      "id": "S8",
+      "group": "B",
+      "f0": 391,
+      "f1": 435,
+      "narration": "and a boy named Victor. (5 words, f389-434) [44 f = 1.83 s]",
+      "anchor": {"w": "boy", "f": 403, "type": "noun (the recognition glare lands on it)", "cut_lead_f": 12},
+      "link": "Anchor 'boy'@403 (noun; cut 12 f = 0.5 s before it; the recognition glare lands on the word). 'Victor'@426 is the in-shot tag event ON the word (bump of the tag), per 2.3.9. The shot ends 9 f after 'Victor' starts and 8 f before 'Kings'@443. P6 tagged close. Differs from S7 in framing (close vs wide), cast (one vs three), facing (front vs back).",
+      "mode": "Literal, naming (introduction close)",
+      "framing": "Close, front: the boy's head and shoulders, face 70 percent of frame height, left of centre; name tag in the clear area at upper right",
+      "set": "Mountain camp, position 3 (single close against the hero tent's canvas wall); state 'dusk, light snow'",
+      "set_status": "reused (set opened in S7)",
+      "picture": "The boy from the front for the first time: about eight, dark untidy hair with one tuft, cold-pink nose and ears, wrapped in a patched green shawl with the hood down (the film's green, on a child). Clean background, sharp: the hero tent's cream canvas with a corner of its green patch, one tent rope, a warm flat firelight tone on his screen-left cheek, snow falling. He has exactly the mask's eyebrows: heavy, angled, far too stern for the small soft unmarked face. The film's existing name tag (kit NameTag, the same bold label with hand-drawn arrow as the earlier name close-up) sits at upper right from the first frame, its arrow drawing on toward him.",
+      "characters": ["Boy Victor: new rig (head, brows, pupils, lids, mouths, cupped hands), front, close"],
+      "beats": [
+        {"f": 391, "who": "Boy + tag", "what": "Blowing into his cupped hands at his mouth: mouth 'o', brows soft, one small breath puff at f393; tag text present, arrow drawing on over f391-403"},
+        {"f": 403, "who": "Boy", "what": "On 'boy': hands drop out of frame, eyes come up to camera, brows snap into the ruler's glare (1 f): we recognise him"},
+        {"f": 414, "who": "Boy", "what": "A snowflake lands on his nose: pupils cross toward it, brows pop up, mouth small-open. The glare breaks; he is a child"},
+        {"f": 426, "who": "Tag + boy", "what": "On 'Victor': the tag bumps (scale pop, 3 steps on twos, settled by f432); he shakes the flake off (head left-right, 2 steps)"},
+        {"f": 431, "who": "Boy", "what": "Glare snaps back, eyes go up-right: glaring at his own name. Held 4 f to the cut at f435"}
+      ],
+      "camera": "Hold with drift-push 0.8 percent per second, running throughout (allowed: 5 acting changes in the shot). No shake.",
+      "liveness": ["camera drift", "boy face track (mouth, brows, pupils: 4 flips), hands leaving, head shake", "snow in 2 layers over the canvas", "tent canvas and rope sway (cloth)", "firelight tone on his cheek stepping between 2 flat values on twos", "tag arrow draw-on and bump"],
+      "fx": ["Name tag with arrow: kit NameTag, present from f391, arrow draw-on 12 f, bump at f426", "One breath puff at f393 (single small smoke circle)", "Weather: snow"],
+      "text": "victor (one word, on the film's existing kit name tag, in the same lettering as the earlier 'doctor doom' label so the film has one tag system; glyph height at least 4 percent of frame height; static after f403)",
+      "feel": "That scowl, on that small unscarred face: it is him, and he was just a cold kid."
+    },
+    {
+      "id": "S9",
+      "group": "C",
+      "f0": 435,
+      "f1": 480,
+      "narration": "Kings are usually born in castles. (6 words, f443-479) [45 f = 1.88 s]",
+      "anchor": {"w": "Kings", "f": 443, "type": "role noun", "cut_lead_f": 8},
+      "link": "Anchor 'Kings'@443 (role noun); cut 8 f = 0.33 s before it (inside the 0.3-1.0 s window). Events on 'born'@458 and 'castles'@470. The shot ends 10 f after 'castles' and 8 f before 'Victor'@488. P7 before/after, first half. Differs from S8 in set (stone room vs camp), framing (medium vs close), cast (king vs boy), palette (warm stone, red and gold).",
+      "mode": "Literal / callback set (first half of the before-after pair)",
+      "framing": "Medium: the canopy-and-cradle group 60 percent of frame height on the vertical centre line, canopy peak 20 percent down from the top of frame; king 58 percent of frame height at screen-right; a sharp stone pillar edge at the left frame edge as the foreground edge (the mirror of the wagon edge in S10)",
+      "set": "The ordinary king's stone throne room, position 2 (medium, camera a step right of the axis so the gold throne sits behind at screen-left); redress state 'royal birth'",
+      "set_status": "redressed",
+      "picture": "The grey-mauve stone room the viewer already met, exactly as built: its gold throne with the red back behind at screen-left, its small blue windows, its blue pennants with gold trim, its pillars. There are NO torches in this room and none are added. At the very left frame edge, nearest the camera and SHARP: the edge of a stone pillar (a code box in the room's stone tones, about 6 percent of frame width). The added hero group, all code polygons: a gold cradle under a tall pointed red-and-gold canopy with a gold fringe on two thin gold poles, one clean triangle against grey stone, shaped exactly like a tent. In the cradle lies a white swaddled bundle, no face drawn. The bearded king in red STANDS at screen-right, front-on (his existing standing picture), his hanging arm resting on the cradle rim, rocking it. A tiny gold crown pops onto the bundle; he throws his arms up, overjoyed. Window shafts: the room's baked soft shafts STAY (KingRoom.tsx is not edited; rule 8.2b allows one shaft per shot); the foreground pillar edge is placed to cover the screen-left window and its shaft so only one shaft reads.",
+      "characters": ["Bearded king in red: existing standing body, hanging arm (k-3), raised open hand (k-5), shocked head overlay (k-1); front, 58 percent, right", "White swaddled bundle in the gold cradle (code-drawn prop, no face)"],
+      "beats": [
+        {"f": 435, "who": "King", "what": "Already rocking the cradle with his hanging arm (arm swings 2 poses on twos, cradle tilts with it, bundle rides along)"},
+        {"f": 443, "who": "King", "what": "On 'Kings': small proud hop (5 px up, settle on twos), rocking continues"},
+        {"f": 458, "who": "Bundle", "what": "On 'born': a tiny three-point gold crown pops onto the bundle with a flat puff (pop-in with one overshoot, settled by f466)"},
+        {"f": 470, "who": "King", "what": "On 'castles': both arms thrown up (hanging arm swaps to the raised open-hand piece, its mirror on the other side; ease 6 f on twos with one in-between), body hop 6 px, head flips to the existing shocked-delighted head; the pennants catch the movement. Held with idle to the cut"}
+      ],
+      "camera": "Hold with drift-push 1 percent per second on the centre line, running throughout (the picture changes three times; identical move to S10 so the pair matches); the left pillar edge moves faster than the room. No shake.",
+      "liveness": ["camera drift-push with foreground pillar-edge parallax", "king: rocking arm, hop, arm throw and head flip", "AMBIENT 1 (cloth): the room's existing blue pennants sway, and the canopy's gold fringe sways", "AMBIENT 2 (prop loop): the cradle rocking, bundle riding along", "crown pop (state event)"],
+      "density": "Prop kinds: gold throne, canopy on poles, cradle with bundle, pennants, window (5) plus ONE foreground edge (stone pillar, sharp).",
+      "fx": ["Pop-in with puff: the crown at f458 (flat shapes; no sparkle sprite on the gold)", "No torches, no flame, no added glow; the one soft element is the room's existing baked window shaft (one visible)"],
+      "text": "none",
+      "feel": "Pomp and comfort; the way it is supposed to go."
+    },
+    {
+      "id": "S10",
+      "group": "B",
+      "f0": 480,
+      "f1": 545,
+      "narration": "Victor von Doom was born in a tent. (8 words, f488-545) [65 f = 2.71 s]",
+      "anchor": {"w": "Victor (von Doom)", "f": 488, "type": "name; button word 'tent'@526", "cut_lead_f": 8},
+      "link": "Anchor 'Victor von Doom'@488 (name, answered by the tent lighting up) and the button word 'tent'@526 (noun; the snow slab falls on it). Cut 8 f before 'Victor'. P7 second half + P12 button (the segment's only button; the next segment must open on a different set). Differs from S9 in set (camp vs stone room), state (night, heavy snow), cast (a shadow only vs king in the flesh); same centre-line triangle on purpose.",
+      "mode": "Gag / button (before-after pay-off, segment close)",
+      "framing": "Medium, matched to S9: the hero tent 60 percent of frame height on the centre line, its peak on the same screen point as the canopy's peak (20 percent down); the wagon's dark edge at the left frame edge as the foreground edge",
+      "set": "Mountain camp, position 2 (square-on to the front of the hero tent); state 'the night he was born': night grade, heavy snow, campfire dead, tent lit from inside",
+      "set_status": "redressed",
+      "picture": "Match cut on the triangle: where the red-and-gold canopy stood, the patched tent with the green patch and crooked stovepipe, years earlier, at night in thick snow. The campfire in front is a dead grey ring, the washing line is bare, the wagon is a dark shape at the left edge (where S9 had its pillar), the white peaks pale behind, about 20 constant stars. The tent is dark for 8 frames. Then a light comes on inside: the front canvas becomes one flat cream shape, and on it, sharp and dark, the shadow of a seated woman in a headscarf rocking a bundle of exactly the same outline as the royal one. Nothing pops onto this baby's head. A slab of snow slides off the roof and lands with a soft puff, the roof sags, the stovepipe tips, and the shadow curls round the bundle.",
+      "characters": ["Mother: new flat single-tone silhouette, 2 pieces (body; forearms cradling), on the tent canvas, 38 percent of frame height", "Bundle: the S9 bundle polygon filled dark, on her forearms; two tiny code-drawn arm shapes"],
+      "beats": [
+        {"f": 480, "who": "Tent", "what": "Dark tent, flap moving in the wind, heavy snow"},
+        {"f": 488, "who": "Tent", "what": "On 'Victor': the inside light comes on (flat cream state swap in 2 steps on twos); the mother's shadow is there, rocking the bundle left-right on twos, the same rhythm as the king's cradle"},
+        {"f": 501, "who": "Baby shadow", "what": "On 'was': two tiny arm shapes wave from the bundle (3 poses on twos): he is yelling"},
+        {"f": 514, "who": "Tent", "what": "On 'born': a gust: the green patch's loose corner and the door flap whip once; the inside light dips one tone and recovers"},
+        {"f": 526, "who": "Tent", "what": "On 'tent': a slab of snow slides off the roof (6 f) and lands in front with a flat puff at f532; the roof line sags 8 px, the stovepipe tips 12 degrees and coughs one smoke circle"},
+        {"f": 530, "who": "Mother shadow", "what": "Pulls the bundle to her chest and curls over it (2 steps); holds, rocking very slightly"},
+        {"f": 539, "who": "Tent", "what": "Inside light dips one tone and holds; snow keeps falling onto the bare patch of roof"}
+      ],
+      "camera": "Hold with drift-push 1 percent per second on the centre line, same as S9, running to the last frame. No shake (the snow landing is a puff, not an impact).",
+      "liveness": ["camera drift-push with parallax (wagon edge, tent, peaks)", "heavy snow, 60 flakes in 2 layers (weather)", "mother and baby shadow (rock, wave, curl)", "tent flap, green patch corner, rope sway (cloth)", "inside light switching on and stepping between flat cream tones (light)", "stovepipe smoke circles; the sliding snow slab and its puff"],
+      "fx": ["Light state swap at f488", "Flat puff where the slab lands (f532), one smoke circle from the stovepipe", "Weather: heavy snow", "The lit canvas is a flat cream shape with no halo"],
+      "text": "none",
+      "feel": "Same triangle, same bundle, no gold: a snowdrift instead of a crown. Funny for a second, then cold."
+    }
+  ],
+  "sets": [
+    {
+      "name": "Throne hall (existing hub)",
+      "status": "reused; new one-variable states: 'cracked column' (S2), 'clouds and snow' (from S3 f167), 'lights out' (S5)",
+      "brief": "Seat of power, hub. Serves S1-S5. Nothing is rebuilt and ThroneHall.tsx is not edited: additions live in the new shot files. It is an OPEN-AIR terrace with TWO lanterns. Positions: 3 pushed to extreme close (S1), 2 medium with a sharp front-column edge at the left frame edge (S2), 1 off-axis wide with truck and a column edge at right (S3), 3 single close at the scale of the earlier built name close-up (S4), 6 axial wide pull-back (S5). Position 3 is used twice in 5 shots (the allowed maximum). The white peaks at screen-left must be clearly visible in S3 and S5 because S6 travels to them.",
+      "palette": "Unchanged: cream and gold, navy night sky, green throne panels, lilac towers, white peaks. No day state. S5 ends one cool step darker on floor and steps after both lanterns switch off. Mean luma near 150; cream, never pure white.",
+      "layers": "Existing: navy sky with about 30 constant stars; white peaks and green hill band; lilac towers with lit windows; parapet; thrones on the stepped dais under the gold ring; gold floor lane; foreground column edge (S2 one at left, S3 one at right, S5 two), always sharp. Added: three flat clouds above the hall from S3 f167.",
+      "props": "Existing: big throne, small throne with green drape, gold ring, 2 lanterns, armillary, columns (frontColumns), steps. Added in code: crack decal and 2 stone chips on one column (S2, removed by the action); 3 flat clouds; for S1 a code-drawn copy of the mask plate, brow and slit with skin, lid and 3 scar ridges behind the slit hole.",
+      "light": "Existing night key. Lantern flames are flat cream shapes, no halo, no bloom. S1: a flat light shape inside the slit only. S5: left lantern off at f259, right at f266 (flat swap). No glow of any kind in the hall shots.",
+      "movers": "2 lantern flames, armillary rings, green throne drape edge (a declared ambient in S2), cloak and hood sway, tower window switching off (S2 f104), clouds (pop in, drift, reverse), snow (fall, hang, rise)."
+    },
+    {
+      "name": "Hall outlook (tight long-lens view of the hall's own towers, hill band and peak foot)",
+      "status": "new small build made of exact copies of the hall's far cards; one shot (S6); its own shot file (build group C)",
+      "brief": "Journey use, framed as a tight object view. No new design: the three lilac towers, the green hill band, the lower slope of the tallest white peak with its blue shadow facet and a strip of navy sky are copied from the hall as built (same shapes, colours, order), enlarged so the tallest tower is about 70 percent of frame height. No parapet and no foreground object, so no blur. If the hall exports these cards as a component, import and render them instead of copying. One variable changes: structures are removed (three towers) while the weather runs backwards; pines replace the towers; it ends as bare hill under the peak with one fire point and one tiny seated figure in the gap the tallest tower left, so S7 reads as the same mountains. Because the cards are enlarged about 2.5 times, they must be vector or polygon copies, not scaled rasters.",
+      "palette": "Navy night, lilac towers, green hill band, white peak with pale blue facet; one warm yellow point at the end.",
+      "layers": "Sky strip with about 8 stars and one cloud edge; peak foot; green hill band; three towers (popped out); three pines (popped in); far and near snow layers.",
+      "props": "Three towers with window shapes, three pines, one cloud edge, campfire point with smoke thread, tiny seated two-tone figure (code polygon).",
+      "light": "Night throughout (no sky flips). Tower windows switch off. No glow on the fire point.",
+      "movers": "Rising snow, cloud edge drifting backwards, windows switching off, three pop-outs, three pop-ins, fire point flicker and smoke, tiny figure shifting."
+    },
+    {
+      "name": "Mountain camp (NEW hub)",
+      "status": "new: the only new place; built in code from primitives (no generated art for the set)",
+      "brief": "Home / public place, hub: S7, S8, S10 now; the childhood chapters return to it. Read in 1 s: poor travelling camp, high mountains, winter, long ago. Scope cap: exterior only; 3 camera positions; 2 states; 3 prism tents, 1 box wagon with canvas arch, campfire with tripod pot, washing line. No painted wagons, lantern string, musician, horse, hamlet or far castle. Far background: the hall's peak cards copied exactly (same silhouettes), tinted for dusk or night, with the three pines from S6 on the tree line. Hero prop: the patched tent with one big GREEN patch and a crooked tin stovepipe. Positions: 1 establishing wide down the clearing to the fire (S7); 2 square-on front of the hero tent, tent 60 percent of frame height, peak on the centre line 20 percent down, matching the S9 canopy, wagon edge at the left frame edge (S10); 3 single close against the tent's canvas wall (S8). States: 'dusk, light snow' (S7, S8); 'birth night' (S10: night grade, heavy snow, campfire a dead grey ring, washing line bare, wagon a dark shape, tent lit from inside). Note for the owner: the second state changes more than one variable on purpose (night plus weather) to oppose S9.",
+      "palette": "Dominant slate blue and blue-grey snow (about 70 percent, desaturated); accent weathered canvas cream and ochre patches (20); warm points: campfire, lit tent (10). The tent's green patch is the only green in the set, so the boy's shawl and the ruler's cloak rhyme with it. Snow is cream-blue, never pure white. Puppets 20-30 percent lighter and more saturated than the set.",
+      "layers": "(1) sky in 3 flat bands (dusk: no stars; night: about 20 constant stars); (2) the hall's peaks, then 2-3 ridge bands each lighter and bluer; (3) pine tree line with snow caps; (4) mid-ground: two small tents, wagon, washing line; (5) character plane: trampled snow clearing with a painted path from fire to hero tent, campfire, hero tent, upturned crate; (6) foreground: snowy pine branch across the top-right corner (S7) or the wagon edge at left (S10), sharp, not blurred.",
+      "props": "Hero tent with green patch, stovepipe and rope; 2 smaller tents; box wagon; campfire with tripod and pot; washing line with 4 cloths; upturned crate (boy's seat); stick pile; pines; roof snow slab (S10). All primitives and polygons.",
+      "light": "Dusk: the campfire is the motivated source (flat yellow and orange, 3 fat tongues, no halo); firelight on the boy's cheek as two flat tones alternating on twos. Night: the tent itself, a flat cream canvas shape with the shadow figures as hard dark shapes on it. Blob shadows under figures only.",
+      "movers": "Snow in 2 layers, campfire and pot steam, washing line and tent flap, stovepipe smoke; in S10 the inside light stepping, the loose patch corner, the roof slab."
+    },
+    {
+      "name": "Ordinary king's stone throne room (existing)",
+      "status": "redressed: state 'royal birth'. Added in the shot file: the cradle-and-canopy group (one structure) and one foreground stone pillar edge. KingRoom.tsx is not edited.",
+      "brief": "Stands in for 'castles' without a new exterior; the viewer knows this room as 'what a normal king has'. Serves S9 only, position 2 (medium, a step right of the axis so the throne sits at screen-left and grey stone is behind the canopy's outline). AS BUILT the room has: grey-mauve stone wall, two small blue windows with baked soft light shafts, blue pennants with gold trim, two pillars, the gold throne with red back. It has NO wall torches and none are added. The canopy is deliberately a tent-shaped triangle, peak on the frame's centre line 20 percent down, so S10 matches by shape. Cradle, canopy, poles, fringe, bundle and crown are code polygons. The king stands at screen-right. A sharp stone pillar edge (code box) sits at the left frame edge, mirroring the wagon edge of S10.",
+      "palette": "Existing grey-mauve stone dominant, gold throne and cradle, red throne back and canopy as accent, blue pennants and windows as existing; warm points are the golds (no flame). This is the warm, rich half of the pair.",
+      "layers": "Back stone wall with the room's existing windows, shafts and pennants; pillars; gold throne at left; floor lane; canopy and cradle as the hero group on the centre line; king at right; foreground stone pillar edge at the left frame edge (sharp).",
+      "props": "Gold throne with red back (existing), blue pennants with gold trim (existing), windows (existing), pointed red-and-gold canopy on two poles with gold fringe, gold cradle, white swaddled bundle, tiny gold crown, foreground pillar edge.",
+      "light": "The room's existing key and its baked window shafts, which STAY (8.2b allows one soft shaft per shot). The foreground pillar edge covers the screen-left window and shaft so one shaft is visible. Fallback if two still show in the approval still: add an optional prop to KingRoom to hide one shaft (a one-line change, owner to approve since it touches an existing set file). No torches, no flames, no added glow.",
+      "movers": "Blue pennants sway and canopy fringe sway (cloth), cradle rocking loop with the bundle (prop loop), king's arms, crown pop."
+    }
+  ],
+  "characters": [
+    {
+      "name": "The masked ruler",
+      "status": "existing rig; no new generated art",
+      "brief": "Carries paragraph A by covered-face acting: pupils, lids, brows, head offset inside the hood, shoulders, one arm. S1 eye slit only; S2 standing front (brow lift, reach toward his own jaw, fist); S3 small in the wide, FRONT view (head-and-shoulders lift, low hand flick, head drop); S4 close (pupils to his own cheek, glare, grief); S5 existing back-view picture with one hood turn. Only two views are used anywhere: the front rig and the back-view picture (no three-quarter art exists and none is requested). Default here 'sad', flip 'angry' on 'hates'. Never unmasked; no glowing hand, no chin on fist (both were in the previous 22.5 s).",
+      "needs": "Code only. (1) For S1 a polygon copy of the mask plate, brow and slit, with skin block, lid, pupil and 3 scar ridges behind the slit hole, in a shadow state and a lit state; check it beside the raster mask in a still so it reads as the same mask. (2) A right-arm pose that reaches toward his own jaw (S2); fallback if the arm pieces cannot do it: eyes only (pupils drop to his own cheek on 'but', lids half close on 'hasn't'). (3) A low sideways forearm flick with the open hand on the front rig (S3). (4) Hood tilt on the back-view picture (S5); fallback: rotate the whole card 3 degrees about the feet with a 6 px shoulder shift."
+    },
+    {
+      "name": "The queen in white",
+      "status": "existing single picture; no new art",
+      "brief": "Bystander face in the hall. S3: tilts toward him, startled hop when the clouds pop in, head back to watch the snow. S5: small, tilts up at the hanging snow. Not used in S1.",
+      "needs": "Existing tilt, hop and idle only."
+    },
+    {
+      "name": "Boy Victor",
+      "status": "NEW, named principal of the past (sheet 1, plus his back view on sheet 2)",
+      "brief": "Function: to be recognised. About eight, about 55 percent of the ruler's height. Silhouette: untidy dark hair with one tuft and a patched green shawl far too big, hood down, trailing: the ruler's colour and outline in miniature, readable from behind at 20 percent of frame height. Face: small, soft, unmarked, cold-pink nose and ears, small separated oval eyes with movable pupils (not large touching discs), closed mouth by default, and exactly the mask's heavy angled brows. Default: that glare; flip: surprised and soft when the snowflake lands. Proportion is settled BEFORE sheet 1 is generated, by a side-by-side still of two rough code mock-ups next to the existing ruler and queen: (a) head to body about 1:1.3, (b) the bible's 1:1.6. Both have a visible neck inside the shawl collar and real shoulders; the owner picks the one that sits in this film without the neckless big-head look. Pre-planted as a tiny code figure in S6, planted from behind in S7, tagged in S8; returns in every childhood chapter.",
+      "needs": "Sheet 1: head drawn large (at least 700 px tall) because S8 is a close; bust in shawl; 2 brows; 2 pupils; 2 lids; 4 mouths; cupped hands. Sheet 2: one small seated back view. Style reference passed to the generator: the existing ruler front art and queen art. Brow angle copied from the mask's brow piece. The S6 tiny figure is two code polygons in the shawl's green, no art."
+    },
+    {
+      "name": "Bearded king in red",
+      "status": "existing; no new art",
+      "brief": "The 'usual' case in S9. He is a STANDING picture with a baked calm face; available pieces are the hanging arm, the pointing arm, the raised open hand and a shocked head overlay. He stands at screen-right of the cradle: hanging arm rocks the cradle, proud hop on 'Kings', arms thrown up with the shocked-delighted head on 'castles'. No seated pose, no cradling, no brow acting.",
+      "needs": "Verify in a still that the raised open-hand piece and its mirror read as 'both arms up' from the shoulders with one in-between. Fallback: one arm up plus the hop and head flip."
+    },
+    {
+      "name": "Mother (shadow only) and the bundle",
+      "status": "NEW: two silhouette pieces on sheet 2; the bundle, baby arms and crown are code polygons",
+      "brief": "Never seen in the flesh: a hard, single-tone dark shadow on the lit tent canvas in S10, a seated woman in a headscarf with a bundle on her forearms. She rocks, then curls over the bundle after the snow falls. No overhead lift. The bundle is ONE code polygon used twice: white in the gold cradle (S9), dark on her arms (S10), so place is the only variable of the pair. No face is drawn on it.",
+      "needs": "Sheet 2: silhouette body without arms; silhouette forearms and hands in a cradling pose, pivot at the shoulders. Two tiny code-drawn arm shapes for the baby's wave. The bundle outline is fixed in shared_constants so groups B and C draw the same shape."
+    },
+    {
+      "name": "Camp folk A and B",
+      "status": "existing villagers (calm drawings), tinted only",
+      "brief": "Two of the six existing villagers at 20 percent of frame height by the fire in S7 only, cool-tinted in code so they sit in the dusk palette. Each has a job and one beat: B stamps against the cold at f358 (whole-card 3 px hop twice on twos); A leans to the pot on 'camp'@369. Unnamed, no tag, never react to camera. They are single baked pictures: no recolouring of clothes, no separate arms.",
+      "needs": "No new art. If they still read as lowland villagers in the approval still, drop B (its f358 beat goes with it; then move A's lean to f360 and the fire step-up stays on 'camp'@369 so the 349-369 stretch still has an event)."
+    }
+  ],
+  "new_sheets": [
+    {
+      "name": "Sheet 1: Boy Victor, front parts",
+      "contents": "One character's parts on a flat magenta background, well separated; flat cut-paper shapes, hard-edged tone blocks, no outlines, no soft shading; style matched to the existing ruler and queen art (passed as reference). Pieces: (a) HEAD, drawn large, at least 700 px tall: dark untidy hair with one tuft, pink nose and ears, eye whites as small separated ovals, no brows, no pupils, no mouth; (b) bust from the waist up wrapped in an oversized patched green shawl with the hood down, visible neck and shoulders, no head; (c) left and right heavy angled eyebrows as separate pieces, same angle as the ruler's mask brows; (d) two pupils; (e) two skin-coloured eyelids; (f) four mouths: closed, 'o', small open, flat; (g) one pair of small cupped hands. Generated only after the proportion still is approved.",
+      "used_in": "S8 (front close with tag); the lead's child state for the following chapters"
+    },
+    {
+      "name": "Sheet 2: Camp figures row",
+      "contents": "One row of three well-separated pieces on a flat magenta background, same flat finish: (a) boy Victor small full-figure BACK view, seated, green shawl trailing, hair tuft visible; (b) solid single-tone dark blue-brown silhouette of a seated woman in a headscarf, three-quarter view, without arms; (c) solid single-tone silhouette of two forearms and hands in a cradling pose (no bundle drawn; the bundle is a code polygon laid on top). Everything else in the segment (tents, wagon, pines, canopy, cradle, bundle, crown, pot, stovepipe, crack, scars, clouds, snow slab, pillar edge, tiny fire-side figure) is built from primitives, polygons and kit loops.",
+      "used_in": "S7 (boy from behind), S10 (mother's shadow on the tent canvas)"
+    }
+  ],
+  "groups": [
+    {
+      "id": "A",
+      "name": "Throne hall",
+      "shots": ["S1", "S2", "S3", "S4", "S5"],
+      "frames": [0, 305],
+      "sets": ["Throne hall (existing hub)"],
+      "new_art": "none (code-drawn mask for S1, crack, clouds, snow states)",
+      "notes": "Largest group because all five shots share the hall and may not be split. Owns the snow state machine (fall from f179, hang at f280, rise from f291) and the three clouds; S6 in group C continues both, so the cloud colours, flake size and count are taken from shared_constants."
+    },
+    {
+      "id": "B",
+      "name": "Mountain camp",
+      "shots": ["S7", "S8", "S10"],
+      "frames": [[349, 435], [480, 545]],
+      "sets": ["Mountain camp (NEW hub)"],
+      "new_art": "Sheet 1 (boy front parts), Sheet 2 (boy back view, mother silhouette body and forearms)",
+      "notes": "Builds the one new hub and the boy rig. S10 must match S9 (group C) on the triangle, bundle and camera move: use shared_constants, do not re-derive."
+    },
+    {
+      "id": "C",
+      "name": "Tower view and king's room",
+      "shots": ["S6", "S9"],
+      "frames": [[305, 349], [435, 480]],
+      "sets": ["Hall outlook (tight long-lens view of the hall's own towers, hill band and peak foot)", "Ordinary king's stone throne room (existing)"],
+      "new_art": "none",
+      "notes": "Two single-shot sets, both made of existing pieces plus code polygons. S6 copies the hall's far cards and hands the pines and peak to S7; S9 owns the before half of the pair."
+    }
+  ],
+  "shared_constants": {
+    "why": "Three groups build in parallel; these numbers are fixed here so nobody re-derives them and the cross-group matches hold.",
+    "pair_triangle": "S9 canopy and S10 tent: apex at x = 50 percent of frame width, y = 20 percent of frame height from the top, on frame f0 of each shot; group height (apex to ground line) 60 percent of frame height; base width 46 percent of frame width.",
+    "pair_camera": "S9 and S10: drift-push 1 percent per second (scale), constant, centred on the apex column.",
+    "pair_foreground_edge": "Sharp vertical edge object covering the leftmost 6 percent of frame width at f0: stone pillar in S9, dark wagon edge in S10.",
+    "bundle_polygon": "One closed polygon in a unit box of aspect 2.2:1 (width:height), points clockwise: [0,0.5],[0.12,0.15],[0.4,0],[0.75,0.05],[1,0.4],[0.95,0.75],[0.7,1],[0.3,1],[0.08,0.85]. Drawn 9 percent of frame width wide. White (cream) with one pale blue fold tone in S9; single dark shadow tone in S10. Rocking: plus and minus 4 degrees, period 16 f, on twos, same in both shots.",
+    "snow": "Crisp cream-blue flakes, 2 depth layers, 48 flakes (60 in S10), sizes 4 px and 7 px at 1080p; S6 runs the same field upward.",
+    "clouds": "Three flat pale clouds, 2 tones, as first drawn in S3; S6 shows the edge of the lowest one.",
+    "pines": "Three flat dark-green pines with cream-blue snow caps, heights 1 : 0.8 : 0.9, same order left to right in S6 and on the S7 tree line.",
+    "peak": "The hall's tallest white peak and its pale blue shadow facet, copied unchanged, is the landmark in S3, S5, S6, S7 and S10."
+  },
+  "self_check": "Section 10 run on the revised 10 shots. Tiling checked: 0-60-132-194-256-305-349-391-435-480-545, lengths 60+72+62+62+49+44+42+44+45+65 = 545; every beat frame lies inside its shot. 2 of 4 art sheets requested. 10 shots in 22.7 s = 26.4 per minute, mean 2.27 s, none over 3.0 s (S2 is exactly 3.00 s).\n\nREVIEW FIXES APPLIED (all eleven)\n1. S2/S3 cut moved 131 to 132; S3 anchor re-declared 'man'@156, lead 24 f = 1.0 s; 'power' and 'anything' are in-shot events.\n2. S4/S5 cut moved 246 to 256; lead to 'leave'@280 is 24 f = 1.0 s; left lantern off at f259 ('that'), right at f266.\n3. S8 anchor re-declared 'boy'@403 (lead 12 f); 'Victor'@426 is the tag event on the word. No frame change at 391.\n4. S8/S9 cut moved 437 to 435; lead to 'Kings'@443 is 8 f = 0.33 s.\n5. S6 reframed as a tight long-lens object view (tallest tower about 70 percent of frame height, no parapet): S5-S6-S7 now run wide, tight, wide. The segment's only blur is gone.\n6. S4 re-labelled Reaction (2.6.11); the P12 claim is dropped. One button in the segment (S10).\n7. S2: sharp cream front-column edge at the left frame edge; second ambient is the small throne's drape edge sway, unconditional; window-off at f104 kept as an extra event.\n8. S9: sharp stone pillar edge at the left frame edge; torches dropped (the built room has none); ambient named as pennants plus canopy fringe (cloth) and the cradle rock (prop loop); the baked window shafts stay, one visible.\n9. S7: camp folk B stamps at f358.\n10. S6: tiny seated two-tone figure beside the fire point at f343.\n11. S3: ruler faces front (existing rig).\n\nCUT LEADS (frames before the declared anchor): S2 24, S3 24, S4 10, S5 24, S6 16, S7 20, S8 12, S9 8, S10 8. All inside 8-24 f (rounding 0.3 s to 7.2 f). Three sit exactly on the 1.0 s limit.\n\nMIX on 10 shots: wide 3 (S3, S5, S7), medium 3, close 2, extreme close 1, tight object view 1; back views 2 of 10; in-world text 1 of 10; metaphor 0; camera: push 3, hold with drift 4, truck 2, pull 1; blur 0 everywhere.\n\nStars per shot: S1 2-3, S2 about 15, S3 about 30, S4 about 6, S5 about 30, S6 about 8, S7 none (dusk), S8 none, S9 none, S10 about 20.\n\nITEMS THAT STILL DO NOT FULLY PASS are listed in remaining_issues.",
+  "remaining_issues": [
+    "S4/S5 trade-off: 'To'@252 and the first 2 f of 'answer'@254 are heard over S4's held face (4 f before the cut). If the owner refuses, move the cut back to f246 and record a cut lead of 34 f as an owner exception.",
+    "S8: the anchor is the noun 'boy', not the new name (priority a), by re-declaration. The cut at f435 comes 9 f (0.375 s) after 'Victor' starts; if the voice takes longer to say the name, its tail is heard over the king's room. Check on the 10 s test; the alternative is to keep f437 and anchor S9 on 'born'@458.",
+    "S2, S3 and S5 sit exactly on the 1.0 s cut-lead limit, and S2 is exactly 3.00 s long: zero margin if any word timing is re-measured.",
+    "Rule 2.1.3: sentence 2 (11 words) is one shot and sentence 3 (18 words) is two, because rule 2.1.5 wins until frame 180. Words clipped by a cut: 'He'@59 (1 f), 'So'@129 (3 f), 'keep'@190 (4 f), 'To answer'@252 (4 f), 'and'@389 (2 f).",
+    "Buttons: one in 22.7 s is 2.6 per minute, still above 1-1.5 per minute when measured on this segment alone; it must be averaged over the chapter, and the next segment must open with a set change.",
+    "Reuse: 60 percent strictly (6 of 10 on sets that existed before the segment), below the 70 percent target; 80 percent if the two camp revisits count.",
+    "S6 is no longer a wide, so the mix has 3 wides of 10 (30 percent against about 40). Its last events (fire point and tiny figure at f343) have only 6 f before the cut; if missed on the 10 s test, move both to f339. The hall's far cards are enlarged about 2.5 times: only safe if they are polygons.",
+    "S9: the built room has two baked window shafts and 8.2b allows one per shot; the design hides one behind the foreground pillar edge, unverified. The shot has no flame, so its warm points are only the golds.",
+    "Inherited banned motifs (1.3): masked hooded ruler (third-party character), sun ring and armillary in the hall, the film's existing label look. Owner-accepted for this test segment; nothing new from the banned list is added.",
+    "Name tag: the kit NameTag renders lowercase 'victor' in English, against 8.10 and 1.4 (uppercase, Vietnamese). With the earlier tag the film has 2 tags in about 45 s, above 0.6 per minute.",
+    "Boy proportions are not settled on paper: a side-by-side mock-up still decides before sheet 1 is generated.",
+    "Camp hub has 3 positions and 2 states now (a hub owes 5 and 3); its 'birth night' state changes two variables on purpose.",
+    "Victor's P6 package has plant and tagged close; the 'demonstration' is only the scowl inside S8.",
+    "No no-counterpart device is defined for this film (self-check 18). Proposed: weather that runs backwards. Needs the owner's approval.",
+    "Self-check 17 (reference-run comparison) was NOT done and cannot be done by a designer barred from the reference. A reviewer allowed to see it must compare the S5-S7 leave/rewind/arrive run and the S9-S10 pair before build. Disclosure carried over from the designer: two stills in out/ (kf-closeup/r26.png, kf-king/r52.png) that appear to be reference frames of the EARLIER, already-built stretch were opened to learn the existing tag style and stone room.",
+    "Nothing was built or rendered. To verify by stills first: (a) code-drawn S1 mask beside the raster mask; (b) king with both arms up; (c) hood tilt on the back-view picture; (d) ruler's reach toward his own jaw; (e) boy proportion mock-ups; (f) tinted villagers in the camp palette; (g) canopy and tent apex on the same screen point; (h) one window shaft visible in S9; (i) S6 tower cards at 2.5 times scale."
+  ]
+}

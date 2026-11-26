@@ -1,0 +1,25 @@
+# TEMPLATE: puppet body parts sheet of an approved character (no head on this sheet).
+# Reference image to pass: the approved full-body picture.
+# Rules that worked (gen/prompts/doom-parts.txt -> public/doom/p-1..8):
+#   - "taken apart into separate pieces ... NO piece touches or overlaps another piece or the image border";
+#   - "Every piece is drawn complete, including the areas normally hidden behind other pieces": joints need
+#     the overlap (round shoulder on the upper arm, flat top on the torso);
+#   - "front view, all at the same scale as if cut from the same figure";
+#   - "NO head anywhere on this sheet";
+#   - number the pieces in the text and say which row they are in: the cutter names them in reading order;
+#   - ONE upper arm, ONE forearm, hands in the shapes the acting needs (fist, open palm): the rig mirrors them;
+#   - limbs "hanging straight down" / "straight vertical": rotation happens in the rig;
+#   - legs joined by a small hip block as one piece is enough for a character that only stands. A walking or
+#     seated biped needs thigh and shin as separate pieces; that standard does not exist yet: report it.
+#   - cut with: tools/art/cut.py <sheet> <dir> <prefix> --names {{PART_NAMES_IN_READING_ORDER}}
+The first attached image is the approved character. Draw a PUPPET PARTS SHEET of this exact character: the character taken apart into separate pieces, laid out with wide magenta gaps so that NO piece touches or overlaps another piece or the image border. Every piece is drawn complete, including the areas normally hidden behind other pieces, front view, all at the same scale as if cut from the same figure. NO head anywhere on this sheet. Pieces, top row left to right:
+1) {{BACK_LAYER: e.g. CAPE: the cape alone as one full silhouette from the shoulders down to the hem}}.
+2) TORSO: {{TORSO_DESCRIPTION}}; flat top edge at shoulder height; no arms, no legs, no head.
+3) {{COLLAR_OR_SHOULDER_PIECE, or delete this line}}.
+Bottom row left to right:
+4) LEGS: {{LEGS_DESCRIPTION}}, joined at the top by a small hip block, as one piece.
+5) UPPER ARM: one {{UPPER_ARM_DESCRIPTION}} with a round shoulder, hanging straight down.
+6) FOREARM: one {{FOREARM_DESCRIPTION}}, straight vertical.
+7) FIST: one closed {{HAND_DESCRIPTION}} fist, knuckles down.
+8) OPEN HAND: one open {{HAND_DESCRIPTION}} hand, palm toward the viewer, five rounded fingers spread, fingers pointing up.
+Landscape 3:2 image.

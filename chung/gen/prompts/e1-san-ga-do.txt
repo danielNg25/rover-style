@@ -1,0 +1,9 @@
+A sheet of SIX separate props for a Berlin railway station platform in 1914, drawn in exactly the art style of the attached reference frames: flat shapes, 2-4 close tones per object, lighter front and darker side, a few inner lines, no outlines. Arrange in 2 rows of 3, well separated by wide gaps, each object complete and not cropped:
+1) a flat wooden luggage trolley with iron wheels carrying two trunks and a hatbox;
+2) a stack of three leather suitcases of different sizes and browns;
+3) a long wooden platform bench with cast-iron ends;
+4) a domed steamer trunk with wooden ribs and brass corners;
+5) two canvas mail sacks tied at the top, leaning together;
+6) a tall potted palm in a round ceramic pot.
+No characters, no ground, no cast shadows, no text anywhere.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

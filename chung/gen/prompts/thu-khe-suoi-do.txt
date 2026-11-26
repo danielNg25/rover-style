@@ -1,0 +1,9 @@
+A sheet of SIX separate objects for a Japanese mountain-stream scene, drawn in exactly the art style of the attached reference frame: the same flat shapes, 2-4 tones per object, the same level of detail and the same finish as the trees, the gate and the props in that frame. Arrange them in 2 rows of 3, well separated by wide gaps, each object complete and not cropped:
+1) a tall bamboo clump: 5-7 segmented green stalks with sprays of narrow leaves;
+2) a Japanese cedar tree with layered dark-green boughs and a red-brown trunk;
+3) a round leafy tree with a lobed canopy in three greens and a brown trunk;
+4) a large rounded mossy boulder: warm grey with two or three lighter planes and a few moss patches on top;
+5) a moss-covered stone garden lantern with a small warm glowing window;
+6) a wooden training rack: two posts and a crossbeam, a round red-and-white straw target hanging from it, and two indigo cloth strips.
+No characters, no ground, no cast shadows.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

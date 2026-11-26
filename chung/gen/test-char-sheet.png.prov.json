@@ -1,0 +1,18 @@
+{
+ "time": "2026-11-21T01:20:52",
+ "run": "test-char",
+ "output": "test-char-sheet.png",
+ "output_sha256": "bf6219f40989a7f17330978cd30af82fb436734779f044fd9a982b906cec6837",
+ "prompt_file": "qa/_test-character/prompts/test-char.txt",
+ "prompt_sha256": "7147ba238892f26efb94b22ad32c424aaef2919b8b54d57c01832b2476128791",
+ "refs": [
+  {
+   "path": "/Users/daniel/WorkStation/Personal/video/shorts-claude/rover-lab/tools/art/template/human-v1.png",
+   "sha256": "05a4ecbf9071b1e7e1d1c88eedf1360f478e7e9160ca311fdc882d4c580733bc"
+  },
+  {
+   "path": "/Users/daniel/WorkStation/Personal/video/shorts-claude/rover-lab/gen/villagers.png",
+   "sha256": "e2a9742428830517028b5d2a4df846166bf68fd92ee9b505d8a13cb84175a391"
+  }
+ ]
+}

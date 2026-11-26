@@ -1,0 +1,10 @@
+A sheet of SEVEN separate props for a 1920s steamship pier, drawn in exactly the art style of the attached reference frame: flat shapes, 2-4 close tones per object, lighter top face and darker side, a few inner lines, no outlines. Arrange in 2 rows, well separated by wide gaps, each object complete and not cropped:
+1) a cast-iron mooring bollard with a thick rope looped around it;
+2) a loose coil of heavy hemp rope lying flat;
+3) a stack of three wooden barrels of slightly different sizes (two lying, one standing);
+4) a wooden cargo crate with iron straps (no lettering);
+5) a red-and-white lifebuoy ring hanging on a small wooden post;
+6) a two-wheeled iron luggage hand-truck carrying a leather steamer trunk;
+7) a white seagull standing, side view.
+No characters, no ground, no cast shadows.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

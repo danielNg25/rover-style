@@ -1,0 +1,9 @@
+A sheet of 6 separate objects for the trees and plants of a traditional Japanese ninja-clan village street, in a fantasy feudal-Japan ninja village world, drawn in exactly the art style of the attached reference frame: the same flat shapes, 2-4 close tones per object, the same calm level of detail and finish as the trees, rocks and props in that frame. Arrange them in 2 rows, well separated by wide gaps, each object complete and not cropped:
+1) a medium cherry blossom tree: dark curving trunk and branches, soft cloud-shaped clusters of pale pink blossom;
+2) a small young cherry blossom tree, thinner trunk, fewer blossom clusters;
+3) a single long cherry branch with blossom clusters, hanging diagonally, to frame the top corner of a shot;
+4) a low round green shrub with a few small flowers;
+5) a small bonsai pine WITHOUT any pot, just the trunk and needle clouds;
+6) a tall spiky ornamental plant WITHOUT any pot;
+Near objects keep their own natural colours (do not tint them with the sky colour). No characters, no people, no animals unless listed, no ground strip, no cast shadows, no text.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

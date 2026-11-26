@@ -1,0 +1,10 @@
+A sheet of SEVEN separate props for a 1919 British solar-eclipse expedition camp on a sandy tropical island, drawn in exactly the art style of the attached reference frames: flat shapes, 2-4 close tones per object with a lighter top or front face and a darker side, a few inner lines, no outlines. Arrange them in 2 rows, well separated by wide gaps, each object complete and not cropped:
+1) a large terracotta water jar with a wide mouth and a rope handle;
+2) a stack of two wooden crates with rope handles (plain, no lettering);
+3) a dark wooden equipment trunk with brass corners and a hasp, lid closed;
+4) a tall thin wooden pole with a small triangular red pennant flag;
+5) a folding wooden camp chair with canvas seat;
+6) two clumps of dry yellow-green grass of different sizes, side by side but separate;
+7) a small wooden box of glass photographic plates with the lid propped open.
+No characters, no ground, no cast shadows.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

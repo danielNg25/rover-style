@@ -1,0 +1,37 @@
+# cutout3d: repo này chỉ giữ PHẦN CHUNG (engine, công cụ, luật, kho đồ, workflow, file chỉ dẫn).
+# Ở lại từng máy, không lên repo: nội dung kênh (kenh/), ảnh rà (chung/qa), video dựng ra (chung/out),
+# node_modules, tập đang làm (chung/dang-lam.yaml), phiếu và sổ của khoá.
+
+# Gốc cutout3d: bỏ hết, chỉ giữ các mục kể tên dưới đây.
+/*
+!/.gitignore
+!/.gitattributes
+!/CLAUDE.md
+!/BAT-DAU-O-DAY.md
+!/chung/
+!/.claude/
+/.claude/*
+!/.claude/settings.json
+!/.claude/workflows/
+/.claude/workflows/.claude/
+
+# Rác chung
+.DS_Store
+__pycache__/
+*.pyc
+*.log
+
+# Trong chung/: thứ riêng của từng máy
+/chung/node_modules/
+/chung/qa/
+/chung/out
+/chung/.claude/
+/chung/dang-lam.yaml
+/chung/qa.json.lock
+/chung/gen/.moc-*
+
+# Khoá phần chung: bản niêm (niem.json, goc/) LÊN repo; phiếu, sổ và bộ nhớ đệm ở lại máy.
+/chung/.khoa/phieu/
+/chung/.khoa/luc.json
+/chung/.khoa/da-bao.json
+/chung/.khoa/so-viec.jsonl

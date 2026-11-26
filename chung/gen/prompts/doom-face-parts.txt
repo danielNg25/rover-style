@@ -1,0 +1,11 @@
+The attached image is our current head sheet for this hooded, masked character (four expressions, straight front view). I need the head taken apart into separate LAYERS so the face can be animated. Draw a parts sheet with wide magenta gaps so that NO piece touches or overlaps another piece or the image border, all pieces straight front view and at the same scale as if cut from one head:
+Top row, left to right:
+1) HOOD ONLY: the green hood with its dark inner opening completely EMPTY (just the flat dark interior, no mask, no face), flat bottom edge under where the chin would be. Large.
+2) BLANK MASK: the light-grey riveted metal mask alone, same shape and soft shading as in the reference (lighter in the middle, slightly darker toward the edges, a soft shadow band across the top), with the small rivets, but with NO eyes, NO eye plates, NO brows, NO nose, NO mouth grille and NO cheek lines: a clean empty face plate. Large, same scale as the hood opening.
+Bottom row, left to right:
+3) EYE PLATE: one darker-grey rounded-rectangle eye plate (the recessed panel the eye slit sits in), empty, no slit.
+4) BROW: one thick dark-grey eyebrow stroke, horizontal, slightly tapered at both ends.
+5) NOSE: the light-grey nose ridge (a tall narrow trapezoid, lighter than the mask, with a subtle shaded side).
+6) MOUTH PIECE: the lighter raised grille plate with its five black vertical slots and four tiny corner rivets, together with the two curved cheek lines that run from beside the nose down around the plate and the short curved chin line under it.
+Square 1:1 image.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

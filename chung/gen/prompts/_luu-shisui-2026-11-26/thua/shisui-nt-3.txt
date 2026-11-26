@@ -1,0 +1,10 @@
+A sheet of 6 separate objects for the hard props of a samurai checkpoint on a snowy mountain pass, in a fantasy feudal-Japan ninja village world, drawn in exactly the art style of the attached reference frame: the same flat shapes, 2-4 close tones per object, the same calm level of detail and finish as the trees, rocks and props in that frame. Arrange them in 2 rows, well separated by wide gaps, each object complete and not cropped:
+These are hard objects that will be rebuilt as 3D blocks: draw each one seen from the front at eye level, whole, with simple big shapes and clear outline.
+1) a large rounded boulder with a thick snow cap, ONE rounded mass with two or three big soft planes, lighter top, darker side, close tones, no low-poly triangle facets;
+2) a medium snowy boulder, ONE rounded mass with two or three big soft planes, lighter top, darker side, close tones, no low-poly triangle facets;
+3) a small snowy rock pair, each ONE rounded mass with two or three big soft planes, lighter top, darker side, close tones, no low-poly triangle facets;
+4) a tall plain wooden flag pole (no banner, banners are added later);
+5) a rope fence segment: three wooden stakes (draw the rope as a thin line);
+6) a plain samurai camp tent of off-white cloth on wooden poles;
+Near objects keep their own natural colours (do not tint them with the sky colour). No characters, no people, no animals unless listed, no ground strip, no cast shadows, no text.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

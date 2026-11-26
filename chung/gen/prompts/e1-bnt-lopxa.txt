@@ -1,0 +1,7 @@
+A sheet of FOUR separate wide background layers for a 1919 solar-eclipse expedition camp on a tropical island, drawn in exactly the art style of the attached reference frames (flat shapes, the same finish as their distant hills and mountains). Stack the four layers top to bottom, each one a long horizontal strip spanning the full width, separated by wide magenta gaps, none cropped:
+1) the farthest mountain range: a flat single-tone pale blue-grey silhouette with peaks of clearly different heights and widths, irregular spacing, one slightly darker sweeping shadow area following a slope; no straight vertical ridge line splitting a peak into a light half and a dark half;
+2) a nearer range of rounded forested hills: one flat muted sage-green tone, lumpy uneven tops, different sizes;
+3) a low rolling hill line in a warmer olive green with a few small flat tree silhouettes (two palms, one wide flat-topped tree) placed unevenly;
+4) a low sand ridge with sparse dry grass tufts, warm ochre, slightly irregular top edge.
+Each layer is ONE flat tone (at most one close second tone), paler and greyer with distance. No people, no text.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

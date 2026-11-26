@@ -1,0 +1,20 @@
+# TEMPLATE: animal parts sheet with SEPARATE LEGS, for walk cycles.
+# Reference image to pass: our own earlier animal sheet (gen/savanna.png) or an approved character for the finish.
+# Rules that worked (gen/prompts/animal-parts.txt -> public/savanna/a-1..11):
+#   - bodies "BODY ONLY ... WITHOUT LEGS (flat cut along the bottom of the belly)"; say every part that is
+#     left off and where the cut is ("head ends cleanly where the trunk would start");
+#   - each moving appendage alone: ear, trunk, tail, ONE near-side leg and ONE far-side leg in a darker tone
+#     (the rig places four legs from these two);
+#   - "all side views facing RIGHT unless stated"; state the facing of every animal;
+#   - "CRISPER and MORE GEOMETRIC: clean angular shapes with straight edges and slightly rounded corners,
+#     flat fills with one darker tone for the far-side parts": the first savanna sheet was too soft;
+#   - give key colours as hex for large bodies (mid grey #7a7674);
+#   - a small animal whose legs are too thin to rig is requested as 2-3 whole STRIDE POSES of the same animal
+#     ("the SAME impala, same size, in the opposite stride pose") and flipped like a flip-book. Stride words
+#     are pose words: run gen.sh with GEN_ALLOW_POSE=1 for such a sheet.
+#   - three rows at most, 11 pieces at most per sheet.
+#   - cut with: tools/art/cut.py <sheet> <dir> <prefix> --names {{PART_NAMES_IN_READING_ORDER}}
+The attached image shows the finish to use, but draw CRISP and GEOMETRIC: flat vector storybook style made of clean angular shapes with straight edges and slightly rounded corners, flat fills with one darker tone for the far-side parts, no outlines, no gradients, no texture. Draw a PARTS SHEET for puppet animation, every piece well separated by wide flat magenta gaps, nothing touching or overlapping, all side views facing RIGHT unless stated, laid out in rows:
+ROW 1: (a) {{ANIMAL}} BODY ONLY, facing right: {{BODY_SHAPE_AND_HEAD}}, but WITHOUT LEGS (flat cut along the bottom of the belly){{, WITHOUT other appendages listed below}}; {{BODY_COLOUR_WITH_HEX}}. (b) {{APPENDAGE_1 alone: e.g. the big EAR alone}}. (c) {{APPENDAGE_2 alone}}. (d) the TAIL alone: {{TAIL}}.
+ROW 2: (e) one {{ANIMAL}} LEG alone: {{LEG_SHAPE}}, flat top, {{FOOT}}. (f) a second leg in a darker tone (the far-side leg).
+Landscape 3:2.

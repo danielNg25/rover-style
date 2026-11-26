@@ -1,0 +1,3732 @@
+{
+ "phong-am": {
+  "ten": "Phòng ấm",
+  "dung_khi": "Trong nhà tông ấm: lều, phòng gỗ, văn phòng, hội trường, kho đồ, lò rèn (khung 8, 22, 25, 232, 135, 51). Phòng thí nghiệm có rèm đỏ rượu và tường nâu ô liu (33 đến 39, 209) cũng ở đây: nền chính của chúng là nâu ô liu và nâu sẫm (#554d3f, #5d4b3b, #382422, C 0,03 đến 0,04), thuộc họ ấm.",
+  "so_khung": 25,
+  "khung_tieu_bieu": [
+   8,
+   22,
+   25,
+   232,
+   135,
+   51,
+   138
+  ],
+  "so_do": {
+   "xam": [
+    3.247,
+    10.867,
+    15.47,
+    39.887,
+    63.391
+   ],
+   "giua": [
+    10.603,
+    53.343,
+    69.768,
+    74.347,
+    86.578
+   ],
+   "ruc": [
+    0.571,
+    4.912,
+    10.711,
+    19.316,
+    39.823
+   ],
+   "C": [
+    0.037,
+    0.05,
+    0.056,
+    0.066,
+    0.084
+   ],
+   "Clon": [
+    0.018,
+    0.036,
+    0.042,
+    0.059,
+    0.083
+   ],
+   "L": [
+    0.394,
+    0.489,
+    0.509,
+    0.53,
+    0.607
+   ],
+   "toi": [
+    0.128,
+    1.13,
+    2.629,
+    4.604,
+    10.573
+   ],
+   "trang": [
+    0.141,
+    1.248,
+    2.968,
+    4.083,
+    7.186
+   ],
+   "Lk": [
+    0.43,
+    0.497,
+    0.58,
+    0.615,
+    0.724
+   ],
+   "ho": [
+    0.0,
+    1.0,
+    2.0,
+    2.0,
+    3.0
+   ],
+   "am": [
+    0.013,
+    0.028,
+    0.036,
+    0.05,
+    0.076
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Gỗ, tường lều, vải (nền giữa)",
+    "hex": [
+     "#8c7652",
+     "#876749",
+     "#9a8962"
+    ],
+    "phan_khung": "11-17 %",
+    "L": [
+     0.51,
+     0.69
+    ],
+    "C": [
+     0.04,
+     0.11
+    ],
+    "nguon": "cụm màu đo được trên 19 khung, mẫu khung 145"
+   },
+   {
+    "vai": "Gỗ sẫm, ván, đồ đạc",
+    "hex": [
+     "#685239",
+     "#523f2b",
+     "#6f573b"
+    ],
+    "phan_khung": "14-18 %",
+    "L": [
+     0.35,
+     0.48
+    ],
+    "C": [
+     0.04,
+     0.05
+    ],
+    "nguon": "cụm màu đo được trên 14 khung, mẫu khung 008"
+   },
+   {
+    "vai": "Xám nâu sẫm (tường bóng, rèm)",
+    "hex": [
+     "#49453b",
+     "#3b2d25",
+     "#584f52"
+    ],
+    "phan_khung": "12-19 %",
+    "L": [
+     0.31,
+     0.48
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 10 khung, mẫu khung 034"
+   },
+   {
+    "vai": "Mảng sáng ấm (da, giấy, chỗ đèn chiếu)",
+    "hex": [
+     "#dbad82",
+     "#c4a475",
+     "#e6bf83"
+    ],
+    "phan_khung": "8-16 %",
+    "L": [
+     0.7,
+     0.84
+    ],
+    "C": [
+     0.03,
+     0.13
+    ],
+    "nguon": "cụm màu đo được trên 17 khung, mẫu khung 037"
+   },
+   {
+    "vai": "Vùng tối sâu",
+    "hex": [
+     "#28211b",
+     "#231d19",
+     "#382422"
+    ],
+    "phan_khung": "8-18 %",
+    "L": [
+     0.2,
+     0.29
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 13 khung, mẫu khung 052"
+   },
+   {
+    "vai": "Điểm nhấn đỏ rượu (thảm, rèm)",
+    "hex": [
+     "#80262e",
+     "#61272e",
+     "#982b36"
+    ],
+    "phan_khung": "7-12 %",
+    "L": [
+     0.32,
+     0.49
+    ],
+    "C": [
+     0.04,
+     0.17
+    ],
+    "nguon": "cụm màu đo được trên 14 khung, mẫu khung 012"
+   },
+   {
+    "vai": "Cảnh ngoài cửa sổ (trời xanh nhạt, núi xanh lam xám)",
+    "hex": [
+     "#b4daf5",
+     "#8092b9"
+    ],
+    "phan_khung": "19-21 %",
+    "L": [
+     0.65,
+     0.88
+    ],
+    "C": [
+     0.04,
+     0.06
+    ],
+    "nguon": "mẫu điểm trên ô màu khung 138, 25"
+   }
+  ],
+  "ghi_chu": [
+   "Tối nhất là các nếp gỗ sẫm và viền (L khoảng 0,2 đến 0,3); sáng nhất là da, giấy, ô cửa sổ.",
+   "Điểm nhấn là thảm hoặc rèm đỏ rượu, chiếm 11 đến 18 % khung (khung 232: #9e3138 chiếm 18 %, đ 0,14; khung 8: #812930 11 %).",
+   "Gần như cả khung ở mức lưng chừng (trung vị 70 %), rực chỉ 11 %. Nâu của gỗ có độ đậm 0,04 đến 0,07, thấy rõ là nâu chứ không xám.",
+   "Nhân vật tách khỏi nền bằng áo sáng hơn (kem #efcfa2, trắng ngà) hoặc đỏ rực hơn nền, không bằng viền.",
+   "Cảnh ngoài cửa sổ luôn nhạt (L trên 0,65) và đục (đ không quá 0,06). Không có cảnh ngoài rực.",
+   "Lò rèn (51, 52) là kiểu con xám nâu hơn: tường #88745f, #7e7160 (đ 0,03 đến 0,04), ánh lửa cam nhỏ #ed8137 (đ 0,15 đến 0,16) và vùng sáng quanh lửa #f1c182."
+  ],
+  "khong_lam": [
+   "Không tường xám lạnh hay xanh lục: tường luôn nâu vàng (hue cam nâu).",
+   "Không cảnh ngoài cửa sổ xanh ngọc rực.",
+   "Không để cả khung gần xám: gần xám chỉ 3 đến 31 %."
+  ],
+  "tam_mau": "mau-phong-am.jpg",
+  "nhom": "thuong-gap"
+ },
+ "phong-lanh": {
+  "ten": "Phòng lạnh",
+  "dung_khi": "Trong nhà tông lạnh: phòng máy, phòng điều khiển, phòng thí nghiệm tối, đại sảnh xám xanh (khung 69, 79, 66, 129, 174, 187). Đại sảnh đá xám trung tính (187 đến 190, nền C 0,00 đến 0,01) với thảm lục và cửa kính màu cũng ở đây. Có ba kiểu con: xám thép (69, 79, 66), tím tối (129, 131, 137) và tối có chữ rune xanh phát sáng (174, 175).",
+  "so_khung": 29,
+  "khung_tieu_bieu": [
+   69,
+   79,
+   66,
+   129,
+   174,
+   187
+  ],
+  "so_do": {
+   "xam": [
+    11.395,
+    39.65,
+    50.137,
+    64.415,
+    74.753
+   ],
+   "giua": [
+    15.056,
+    23.862,
+    26.744,
+    37.49,
+    88.417
+   ],
+   "ruc": [
+    0.188,
+    8.321,
+    12.136,
+    19.859,
+    45.09
+   ],
+   "C": [
+    0.032,
+    0.037,
+    0.051,
+    0.058,
+    0.081
+   ],
+   "Clon": [
+    0.015,
+    0.026,
+    0.038,
+    0.046,
+    0.078
+   ],
+   "L": [
+    0.385,
+    0.437,
+    0.48,
+    0.517,
+    0.61
+   ],
+   "toi": [
+    0.196,
+    1.613,
+    4.159,
+    10.478,
+    16.841
+   ],
+   "trang": [
+    0.215,
+    2.169,
+    3.819,
+    6.215,
+    21.241
+   ],
+   "Lk": [
+    0.434,
+    0.567,
+    0.622,
+    0.675,
+    0.731
+   ],
+   "ho": [
+    0.0,
+    1.0,
+    1.0,
+    2.0,
+    3.0
+   ],
+   "am": [
+    0.005,
+    0.02,
+    0.027,
+    0.033,
+    0.043
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Tường, máy xám xanh sẫm (nền)",
+    "hex": [
+     "#353f44",
+     "#3f2e23",
+     "#475452"
+    ],
+    "phan_khung": "16-24 %",
+    "L": [
+     0.3,
+     0.5
+    ],
+    "C": [
+     0.0,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 23 khung, mẫu khung 183"
+   },
+   {
+    "vai": "Vùng tối sâu (gầm máy, góc)",
+    "hex": [
+     "#1f2425",
+     "#171c1f",
+     "#252e2c"
+    ],
+    "phan_khung": "9-14 %",
+    "L": [
+     0.19,
+     0.3
+    ],
+    "C": [
+     0.0,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 24 khung, mẫu khung 187"
+   },
+   {
+    "vai": "Xám sáng vừa (bàn, vỏ máy, tấm)",
+    "hex": [
+     "#66767b",
+     "#6b6e69",
+     "#7c9296"
+    ],
+    "phan_khung": "6-11 %",
+    "L": [
+     0.5,
+     0.69
+    ],
+    "C": [
+     0.0,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 13 khung, mẫu khung 103"
+   },
+   {
+    "vai": "Mảng sáng (bảng, màn hình, tấm trắng)",
+    "hex": [
+     "#f6e3e5",
+     "#c0ddef",
+     "#edeee5"
+    ],
+    "phan_khung": "9-13 %",
+    "L": [
+     0.86,
+     0.95
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 9 khung, mẫu khung 132"
+   },
+   {
+    "vai": "Điểm nhấn lục (đèn, màn hình, glow phép)",
+    "hex": [
+     "#3f914c",
+     "#357d46",
+     "#449e56"
+    ],
+    "phan_khung": "7-13 %",
+    "L": [
+     0.5,
+     0.67
+    ],
+    "C": [
+     0.03,
+     0.16
+    ],
+    "nguon": "cụm màu đo được trên 22 khung, mẫu khung 131"
+   },
+   {
+    "vai": "Kiểu tím tối: tường, máy tím xám",
+    "hex": [
+     "#403853",
+     "#4e4764",
+     "#322b43"
+    ],
+    "phan_khung": "16-33 %",
+    "L": [
+     0.3,
+     0.43
+    ],
+    "C": [
+     0.04,
+     0.05
+    ],
+    "nguon": "mẫu điểm trên ô màu khung 129"
+   },
+   {
+    "vai": "Glow rune xanh lục sáng",
+    "hex": [
+     "#b5faa5",
+     "#316037"
+    ],
+    "phan_khung": "13-15 %",
+    "L": [
+     0.45,
+     0.91
+    ],
+    "C": [
+     0.08,
+     0.1
+    ],
+    "nguon": "mẫu điểm trên ô màu khung 174"
+   }
+  ],
+  "ghi_chu": [
+   "Nền chiếm phần lớn và gần xám (trung vị 50 %), tối hơn phòng ấm; tối sâu trung vị 4 %, tới 10 % ở khung có tường tối.",
+   "Sáng nhất là màn hình, bảng, tấm trắng (L 0,86 đến 0,95); điểm nhấn là một mảng lục hoặc màn hình phát sáng, trung vị rực 12 %.",
+   "Nhân vật tách khỏi nền bằng độ rực (áo lục Doom #398f48 trên nền xám) và sáng hơn nền, không bằng viền.",
+   "Có những ô tím tối (129) và lục phát sáng (174): đây là kiểu con, không phải màu thường của loại."
+  ],
+  "khong_lam": [
+   "Không nền nâu ấm, không gỗ vàng.",
+   "Không tường rực: nền luôn đ dưới 0,05 trừ kiểu tím tối."
+  ],
+  "tam_mau": "mau-phong-lanh.jpg",
+  "nhom": "thuong-gap"
+ },
+ "phong-sang": {
+  "ten": "Phòng sáng",
+  "dung_khi": "Trong nhà rất sáng, tường trắng hoặc xám xanh nhạt, có cửa sổ lớn thấy phố: phòng thí nghiệm sáng, bệnh viện, nhà vệ sinh (khung 40, 42, 64, 167, 182, 227).",
+  "so_khung": 11,
+  "khung_tieu_bieu": [
+   40,
+   42,
+   64,
+   167,
+   182,
+   227
+  ],
+  "so_do": {
+   "xam": [
+    38.289,
+    47.347,
+    56.248,
+    60.006,
+    69.907
+   ],
+   "giua": [
+    25.346,
+    31.861,
+    36.477,
+    43.931,
+    59.882
+   ],
+   "ruc": [
+    0.103,
+    3.081,
+    4.748,
+    9.211,
+    14.186
+   ],
+   "C": [
+    0.026,
+    0.031,
+    0.035,
+    0.036,
+    0.041
+   ],
+   "Clon": [
+    0.016,
+    0.02,
+    0.022,
+    0.026,
+    0.031
+   ],
+   "L": [
+    0.695,
+    0.723,
+    0.772,
+    0.778,
+    0.823
+   ],
+   "toi": [
+    0.014,
+    0.384,
+    1.296,
+    2.148,
+    4.404
+   ],
+   "trang": [
+    8.472,
+    12.406,
+    20.977,
+    26.764,
+    35.936
+   ],
+   "Lk": [
+    0.447,
+    0.537,
+    0.615,
+    0.654,
+    0.715
+   ],
+   "ho": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0
+   ],
+   "am": [
+    0.005,
+    0.012,
+    0.017,
+    0.023,
+    0.03
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Tường, bàn trắng (rất sáng)",
+    "hex": [
+     "#ebeceb",
+     "#d7dadb",
+     "#f5f1ed"
+    ],
+    "phan_khung": "11-18 %",
+    "L": [
+     0.88,
+     0.97
+    ],
+    "C": [
+     0.0,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 10 khung, mẫu khung 064"
+   },
+   {
+    "vai": "Tường xám xanh nhạt",
+    "hex": [
+     "#b0bfc8",
+     "#99adbc",
+     "#c4c9b6"
+    ],
+    "phan_khung": "15-20 %",
+    "L": [
+     0.71,
+     0.83
+    ],
+    "C": [
+     0.0,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 10 khung, mẫu khung 227"
+   },
+   {
+    "vai": "Xám vừa (tủ, nền sau, bóng)",
+    "hex": [
+     "#7e868e",
+     "#70678e",
+     "#889188"
+    ],
+    "phan_khung": "8-11 %",
+    "L": [
+     0.52,
+     0.7
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 8 khung, mẫu khung 184"
+   },
+   {
+    "vai": "Ô cửa sổ, trời",
+    "hex": [
+     "#9bb2bf",
+     "#97aabe",
+     "#b6d5ee"
+    ],
+    "phan_khung": "16-18 %",
+    "L": [
+     0.73,
+     0.85
+    ],
+    "C": [
+     0.03,
+     0.04
+    ],
+    "nguon": "cụm màu đo được trên 4 khung, mẫu khung 169"
+   },
+   {
+    "vai": "Áo xanh Fantastic Four",
+    "hex": [
+     "#2f4062",
+     "#2f3e4d",
+     "#3a5577"
+    ],
+    "phan_khung": "7-12 %",
+    "L": [
+     0.37,
+     0.45
+    ],
+    "C": [
+     0.04,
+     0.1
+    ],
+    "nguon": "cụm màu đo được trên 4 khung, mẫu khung 085"
+   },
+   {
+    "vai": "Da, tóc vàng nhạt",
+    "hex": [
+     "#e4bf92",
+     "#e0b092",
+     "#e4bf92"
+    ],
+    "phan_khung": "5-8 %",
+    "L": [
+     0.76,
+     0.83
+    ],
+    "C": [
+     0.07,
+     0.08
+    ],
+    "nguon": "cụm màu đo được trên 6 khung, mẫu khung 085"
+   }
+  ],
+  "ghi_chu": [
+   "Hai kiểu con: tông xanh lục nhạt và kem (40, 42: #eeeacd, #c2cbb6, #8e9c8a) và tông xám xanh lam (64, 70, 85, 167, 182, 227: #ebeceb, #bbc4cb, #b6d8f3).",
+   "Là loại sáng nhất trong phòng: sáng TB trung vị 0,77, gần trắng 12 đến 27 % khung; gần xám trung vị 56 %.",
+   "Tối nhất chỉ là áo xanh sẫm (L khoảng 0,37 đến 0,45) và tóc; tối sâu trung vị 1,3 %.",
+   "Nhân vật tách khỏi nền bằng độ sẫm: áo xanh đậm trên tường trắng; không có điểm nhấn rực lớn (rực trung vị 5 %)."
+  ],
+  "khong_lam": [
+   "Không nền tối, không điểm nhấn rực chiếm nhiều khung.",
+   "Không tường màu đậm: đ dưới 0,04."
+  ],
+  "tam_mau": "mau-phong-sang.jpg",
+  "nhom": "thuong-gap"
+ },
+ "phong-toi-co-nguon": {
+  "ten": "Phòng tối có nguồn sáng",
+  "dung_khi": "Trong nhà tối, nến, đuốc hoặc phép là nguồn sáng: phòng ngủ có đuốc (16), phòng có tranh và nến (95), thư viện nến và phép lục (163, 226). Ít mẫu: chỉ 4 khung, hai kiểu: đỏ rượu (16, 95) và xám lục (163, 226).",
+  "so_khung": 4,
+  "khung_tieu_bieu": [
+   16,
+   95,
+   163,
+   226
+  ],
+  "so_do": {
+   "xam": [
+    15.145,
+    29.116,
+    35.106,
+    41.449,
+    56.478
+   ],
+   "giua": [
+    38.663,
+    41.447,
+    43.196,
+    49.251,
+    64.957
+   ],
+   "ruc": [
+    4.86,
+    15.873,
+    19.721,
+    20.887,
+    23.853
+   ],
+   "C": [
+    0.036,
+    0.053,
+    0.059,
+    0.062,
+    0.066
+   ],
+   "Clon": [
+    0.014,
+    0.037,
+    0.045,
+    0.05,
+    0.062
+   ],
+   "L": [
+    0.381,
+    0.42,
+    0.438,
+    0.446,
+    0.457
+   ],
+   "toi": [
+    11.249,
+    11.622,
+    12.728,
+    13.881,
+    14.398
+   ],
+   "trang": [
+    0.587,
+    0.935,
+    1.514,
+    2.958,
+    5.905
+   ],
+   "Lk": [
+    0.537,
+    0.604,
+    0.641,
+    0.669,
+    0.707
+   ],
+   "ho": [
+    0.0,
+    0.75,
+    1.0,
+    1.25,
+    2.0
+   ],
+   "am": [
+    0.023,
+    0.039,
+    0.045,
+    0.048,
+    0.058
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Tường, đồ vật sẫm xám lục (kiểu thư viện)",
+    "hex": [
+     "#3f433b",
+     "#333525",
+     "#4c5c52"
+    ],
+    "phan_khung": "14-25 %",
+    "L": [
+     0.32,
+     0.47
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 3 khung, mẫu khung 226"
+   },
+   {
+    "vai": "Đỏ rượu (rèm, giường, bức tranh, cờ)",
+    "hex": [
+     "#751b2d",
+     "#541a2d",
+     "#5d4341"
+    ],
+    "phan_khung": "11-16 %",
+    "L": [
+     0.33,
+     0.42
+    ],
+    "C": [
+     0.04,
+     0.13
+    ],
+    "nguon": "cụm màu đo được trên 2 khung, mẫu khung 095"
+   },
+   {
+    "vai": "Vùng tối sâu",
+    "hex": [
+     "#191811",
+     "#140f0a",
+     "#242726"
+    ],
+    "phan_khung": "11-14 %",
+    "L": [
+     0.18,
+     0.27
+    ],
+    "C": [
+     0.0,
+     0.02
+    ],
+    "nguon": "cụm màu đo được trên 3 khung, mẫu khung 226"
+   },
+   {
+    "vai": "Lục (phép, sách phát sáng, áo Doom)",
+    "hex": [
+     "#638649",
+     "#6a7e3c",
+     "#40ac4a"
+    ],
+    "phan_khung": "8-10 %",
+    "L": [
+     0.56,
+     0.66
+    ],
+    "C": [
+     0.08,
+     0.17
+    ],
+    "nguon": "cụm màu đo được trên 2 khung, mẫu khung 226"
+   },
+   {
+    "vai": "Nâu sẫm ấm (tường, đồ gỗ phòng ngủ)",
+    "hex": [
+     "#38261c",
+     "#38261c",
+     "#3c251d"
+    ],
+    "phan_khung": "11-12 %",
+    "L": [
+     0.29,
+     0.29
+    ],
+    "C": [
+     0.03,
+     0.04
+    ],
+    "nguon": "cụm màu đo được trên 2 khung, mẫu khung 016"
+   },
+   {
+    "vai": "Vùng sáng quanh nguồn (da, nến, giấy)",
+    "hex": [
+     "#deb388",
+     "#deb388",
+     "#efbd5e"
+    ],
+    "phan_khung": "8-10 %",
+    "L": [
+     0.79,
+     0.83
+    ],
+    "C": [
+     0.07,
+     0.1
+    ],
+    "nguon": "cụm màu đo được trên 2 khung, mẫu khung 016"
+   }
+  ],
+  "ghi_chu": [
+   "Tối sâu 11 đến 14 % khung ở cả 4 khung; sáng TB 0,42 đến 0,45, thấp hơn mọi loại phòng khác.",
+   "Nguồn sáng là nến, đuốc hoặc phép: mảng nhỏ L 0,79 đến 0,84 (khung 16: #deb388, #efbd5e; khung 226: lục nhạt #c7f7f0), nền xung quanh vẫn sẫm đ 0,01 đến 0,05.",
+   "Điểm nhấn là đỏ rượu (khung 16: #832134 đ 0,13; khung 95: #bf1b33 đ 0,19) hoặc lục phép (#40ac4a đ 0,17, khung 163).",
+   "Lò rèn (51, 52) không thuộc loại này: tường nâu xám vừa, tối sâu chỉ 1 đến 3 %. Chúng ở phong-am."
+  ],
+  "khong_lam": [
+   "Không toàn khung tối đồng đều: luôn có một nguồn sáng nhỏ làm tâm.",
+   "Không nền lam hay lục rực: lục chỉ ở chỗ có phép."
+  ],
+  "tam_mau": "mau-phong-toi-co-nguon.jpg",
+  "nhom": "thuong-gap"
+ },
+ "pho-dem": {
+  "ten": "Phố đêm",
+  "dung_khi": "Ngoài trời đêm có nhà, đèn đường, cửa sổ sáng: phố chợ đêm, sân lâu đài đêm, thành phố đêm (khung 18, 56, 100, 98, 105, 223).",
+  "so_khung": 9,
+  "khung_tieu_bieu": [
+   18,
+   56,
+   100,
+   98,
+   105,
+   223
+  ],
+  "so_do": {
+   "xam": [
+    12.472,
+    29.637,
+    41.245,
+    42.252,
+    50.343
+   ],
+   "giua": [
+    33.596,
+    43.925,
+    53.847,
+    68.424,
+    87.199
+   ],
+   "ruc": [
+    0.329,
+    1.152,
+    7.02,
+    14.228,
+    24.152
+   ],
+   "C": [
+    0.037,
+    0.039,
+    0.045,
+    0.047,
+    0.056
+   ],
+   "Clon": [
+    0.024,
+    0.027,
+    0.037,
+    0.042,
+    0.045
+   ],
+   "L": [
+    0.258,
+    0.322,
+    0.392,
+    0.436,
+    0.479
+   ],
+   "toi": [
+    0.377,
+    9.086,
+    11.43,
+    18.178,
+    50.913
+   ],
+   "trang": [
+    0.686,
+    1.14,
+    1.984,
+    3.212,
+    5.22
+   ],
+   "Lk": [
+    0.232,
+    0.399,
+    0.578,
+    0.645,
+    0.682
+   ],
+   "ho": [
+    0.0,
+    1.0,
+    1.0,
+    2.0,
+    3.0
+   ],
+   "am": [
+    0.003,
+    0.014,
+    0.018,
+    0.034,
+    0.035
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Tường nhà xám xanh sẫm",
+    "hex": [
+     "#353a49",
+     "#3f2e2e",
+     "#4b4d5c"
+    ],
+    "phan_khung": "12-22 %",
+    "L": [
+     0.31,
+     0.5
+    ],
+    "C": [
+     0.02,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 8 khung, mẫu khung 098"
+   },
+   {
+    "vai": "Vùng tối sâu (bóng, gầm)",
+    "hex": [
+     "#191b1d",
+     "#060a17",
+     "#252738"
+    ],
+    "phan_khung": "14-18 %",
+    "L": [
+     0.11,
+     0.29
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 8 khung, mẫu khung 105"
+   },
+   {
+    "vai": "Trời, tường lam tím sẫm",
+    "hex": [
+     "#32384d",
+     "#32384d",
+     "#404658"
+    ],
+    "phan_khung": "16-21 %",
+    "L": [
+     0.3,
+     0.43
+    ],
+    "C": [
+     0.03,
+     0.07
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 018"
+   },
+   {
+    "vai": "Trời, đầu ngõ lam tím tối",
+    "hex": [
+     "#1d243a",
+     "#181e34",
+     "#242a41"
+    ],
+    "phan_khung": "13-19 %",
+    "L": [
+     0.1,
+     0.3
+    ],
+    "C": [
+     0.03,
+     0.07
+    ],
+    "nguon": "cụm màu đo được trên 3 khung, mẫu khung 018"
+   },
+   {
+    "vai": "Ô cửa sổ sáng đèn",
+    "hex": [
+     "#f3d7be",
+     "#efca95",
+     "#f3d7be"
+    ],
+    "phan_khung": "7-8 %",
+    "L": [
+     0.86,
+     0.92
+    ],
+    "C": [
+     0.04,
+     0.09
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 105"
+   },
+   {
+    "vai": "Áo Doom lục",
+    "hex": [
+     "#36853f",
+     "#357b3f",
+     "#3a8342"
+    ],
+    "phan_khung": "8-12 %",
+    "L": [
+     0.54,
+     0.55
+    ],
+    "C": [
+     0.08,
+     0.13
+    ],
+    "nguon": "cụm màu đo được trên 3 khung, mẫu khung 101"
+   },
+   {
+    "vai": "Nâu gỗ sẫm (quầy, cột)",
+    "hex": [
+     "#563d29",
+     "#4d3925",
+     "#6b5234"
+    ],
+    "phan_khung": "8-8 %",
+    "L": [
+     0.37,
+     0.46
+    ],
+    "C": [
+     0.04,
+     0.05
+    ],
+    "nguon": "cụm màu đo được trên 3 khung, mẫu khung 100"
+   },
+   {
+    "vai": "Ô cửa sổ sáng, đèn lồng (vàng ấm)",
+    "hex": [
+     "#c2a87d",
+     "#a67141"
+    ],
+    "phan_khung": "1-3 %",
+    "L": [
+     0.66,
+     0.78
+    ],
+    "C": [
+     0.07,
+     0.1
+    ],
+    "nguon": "mẫu điểm trên ô màu khung 56"
+   }
+  ],
+  "ghi_chu": [
+   "Nền xanh xám sẫm đ 0,02 đến 0,05, tối nhất ở trời và góc; ô cửa sổ và đèn là chỗ sáng nhất (L 0,86 đến 0,92) nhưng nhỏ, chỉ 2 đến 9 % khung.",
+   "Điểm nhấn là ô cửa sổ vàng ấm, rải nhiều ô nhỏ; không có mảng rực lớn (rực trung vị 7 %).",
+   "Nhân vật giữ màu riêng, không bị làm tối theo đêm (xem Điều chung). Chúng tách khỏi nền sẫm bằng áo sáng và đỏ rượu."
+  ],
+  "khong_lam": [
+   "Không nền đen thuần: tối nhất L khoảng 0,1 đến 0,3 và còn ngả lam.",
+   "Không ô cửa sổ trắng lạnh, chỉ vàng ấm."
+  ],
+  "tam_mau": "mau-pho-dem.jpg",
+  "nhom": "thuong-gap"
+ },
+ "dem-thien-nhien": {
+  "ten": "Đêm thiên nhiên",
+  "dung_khi": "Đêm ngoài trời không có nhà: bãi trại có lửa (7, 170, 171, 172), vòng nến trong rừng (13, 15), nghĩa địa (146, 177), mặt người trong lều tối (26).",
+  "so_khung": 9,
+  "khung_tieu_bieu": [
+   7,
+   13,
+   26,
+   146,
+   170,
+   177
+  ],
+  "so_do": {
+   "xam": [
+    11.588,
+    32.657,
+    40.494,
+    46.007,
+    98.271
+   ],
+   "giua": [
+    1.529,
+    38.992,
+    53.096,
+    58.431,
+    70.934
+   ],
+   "ruc": [
+    0.2,
+    1.384,
+    3.405,
+    8.912,
+    23.025
+   ],
+   "C": [
+    0.021,
+    0.038,
+    0.043,
+    0.054,
+    0.069
+   ],
+   "Clon": [
+    0.014,
+    0.026,
+    0.032,
+    0.042,
+    0.064
+   ],
+   "L": [
+    0.243,
+    0.336,
+    0.445,
+    0.489,
+    0.517
+   ],
+   "toi": [
+    6.661,
+    14.17,
+    15.57,
+    25.438,
+    66.901
+   ],
+   "trang": [
+    0.573,
+    0.912,
+    1.24,
+    2.217,
+    2.906
+   ],
+   "Lk": [
+    0.145,
+    0.504,
+    0.569,
+    0.63,
+    0.728
+   ],
+   "ho": [
+    0.0,
+    1.0,
+    1.0,
+    2.0,
+    3.0
+   ],
+   "am": [
+    0.011,
+    0.013,
+    0.019,
+    0.031,
+    0.047
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Rừng, nền tối xám xanh lục sẫm",
+    "hex": [
+     "#1b282b",
+     "#0e1c1f",
+     "#202e34"
+    ],
+    "phan_khung": "14-22 %",
+    "L": [
+     0.21,
+     0.3
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 013"
+   },
+   {
+    "vai": "Núi, nền xám sẫm",
+    "hex": [
+     "#45403a",
+     "#28343b",
+     "#4c5167"
+    ],
+    "phan_khung": "14-18 %",
+    "L": [
+     0.32,
+     0.46
+    ],
+    "C": [
+     0.01,
+     0.02
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 026"
+   },
+   {
+    "vai": "Trời đêm lam sẫm",
+    "hex": [
+     "#1a233c",
+     "#141d38",
+     "#1b243b"
+    ],
+    "phan_khung": "25-33 %",
+    "L": [
+     0.24,
+     0.27
+    ],
+    "C": [
+     0.05,
+     0.05
+    ],
+    "nguon": "cụm màu đo được trên 3 khung, mẫu khung 007"
+   },
+   {
+    "vai": "Lam xám (đồi xa, tuyết đêm)",
+    "hex": [
+     "#455272",
+     "#424e6d",
+     "#515f80"
+    ],
+    "phan_khung": "9-12 %",
+    "L": [
+     0.42,
+     0.5
+    ],
+    "C": [
+     0.03,
+     0.05
+    ],
+    "nguon": "cụm màu đo được trên 3 khung, mẫu khung 007"
+   },
+   {
+    "vai": "Tuyết, đất sáng",
+    "hex": [
+     "#c0b3b2",
+     "#a3a6ad",
+     "#cabcb5"
+    ],
+    "phan_khung": "12-19 %",
+    "L": [
+     0.72,
+     0.82
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 3 khung, mẫu khung 172"
+   },
+   {
+    "vai": "Nâu ấm (lều, gỗ, lửa)",
+    "hex": [
+     "#a18161",
+     "#966f49",
+     "#b88251"
+    ],
+    "phan_khung": "4-8 %",
+    "L": [
+     0.54,
+     0.69
+    ],
+    "C": [
+     0.06,
+     0.1
+    ],
+    "nguon": "cụm màu đo được trên 3 khung, mẫu khung 026"
+   }
+  ],
+  "ghi_chu": [
+   "Gần xám nhiều nhất trong các cảnh đêm (trung vị 40 %), tối sâu trung vị 15,6 %; rực chỉ 3 %.",
+   "Sáng nhất là tuyết hoặc đất bên lửa (khung 172, L 0,85 đến 0,91) và ánh lửa, nến.",
+   "Điểm nhấn là lửa trại hoặc nến cam, mảng nhỏ ở giữa cảnh.",
+   "Có hai kiểu con: tuyết đêm sáng (7, 170, 171, 172) và rừng đen xanh (13, 15, 146, 177)."
+  ],
+  "khong_lam": [
+   "Không bầu trời xanh dương rực: trời lam đ chỉ 0,05.",
+   "Không cây cỏ lục rực: lục chỉ xuất hiện như xám xanh sẫm."
+  ],
+  "tam_mau": "mau-dem-thien-nhien.jpg",
+  "nhom": "thuong-gap"
+ },
+ "chieu-tim": {
+  "ten": "Chiều tím",
+  "dung_khi": "Hoàng hôn, trời tím hồng hoặc đào ở ban công, đền (khung 68, 73, 126, 150, 185, 217). Gồm cả 149, 151 đến 153 (đền đêm tím) cùng tông.",
+  "so_khung": 14,
+  "khung_tieu_bieu": [
+   68,
+   73,
+   126,
+   150,
+   185,
+   217
+  ],
+  "so_do": {
+   "xam": [
+    4.416,
+    7.994,
+    21.448,
+    31.893,
+    36.498
+   ],
+   "giua": [
+    33.23,
+    49.849,
+    54.63,
+    63.578,
+    67.36
+   ],
+   "ruc": [
+    8.586,
+    13.354,
+    18.679,
+    33.898,
+    61.327
+   ],
+   "C": [
+    0.052,
+    0.058,
+    0.06,
+    0.079,
+    0.105
+   ],
+   "Clon": [
+    0.038,
+    0.053,
+    0.059,
+    0.07,
+    0.102
+   ],
+   "L": [
+    0.403,
+    0.465,
+    0.542,
+    0.575,
+    0.591
+   ],
+   "toi": [
+    0.05,
+    0.853,
+    3.035,
+    9.608,
+    14.559
+   ],
+   "trang": [
+    0.072,
+    0.176,
+    0.916,
+    2.892,
+    6.562
+   ],
+   "Lk": [
+    0.334,
+    0.423,
+    0.502,
+    0.569,
+    0.603
+   ],
+   "ho": [
+    1.0,
+    2.0,
+    2.0,
+    2.0,
+    4.0
+   ],
+   "am": [
+    0.011,
+    0.024,
+    0.03,
+    0.037,
+    0.053
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Lan can, đá xám sẫm",
+    "hex": [
+     "#3e464b",
+     "#313745",
+     "#484f57"
+    ],
+    "phan_khung": "11-15 %",
+    "L": [
+     0.31,
+     0.45
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 9 khung, mẫu khung 185"
+   },
+   {
+    "vai": "Núi, trời tím xám nhạt",
+    "hex": [
+     "#8f879f",
+     "#646094",
+     "#938ba7"
+    ],
+    "phan_khung": "14-23 %",
+    "L": [
+     0.51,
+     0.68
+    ],
+    "C": [
+     0.03,
+     0.13
+    ],
+    "nguon": "cụm màu đo được trên 6 khung, mẫu khung 055"
+   },
+   {
+    "vai": "Núi, tường lam tím sẫm",
+    "hex": [
+     "#383673",
+     "#36336b",
+     "#3b397b"
+    ],
+    "phan_khung": "13-22 %",
+    "L": [
+     0.33,
+     0.47
+    ],
+    "C": [
+     0.05,
+     0.12
+    ],
+    "nguon": "cụm màu đo được trên 8 khung, mẫu khung 149"
+   },
+   {
+    "vai": "Núi tím sẫm",
+    "hex": [
+     "#60496c",
+     "#493964",
+     "#66497e"
+    ],
+    "phan_khung": "16-18 %",
+    "L": [
+     0.38,
+     0.47
+    ],
+    "C": [
+     0.04,
+     0.09
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 228"
+   },
+   {
+    "vai": "Trời đào (đỏ cam nhạt)",
+    "hex": [
+     "#c79977",
+     "#c79977",
+     "#cd9a76"
+    ],
+    "phan_khung": "13-34 %",
+    "L": [
+     0.71,
+     0.72
+    ],
+    "C": [
+     0.04,
+     0.08
+    ],
+    "nguon": "cụm màu đo được trên 4 khung, mẫu khung 068"
+   },
+   {
+    "vai": "Trời, vùng sáng nhạt cam nâu",
+    "hex": [
+     "#e0c09c",
+     "#cdab97",
+     "#f2c99a"
+    ],
+    "phan_khung": "7-14 %",
+    "L": [
+     0.7,
+     0.85
+    ],
+    "C": [
+     0.04,
+     0.11
+    ],
+    "nguon": "cụm màu đo được trên 9 khung, mẫu khung 193"
+   },
+   {
+    "vai": "Áo Doom lục",
+    "hex": [
+     "#34823e",
+     "#307737",
+     "#409946"
+    ],
+    "phan_khung": "8-11 %",
+    "L": [
+     0.51,
+     0.6
+    ],
+    "C": [
+     0.12,
+     0.14
+    ],
+    "nguon": "cụm màu đo được trên 6 khung, mẫu khung 068"
+   },
+   {
+    "vai": "Vùng tối sâu",
+    "hex": [
+     "#171a2c",
+     "#171a2d",
+     "#191e23"
+    ],
+    "phan_khung": "10-14 %",
+    "L": [
+     0.22,
+     0.27
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 126"
+   }
+  ],
+  "ghi_chu": [
+   "Có hai bộ tách bạch: tím (khung 73, 126, 150, 228: núi tím và trời tím sẫm) và đào (khung 68, 185, 217: trời #c79977, L 0,71). Khung 193 hồng cam.",
+   "Rực trung vị 19 %, nhưng phần lớn là lục của áo Doom; trời không rực.",
+   "Tối nhất là lan can và bóng đá (L 0,22 đến 0,3), sáng nhất là vùng trời gần chân trời (L 0,7 đến 0,85).",
+   "Nhân vật tách khỏi nền bằng độ rực: áo lục trên nền tím hoặc đào."
+  ],
+  "khong_lam": [
+   "Không trời xanh dương thuần.",
+   "Không nền gần xám hết: gần xám trung vị 21 %, lưng chừng 55 %."
+  ],
+  "tam_mau": "mau-chieu-tim.jpg",
+  "nhom": "thuong-gap"
+ },
+ "ngay-thien-nhien": {
+  "ten": "Ngày thiên nhiên",
+  "dung_khi": "Ban ngày ngoài trời: trại, đồi, đồng lúa, chiến trường (khung 9, 10, 28, 136, 179, 181, 206). Chiến trường (134, 225, 229) là kiểu con trời xám khói.",
+  "so_khung": 13,
+  "khung_tieu_bieu": [
+   9,
+   28,
+   136,
+   179,
+   181,
+   206
+  ],
+  "so_do": {
+   "xam": [
+    6.399,
+    15.671,
+    29.619,
+    47.08,
+    51.344
+   ],
+   "giua": [
+    22.612,
+    45.265,
+    50.817,
+    62.893,
+    84.819
+   ],
+   "ruc": [
+    0.533,
+    0.911,
+    3.39,
+    31.867,
+    39.58
+   ],
+   "C": [
+    0.033,
+    0.037,
+    0.051,
+    0.071,
+    0.08
+   ],
+   "Clon": [
+    0.025,
+    0.033,
+    0.048,
+    0.067,
+    0.078
+   ],
+   "L": [
+    0.541,
+    0.581,
+    0.61,
+    0.625,
+    0.728
+   ],
+   "toi": [
+    0.011,
+    0.739,
+    1.093,
+    1.671,
+    3.978
+   ],
+   "trang": [
+    0.268,
+    0.835,
+    1.448,
+    3.357,
+    23.949
+   ],
+   "Lk": [
+    0.376,
+    0.439,
+    0.49,
+    0.508,
+    0.542
+   ],
+   "ho": [
+    0.0,
+    1.0,
+    1.0,
+    3.0,
+    3.0
+   ],
+   "am": [
+    0.003,
+    0.029,
+    0.03,
+    0.04,
+    0.048
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Cỏ, cây (lục đục)",
+    "hex": [
+     "#6a8151",
+     "#477c3e",
+     "#6a964b"
+    ],
+    "phan_khung": "11-22 %",
+    "L": [
+     0.5,
+     0.66
+    ],
+    "C": [
+     0.05,
+     0.12
+    ],
+    "nguon": "cụm màu đo được trên 9 khung, mẫu khung 181"
+   },
+   {
+    "vai": "Núi, bãi đất xám lục",
+    "hex": [
+     "#80897c",
+     "#777c72",
+     "#7a9081"
+    ],
+    "phan_khung": "13-21 %",
+    "L": [
+     0.51,
+     0.69
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 6 khung, mẫu khung 028"
+   },
+   {
+    "vai": "Bóng cây, đất sẫm",
+    "hex": [
+     "#5a4e3e",
+     "#403a2f",
+     "#675941"
+    ],
+    "phan_khung": "8-12 %",
+    "L": [
+     0.31,
+     0.49
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 9 khung, mẫu khung 134"
+   },
+   {
+    "vai": "Trời nhạt",
+    "hex": [
+     "#cdd7e2",
+     "#cbd3db",
+     "#dde9f3"
+    ],
+    "phan_khung": "8-15 %",
+    "L": [
+     0.86,
+     0.93
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 7 khung, mẫu khung 206"
+   },
+   {
+    "vai": "Núi xa (xanh lam xám nhạt)",
+    "hex": [
+     "#96aabe",
+     "#94a5bf",
+     "#98aec8"
+    ],
+    "phan_khung": "12-19 %",
+    "L": [
+     0.71,
+     0.75
+    ],
+    "C": [
+     0.04,
+     0.04
+    ],
+    "nguon": "cụm màu đo được trên 4 khung, mẫu khung 011"
+   },
+   {
+    "vai": "Đất, lúa nhạt",
+    "hex": [
+     "#737c59",
+     "#726c5a",
+     "#8e8672"
+    ],
+    "phan_khung": "12-15 %",
+    "L": [
+     0.51,
+     0.64
+    ],
+    "C": [
+     0.03,
+     0.1
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 011"
+   }
+  ],
+  "ghi_chu": [
+   "Lục của cỏ nhiều nhưng đục: C 0,05 đến 0,12 (khung 10: cỏ #6d7e52, núi gần #68846b), không rực. Rực trung vị 3 %.",
+   "Lớp xa nhạt và xám hơn lớp gần: núi xa #8a9fa0, #859b8f so với cỏ gần #718256 (khung 10).",
+   "Sáng nhất là trời và đỉnh núi trắng (L 0,86 đến 0,93); tối nhất chỉ là bóng cây và áo, tối sâu trung vị 1 %.",
+   "Điểm nhấn là áo đỏ rượu của lính, cờ, lửa, mỗi thứ vài phần trăm.",
+   "Hai kiểu con: đục (9, 10, 11, 28, 181, 134, 225, 229: rực 1 đến 3 %, cỏ #808c63, #6a8151, trời #96aabc) và tươi hơn (136, 179, 206: rực 31 đến 40 %, cỏ #5b8547, #347540, #6a964b)."
+  ],
+  "khong_lam": [
+   "Không lục chói: lục cao nhất C 0,12 (khung 136, 179, 206); các khung còn lại C 0,05 đến 0,09.",
+   "Không trời xanh ngọc đậm: trời xanh lam xám nhạt (#96aabe)."
+  ],
+  "tam_mau": "mau-ngay-thien-nhien.jpg",
+  "nhom": "thuong-gap"
+ },
+ "ngay-pho": {
+  "ten": "Ngày phố",
+  "dung_khi": "Ban ngày ở phố, sân, thành phố: chợ, sân trường, mái nhà (khung 31, 46, 57, 82, 99, 219).",
+  "so_khung": 23,
+  "khung_tieu_bieu": [
+   31,
+   46,
+   57,
+   82,
+   99,
+   219
+  ],
+  "so_do": {
+   "xam": [
+    19.099,
+    29.429,
+    37.973,
+    45.823,
+    62.343
+   ],
+   "giua": [
+    33.232,
+    45.096,
+    53.55,
+    62.159,
+    76.529
+   ],
+   "ruc": [
+    0.621,
+    4.01,
+    7.668,
+    11.444,
+    18.788
+   ],
+   "C": [
+    0.03,
+    0.035,
+    0.041,
+    0.051,
+    0.055
+   ],
+   "Clon": [
+    0.017,
+    0.024,
+    0.034,
+    0.039,
+    0.051
+   ],
+   "L": [
+    0.509,
+    0.556,
+    0.587,
+    0.63,
+    0.695
+   ],
+   "toi": [
+    0.534,
+    1.277,
+    2.123,
+    3.078,
+    7.561
+   ],
+   "trang": [
+    0.157,
+    1.633,
+    4.581,
+    6.61,
+    15.027
+   ],
+   "Lk": [
+    0.431,
+    0.51,
+    0.562,
+    0.605,
+    0.634
+   ],
+   "ho": [
+    0.0,
+    1.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "am": [
+    0.003,
+    0.013,
+    0.024,
+    0.029,
+    0.043
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Đá, nền đường xám vừa",
+    "hex": [
+     "#8b8272",
+     "#73726c",
+     "#979188"
+    ],
+    "phan_khung": "14-22 %",
+    "L": [
+     0.51,
+     0.7
+    ],
+    "C": [
+     0.0,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 20 khung, mẫu khung 199"
+   },
+   {
+    "vai": "Tường, bóng xám sẫm",
+    "hex": [
+     "#433b33",
+     "#383132",
+     "#58544c"
+    ],
+    "phan_khung": "7-15 %",
+    "L": [
+     0.31,
+     0.49
+    ],
+    "C": [
+     0.0,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 20 khung, mẫu khung 083"
+   },
+   {
+    "vai": "Tường nhà kem, nâu nhạt",
+    "hex": [
+     "#beb19a",
+     "#c7a279",
+     "#c7bfaa"
+    ],
+    "phan_khung": "10-16 %",
+    "L": [
+     0.72,
+     0.84
+    ],
+    "C": [
+     0.03,
+     0.12
+    ],
+    "nguon": "cụm màu đo được trên 13 khung, mẫu khung 058"
+   },
+   {
+    "vai": "Trời nhạt",
+    "hex": [
+     "#cae0ec",
+     "#c8ddeb",
+     "#eae4d9"
+    ],
+    "phan_khung": "5-22 %",
+    "L": [
+     0.88,
+     0.93
+    ],
+    "C": [
+     0.02,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 13 khung, mẫu khung 166"
+   },
+   {
+    "vai": "Nhà xa, trời xanh xám",
+    "hex": [
+     "#a3b9c9",
+     "#b7aea0",
+     "#a5bbcc"
+    ],
+    "phan_khung": "10-16 %",
+    "L": [
+     0.75,
+     0.81
+    ],
+    "C": [
+     0.02,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 10 khung, mẫu khung 219"
+   },
+   {
+    "vai": "Gỗ, mái nâu đỏ",
+    "hex": [
+     "#5d4836",
+     "#56392a",
+     "#675a4c"
+    ],
+    "phan_khung": "9-13 %",
+    "L": [
+     0.36,
+     0.49
+    ],
+    "C": [
+     0.03,
+     0.1
+    ],
+    "nguon": "cụm màu đo được trên 10 khung, mẫu khung 173"
+   },
+   {
+    "vai": "Cây, mái bạt lục",
+    "hex": [
+     "#5a8448",
+     "#347b3e",
+     "#5a8448"
+    ],
+    "phan_khung": "10-15 %",
+    "L": [
+     0.5,
+     0.59
+    ],
+    "C": [
+     0.07,
+     0.12
+    ],
+    "nguon": "cụm màu đo được trên 7 khung, mẫu khung 118"
+   },
+   {
+    "vai": "Mái ngói đỏ rượu",
+    "hex": [
+     "#763731",
+     "#7d332e",
+     "#912a2b"
+    ],
+    "phan_khung": "5-18 %",
+    "L": [
+     0.41,
+     0.47
+    ],
+    "C": [
+     0.04,
+     0.14
+    ],
+    "nguon": "cụm màu đo được trên 7 khung, mẫu khung 071"
+   }
+  ],
+  "ghi_chu": [
+   "Gần xám nhiều (trung vị 38 %), rực trung vị chỉ 7,7 %; sáng TB 0,59, tối sâu chỉ 2 %.",
+   "Điểm nhấn là các mái bạt đỏ trắng, quầy hàng và áo người, mảng nhỏ.",
+   "Lớp xa (nhà, thành phố) nhạt và xanh xám, lớp gần sẫm hơn.",
+   "Nhân vật tách khỏi nền bằng áo có màu (đỏ rượu, xanh, lục) trên nền xám nâu."
+  ],
+  "khong_lam": [
+   "Không nền nhiều màu rực: đ nền thường 0,03 hoặc thấp hơn.",
+   "Không trời xanh dương đậm."
+  ],
+  "tam_mau": "mau-ngay-pho.jpg",
+  "nhom": "thuong-gap"
+ },
+ "tuyet": {
+  "ten": "Tuyết",
+  "dung_khi": "Cảnh phủ tuyết, ban ngày hoặc chiều: đường làng tuyết, tu viện tuyết (khung 19, 20, 21, 47, 48, 49, 78). Ít mẫu: 7 khung.",
+  "so_khung": 7,
+  "khung_tieu_bieu": [
+   19,
+   20,
+   47,
+   49,
+   78,
+   48
+  ],
+  "so_do": {
+   "xam": [
+    13.038,
+    67.801,
+    71.677,
+    73.964,
+    82.671
+   ],
+   "giua": [
+    16.185,
+    18.466,
+    23.924,
+    26.406,
+    86.962
+   ],
+   "ruc": [
+    0.0,
+    0.059,
+    0.104,
+    8.587,
+    14.875
+   ],
+   "C": [
+    0.021,
+    0.021,
+    0.027,
+    0.038,
+    0.043
+   ],
+   "Clon": [
+    0.016,
+    0.017,
+    0.02,
+    0.027,
+    0.039
+   ],
+   "L": [
+    0.509,
+    0.623,
+    0.631,
+    0.64,
+    0.672
+   ],
+   "toi": [
+    0.098,
+    1.184,
+    3.596,
+    5.134,
+    10.291
+   ],
+   "trang": [
+    1.879,
+    3.7,
+    4.258,
+    6.692,
+    10.305
+   ],
+   "Lk": [
+    0.51,
+    0.53,
+    0.596,
+    0.637,
+    0.685
+   ],
+   "ho": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0
+   ],
+   "am": [
+    0.003,
+    0.01,
+    0.02,
+    0.029,
+    0.031
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Tuyết, núi xám xanh vừa",
+    "hex": [
+     "#848993",
+     "#807d7a",
+     "#8b93a3"
+    ],
+    "phan_khung": "14-21 %",
+    "L": [
+     0.54,
+     0.68
+    ],
+    "C": [
+     0.0,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 6 khung, mẫu khung 021"
+   },
+   {
+    "vai": "Tuyết sáng",
+    "hex": [
+     "#bbc1c7",
+     "#b6b1a6",
+     "#bac3c7"
+    ],
+    "phan_khung": "11-19 %",
+    "L": [
+     0.71,
+     0.83
+    ],
+    "C": [
+     0.01,
+     0.02
+    ],
+    "nguon": "cụm màu đo được trên 6 khung, mẫu khung 047"
+   },
+   {
+    "vai": "Thông, bóng xám lục sẫm",
+    "hex": [
+     "#55605a",
+     "#404249",
+     "#55605a"
+    ],
+    "phan_khung": "9-13 %",
+    "L": [
+     0.37,
+     0.49
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 020"
+   },
+   {
+    "vai": "Tuyết rất sáng, đỉnh trắng",
+    "hex": [
+     "#dadfe7",
+     "#becde2",
+     "#efe6cd"
+    ],
+    "phan_khung": "7-10 %",
+    "L": [
+     0.85,
+     0.94
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 047"
+   },
+   {
+    "vai": "Trời, núi lam đậm (khung đêm 19)",
+    "hex": [
+     "#333e5e",
+     "#333e5e",
+     "#4d566d"
+    ],
+    "phan_khung": "20-23 %",
+    "L": [
+     0.37,
+     0.46
+    ],
+    "C": [
+     0.03,
+     0.05
+    ],
+    "nguon": "cụm màu đo được trên 2 khung, mẫu khung 019"
+   },
+   {
+    "vai": "Áo, cờ đỏ (tu viện)",
+    "hex": [
+     "#5c2226",
+     "#5c2226",
+     "#5f2227"
+    ],
+    "phan_khung": "14-18 %",
+    "L": [
+     0.33,
+     0.36
+    ],
+    "C": [
+     0.06,
+     0.09
+    ],
+    "nguon": "cụm màu đo được trên 2 khung, mẫu khung 048"
+   }
+  ],
+  "ghi_chu": [
+   "Là loại xám nhất: gần xám trung vị 72 %, rực trung vị 0,1 %, độ đậm TB 0,03.",
+   "Sáng TB 0,63; sáng nhất là tuyết (L 0,85 đến 0,94), tối nhất là thông và áo choàng nâu.",
+   "Điểm nhấn là áo tu sĩ đỏ hoặc cam (khung 47, 48, 49), áo choàng nâu: mảng nhỏ, chiếm 4 đến 6 %.",
+   "Nhân vật tách khỏi nền bằng độ sẫm và độ ấm (nâu, đỏ trên trắng xám).",
+   "Ba kiểu con: tuyết xám ban ngày (20, 47, 78: gần xám 72 đến 83 %), tuyết đêm lam (19: nền #333e5e, #24293c) và tu viện đỏ trắng có cửa sổ vàng ấm (48, 49: rực 14 đến 15 %, đỏ rượu #5f2227 chiếm 12 đến 20 %)."
+  ],
+  "khong_lam": [
+   "Không tuyết trắng sạch thuần: tuyết luôn ngả xám xanh nhẹ hoặc kem.",
+   "Không nền rực."
+  ],
+  "tam_mau": "mau-tuyet.jpg",
+  "nhom": "thuong-gap"
+ },
+ "lua": {
+  "ten": "Lửa",
+  "dung_khi": "Địa ngục, lửa, đỏ cam bao trùm: khung 14, 147, 154 đến 162, 164, 165, 176, 220, 235. Khung 176 là lửa tràn lên phố gạch (có tường gạch, khói xám).",
+  "so_khung": 16,
+  "khung_tieu_bieu": [
+   14,
+   147,
+   157,
+   164,
+   159,
+   220
+  ],
+  "so_do": {
+   "xam": [
+    0.174,
+    3.47,
+    8.629,
+    14.292,
+    34.642
+   ],
+   "giua": [
+    22.282,
+    46.526,
+    53.753,
+    58.566,
+    66.314
+   ],
+   "ruc": [
+    20.526,
+    33.154,
+    37.387,
+    41.288,
+    60.706
+   ],
+   "C": [
+    0.07,
+    0.088,
+    0.092,
+    0.098,
+    0.104
+   ],
+   "Clon": [
+    0.065,
+    0.078,
+    0.091,
+    0.099,
+    0.102
+   ],
+   "L": [
+    0.365,
+    0.427,
+    0.439,
+    0.459,
+    0.544
+   ],
+   "toi": [
+    11.229,
+    17.827,
+    22.314,
+    28.851,
+    42.755
+   ],
+   "trang": [
+    0.151,
+    0.908,
+    1.855,
+    2.66,
+    3.427
+   ],
+   "Lk": [
+    0.542,
+    0.624,
+    0.653,
+    0.664,
+    0.737
+   ],
+   "ho": [
+    1.0,
+    2.0,
+    2.0,
+    2.0,
+    3.0
+   ],
+   "am": [
+    0.061,
+    0.073,
+    0.082,
+    0.084,
+    0.098
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Nền tối nâu đỏ (đất, hang)",
+    "hex": [
+     "#35120d",
+     "#270d08",
+     "#40180f"
+    ],
+    "phan_khung": "13-25 %",
+    "L": [
+     0.18,
+     0.3
+    ],
+    "C": [
+     0.03,
+     0.08
+    ],
+    "nguon": "cụm màu đo được trên 15 khung, mẫu khung 235"
+   },
+   {
+    "vai": "Đá, lửa tối đỏ nâu",
+    "hex": [
+     "#642116",
+     "#541f15",
+     "#782718"
+    ],
+    "phan_khung": "9-19 %",
+    "L": [
+     0.3,
+     0.44
+    ],
+    "C": [
+     0.07,
+     0.13
+    ],
+    "nguon": "cụm màu đo được trên 15 khung, mẫu khung 158"
+   },
+   {
+    "vai": "Lửa, trời cam vàng",
+    "hex": [
+     "#f2aa4a",
+     "#efa748",
+     "#f2aa4a"
+    ],
+    "phan_khung": "13-16 %",
+    "L": [
+     0.72,
+     0.84
+    ],
+    "C": [
+     0.05,
+     0.13
+    ],
+    "nguon": "cụm màu đo được trên 14 khung, mẫu khung 014"
+   },
+   {
+    "vai": "Lửa đỏ cam rực",
+    "hex": [
+     "#e84e2c",
+     "#8c645d",
+     "#ea6c30"
+    ],
+    "phan_khung": "6-12 %",
+    "L": [
+     0.5,
+     0.69
+    ],
+    "C": [
+     0.04,
+     0.21
+    ],
+    "nguon": "cụm màu đo được trên 15 khung, mẫu khung 154"
+   },
+   {
+    "vai": "Bóng đỏ đen",
+    "hex": [
+     "#270a09",
+     "#230806",
+     "#3e100d"
+    ],
+    "phan_khung": "12-19 %",
+    "L": [
+     0.15,
+     0.29
+    ],
+    "C": [
+     0.03,
+     0.07
+    ],
+    "nguon": "cụm màu đo được trên 4 khung, mẫu khung 155"
+   },
+   {
+    "vai": "Vùng đen",
+    "hex": [
+     "#110803",
+     "#0d0401",
+     "#110803"
+    ],
+    "phan_khung": "6-17 %",
+    "L": [
+     0.12,
+     0.17
+    ],
+    "C": [
+     0.02,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 014"
+   },
+   {
+    "vai": "Áo Doom lục",
+    "hex": [
+     "#3f823f",
+     "#3e833d",
+     "#409143"
+    ],
+    "phan_khung": "6-11 %",
+    "L": [
+     0.53,
+     0.6
+    ],
+    "C": [
+     0.06,
+     0.13
+    ],
+    "nguon": "cụm màu đo được trên 8 khung, mẫu khung 156"
+   },
+   {
+    "vai": "Cột sáng vàng kem",
+    "hex": [
+     "#f7d473",
+     "#f4cb67",
+     "#f7d6a4"
+    ],
+    "phan_khung": "4-7 %",
+    "L": [
+     0.85,
+     0.89
+    ],
+    "C": [
+     0.07,
+     0.13
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 161"
+   }
+  ],
+  "ghi_chu": [
+   "Là loại rực nhất ngoài vũ trụ cam: rực trung vị 37 %, tối sâu trung vị 22 %; hai đầu cực: đen đỏ tối và cam vàng sáng.",
+   "Tối nhất là đen đỏ (L 0,12 đến 0,3) ở nền; sáng nhất là cam vàng và cột sáng vàng kem (L 0,85 đến 0,89).",
+   "Điểm nhấn là lục của Doom, xanh áo Strange, và cột sáng: chiếm vài phần trăm.",
+   "Nhân vật tách khỏi nền bằng độ sáng và khác họ màu (lục, xanh, kem trên nền đỏ cam)."
+  ],
+  "khong_lam": [
+   "Không nền lam, lục.",
+   "Không lửa trắng chói: lửa đỏ cam #e84e2c, đỉnh vàng #f2aa4a."
+  ],
+  "tam_mau": "mau-lua.jpg",
+  "nhom": "dac-biet"
+ },
+ "sang-trang": {
+  "ten": "Sáng trắng",
+  "dung_khi": "Rất sáng, nền trắng, kem, mây, vàng nhạt: thiên đường trắng vàng, mây trời, sảnh trắng (khung 5, 67, 86, 200, 207, 212; khung 1 là sảnh trắng vàng dưới trời đêm; nhóm khung 200 đến 203, 207, 210, 236 đến 238 có thêm lục và vàng kim).",
+  "so_khung": 26,
+  "khung_tieu_bieu": [
+   5,
+   67,
+   86,
+   200,
+   207,
+   212
+  ],
+  "so_do": {
+   "xam": [
+    11.822,
+    25.439,
+    39.513,
+    54.669,
+    70.138
+   ],
+   "giua": [
+    17.975,
+    30.693,
+    38.057,
+    43.795,
+    57.14
+   ],
+   "ruc": [
+    0.715,
+    8.048,
+    20.729,
+    33.415,
+    55.63
+   ],
+   "C": [
+    0.029,
+    0.035,
+    0.057,
+    0.07,
+    0.091
+   ],
+   "Clon": [
+    0.01,
+    0.022,
+    0.045,
+    0.065,
+    0.102
+   ],
+   "L": [
+    0.618,
+    0.693,
+    0.736,
+    0.823,
+    0.883
+   ],
+   "toi": [
+    0.0,
+    0.6,
+    1.42,
+    3.819,
+    13.764
+   ],
+   "trang": [
+    0.131,
+    3.945,
+    13.272,
+    33.629,
+    55.003
+   ],
+   "Lk": [
+    0.156,
+    0.474,
+    0.545,
+    0.635,
+    0.755
+   ],
+   "ho": [
+    0.0,
+    0.25,
+    1.0,
+    2.0,
+    3.0
+   ],
+   "am": [
+    0.002,
+    0.014,
+    0.032,
+    0.056,
+    0.077
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Mây, tường trắng tím nhạt",
+    "hex": [
+     "#e8e1e9",
+     "#dbd6de",
+     "#f5f0ee"
+    ],
+    "phan_khung": "9-19 %",
+    "L": [
+     0.85,
+     0.97
+    ],
+    "C": [
+     0.0,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 14 khung, mẫu khung 178"
+   },
+   {
+    "vai": "Trụ, sàn xám kem",
+    "hex": [
+     "#beb9ac",
+     "#b7b2a0",
+     "#c2c3bf"
+    ],
+    "phan_khung": "12-22 %",
+    "L": [
+     0.71,
+     0.85
+    ],
+    "C": [
+     0.0,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 21 khung, mẫu khung 213"
+   },
+   {
+    "vai": "Kem, vàng nhạt, đồ vàng kim",
+    "hex": [
+     "#f1e7c6",
+     "#ddd6b8",
+     "#f6efd2"
+    ],
+    "phan_khung": "8-18 %",
+    "L": [
+     0.86,
+     0.95
+    ],
+    "C": [
+     0.03,
+     0.11
+    ],
+    "nguon": "cụm màu đo được trên 17 khung, mẫu khung 203"
+   },
+   {
+    "vai": "Mảng lục (nền ngai, áo Doom)",
+    "hex": [
+     "#40904a",
+     "#3a7c3f",
+     "#4faf55"
+    ],
+    "phan_khung": "7-12 %",
+    "L": [
+     0.5,
+     0.7
+    ],
+    "C": [
+     0.03,
+     0.16
+    ],
+    "nguon": "cụm màu đo được trên 13 khung, mẫu khung 200"
+   },
+   {
+    "vai": "Vàng kim, đồ trang trí",
+    "hex": [
+     "#b1ae5e",
+     "#baa442",
+     "#d7ccac"
+    ],
+    "phan_khung": "8-15 %",
+    "L": [
+     0.7,
+     0.85
+    ],
+    "C": [
+     0.03,
+     0.13
+    ],
+    "nguon": "cụm màu đo được trên 9 khung, mẫu khung 210"
+   },
+   {
+    "vai": "Vàng nhạt, tóc",
+    "hex": [
+     "#e8c664",
+     "#bfa88e",
+     "#e8c664"
+    ],
+    "phan_khung": "13-23 %",
+    "L": [
+     0.73,
+     0.84
+    ],
+    "C": [
+     0.05,
+     0.13
+    ],
+    "nguon": "cụm màu đo được trên 7 khung, mẫu khung 208"
+   },
+   {
+    "vai": "Xám vừa (bóng)",
+    "hex": [
+     "#8c8f94",
+     "#747f6e",
+     "#9ba4a7"
+    ],
+    "phan_khung": "7-13 %",
+    "L": [
+     0.56,
+     0.7
+    ],
+    "C": [
+     0.0,
+     0.02
+    ],
+    "nguon": "cụm màu đo được trên 10 khung, mẫu khung 006"
+   },
+   {
+    "vai": "Kiểu mây tím nhạt: nền mây trắng tím, tia nắng",
+    "hex": [
+     "#e0d7e9",
+     "#d0c9dd",
+     "#faf6ec",
+     "#e4ddec"
+    ],
+    "phan_khung": "16-30 %",
+    "L": [
+     0.79,
+     0.97
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "mẫu điểm trên ô màu khung 5, 67"
+   },
+   {
+    "vai": "Kiểu trời mây xanh nhạt (khung 86, 87)",
+    "hex": [
+     "#aed6f1",
+     "#ecf4f7",
+     "#a2c9e4"
+    ],
+    "phan_khung": "13-38 %",
+    "L": [
+     0.81,
+     0.96
+    ],
+    "C": [
+     0.01,
+     0.06
+    ],
+    "nguon": "mẫu điểm trên ô màu khung 86"
+   }
+  ],
+  "ghi_chu": [
+   "Gồm ba kiểu con: mây tím trắng (5, 44, 67, 93, 114, 178), trời xanh nhạt có mây (86, 87) và sảnh trắng kem vàng kim (200 đến 213, 230, 236 đến 238). Mỗi kiểu có bộ riêng ở bảng vai.",
+   "Sáng TB trung vị 0,74, gần trắng 14 % khung (đến 34 % ở khung toàn mây).",
+   "Tối nhất là áo lục của Doom, và vài đồ tối nhỏ (L 0,19 đến 0,28, 2 % khung).",
+   "Điểm nhấn là lục (nền ngai và áo) và vàng kim, mỗi thứ 5 đến 20 % khung.",
+   "Nhân vật tách khỏi nền bằng độ sẫm và rực (lục đậm trên trắng)."
+  ],
+  "khong_lam": [
+   "Không đổ nền xám sẫm.",
+   "Không viền đen: đồ vàng kim và trụ cũng nhạt."
+  ],
+  "tam_mau": "mau-sang-trang.jpg",
+  "nhom": "dac-biet"
+ },
+ "vu-tru": {
+  "ten": "Vũ trụ",
+  "dung_khi": "Không gian, hành tinh, sao (khung 3, 53, 74, 88, 191, 197).",
+  "so_khung": 14,
+  "khung_tieu_bieu": [
+   53,
+   74,
+   88,
+   191,
+   197,
+   127
+  ],
+  "so_do": {
+   "xam": [
+    1.717,
+    7.201,
+    9.45,
+    14.612,
+    33.919
+   ],
+   "giua": [
+    38.821,
+    52.174,
+    64.707,
+    83.606,
+    89.167
+   ],
+   "ruc": [
+    0.485,
+    5.367,
+    7.25,
+    39.596,
+    59.462
+   ],
+   "C": [
+    0.041,
+    0.048,
+    0.052,
+    0.075,
+    0.105
+   ],
+   "Clon": [
+    0.038,
+    0.042,
+    0.046,
+    0.074,
+    0.1
+   ],
+   "L": [
+    0.191,
+    0.236,
+    0.284,
+    0.411,
+    0.498
+   ],
+   "toi": [
+    8.275,
+    31.609,
+    71.171,
+    77.515,
+    87.304
+   ],
+   "trang": [
+    0.049,
+    0.688,
+    1.247,
+    2.133,
+    4.693
+   ],
+   "Lk": [
+    0.342,
+    0.436,
+    0.613,
+    0.666,
+    0.694
+   ],
+   "ho": [
+    1.0,
+    1.0,
+    1.0,
+    2.0,
+    2.0
+   ],
+   "am": [
+    0.03,
+    0.041,
+    0.043,
+    0.059,
+    0.099
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Nền tím xanh tối",
+    "hex": [
+     "#0c1229",
+     "#0b0c20",
+     "#1b1a39"
+    ],
+    "phan_khung": "12-20 %",
+    "L": [
+     0.15,
+     0.29
+    ],
+    "C": [
+     0.03,
+     0.09
+    ],
+    "nguon": "cụm màu đo được trên 12 khung, mẫu khung 074"
+   },
+   {
+    "vai": "Nền lam đen",
+    "hex": [
+     "#060b1c",
+     "#04091a",
+     "#090f24"
+    ],
+    "phan_khung": "16-25 %",
+    "L": [
+     0.13,
+     0.3
+    ],
+    "C": [
+     0.03,
+     0.07
+    ],
+    "nguon": "cụm màu đo được trên 9 khung, mẫu khung 088"
+   },
+   {
+    "vai": "Hành tinh, đại dương (lam)",
+    "hex": [
+     "#3675ad",
+     "#3671ad",
+     "#5083cd"
+    ],
+    "phan_khung": "6-20 %",
+    "L": [
+     0.53,
+     0.7
+    ],
+    "C": [
+     0.06,
+     0.11
+    ],
+    "nguon": "cụm màu đo được trên 10 khung, mẫu khung 088"
+   },
+   {
+    "vai": "Nền đen gần xám",
+    "hex": [
+     "#080e18",
+     "#03050e",
+     "#181b2a"
+    ],
+    "phan_khung": "5-18 %",
+    "L": [
+     0.11,
+     0.24
+    ],
+    "C": [
+     0.02,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 053"
+   },
+   {
+    "vai": "Lam sẫm (khí quyển)",
+    "hex": [
+     "#2a3f67",
+     "#1a3762",
+     "#34537a"
+    ],
+    "phan_khung": "7-11 %",
+    "L": [
+     0.31,
+     0.49
+    ],
+    "C": [
+     0.06,
+     0.11
+    ],
+    "nguon": "cụm màu đo được trên 8 khung, mẫu khung 077"
+   },
+   {
+    "vai": "Lục đục (lục địa)",
+    "hex": [
+     "#6a9b55",
+     "#2e7139",
+     "#6a9b55"
+    ],
+    "phan_khung": "5-7 %",
+    "L": [
+     0.54,
+     0.65
+    ],
+    "C": [
+     0.07,
+     0.11
+    ],
+    "nguon": "cụm màu đo được trên 6 khung, mẫu khung 090"
+   },
+   {
+    "vai": "Sao, ánh sáng",
+    "hex": [
+     "#e4eef4",
+     "#cad6e6",
+     "#e4eef4"
+    ],
+    "phan_khung": "4-5 %",
+    "L": [
+     0.89,
+     0.93
+    ],
+    "C": [
+     0.01,
+     0.02
+    ],
+    "nguon": "cụm màu đo được trên 4 khung, mẫu khung 090"
+   }
+  ],
+  "ghi_chu": [
+   "Tối sâu trung vị 71 %, sáng TB 0,30; nền lam tím đen đ 0,03 đến 0,09.",
+   "Mảng sáng nhất là sao, mặt trời, viền khí quyển (L 0,89 đến 0,93, 1 % khung).",
+   "Điểm nhấn là hành tinh lam và lục: lam #3671ad, lục #6a9b55.",
+   "Khung 88 và 191 có hành tinh lam rực (#3675ad, đ 0,11) là điểm sáng chính; khung 53, 74, 197 nền gần như đen lam."
+  ],
+  "khong_lam": [
+   "Không nền đen thuần: luôn ngả lam hoặc lam tím.",
+   "Không hành tinh rực quá C 0,11."
+  ],
+  "tam_mau": "mau-vu-tru.jpg",
+  "nhom": "dac-biet"
+ },
+ "vu-tru-cam": {
+  "ten": "Vũ trụ cam đỏ",
+  "dung_khi": "Mặt trời cam (khung 3) và cảnh vũ trụ trừu tượng nền đỏ cam rực (111, 192, 194, 195, 196). Ít mẫu: 6 khung, hai kiểu: mặt trời trên nền đen đỏ (3) và nền đỏ cam phẳng (5 khung còn lại).",
+  "so_khung": 6,
+  "khung_tieu_bieu": [
+   3,
+   111,
+   192,
+   194,
+   195,
+   196
+  ],
+  "so_do": {
+   "xam": [
+    0.744,
+    1.171,
+    2.29,
+    2.51,
+    8.454
+   ],
+   "giua": [
+    5.192,
+    10.91,
+    23.398,
+    28.609,
+    43.278
+   ],
+   "ruc": [
+    54.157,
+    66.969,
+    71.835,
+    87.893,
+    94.064
+   ],
+   "C": [
+    0.1,
+    0.106,
+    0.11,
+    0.116,
+    0.119
+   ],
+   "Clon": [
+    0.102,
+    0.111,
+    0.113,
+    0.118,
+    0.124
+   ],
+   "L": [
+    0.414,
+    0.512,
+    0.542,
+    0.572,
+    0.644
+   ],
+   "toi": [
+    0.188,
+    0.977,
+    1.94,
+    3.678,
+    38.465
+   ],
+   "trang": [
+    0.609,
+    1.4,
+    2.681,
+    6.781,
+    13.466
+   ],
+   "Lk": [
+    0.318,
+    0.396,
+    0.543,
+    0.625,
+    0.639
+   ],
+   "ho": [
+    1.0,
+    1.25,
+    2.0,
+    2.0,
+    3.0
+   ],
+   "am": [
+    0.085,
+    0.088,
+    0.093,
+    0.107,
+    0.113
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Nền đỏ rượu",
+    "hex": [
+     "#892e3a",
+     "#832c45",
+     "#923b31"
+    ],
+    "phan_khung": "16-35 %",
+    "L": [
+     0.42,
+     0.49
+    ],
+    "C": [
+     0.12,
+     0.12
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 111"
+   },
+   {
+    "vai": "Nền đỏ cam",
+    "hex": [
+     "#b95b3e",
+     "#b25a3f",
+     "#c77e4f"
+    ],
+    "phan_khung": "12-18 %",
+    "L": [
+     0.54,
+     0.67
+    ],
+    "C": [
+     0.1,
+     0.18
+    ],
+    "nguon": "cụm màu đo được trên 6 khung, mẫu khung 192"
+   },
+   {
+    "vai": "Vệt sáng kem",
+    "hex": [
+     "#f7e0a3",
+     "#f6de97",
+     "#f7e0a3"
+    ],
+    "phan_khung": "4-9 %",
+    "L": [
+     0.89,
+     0.92
+    ],
+    "C": [
+     0.06,
+     0.11
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 111"
+   },
+   {
+    "vai": "Vệt sáng cam nhạt",
+    "hex": [
+     "#daa469",
+     "#d6a366",
+     "#eaac6d"
+    ],
+    "phan_khung": "10-11 %",
+    "L": [
+     0.76,
+     0.78
+    ],
+    "C": [
+     0.1,
+     0.1
+    ],
+    "nguon": "cụm màu đo được trên 3 khung, mẫu khung 196"
+   },
+   {
+    "vai": "Vệt sáng đỏ cam nhạt",
+    "hex": [
+     "#d38954",
+     "#d38954",
+     "#e5a36f"
+    ],
+    "phan_khung": "9-16 %",
+    "L": [
+     0.72,
+     0.77
+    ],
+    "C": [
+     0.1,
+     0.16
+    ],
+    "nguon": "cụm màu đo được trên 3 khung, mẫu khung 192"
+   },
+   {
+    "vai": "Chỗ tối tím (lỗ đen)",
+    "hex": [
+     "#1e1b35",
+     "#19162d",
+     "#272039"
+    ],
+    "phan_khung": "3-5 %",
+    "L": [
+     0.21,
+     0.28
+    ],
+    "C": [
+     0.05,
+     0.06
+    ],
+    "nguon": "cụm màu đo được trên 4 khung, mẫu khung 195"
+   },
+   {
+    "vai": "Mặt trời (khung 3): cam đậm, cam sáng, nền đen đỏ",
+    "hex": [
+     "#f1832a",
+     "#be4014",
+     "#f9d570",
+     "#110614"
+    ],
+    "phan_khung": "11-24 %",
+    "L": [
+     0.15,
+     0.89
+    ],
+    "C": [
+     0.04,
+     0.18
+    ],
+    "nguon": "mẫu điểm trên ô màu khung 3"
+   }
+  ],
+  "ghi_chu": [
+   "Rực trung vị 76 %, gần xám 2 %: loại rực nhất của video; vẫn có độ sáng vừa (TB 0,55).",
+   "Khung 3 (mặt trời) có nền đen đỏ #110614 chiếm 24 %, nên tối sâu của khung đó 38 %, khác 5 khung còn lại.",
+   "Tối chỉ ở lỗ đen nhỏ (L 0,21 đến 0,28, 3 % khung); sáng nhất là vệt sáng kem."
+  ],
+  "khong_lam": [
+   "Không có vùng xám: gần xám dưới 3 %."
+  ],
+  "tam_mau": "mau-vu-tru-cam.jpg",
+  "nhom": "dac-biet"
+ },
+ "the-gioi-la": {
+  "ten": "Thế giới lạ tím",
+  "dung_khi": "Hành tinh lạ: trời tím, đất cam nâu, tinh thể ngọc lam, thành vàng kim (khung 109, 110, 113, 119, 121, 234; các khung 110, 112, 115 có tia sáng trắng vàng).",
+  "so_khung": 15,
+  "khung_tieu_bieu": [
+   109,
+   110,
+   113,
+   119,
+   121,
+   234
+  ],
+  "so_do": {
+   "xam": [
+    1.826,
+    3.632,
+    6.029,
+    7.037,
+    20.198
+   ],
+   "giua": [
+    31.306,
+    39.977,
+    49.679,
+    61.427,
+    70.898
+   ],
+   "ruc": [
+    23.495,
+    28.546,
+    44.279,
+    50.598,
+    62.083
+   ],
+   "C": [
+    0.074,
+    0.085,
+    0.088,
+    0.094,
+    0.098
+   ],
+   "Clon": [
+    0.064,
+    0.074,
+    0.087,
+    0.093,
+    0.099
+   ],
+   "L": [
+    0.533,
+    0.563,
+    0.573,
+    0.613,
+    0.722
+   ],
+   "toi": [
+    0.04,
+    0.211,
+    1.109,
+    2.734,
+    4.558
+   ],
+   "trang": [
+    1.429,
+    3.472,
+    4.86,
+    7.753,
+    13.465
+   ],
+   "Lk": [
+    0.405,
+    0.476,
+    0.517,
+    0.533,
+    0.662
+   ],
+   "ho": [
+    2.0,
+    2.5,
+    4.0,
+    4.0,
+    5.0
+   ],
+   "am": [
+    0.01,
+    0.023,
+    0.032,
+    0.042,
+    0.054
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Trời tím lam sẫm",
+    "hex": [
+     "#504087",
+     "#4c3985",
+     "#5d4d8b"
+    ],
+    "phan_khung": "14-21 %",
+    "L": [
+     0.39,
+     0.5
+    ],
+    "C": [
+     0.08,
+     0.12
+    ],
+    "nguon": "cụm màu đo được trên 12 khung, mẫu khung 109"
+   },
+   {
+    "vai": "Đất đỏ nâu cam",
+    "hex": [
+     "#946b4c",
+     "#92694b",
+     "#aa7a52"
+    ],
+    "phan_khung": "17-27 %",
+    "L": [
+     0.55,
+     0.62
+    ],
+    "C": [
+     0.05,
+     0.08
+    ],
+    "nguon": "cụm màu đo được trên 8 khung, mẫu khung 119"
+   },
+   {
+    "vai": "Đất, đá cam nâu",
+    "hex": [
+     "#ae7e37",
+     "#9c702e",
+     "#b6893c"
+    ],
+    "phan_khung": "13-21 %",
+    "L": [
+     0.57,
+     0.69
+    ],
+    "C": [
+     0.08,
+     0.11
+    ],
+    "nguon": "cụm màu đo được trên 9 khung, mẫu khung 120"
+   },
+   {
+    "vai": "Thành vàng kim",
+    "hex": [
+     "#cda543",
+     "#b99f82",
+     "#d9af47"
+    ],
+    "phan_khung": "11-22 %",
+    "L": [
+     0.72,
+     0.78
+    ],
+    "C": [
+     0.05,
+     0.12
+    ],
+    "nguon": "cụm màu đo được trên 6 khung, mẫu khung 121"
+   },
+   {
+    "vai": "Tia sáng, người sáng vàng",
+    "hex": [
+     "#f6e0ba",
+     "#f1dc96",
+     "#f6efe8"
+    ],
+    "phan_khung": "8-13 %",
+    "L": [
+     0.86,
+     0.96
+    ],
+    "C": [
+     0.04,
+     0.09
+    ],
+    "nguon": "cụm màu đo được trên 9 khung, mẫu khung 112"
+   },
+   {
+    "vai": "Núi tím vừa",
+    "hex": [
+     "#7c5e9d",
+     "#6c588e",
+     "#806093"
+    ],
+    "phan_khung": "12-18 %",
+    "L": [
+     0.5,
+     0.55
+    ],
+    "C": [
+     0.09,
+     0.1
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 109"
+   },
+   {
+    "vai": "Tinh thể, áo Doom lục",
+    "hex": [
+     "#327e3c",
+     "#327c3b",
+     "#34833e"
+    ],
+    "phan_khung": "9-12 %",
+    "L": [
+     0.52,
+     0.55
+    ],
+    "C": [
+     0.12,
+     0.12
+    ],
+    "nguon": "cụm màu đo được trên 6 khung, mẫu khung 121"
+   },
+   {
+    "vai": "Đá đỏ tím sẫm",
+    "hex": [
+     "#6e3743",
+     "#623741",
+     "#743b47"
+    ],
+    "phan_khung": "6-16 %",
+    "L": [
+     0.39,
+     0.45
+    ],
+    "C": [
+     0.05,
+     0.08
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 115"
+   },
+   {
+    "vai": "Núi tím sẫm",
+    "hex": [
+     "#603e79",
+     "#5c3979",
+     "#694f9c"
+    ],
+    "phan_khung": "6-14 %",
+    "L": [
+     0.41,
+     0.49
+    ],
+    "C": [
+     0.08,
+     0.11
+    ],
+    "nguon": "cụm màu đo được trên 4 khung, mẫu khung 125"
+   }
+  ],
+  "ghi_chu": [
+   "Rực trung vị 44 %, gần xám chỉ 6 %: hầu như mọi vùng đều có màu.",
+   "Tối sâu trung vị 1 %, sáng TB 0,57; sáng nhất là tia sáng và thành vàng (L 0,72 đến 0,96).",
+   "Điểm nhấn là thành vàng kim phía sau và tinh thể ngọc lam; Doom lục tách khỏi nền bằng khác họ màu."
+  ],
+  "khong_lam": [
+   "Không vùng xám rộng.",
+   "Không nền ngày xanh lục, phải là tím và cam."
+  ],
+  "tam_mau": "mau-the-gioi-la.jpg",
+  "nhom": "dac-biet"
+ },
+ "noi-mot-mau": {
+  "ten": "Nơi phủ một màu (xanh lục và vàng kim)",
+  "dung_khi": "Phòng ngai xanh lục của Doom: nền lục sẫm, cửa sổ vàng (khung 45, 63, 92, 96, 128, 215, 239; cũng 94, 97, 102, 106, 107, 142). Khung 133 (tím) và 186 (hồng) cũng ở nhóm này như hai nơi phủ một màu riêng, mỗi nơi chỉ một khung.",
+  "so_khung": 15,
+  "khung_tieu_bieu": [
+   45,
+   63,
+   92,
+   96,
+   128,
+   215
+  ],
+  "so_do": {
+   "xam": [
+    1.847,
+    14.247,
+    34.917,
+    41.561,
+    51.502
+   ],
+   "giua": [
+    26.423,
+    32.401,
+    40.157,
+    52.351,
+    55.939
+   ],
+   "ruc": [
+    17.792,
+    23.069,
+    28.084,
+    34.35,
+    46.569
+   ],
+   "C": [
+    0.052,
+    0.058,
+    0.067,
+    0.083,
+    0.103
+   ],
+   "Clon": [
+    0.028,
+    0.051,
+    0.06,
+    0.075,
+    0.111
+   ],
+   "L": [
+    0.421,
+    0.451,
+    0.488,
+    0.542,
+    0.636
+   ],
+   "toi": [
+    1.169,
+    6.906,
+    13.659,
+    19.959,
+    28.296
+   ],
+   "trang": [
+    0.693,
+    1.74,
+    2.245,
+    2.687,
+    4.269
+   ],
+   "Lk": [
+    0.489,
+    0.64,
+    0.657,
+    0.664,
+    0.688
+   ],
+   "ho": [
+    1.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "am": [
+    0.039,
+    0.049,
+    0.061,
+    0.077,
+    0.093
+   ]
+  },
+  "vai": [
+   {
+    "vai": "Tường, cột tối xám lục",
+    "hex": [
+     "#17231d",
+     "#161d19",
+     "#232b28"
+    ],
+    "phan_khung": "12-20 %",
+    "L": [
+     0.2,
+     0.29
+    ],
+    "C": [
+     0.01,
+     0.03
+    ],
+    "nguon": "cụm màu đo được trên 12 khung, mẫu khung 045"
+   },
+   {
+    "vai": "Lục sẫm (ngai, tường)",
+    "hex": [
+     "#3b523d",
+     "#334e31",
+     "#256a34"
+    ],
+    "phan_khung": "9-16 %",
+    "L": [
+     0.32,
+     0.49
+    ],
+    "C": [
+     0.04,
+     0.11
+    ],
+    "nguon": "cụm màu đo được trên 13 khung, mẫu khung 128"
+   },
+   {
+    "vai": "Lục vừa (ngai sáng, thảm)",
+    "hex": [
+     "#507754",
+     "#507657",
+     "#42a94b"
+    ],
+    "phan_khung": "9-14 %",
+    "L": [
+     0.5,
+     0.69
+    ],
+    "C": [
+     0.04,
+     0.17
+    ],
+    "nguon": "cụm màu đo được trên 13 khung, mẫu khung 106"
+   },
+   {
+    "vai": "Cửa sổ vàng chói",
+    "hex": [
+     "#efd366",
+     "#efcd65",
+     "#eedb4f"
+    ],
+    "phan_khung": "12-17 %",
+    "L": [
+     0.85,
+     0.89
+    ],
+    "C": [
+     0.11,
+     0.14
+    ],
+    "nguon": "cụm màu đo được trên 12 khung, mẫu khung 239"
+   },
+   {
+    "vai": "Vàng sẫm, trang trí",
+    "hex": [
+     "#afa34d",
+     "#afa34d",
+     "#b5b852"
+    ],
+    "phan_khung": "6-9 %",
+    "L": [
+     0.7,
+     0.84
+    ],
+    "C": [
+     0.07,
+     0.1
+    ],
+    "nguon": "cụm màu đo được trên 5 khung, mẫu khung 096"
+   }
+  ],
+  "ghi_chu": [
+   "Cả nền xoay quanh một họ lục và vàng: lục sẫm chiếm 19 %, lục vừa 18 %, cửa sổ vàng 11 đến 23 %.",
+   "Tối nhất là tường xám lục đen (L 0,2 đến 0,29), trung vị tối sâu 14 %; sáng nhất là cửa sổ vàng (#e5d44a, L 0,85).",
+   "Điểm nhấn là vàng và lục sáng của cửa sổ, ô kính hình thoi, và đèn nến; chiếm 11 đến 23 % khung.",
+   "Nhân vật Doom lục không tách khỏi nền bằng màu; tách bằng mặt xám sáng và áo lục sáng hơn tường."
+  ],
+  "khong_lam": [
+   "Không thêm họ màu khác vào nền (đỏ, lam): ngoài lục và vàng gần như không có.",
+   "Không cửa sổ trắng."
+  ],
+  "tam_mau": "mau-noi-mot-mau.jpg",
+  "nhom": "dac-biet"
+ }
+}

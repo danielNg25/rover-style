@@ -1,0 +1,98 @@
+[
+ {
+  "n": 1,
+  "ten": "nui-xa",
+  "file": "e1-bnt-moi-1.png",
+  "w": 2642,
+  "h": 274,
+  "chi_tham_chieu": false
+ },
+ {
+  "n": 2,
+  "ten": "doi-co",
+  "file": "e1-bnt-moi-2.png",
+  "w": 2642,
+  "h": 187,
+  "chi_tham_chieu": false
+ },
+ {
+  "n": 3,
+  "ten": "kinh-thien-van",
+  "file": "e1-bnt-moi-3.png",
+  "w": 753,
+  "h": 857,
+  "chi_tham_chieu": false
+ },
+ {
+  "n": 4,
+  "ten": "cay-keo",
+  "file": "e1-bnt-moi-4.png",
+  "w": 801,
+  "h": 465,
+  "chi_tham_chieu": false
+ },
+ {
+  "n": 5,
+  "ten": "cay-tron",
+  "file": "e1-bnt-moi-5.png",
+  "w": 348,
+  "h": 385,
+  "chi_tham_chieu": false
+ },
+ {
+  "n": 6,
+  "ten": "bui",
+  "file": "e1-bnt-moi-6.png",
+  "w": 676,
+  "h": 360,
+  "chi_tham_chieu": false
+ },
+ {
+  "n": 7,
+  "ten": "den-ban",
+  "file": "e1-bnt-moi-7.png",
+  "w": 211,
+  "h": 248,
+  "chi_tham_chieu": true
+ },
+ {
+  "n": 8,
+  "ten": "dong-ho",
+  "file": "e1-bnt-moi-8.png",
+  "w": 138,
+  "h": 178,
+  "chi_tham_chieu": true
+ },
+ {
+  "n": 9,
+  "ten": "kinh-anh-chong",
+  "file": "e1-bnt-moi-9.png",
+  "w": 241,
+  "h": 171,
+  "chi_tham_chieu": true
+ },
+ {
+  "n": 10,
+  "ten": "kinh-anh-don",
+  "file": "e1-bnt-moi-10.png",
+  "w": 220,
+  "h": 248,
+  "chi_tham_chieu": true
+ },
+ {
+  "n": 11,
+  "ten": "co-kho",
+  "file": "e1-bnt-moi-11.png",
+  "w": 305,
+  "h": 229,
+  "chi_tham_chieu": false
+ },
+ {
+  "n": 12,
+  "ten": "co-ngan",
+  "file": "e1-bnt-moi-12.png",
+  "w": 218,
+  "h": 108,
+  "chi_tham_chieu": false
+ }
+]

@@ -1,0 +1,557 @@
+{
+ "id": "_template",
+ "template": "human-v1",
+ "sheet": "tools/art/template/human-v1.png",
+ "sheet_sha256": "05a4ecbf9071b1e7e1d1c88eedf1360f478e7e9160ca311fdc882d4c580733bc",
+ "key": "#FF00FF",
+ "pad": 3,
+ "slots": {
+  "head": {
+   "file": "_template/head.png",
+   "size": [
+    292,
+    264
+   ],
+   "art": [
+    43,
+    79,
+    329,
+    337
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 1.0,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "cap": {
+   "file": "_template/cap.png",
+   "size": [
+    308,
+    195
+   ],
+   "art": [
+    411,
+    113,
+    713,
+    302
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 1.0,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "backHead": {
+   "file": "_template/backHead.png",
+   "size": [
+    308,
+    308
+   ],
+   "art": [
+    807,
+    57,
+    1109,
+    359
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 1.0,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "ear": {
+   "file": "_template/ear.png",
+   "size": [
+    43,
+    65
+   ],
+   "art": [
+    1195,
+    66,
+    1232,
+    125
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": -0.5,
+    "w": 1.0,
+    "h": 0.983
+   },
+   "ok": true
+  },
+  "prop": {
+   "file": "_template/prop.png",
+   "size": [
+    45,
+    270
+   ],
+   "art": [
+    1380,
+    76,
+    1419,
+    340
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.951,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "torso": {
+   "file": "_template/torso.png",
+   "size": [
+    213,
+    275
+   ],
+   "art": [
+    62,
+    441,
+    269,
+    710
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.99,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "backTorso": {
+   "file": "_template/backTorso.png",
+   "size": [
+    213,
+    275
+   ],
+   "art": [
+    378,
+    441,
+    585,
+    710
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.99,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "upperArm": {
+   "file": "_template/upperArm.png",
+   "size": [
+    68,
+    130
+   ],
+   "art": [
+    677,
+    514,
+    739,
+    638
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 1.0,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "forearm": {
+   "file": "_template/forearm.png",
+   "size": [
+    60,
+    116
+   ],
+   "art": [
+    817,
+    521,
+    871,
+    631
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 1.0,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "upperLeg": {
+   "file": "_template/upperLeg.png",
+   "size": [
+    88,
+    132
+   ],
+   "art": [
+    949,
+    513,
+    1031,
+    639
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 1.0,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "lowerLeg": {
+   "file": "_template/lowerLeg.png",
+   "size": [
+    99,
+    132
+   ],
+   "art": [
+    1120,
+    513,
+    1213,
+    639
+   ],
+   "dev": {
+    "dx": 0.5,
+    "dy": 0.0,
+    "w": 0.989,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "hand_open": {
+   "file": "_template/hand_open.png",
+   "size": [
+    80,
+    85
+   ],
+   "art": [
+    1292,
+    452,
+    1366,
+    531
+   ],
+   "dev": {
+    "dx": -0.5,
+    "dy": 0.0,
+    "w": 0.987,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "hand_fist": {
+   "file": "_template/hand_fist.png",
+   "size": [
+    70,
+    65
+   ],
+   "art": [
+    1430,
+    462,
+    1494,
+    521
+   ],
+   "dev": {
+    "dx": 0.5,
+    "dy": -0.5,
+    "w": 0.985,
+    "h": 0.983
+   },
+   "ok": true
+  },
+  "hand_point": {
+   "file": "_template/hand_point.png",
+   "size": [
+    70,
+    99
+   ],
+   "art": [
+    1298,
+    613,
+    1362,
+    706
+   ],
+   "dev": {
+    "dx": 0.5,
+    "dy": 0.0,
+    "w": 0.985,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "hand_grip": {
+   "file": "_template/hand_grip.png",
+   "size": [
+    87,
+    65
+   ],
+   "art": [
+    1421,
+    630,
+    1502,
+    689
+   ],
+   "dev": {
+    "dx": -0.5,
+    "dy": -0.5,
+    "w": 0.988,
+    "h": 0.983
+   },
+   "ok": true
+  },
+  "eyeWhite": {
+   "file": "_template/eyeWhite.png",
+   "size": [
+    146,
+    162
+   ],
+   "art": [
+    36,
+    802,
+    176,
+    958
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.986,
+    "h": 0.987
+   },
+   "ok": true
+  },
+  "lid": {
+   "file": "_template/lid.png",
+   "size": [
+    178,
+    186
+   ],
+   "art": [
+    226,
+    790,
+    398,
+    970
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.989,
+    "h": 0.989
+   },
+   "ok": true
+  },
+  "pupil": {
+   "file": "_template/pupil.png",
+   "size": [
+    50,
+    50
+   ],
+   "art": [
+    456,
+    790,
+    500,
+    834
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.957,
+    "h": 0.957
+   },
+   "ok": true
+  },
+  "brow": {
+   "file": "_template/brow.png",
+   "size": [
+    130,
+    34
+   ],
+   "art": [
+    582,
+    798,
+    706,
+    826
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.984,
+    "h": 0.933
+   },
+   "ok": true
+  },
+  "mouth_closed": {
+   "file": "_template/mouth_closed.png",
+   "size": [
+    66,
+    18
+   ],
+   "art": [
+    819,
+    806,
+    879,
+    818
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.968,
+    "h": 0.857
+   },
+   "ok": true
+  },
+  "mouth_small": {
+   "file": "_template/mouth_small.png",
+   "size": [
+    54,
+    38
+   ],
+   "art": [
+    1019,
+    796,
+    1067,
+    828
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.96,
+    "h": 0.941
+   },
+   "ok": true
+  },
+  "mouth_wide": {
+   "file": "_template/mouth_wide.png",
+   "size": [
+    98,
+    74
+   ],
+   "art": [
+    1191,
+    778,
+    1283,
+    846
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.979,
+    "h": 0.971
+   },
+   "ok": true
+  },
+  "mouth_smile": {
+   "file": "_template/mouth_smile.png",
+   "size": [
+    114,
+    38
+   ],
+   "art": [
+    1377,
+    796,
+    1485,
+    828
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.982,
+    "h": 0.941
+   },
+   "ok": true
+  },
+  "mouth_frown": {
+   "file": "_template/mouth_frown.png",
+   "size": [
+    114,
+    38
+   ],
+   "art": [
+    795,
+    932,
+    903,
+    964
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.982,
+    "h": 0.941
+   },
+   "ok": true
+  },
+  "mouth_flat": {
+   "file": "_template/mouth_flat.png",
+   "size": [
+    98,
+    18
+   ],
+   "art": [
+    997,
+    942,
+    1089,
+    954
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.979,
+    "h": 0.857
+   },
+   "ok": true
+  },
+  "mouth_o": {
+   "file": "_template/mouth_o.png",
+   "size": [
+    50,
+    58
+   ],
+   "art": [
+    1215,
+    922,
+    1259,
+    974
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.957,
+    "h": 0.963
+   },
+   "ok": true
+  },
+  "mouth_teeth": {
+   "file": "_template/mouth_teeth.png",
+   "size": [
+    106,
+    58
+   ],
+   "art": [
+    1381,
+    922,
+    1481,
+    974
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 0.98,
+    "h": 0.963
+   },
+   "ok": true
+  }
+ },
+ "absent": [],
+ "colours": {
+  "head": "#CDCDCD",
+  "cap": "#494951",
+  "lid": "#CDCDCD"
+ },
+ "adjust": {}
+}

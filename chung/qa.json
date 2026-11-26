@@ -1,0 +1,1766 @@
+{
+  "motion": {
+    "camera": {
+      "size": [
+        1280,
+        720
+      ],
+      "stride": 4,
+      "max_features": 800,
+      "feature_quality": 0.01,
+      "feature_min_dist": 8,
+      "fb_max_px": 0.5,
+      "ransac_px": 1.0,
+      "min_inliers": 30,
+      "min_measured_share": 0.5,
+      "static_speed_pct_s": 0.3,
+      "min_speed_pct_s": 0.3,
+      "max_static_frames": 6,
+      "ref_abs_tol_pct_s": 1.0,
+      "ref_rel_tol": 0.35,
+      "ref_deadband_pct_s": 0.3
+    },
+    "element": {
+      "size": [
+        1280,
+        720
+      ],
+      "stride": 1,
+      "blur_sigma": 1.0,
+      "tol_px": 0.5,
+      "border_px": 8,
+      "pix_thr": 6.0,
+      "noise_k": 3.0,
+      "min_active_px": 12,
+      "flow_pad_px": 16,
+      "min_net_shift_px": 2.0,
+      "onset_gap": 3,
+      "period_min_frames": 24,
+      "period_min_corr": 0.5,
+      "max_camera_missing_share": 0.25,
+      "kinds": {
+        "rotates": {
+          "activity": [
+            0.5,
+            null
+          ],
+          "coherence": [
+            0.5,
+            null
+          ]
+        },
+        "walks": {
+          "activity": [
+            0.5,
+            null
+          ],
+          "internal_ratio": [
+            0.15,
+            null
+          ],
+          "energy": [
+            1.0,
+            null
+          ],
+          "internal_energy": [
+            0.3,
+            null
+          ],
+          "internal_spread": [
+            0.3,
+            null
+          ]
+        },
+        "twinkles": {
+          "activity": [
+            0.2,
+            null
+          ]
+        },
+        "flickers": {
+          "activity": [
+            0.4,
+            null
+          ],
+          "internal_activity": [
+            0.3,
+            null
+          ]
+        },
+        "sways": {
+          "activity": [
+            0.3,
+            null
+          ],
+          "coherence": [
+            null,
+            0.8
+          ]
+        },
+        "drifts": {
+          "activity": [
+            0.3,
+            null
+          ],
+          "coherence": [
+            0.5,
+            null
+          ]
+        },
+        "acts": {
+          "activity": [
+            0.15,
+            null
+          ]
+        },
+        "static": {
+          "activity": [
+            null,
+            0.1
+          ]
+        }
+      },
+      "fail_notes": {
+        "walks.internal_ratio": "translation without internal limb motion: the element slides",
+        "rotates.activity": "static picture under the camera move: nothing turns",
+        "rotates.coherence": "surface motion has no steady direction: not a turn",
+        "walks.energy": "too little residual motion for a walk: a still picture carried along (floor from the reference walks, 2.8-5.2)",
+        "walks.internal_energy": "almost nothing moves inside the element once its own slide is removed (reference walks 0.68-1.22)",
+        "walks.internal_spread": "internal motion sits in a small part of the crop (an edge strip, one corner), not across the element (reference walks 0.58-0.92)"
+      },
+      "reference": {
+        "activity_ref_min": 0.5,
+        "activity_ours_min": 0.3,
+        "activity_static_max": 0.1,
+        "energy_min": 0.05,
+        "energy_ratio": [
+          0.5,
+          2.0
+        ],
+        "direction_min_coherence": 0.4,
+        "direction_min_speed_pct_s": 0.2,
+        "direction_max_deg": 45,
+        "onset_tol_frames": 2,
+        "onset_max_count": 6,
+        "period_rel_tol": 0.25,
+        "direction_ref_min_coherence": 0.6,
+        "direction_ref_min_speed_pct_s": 0.3,
+        "onset_max_miss_share": 0.25
+      },
+      "min_active_share": 0.001,
+      "rigid_search_px": 6,
+      "internal_grid": [
+        6,
+        4
+      ],
+      "internal_cell_min_share": 0.25,
+      "onset_margin": 1.3,
+      "walks_floors_source": "rover_doom.webm frames 291-312, 4 walking groups (elephant, elephant family, antelopes, giraffes), about worst x 0.5; sliding-still mutant measures energy 0.31-0.64, internal_energy 0.11, internal_spread 0.21"
+    },
+    "liveness": {
+      "size": [
+        640,
+        360
+      ],
+      "grid": [
+        8,
+        6
+      ],
+      "stride": 1,
+      "blur_sigma": 1.0,
+      "tol_px": 0.5,
+      "border_px": 6,
+      "pix_thr": 6.0,
+      "noise_k": 3.0,
+      "min_active_px": 6,
+      "flow_pad_px": 12,
+      "cell_min_share": 0.25,
+      "held_max_diff": 0.15,
+      "max_camera_missing_share": 0.25,
+      "calibration_percentile": 10,
+      "calibration_margin": 0.85,
+      "floors": {
+        "min_cells_independent": 8,
+        "min_cells_internal": 6,
+        "min_moving_share": 0.53,
+        "max_frozen_frames": 4
+      },
+      "floors_source": "rover_doom.webm frames 0-539, worst shot x 0.85"
+    },
+    "_note": "Package Q2. camera/element/liveness settings and floors; calibrated on ref rover_doom.webm frames 0-539 only. kinds = {metric: [min, max]}."
+  },
+  "plumbing": {
+    "_doc": "Package Q1 (tools/qa: refcut, cuts, normalize, health, sbs). Values calibrated on ../ref/rover_doom.webm frames 0-539 unless marked 'uncalibrated'. Analysis size is the frame scaled to analysis_size; d = mean absolute luma difference (0-255) between consecutive frames at that size. Fixer pass: cuts rule B (cut_hist_mean, cut_hist_peak_ratio), dissolve_* and swap_peak_ratio, and health glitch_min_tiles, glitch_min_area_px, glitch2_min_area_px were calibrated on ALL 34444 frames of the reference (reference maxima: 3 coarse tiles, 875 px fine, 9275 px two-frame). stills_tile_px / stills_max_tile_diff come from ENGINE-SPEC and are uncalibrated on real still renders.",
+    "format": {
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "fps_tolerance": 0.001,
+      "first_pts_tolerance_s": 0.0005
+    },
+    "analysis_size": [
+      320,
+      180
+    ],
+    "refcut": {
+      "codec": "ffv1",
+      "sheet_step": 4,
+      "sheet_cell": [
+        640,
+        360
+      ],
+      "sheet_cols": 4
+    },
+    "cuts": {
+      "cut_d": 20.0,
+      "cut_ratio_to_local_median": 8.0,
+      "local_window_frames": 24,
+      "grid": [
+        4,
+        3
+      ],
+      "hist_bin_step": 32,
+      "swap_cell_hist": 0.38,
+      "swap_persist_frames": 4,
+      "swap_persist_share": 0.6,
+      "declared_tolerance_frames": 0,
+      "evidence_max_events": 24,
+      "cut_hist_mean": 0.3,
+      "cut_hist_peak_ratio": 2.0,
+      "dissolve_hist_mean": 0.25,
+      "dissolve_min_frames": 2,
+      "dissolve_tolerance_frames": 2,
+      "swap_peak_ratio": 3.0
+    },
+    "normalize": {
+      "size": [
+        640,
+        360
+      ],
+      "blur_sigma": 1.0,
+      "codec_map": {
+        "av1": "libaom-av1",
+        "vp9": "libvpx-vp9",
+        "h264": "libx264"
+      },
+      "encoder_args": {
+        "libaom-av1": [
+          "-cpu-used",
+          "8",
+          "-row-mt",
+          "1"
+        ],
+        "libvpx-vp9": [
+          "-deadline",
+          "good",
+          "-cpu-used",
+          "4",
+          "-row-mt",
+          "1"
+        ],
+        "libx264": [
+          "-preset",
+          "medium"
+        ]
+      },
+      "standalone_codec": "av1",
+      "standalone_bitrate_kbps": 1173,
+      "bitrate_ratio_range": [
+        0.6,
+        1.6
+      ]
+    },
+    "health": {
+      "blank_mean_y": 6.0,
+      "frozen_d": 0.05,
+      "still_d": 0.25,
+      "still_run_frames": 3,
+      "tile_px_at_analysis": 20,
+      "glitch_tile_score": 12.0,
+      "over_level": 250,
+      "crush_level": 4,
+      "clipped_tile_share": 0.9,
+      "max_over_tile_share": 0.25,
+      "max_crush_tile_share": 0.25,
+      "glitch_tile_px": 5,
+      "glitch_neighbour_px": 40,
+      "glitch_min_area_px": 1000,
+      "glitch2_min_area_px": 11000,
+      "glitch_min_tiles": 4,
+      "stills_tile_px": 80,
+      "stills_max_tile_diff": 12.0
+    },
+    "sbs": {
+      "bits": 12,
+      "cell_px": 16,
+      "white": 235,
+      "black": 16,
+      "origin": [
+        16,
+        16
+      ],
+      "crf": 18,
+      "thumb": [
+        64,
+        36
+      ],
+      "content_margin": 0.5
+    }
+  },
+  "art": {
+    "_doc": "Thresholds of tools/art/*. Calibrated 2026-11-20 on the approved sheets in gen/ and pieces in public/{doom,king,queen,savanna,village}; see qa/art/selftest.json.",
+    "key": {
+      "default": "#FF00FF",
+      "candidates": {
+        "magenta": "#FF00FF",
+        "green": "#00B140",
+        "blue": "#0047BB"
+      }
+    },
+    "spill": {
+      "alpha_visible": 24,
+      "edge_px": 2,
+      "interior_px": 4,
+      "bleed_px": 12,
+      "fix_excess": 0.05,
+      "max_spill_frac": 0.005,
+      "hole_min_px": 30,
+      "max_hole_frac": 0.03,
+      "lost_min_dist": 30,
+      "lost_open_px": 2,
+      "max_lost_frac": 0.03,
+      "strong_excess": 0.45,
+      "faint_excess": 0.15,
+      "max_faint_frac": 0.35,
+      "warn_faint_frac": 0.05,
+      "max_faint_frac_strict": 0.05,
+      "key_like_dist": 60,
+      "max_key_blob_px": 8,
+      "solid_alpha": 230,
+      "solid_min_dist": 150,
+      "max_faded_frac": 0.01,
+      "max_lost_blob_px": 60,
+      "max_fringe_run_px_strict": 24,
+      "max_translucent_interior_frac": 0.02,
+      "legacy_list": "tools/art/legacy-pieces.json",
+      "_doc": "Strict gate (max_faint_frac_strict, max_fringe_run_px_strict) is the default. The loose max_faint_frac applies only to pieces whose sha256 is in legacy_list (approved before the tool existed; they measure faint 0.08-0.28, fringe runs up to 351 px). Calibrated 2026-11-20: approved pieces and fresh cuts have key_blob 0 px, lost_blob 0 px, faded 0.0, translucent_interior <= 0.0031; fresh cuts have fringe_run 0 px. Mutants: 20x10 key slab = 200 px blob, 1 px purple bottom line = run 137 px, 50x50 hole = lost_blob 2500 px, alpha x0.55 = faded 1.0."
+    },
+    "keycheck": {
+      "max_border_spread": 6.0,
+      "key_tolerance": 40,
+      "flood_tolerance": 28,
+      "erode_px": 3,
+      "min_art_frac": 0.02,
+      "max_art_frac": 0.9,
+      "min_saturation": 0.25,
+      "min_value": 0.2,
+      "hue_window": 30,
+      "warn_frac": 0.003,
+      "fail_frac": 0.05,
+      "delta_e_percentile": 0.5,
+      "min_delta_e": 40,
+      "max_eaten_frac": 0.002,
+      "enclosed_min_px": 50,
+      "max_enclosed_frac": 0.1,
+      "warn_enclosed_frac": 0.03,
+      "near_band_lo": 8,
+      "near_band_erode_px": 2,
+      "max_near_key_band_frac": 0.003,
+      "_doc": "enclosed_*: key-coloured regions (within flood_tolerance of the key) that do not touch the border, as a share of the art. Real sheets in gen/ measure 0.0-0.0125 (gaps between legs); a robe painted in the key colour measured 3.7. near_key_band: pixels between near_band_lo and flood_tolerance from the key after removing a near_band_erode_px antialias ring, as a share of the art; real sheets 0.0-0.0003, a robe 16 RGB from the key 3.6. Calibrated 2026-11-20 on 11 sheets."
+    },
+    "cut": {
+      "fg_dist": 70,
+      "alpha_lo": 40,
+      "alpha_hi": 90,
+      "alpha_blur": 0.6,
+      "pad": 3,
+      "min_area": 1500,
+      "speck_min_area": 12,
+      "merge_dist": 14,
+      "min_gap": 12,
+      "max_dropped_frac": 0.002,
+      "max_border_spread": 6.0,
+      "like_min_iou": 0.8,
+      "_doc": "like_min_iou: a new piece corresponds to a piece of an approved manifest (public/*/<prefix>.json or --like) when their boxes overlap at least this much; then it keeps that piece's number."
+    },
+    "key_single": {
+      "tolerance": 28,
+      "shave_px": 1,
+      "soften": 0.9,
+      "min_subject_frac": 0.05,
+      "max_subject_frac": 0.9,
+      "min_main_frac": 0.97,
+      "speck_max_area": 30
+    },
+    "proportions": {
+      "flood_tolerance": 28,
+      "height_tol": 0.03,
+      "ratio_tol": 0.1,
+      "style_floors": {
+        "head_frac": [
+          0.34,
+          0.46
+        ],
+        "aspect_w_over_h": [
+          0.35,
+          0.8
+        ]
+      },
+      "_style_floors_doc": "Channel character design: big head (about 2.4-2.9 heads tall, so the head ends at 0.34-0.46 of the height), compact figure. Ranges are the lead's reference measurement (0.40) and our approved front picture (0.35), widened; calibrate on more reference figures."
+    },
+    "gen": {
+      "max_refs": 3,
+      "min_prompt_chars": 80,
+      "style_marker": "ART STYLE",
+      "timeout_s": 300,
+      "_doc": "pose_patterns: regular expressions (verb stems with their endings, English and Vietnamese), matched case-insensitively between letter boundaries after '_' becomes a space and spaced-out letters are joined; pose_exceptions are harmless phrases removed first. A prompt that matches is refused unless GEN_ALLOW_POSE=1. A word list cannot catch every paraphrase of a pose. forbidden_ref_pattern: tested on every folder and file name of the given path AND of its real path (symlinks resolved). reference_image_globs: images there are hashed; a byte-identical copy under another name is refused. max_per_day: ceiling of generations per calendar day over ALL run ids of one log (owner decision; changing GEN_RUN_ID does not reset it).",
+      "pose_patterns": [
+        "sit(s|ting)?",
+        "sat",
+        "seated",
+        "kneel(s|ed|ing)?",
+        "knelt",
+        "on (his|her|its|their|one|both) knees?",
+        "knees? bent",
+        "bent knees?",
+        "bent over",
+        "walk(s|ed|ing)?",
+        "run(s|ning)?",
+        "ran",
+        "jog(s|ging)?",
+        "sprint(s|ed|ing)?",
+        "strid(e|es|ing)",
+        "mid[- ]?stride",
+        "step(s|ping)? forward",
+        "lying",
+        "l(ies|ay|aid) (down|on|flat|back)",
+        "reclin(e|es|ed|ing)",
+        "bend(s|ing)?",
+        "crouch(es|ed|ing)?",
+        "squat(s|ted|ting)?",
+        "jump(s|ed|ing)?",
+        "leap(s|t|ed|ing)?",
+        "crawl(s|ed|ing)?",
+        "danc(e|es|ed|ing)",
+        "(on|upon|in) (his|her|its|their|the|a) (throne|seat|chair|stool|bench|saddle)",
+        "resting on",
+        "ngồi",
+        "quỳ",
+        "chạy",
+        "nằm",
+        "nhảy",
+        "đi bộ",
+        "bước đi",
+        "cúi"
+      ],
+      "pose_exceptions": [
+        "running stream",
+        "running water",
+        "walking stick",
+        "walking cane"
+      ],
+      "forbidden_ref_pattern": "(?<![a-z])ref(s|erence|erences)?(?![a-z])",
+      "reference_image_globs": [
+        "../ref/*",
+        "../ref/*/*",
+        "ref/*",
+        "ref/*/*",
+        "qa/ref*/*",
+        "qa/*-ref/*",
+        "qa/*ref*/*/*",
+        "gen/*ref*"
+      ],
+      "reference_image_max": 3000,
+      "max_per_day": 16
+    }
+  },
+  "look": {
+    "density": {
+      "size": [
+        1280,
+        720
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "tophat_kernel": 7,
+      "tophat_thr": 40,
+      "peak_window": 5,
+      "edge_thr": 60,
+      "tone_bits": 4,
+      "tone_min_share": 0.01,
+      "static_step": 12,
+      "twinkle_frames": 48,
+      "twinkle_delta": 30,
+      "twinkle_min_blobs": 15,
+      "ref": {
+        "blob_ratio_min": 0.5,
+        "blob_ratio_max": 2.0,
+        "blob_ref_min": 10,
+        "edge_ratio_min": 0.6,
+        "edge_ref_min": 0.01,
+        "tone_slack": 3,
+        "twinkle_ratio_min": 0.5,
+        "max_bad_cells": 0,
+        "_doc": "tone_slack 3: a re-encode of the reference itself (x264 crf 23) moves per-cell tone counts by up to 1.8 (earth, village, king), so the spec's slack of 1 fails the reference against itself. Blob and edge ratios moved by under 10 % (one cell 0.71) in the same test.",
+        "tone_fine_slack": 4,
+        "tone_fine_rel": 0.35,
+        "_doc_fine": "tone_fine_slack 4 / tone_fine_rel 0.35 on the 8x6 tone_grid: the 2-colour patch of mutate.py flat_tones drops two cells from 8.8 and 9.5 to 4.0; the centre-posterised king drops cells by 6-8; all 13 reference shots re-encoded (x264 crf 18) against the reference pass."
+      },
+      "floor_factor": 0.7,
+      "floors_type": {
+        "space": {
+          "edge_share": {
+            "min": 0.0397
+          },
+          "tones": {
+            "min": 7.35
+          },
+          "rich_cells_share": {
+            "min": 0.7
+          },
+          "blobs_per_mpx": {
+            "min": 1058.26
+          },
+          "twinkle_med": {
+            "min": 10.255
+          },
+          "twinkle_share": {
+            "min": 0.4788
+          }
+        },
+        "interior": {
+          "edge_share": {
+            "min": 0.0333
+          },
+          "tones": {
+            "min": 15.82
+          },
+          "rich_cells_share": {
+            "min": 0.7
+          }
+        },
+        "closeup": {
+          "edge_share": {
+            "min": 0.0437
+          },
+          "tones": {
+            "min": 17.031
+          },
+          "rich_cells_share": {
+            "min": 0.7
+          }
+        },
+        "exterior": {
+          "edge_share": {
+            "min": 0.0766
+          },
+          "tones": {
+            "min": 15.05
+          },
+          "rich_cells_share": {
+            "min": 0.7
+          }
+        }
+      },
+      "floors_kind": {
+        "starfield": {
+          "blobs_per_mpx": {
+            "min": 855.12
+          },
+          "twinkle_med": {
+            "min": 6.72
+          },
+          "twinkle_share": {
+            "min": 0.3934
+          }
+        },
+        "cloud": {
+          "edge_share": {
+            "min": 0.0247
+          },
+          "tones": {
+            "min": 4.9
+          }
+        }
+      },
+      "tone_grid": [
+        8,
+        6
+      ],
+      "rich_cell_tones": 3,
+      "blob_cell_min": 3,
+      "twinkle_max_shift": 16,
+      "twinkle_min_track": 8
+    },
+    "calibration": {
+      "clip": "../ref/rover_doom.webm",
+      "shots": [
+        {
+          "id": "earth",
+          "start": 0,
+          "end": 47,
+          "type": "space"
+        },
+        {
+          "id": "hallwide",
+          "start": 47,
+          "end": 76,
+          "type": "interior"
+        },
+        {
+          "id": "maskcase",
+          "start": 76,
+          "end": 98,
+          "type": "interior"
+        },
+        {
+          "id": "alcove",
+          "start": 98,
+          "end": 142,
+          "type": "interior"
+        },
+        {
+          "id": "closeup",
+          "start": 142,
+          "end": 173,
+          "type": "closeup"
+        },
+        {
+          "id": "king",
+          "start": 173,
+          "end": 232,
+          "type": "interior"
+        },
+        {
+          "id": "village",
+          "start": 232,
+          "end": 291,
+          "type": "exterior"
+        },
+        {
+          "id": "savanna",
+          "start": 291,
+          "end": 313,
+          "type": "exterior"
+        },
+        {
+          "id": "ocean",
+          "start": 313,
+          "end": 332,
+          "type": "exterior"
+        },
+        {
+          "id": "sun",
+          "start": 332,
+          "end": 366,
+          "type": "space"
+        },
+        {
+          "id": "hallmed",
+          "start": 366,
+          "end": 401,
+          "type": "interior"
+        },
+        {
+          "id": "hallwide2",
+          "start": 401,
+          "end": 450,
+          "type": "interior"
+        },
+        {
+          "id": "hallmed2",
+          "start": 450,
+          "end": 540,
+          "type": "interior"
+        }
+      ],
+      "elements": [
+        {
+          "id": "earth-stars",
+          "kind": "starfield",
+          "crop": "440:260:0:260",
+          "start": 0,
+          "end": 47
+        },
+        {
+          "id": "earth-stars-r",
+          "kind": "starfield",
+          "crop": "380:220:880:400",
+          "start": 0,
+          "end": 47
+        },
+        {
+          "id": "earth-cloud-dark",
+          "kind": "cloud",
+          "crop": "250:130:1005:230",
+          "start": 0,
+          "end": 47
+        },
+        {
+          "id": "earth-cloud-top",
+          "kind": "cloud",
+          "crop": "270:140:375:20",
+          "start": 0,
+          "end": 47
+        },
+        {
+          "id": "earth-cloud-cream",
+          "kind": "cloud",
+          "crop": "170:100:700:250",
+          "start": 0,
+          "end": 47
+        }
+      ],
+      "floor_metrics_type": {
+        "*": [
+          "edge_share",
+          "tones",
+          "rich_cells_share"
+        ],
+        "space": [
+          "edge_share",
+          "tones",
+          "rich_cells_share",
+          "blobs_per_mpx",
+          "twinkle_med",
+          "twinkle_share"
+        ]
+      },
+      "floor_metrics_kind": {
+        "starfield": [
+          "blobs_per_mpx",
+          "twinkle_med",
+          "twinkle_share"
+        ],
+        "cloud": [
+          "edge_share",
+          "tones"
+        ]
+      }
+    },
+    "palette": {
+      "size": [
+        320,
+        180
+      ],
+      "k": 6,
+      "min_share": 0.03,
+      "frame_step": 6,
+      "chroma_min": 12,
+      "hue_bins": 12,
+      "floor_factor": 0.7,
+      "ref": {
+        "de_max": 8.0,
+        "de_pair_max": 20.0,
+        "pair_min_share": 0.08
+      },
+      "floors_type": {
+        "space": {
+          "mean_chroma": {
+            "min": 11.662
+          },
+          "chromatic_share": {
+            "min": 0.3175
+          },
+          "value_range": {
+            "min": 42.28
+          },
+          "palette_n": {
+            "min": 3
+          },
+          "dom_share": {
+            "min": 0.6006
+          }
+        },
+        "interior": {
+          "mean_chroma": {
+            "min": 11.256
+          },
+          "chromatic_share": {
+            "min": 0.2762
+          },
+          "value_range": {
+            "min": 39.102
+          },
+          "palette_n": {
+            "min": 4
+          },
+          "dom_share": {
+            "min": 0.3697
+          }
+        },
+        "closeup": {
+          "mean_chroma": {
+            "min": 20.048
+          },
+          "chromatic_share": {
+            "min": 0.4857
+          },
+          "value_range": {
+            "min": 51.338
+          },
+          "palette_n": {
+            "min": 4
+          },
+          "dom_share": {
+            "min": 0.6976
+          }
+        },
+        "exterior": {
+          "mean_chroma": {
+            "min": 10.395
+          },
+          "chromatic_share": {
+            "min": 0.3748
+          },
+          "value_range": {
+            "min": 33.523
+          },
+          "palette_n": {
+            "min": 4
+          },
+          "dom_share": {
+            "min": 0.4928
+          }
+        }
+      },
+      "floor_metrics": [
+        "mean_chroma",
+        "chromatic_share",
+        "value_range",
+        "palette_n",
+        "dom_share"
+      ],
+      "style_k": 12,
+      "style_min_share": 0.005,
+      "off_de": 15,
+      "off_share_factor": 3.0,
+      "off_share_max": 0.0411,
+      "style_palette": [
+        {
+          "shot": "earth",
+          "lab": [
+            [
+              73.3,
+              -7.9,
+              24.8
+            ],
+            [
+              50.6,
+              2.1,
+              -37.1
+            ],
+            [
+              40.6,
+              -7.3,
+              22.3
+            ],
+            [
+              3.5,
+              3.6,
+              -12.9
+            ],
+            [
+              12.8,
+              8.3,
+              -23.7
+            ],
+            [
+              7.0,
+              3.1,
+              -7.5
+            ],
+            [
+              3.0,
+              2.8,
+              -11.3
+            ],
+            [
+              13.2,
+              16.7,
+              -29.8
+            ],
+            [
+              2.7,
+              2.4,
+              -10.4
+            ],
+            [
+              38.0,
+              -0.1,
+              -7.0
+            ],
+            [
+              2.0,
+              2.9,
+              -11.0
+            ]
+          ]
+        },
+        {
+          "shot": "hallwide",
+          "lab": [
+            [
+              84.8,
+              -1.7,
+              44.2
+            ],
+            [
+              83.2,
+              -1.2,
+              14.8
+            ],
+            [
+              72.3,
+              -0.1,
+              7.2
+            ],
+            [
+              68.6,
+              2.4,
+              55.2
+            ],
+            [
+              44.3,
+              -10.9,
+              3.5
+            ],
+            [
+              72.5,
+              1.4,
+              -10.1
+            ],
+            [
+              62.3,
+              -0.1,
+              8.0
+            ],
+            [
+              58.2,
+              0.0,
+              39.8
+            ],
+            [
+              50.3,
+              -38.2,
+              28.5
+            ],
+            [
+              24.0,
+              13.8,
+              -34.7
+            ],
+            [
+              20.2,
+              22.5,
+              -37.7
+            ],
+            [
+              10.0,
+              9.5,
+              -21.7
+            ]
+          ]
+        },
+        {
+          "shot": "maskcase",
+          "lab": [
+            [
+              91.7,
+              0.0,
+              8.1
+            ],
+            [
+              85.2,
+              -1.6,
+              -6.2
+            ],
+            [
+              83.2,
+              -0.1,
+              10.4
+            ],
+            [
+              76.0,
+              3.7,
+              49.9
+            ],
+            [
+              74.7,
+              -0.1,
+              6.7
+            ],
+            [
+              68.0,
+              -2.0,
+              -7.4
+            ],
+            [
+              63.9,
+              0.5,
+              6.2
+            ],
+            [
+              74.6,
+              -0.3,
+              -34.8
+            ],
+            [
+              63.2,
+              2.6,
+              34.0
+            ],
+            [
+              44.7,
+              -0.7,
+              -5.6
+            ],
+            [
+              53.6,
+              -17.2,
+              8.6
+            ],
+            [
+              31.5,
+              10.8,
+              -25.8
+            ]
+          ]
+        },
+        {
+          "shot": "alcove",
+          "lab": [
+            [
+              92.8,
+              -0.7,
+              12.5
+            ],
+            [
+              86.8,
+              -0.5,
+              11.1
+            ],
+            [
+              57.5,
+              3.1,
+              42.4
+            ],
+            [
+              80.1,
+              0.2,
+              7.7
+            ],
+            [
+              81.4,
+              2.7,
+              52.5
+            ],
+            [
+              73.7,
+              0.9,
+              5.9
+            ],
+            [
+              63.6,
+              0.5,
+              5.8
+            ],
+            [
+              68.3,
+              35.8,
+              61.7
+            ],
+            [
+              38.3,
+              -30.3,
+              21.6
+            ],
+            [
+              33.4,
+              8.6,
+              10.5
+            ],
+            [
+              24.1,
+              6.9,
+              -19.2
+            ],
+            [
+              10.1,
+              -8.9,
+              7.2
+            ]
+          ]
+        },
+        {
+          "shot": "closeup",
+          "lab": [
+            [
+              86.6,
+              -1.2,
+              13.1
+            ],
+            [
+              79.6,
+              -0.9,
+              12.7
+            ],
+            [
+              57.3,
+              1.3,
+              37.3
+            ],
+            [
+              72.5,
+              -0.8,
+              12.6
+            ],
+            [
+              67.2,
+              -0.9,
+              -3.6
+            ],
+            [
+              64.7,
+              -22.0,
+              39.5
+            ],
+            [
+              58.9,
+              -42.8,
+              32.2
+            ],
+            [
+              68.1,
+              2.4,
+              51.8
+            ],
+            [
+              47.8,
+              -2.7,
+              -2.1
+            ],
+            [
+              44.7,
+              -36.4,
+              25.8
+            ],
+            [
+              36.8,
+              -28.1,
+              19.4
+            ],
+            [
+              7.9,
+              -5.3,
+              3.6
+            ]
+          ]
+        },
+        {
+          "shot": "king",
+          "lab": [
+            [
+              78.4,
+              9.5,
+              22.8
+            ],
+            [
+              73.6,
+              11.8,
+              63.6
+            ],
+            [
+              60.5,
+              12.1,
+              52.8
+            ],
+            [
+              53.4,
+              -37.7,
+              32.2
+            ],
+            [
+              40.3,
+              5.9,
+              4.6
+            ],
+            [
+              32.6,
+              4.8,
+              -0.7
+            ],
+            [
+              37.4,
+              53.6,
+              33.4
+            ],
+            [
+              20.8,
+              34.2,
+              17.3
+            ],
+            [
+              34.3,
+              10.1,
+              22.0
+            ],
+            [
+              27.6,
+              4.4,
+              -2.9
+            ],
+            [
+              26.2,
+              10.5,
+              -30.8
+            ],
+            [
+              11.7,
+              2.5,
+              -0.8
+            ]
+          ]
+        },
+        {
+          "shot": "village",
+          "lab": [
+            [
+              85.3,
+              0.4,
+              13.3
+            ],
+            [
+              65.3,
+              2.0,
+              13.4
+            ],
+            [
+              67.2,
+              11.7,
+              28.7
+            ],
+            [
+              66.5,
+              -1.8,
+              -12.5
+            ],
+            [
+              53.5,
+              0.5,
+              10.1
+            ],
+            [
+              57.4,
+              0.3,
+              4.8
+            ],
+            [
+              42.9,
+              0.5,
+              6.6
+            ],
+            [
+              32.6,
+              10.5,
+              18.1
+            ],
+            [
+              21.1,
+              8.7,
+              7.5
+            ],
+            [
+              39.5,
+              -27.8,
+              20.2
+            ],
+            [
+              32.1,
+              33.2,
+              21.2
+            ],
+            [
+              30.0,
+              1.4,
+              -13.6
+            ]
+          ]
+        },
+        {
+          "shot": "savanna",
+          "lab": [
+            [
+              87.6,
+              -0.4,
+              24.2
+            ],
+            [
+              86.5,
+              -3.6,
+              15.7
+            ],
+            [
+              80.5,
+              -0.6,
+              13.7
+            ],
+            [
+              80.2,
+              -3.8,
+              5.3
+            ],
+            [
+              68.1,
+              -1.0,
+              22.2
+            ],
+            [
+              66.6,
+              -8.3,
+              -6.7
+            ],
+            [
+              70.5,
+              3.8,
+              35.1
+            ],
+            [
+              61.8,
+              4.6,
+              37.8
+            ],
+            [
+              52.9,
+              -13.5,
+              35.4
+            ],
+            [
+              46.6,
+              8.4,
+              32.1
+            ],
+            [
+              39.3,
+              -14.8,
+              30.7
+            ],
+            [
+              43.1,
+              2.7,
+              8.6
+            ]
+          ]
+        },
+        {
+          "shot": "ocean",
+          "lab": [
+            [
+              95.2,
+              -3.1,
+              2.7
+            ],
+            [
+              90.7,
+              -4.8,
+              -7.0
+            ],
+            [
+              86.3,
+              -2.1,
+              -5.8
+            ],
+            [
+              86.9,
+              -7.1,
+              -12.0
+            ],
+            [
+              84.2,
+              -6.1,
+              -12.5
+            ],
+            [
+              81.6,
+              -6.9,
+              -16.6
+            ],
+            [
+              79.3,
+              -5.4,
+              -11.7
+            ],
+            [
+              75.7,
+              -7.0,
+              -16.4
+            ],
+            [
+              64.6,
+              -8.0,
+              -19.9
+            ],
+            [
+              57.5,
+              -8.6,
+              -25.5
+            ],
+            [
+              48.6,
+              -6.3,
+              -25.0
+            ],
+            [
+              43.0,
+              -4.6,
+              -27.9
+            ]
+          ]
+        },
+        {
+          "shot": "sun",
+          "lab": [
+            [
+              83.5,
+              6.3,
+              48.5
+            ],
+            [
+              71.1,
+              27.0,
+              65.3
+            ],
+            [
+              63.6,
+              41.1,
+              64.3
+            ],
+            [
+              55.9,
+              52.0,
+              61.3
+            ],
+            [
+              48.3,
+              46.7,
+              54.1
+            ],
+            [
+              33.3,
+              41.3,
+              39.2
+            ],
+            [
+              23.3,
+              32.9,
+              26.8
+            ],
+            [
+              15.5,
+              25.3,
+              16.6
+            ],
+            [
+              9.3,
+              19.3,
+              7.9
+            ],
+            [
+              7.0,
+              8.2,
+              -17.1
+            ],
+            [
+              1.9,
+              3.0,
+              -7.2
+            ],
+            [
+              3.4,
+              8.4,
+              -2.5
+            ]
+          ]
+        },
+        {
+          "shot": "hallmed",
+          "lab": [
+            [
+              90.7,
+              -4.9,
+              17.5
+            ],
+            [
+              82.8,
+              -0.8,
+              11.6
+            ],
+            [
+              76.9,
+              -1.6,
+              40.2
+            ],
+            [
+              74.7,
+              0.2,
+              -7.1
+            ],
+            [
+              71.4,
+              -0.6,
+              9.1
+            ],
+            [
+              45.4,
+              -16.4,
+              13.2
+            ],
+            [
+              62.8,
+              -0.8,
+              1.5
+            ],
+            [
+              64.3,
+              3.9,
+              53.7
+            ],
+            [
+              50.9,
+              -3.1,
+              -9.1
+            ],
+            [
+              10.6,
+              -8.7,
+              5.7
+            ],
+            [
+              48.8,
+              -37.4,
+              27.5
+            ],
+            [
+              22.4,
+              12.8,
+              -34.1
+            ]
+          ]
+        },
+        {
+          "shot": "hallwide2",
+          "lab": [
+            [
+              87.4,
+              -1.2,
+              14.3
+            ],
+            [
+              79.2,
+              -1.8,
+              43.0
+            ],
+            [
+              75.5,
+              -0.2,
+              8.0
+            ],
+            [
+              63.8,
+              3.9,
+              54.3
+            ],
+            [
+              72.3,
+              0.8,
+              -8.6
+            ],
+            [
+              77.0,
+              -0.0,
+              18.8
+            ],
+            [
+              64.4,
+              -44.6,
+              35.1
+            ],
+            [
+              62.2,
+              -0.6,
+              6.1
+            ],
+            [
+              59.7,
+              -0.0,
+              37.4
+            ],
+            [
+              24.4,
+              -3.6,
+              -1.0
+            ],
+            [
+              41.8,
+              -27.2,
+              19.3
+            ],
+            [
+              17.7,
+              14.8,
+              -31.8
+            ]
+          ]
+        },
+        {
+          "shot": "hallmed2",
+          "lab": [
+            [
+              87.6,
+              -1.1,
+              20.0
+            ],
+            [
+              85.2,
+              -0.6,
+              7.5
+            ],
+            [
+              74.9,
+              -0.2,
+              10.3
+            ],
+            [
+              76.5,
+              1.3,
+              50.9
+            ],
+            [
+              67.2,
+              -0.5,
+              -5.9
+            ],
+            [
+              64.2,
+              -42.7,
+              34.6
+            ],
+            [
+              48.8,
+              -2.3,
+              -9.4
+            ],
+            [
+              61.0,
+              -1.7,
+              8.2
+            ],
+            [
+              60.6,
+              1.5,
+              43.4
+            ],
+            [
+              51.8,
+              8.4,
+              -45.5
+            ],
+            [
+              41.3,
+              -31.1,
+              21.6
+            ],
+            [
+              9.0,
+              -7.7,
+              4.5
+            ]
+          ]
+        }
+      ],
+      "_doc_off": "off_share_max = off_share_factor x highest off-palette share of a reference shot against the pooled style palette (0.0137, hallmed). Measured: our 9 shots 0.0001-0.023; hue-rotated Earth 0.0815; king posterised whole frame 0.2219, centre region 0.1015. Leave-one-out (a set the palette does not know): up to 0.3166 (sun) - a new set needs its own set palette (contract 'palette')."
+    },
+    "figure": {
+      "height_tol_rel": 0.08,
+      "centre_tol_frame_w": 0.03,
+      "frac_tol_abs": 0.03,
+      "ratio_tol_rel": 0.1,
+      "segment_de": 18,
+      "style_ranges": {
+        "head_frac": {
+          "min": 0.33,
+          "max": 0.52
+        },
+        "_doc": "PROVISIONAL: one reference figure measured by eye (seated king, frame 203: head_frac 0.426, hand_head 0.286, limb_thick 0.112); TOOLKIT says about 2.4 heads tall (0.42). Range = value +/- about 0.1."
+      },
+      "ring_band": 0.08,
+      "ring_k": 8,
+      "row_fill": 0.03,
+      "support_h_min": 0.75,
+      "support_fg_min": 0.05,
+      "layout_size": [
+        24,
+        36
+      ],
+      "layout_corr_min": 0.35,
+      "part_inside_tol": 0.05,
+      "_doc_support": "PROVISIONAL, measured on few clips: support_h (row span of pixels unlike the band outside the declared box) reference king 0.955-0.967 at frames 173/203, our king 0.997, the king squashed to half height 0.545, min set to 0.75. layout_corr (coarse Lab layout of our box against the reference box, middle frames): our king 0.578, reference against itself 1.0, Earth / village / closeup / alcove shots in the king's box -0.25 to 0.03, min set to 0.35."
+    }
+  },
+  "gate": {
+    "mutants": {
+      "crf": 14,
+      "slide_px_per_frame": 4,
+      "median_radius": 4,
+      "flat_blur_sigma": 5,
+      "desaturate": 0.2,
+      "hold": 12,
+      "flat_colours": 2
+    },
+    "order": [
+      "health",
+      "cuts",
+      "continuity",
+      "palette",
+      "figure",
+      "density",
+      "sbs",
+      "camera",
+      "liveness",
+      "motion"
+    ],
+    "opencv_tools": [
+      "camera",
+      "liveness",
+      "motion"
+    ],
+    "result_file": {
+      "sbs": "align.json"
+    },
+    "disabled": [],
+    "max_waivers": 3,
+    "timeout_s": 900,
+    "look_of_kind": {
+      "twinkles": "starfield"
+    },
+    "builtin": [
+      "continuity"
+    ],
+    "continuity": {
+      "size": [
+        64,
+        36
+      ],
+      "pop_floor": 0.5,
+      "pop_ratio_max": 4.0,
+      "recurrence_gap": 2,
+      "recurrence_ratio_min": 0.4,
+      "hold_eps": 0.02,
+      "lag_max": 3,
+      "lag_dip_min": 0.01,
+      "_doc": "Measured: pop highest value on the reference frames 0-539 is 2.66 (frame 11), on out/full.mp4 0.89; black frame on the Earth shot 4.98, glitch frame on savanna 7.0, on full.mp4 64. recurrence: lowest ratio on reference and on all our shots 0.95; the three glitch_frame mutants 0.03, 0.009, 0.001. lag dip: earth 3.1 %, full film 3 %, king 0.17 %, savanna and village no interior minimum."
+    }
+  }
+}

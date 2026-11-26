@@ -1,0 +1,9 @@
+A sheet of SIX separate objects for a damp natural rock cave in a fantasy feudal-Japan ninja world, drawn in exactly the art style of the attached reference frame: the same flat shapes, 2-4 close tones per object, the same calm level of detail as the stone pillars and props in that frame. Cool grey-brown stone. Arrange them in 2 rows of 3, well separated by wide gaps, each object complete and not cropped:
+1) a tall rough cave-wall rock outcrop (taller than wide) made of two or three big rounded masses, lighter top-left planes, darker side, close tones, a few moss patches on the shoulders, no low-poly triangle facets;
+2) a second cave-wall rock outcrop, wider and lower, same style, a damp darker streak running down;
+3) a cluster of three hanging stalactites with a few thin dangling tree roots, seen from the side;
+4) a large rounded boulder: one soft mass, two or three big planes, lighter top, darker side, no triangle facets;
+5) a low flat stone table: one thick slab on two rough stone blocks, lighter top surface;
+6) a pile of three smaller rounded rocks of different sizes overlapping at the edges.
+No characters, no ground, no cast shadows.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

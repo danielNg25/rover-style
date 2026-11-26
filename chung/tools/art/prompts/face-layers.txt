@@ -1,0 +1,23 @@
+# TEMPLATE: the head taken apart into LAYERS, so the face can turn, eyes can dart and brows move alone.
+# Reference image to pass: this character's approved head sheet (or full-body picture).
+# Rules that worked (gen/prompts/doom-face-parts.txt -> hood, mask, plate, brow, nose, mouth):
+#   - "separate LAYERS", "NO piece touches or overlaps another piece or the image border", "same scale as if
+#     cut from one head", "straight front view";
+#   - describe each layer by what it must NOT contain ("EMPTY", "NO eyes, NO brows ...": a clean plate);
+#   - ONE of each mirrored piece (one eye plate, one brow): the rig mirrors it;
+#   - keep the soft shading words for the base ("lighter in the middle, slightly darker toward the edges"):
+#     that gradient is what gives the flat face volume; the turn itself is done in the rig by parallax;
+#   - eyes: black slits and pupils are drawn in code or cut from the expression sheet, not requested here;
+#   - thin lines (cheek lines, chin line) next to a plate are ONE piece: cut with --merge-dist 60 and check
+#     the result with spill.py --strict (thin grey lines kept purple fringes before the despill existed).
+#   - cut with: tools/art/cut.py <sheet> <dir> <prefix> --merge-dist 60 --names {{LAYER_NAMES_IN_READING_ORDER}}
+The attached image is our approved head for this character (straight front view). I need the head taken apart into separate LAYERS so the face can be animated. Draw a parts sheet with wide magenta gaps so that NO piece touches or overlaps another piece or the image border, all pieces straight front view and at the same scale as if cut from one head:
+Top row, left to right:
+1) {{HEAD_SHELL: e.g. HOOD ONLY: the green hood with its dark inner opening completely EMPTY (flat dark interior, no mask, no face), flat bottom edge under where the chin would be}}. Large.
+2) {{BLANK_FACE: e.g. BLANK MASK: the face plate alone, same shape and soft shading as in the reference (lighter in the middle, slightly darker toward the edges), with NO eyes, NO brows, NO nose, NO mouth: a clean empty face}}. Large, same scale as piece 1.
+Bottom row, left to right:
+3) {{EYE_BASE: one eye base / eye plate, empty}}.
+4) BROW: one {{BROW_DESCRIPTION}} eyebrow stroke, horizontal, slightly tapered at both ends.
+5) NOSE: {{NOSE_DESCRIPTION}}.
+6) MOUTH PIECE: {{MOUTH_DESCRIPTION, including any lines that belong to it}}.
+Square 1:1 image.

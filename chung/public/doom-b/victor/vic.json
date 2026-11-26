@@ -1,0 +1,290 @@
+{
+ "sheet": "gen/doom-b-boy-front.png",
+ "sheet_sha256": "59b767d8495f3342719a4e170904736b72a6f22ed0c1d093c3dd846cecb49eac",
+ "sheet_size": [
+  1536,
+  1024
+ ],
+ "key": "#FB04FA",
+ "prefix": "vic",
+ "named": true,
+ "numbering": "names",
+ "merge_dist": 0,
+ "min_area": 250,
+ "pieces": [
+  {
+   "n": 1,
+   "reading_n": 1,
+   "name": "head",
+   "file": "vic-head.png",
+   "bbox": [
+    52,
+    12,
+    715,
+    687
+   ],
+   "w": 663,
+   "h": 675,
+   "area": 291351,
+   "centre": [
+    383.5,
+    349.5
+   ],
+   "parts": 1,
+   "row": 1
+  },
+  {
+   "n": 2,
+   "reading_n": 2,
+   "name": "bust",
+   "file": "vic-bust.png",
+   "bbox": [
+    789,
+    125,
+    1442,
+    576
+   ],
+   "w": 653,
+   "h": 451,
+   "area": 216905,
+   "centre": [
+    1115.5,
+    350.5
+   ],
+   "parts": 1,
+   "row": 1
+  },
+  {
+   "n": 3,
+   "reading_n": 3,
+   "name": "brow-l",
+   "file": "vic-brow-l.png",
+   "bbox": [
+    164,
+    720,
+    339,
+    827
+   ],
+   "w": 175,
+   "h": 107,
+   "area": 6686,
+   "centre": [
+    251.5,
+    773.5
+   ],
+   "parts": 1,
+   "row": 2
+  },
+  {
+   "n": 4,
+   "reading_n": 4,
+   "name": "brow-r",
+   "file": "vic-brow-r.png",
+   "bbox": [
+    439,
+    719,
+    610,
+    827
+   ],
+   "w": 171,
+   "h": 108,
+   "area": 6516,
+   "centre": [
+    524.5,
+    773.0
+   ],
+   "parts": 1,
+   "row": 2
+  },
+  {
+   "n": 5,
+   "reading_n": 5,
+   "name": "pupil-l",
+   "file": "vic-pupil-l.png",
+   "bbox": [
+    733,
+    737,
+    795,
+    798
+   ],
+   "w": 62,
+   "h": 61,
+   "area": 2414,
+   "centre": [
+    764.0,
+    767.5
+   ],
+   "parts": 1,
+   "row": 2
+  },
+  {
+   "n": 6,
+   "reading_n": 6,
+   "name": "pupil-r",
+   "file": "vic-pupil-r.png",
+   "bbox": [
+    864,
+    737,
+    926,
+    798
+   ],
+   "w": 62,
+   "h": 61,
+   "area": 2415,
+   "centre": [
+    895.0,
+    767.5
+   ],
+   "parts": 1,
+   "row": 2
+  },
+  {
+   "n": 7,
+   "reading_n": 7,
+   "name": "lid-l",
+   "file": "vic-lid-l.png",
+   "bbox": [
+    1048,
+    665,
+    1187,
+    835
+   ],
+   "w": 139,
+   "h": 170,
+   "area": 17149,
+   "centre": [
+    1117.5,
+    750.0
+   ],
+   "parts": 1,
+   "row": 2
+  },
+  {
+   "n": 8,
+   "reading_n": 8,
+   "name": "lid-r",
+   "file": "vic-lid-r.png",
+   "bbox": [
+    1249,
+    665,
+    1387,
+    835
+   ],
+   "w": 138,
+   "h": 170,
+   "area": 17084,
+   "centre": [
+    1318.0,
+    750.0
+   ],
+   "parts": 1,
+   "row": 2
+  },
+  {
+   "n": 9,
+   "reading_n": 9,
+   "name": "mouth-closed",
+   "file": "vic-mouth-closed.png",
+   "bbox": [
+    125,
+    918,
+    264,
+    960
+   ],
+   "w": 139,
+   "h": 42,
+   "area": 2509,
+   "centre": [
+    194.5,
+    939.0
+   ],
+   "parts": 1,
+   "row": 3
+  },
+  {
+   "n": 10,
+   "reading_n": 10,
+   "name": "mouth-o",
+   "file": "vic-mouth-o.png",
+   "bbox": [
+    388,
+    903,
+    466,
+    980
+   ],
+   "w": 78,
+   "h": 77,
+   "area": 3996,
+   "centre": [
+    427.0,
+    941.5
+   ],
+   "parts": 1,
+   "row": 3
+  },
+  {
+   "n": 11,
+   "reading_n": 11,
+   "name": "mouth-open",
+   "file": "vic-mouth-open.png",
+   "bbox": [
+    593,
+    913,
+    699,
+    966
+   ],
+   "w": 106,
+   "h": 53,
+   "area": 3626,
+   "centre": [
+    646.0,
+    939.5
+   ],
+   "parts": 1,
+   "row": 3
+  },
+  {
+   "n": 12,
+   "reading_n": 12,
+   "name": "mouth-flat",
+   "file": "vic-mouth-flat.png",
+   "bbox": [
+    803,
+    927,
+    944,
+    952
+   ],
+   "w": 141,
+   "h": 25,
+   "area": 2438,
+   "centre": [
+    873.5,
+    939.5
+   ],
+   "parts": 1,
+   "row": 3
+  },
+  {
+   "n": 13,
+   "reading_n": 13,
+   "name": "hands",
+   "file": "vic-hands.png",
+   "bbox": [
+    1066,
+    887,
+    1378,
+    1015
+   ],
+   "w": 312,
+   "h": 128,
+   "area": 27473,
+   "centre": [
+    1222.0,
+    951.0
+   ],
+   "parts": 1,
+   "row": 3
+  }
+ ],
+ "dropped": []
+}

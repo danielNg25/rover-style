@@ -1,0 +1,80 @@
+{
+ "sheet": "gen/doom-b-camp-row.png",
+ "sheet_sha256": "38f01edcac537d694a7a9bc81906aa028a72264675dbe17c0b1bb079a6465c03",
+ "sheet_size": [
+  1536,
+  1024
+ ],
+ "key": "#F904FA",
+ "prefix": "camp",
+ "named": true,
+ "numbering": "names",
+ "merge_dist": 14,
+ "min_area": 1500,
+ "pieces": [
+  {
+   "n": 1,
+   "reading_n": 1,
+   "name": "victor-back",
+   "file": "camp-victor-back.png",
+   "bbox": [
+    76,
+    266,
+    503,
+    767
+   ],
+   "w": 427,
+   "h": 501,
+   "area": 116659,
+   "centre": [
+    289.5,
+    516.5
+   ],
+   "parts": 1,
+   "row": 1
+  },
+  {
+   "n": 2,
+   "reading_n": 2,
+   "name": "mother-body",
+   "file": "camp-mother-body.png",
+   "bbox": [
+    601,
+    265,
+    953,
+    755
+   ],
+   "w": 352,
+   "h": 490,
+   "area": 109875,
+   "centre": [
+    777.0,
+    510.0
+   ],
+   "parts": 1,
+   "row": 1
+  },
+  {
+   "n": 3,
+   "reading_n": 3,
+   "name": "mother-arms",
+   "file": "camp-mother-arms.png",
+   "bbox": [
+    1074,
+    474,
+    1463,
+    668
+   ],
+   "w": 389,
+   "h": 194,
+   "area": 33059,
+   "centre": [
+    1268.5,
+    571.0
+   ],
+   "parts": 1,
+   "row": 1
+  }
+ ],
+ "dropped": []
+}

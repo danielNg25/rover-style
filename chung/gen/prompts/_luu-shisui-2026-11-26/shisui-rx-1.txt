@@ -1,0 +1,8 @@
+A sheet of 5 separate objects for a quiet pine forest on an overcast grey day, in a fantasy feudal-Japan ninja village world, drawn in exactly the art style of the attached reference frame: the same flat shapes, 2-4 close tones per object, the same calm level of detail and finish as the trees, rocks and props in that frame. Arrange them in 2 rows, well separated by wide gaps, each object complete and not cropped:
+1) a very tall Japanese pine: long straight red-grey trunk, high canopy of flat needle clouds in muted grey-greens;
+2) a second tall pine, thinner trunk, canopy shaped differently;
+3) a medium pine, slightly leaning;
+4) a dead tree: bare grey trunk with a few broken branches;
+5) an old wide tree stump with thick exposed roots and a flat cut top where a crow can perch;
+Muted, desaturated overcast colours. Near objects keep their own natural colours (do not tint them with the sky colour). No characters, no people, no animals unless listed, no ground strip, no cast shadows, no text.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

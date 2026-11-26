@@ -1,0 +1,16 @@
+# TEMPLATE: head expression sheet, 2x2 grid of the SAME head with different eyes/brows (and mouth).
+# Reference image to pass: the approved full-body picture of this character.
+# Rules that worked (gen/prompts/doom-heads.txt -> public/doom/h-1..4):
+#   - "HEAD ONLY ... cut off cleanly with a flat bottom edge just under the chin: no shoulders, no body";
+#   - "the drawing must be IDENTICAL in all four; only the eyes and brows change", then one line per cell
+#     naming the cell position, the expression in capitals and exactly what brows / eyes / pupils do;
+#   - straight front view. A turned (three-quarter) head sheet was tried and not used: volume is made in the
+#     rig by sliding face layers (see face-layers.txt), so ask for a turned head only if the rig cannot do it,
+#     and then give explicit volume cues (nose right of centre, far eye narrower, darker side plane).
+#   - cut with: tools/art/cut.py <sheet> <dir> <prefix> --names {{E1}},{{E2}},{{E3}},{{E4}}
+The first attached image is the approved character. Draw a 2x2 grid of FOUR versions of this character's HEAD ONLY ({{HEAD_DESCRIPTION: e.g. green hood with dark inner opening + light-grey riveted metal mask}}), each large, straight front view, same size, well separated with wide magenta gaps, none touching each other or the image border. Each head is cut off cleanly with a flat bottom edge just under the chin: no shoulders, no collar, no body. The head drawing must be IDENTICAL in all four; only the eyes, brows and mouth change:
+top-left = {{E1_NAME_IN_CAPITALS}}: {{E1: brows, eye shape, pupil position, mouth}}.
+top-right = {{E2_NAME_IN_CAPITALS}}: {{E2}}.
+bottom-left = {{E3_NAME_IN_CAPITALS}}: {{E3}}.
+bottom-right = {{E4_NAME_IN_CAPITALS}}: {{E4}}.
+Square 1:1 image.

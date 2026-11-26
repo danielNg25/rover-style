@@ -1,0 +1,14 @@
+{
+ "time": "2026-11-21T01:57:19",
+ "run": "victor-like",
+ "output": "victor-like.png",
+ "output_sha256": "dae65426a8ecd62f67a0528fd4e11dd995f4695c942fd5d0d8157c5d01ac8af2",
+ "prompt_file": "gen/prompts/victor-like.txt",
+ "prompt_sha256": "28786ca79f5a4b74246cecb62c76917d26ba0d017331d0fcf029570bbce6b0e9",
+ "refs": [
+  {
+   "path": "/Users/daniel/WorkStation/Personal/video/shorts-claude/rover-lab/gen/test-char-sheet.png",
+   "sha256": "bf6219f40989a7f17330978cd30af82fb436734779f044fd9a982b906cec6837"
+  }
+ ]
+}

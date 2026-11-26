@@ -1,0 +1,38 @@
+[
+ {
+  "n": 1,
+  "file": "rx-sua-1.png",
+  "w": 680,
+  "h": 306,
+  "mo-ta": "rễ cây trồi trên đất (gốc kèm rễ)",
+  "loai": "bản thiết kế: gốc dựng khối tiện, rễ là tấm phẳng nằm sát đất",
+  "nguon": "gen/shisui-sua-1.png"
+ },
+ {
+  "n": 2,
+  "file": "rx-sua-2.png",
+  "w": 324,
+  "h": 283,
+  "mo-ta": "khóm cỏ khô lớn",
+  "loai": "phẳng (Sprite)",
+  "nguon": "gen/shisui-sua-1.png"
+ },
+ {
+  "n": 3,
+  "file": "rx-sua-3.png",
+  "w": 166,
+  "h": 175,
+  "mo-ta": "khóm cỏ khô nhỏ",
+  "loai": "phẳng (Sprite)",
+  "nguon": "gen/shisui-sua-1.png"
+ },
+ {
+  "n": 4,
+  "file": "rx-sua-4.png",
+  "w": 485,
+  "h": 215,
+  "mo-ta": "hai cành gãy bắt chéo",
+  "loai": "phẳng (Sprite)",
+  "nguon": "gen/shisui-sua-1.png"
+ }
+]

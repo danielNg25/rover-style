@@ -1,0 +1,18 @@
+# doom-b sheet 1: boy (child state of the lead), FRONT PARTS. Refs: gen/doom-front.png gen/queen.png (approved art, finish only).
+# Own style block (carries "ART STYLE", so tools/art/prompts/style.txt is NOT appended): bible section 8 forbids the
+# soft gradients the old block asks for. Nose/ears asked as warm salmon, not purple-pink, because the key is magenta.
+# Cut: tools/art/cut.py gen/doom-b-boy-front.png public/doom-b/victor v --min-area 250 (names after looking at the overview).
+The attached images show two approved characters of this cartoon (a hooded figure in a green cape and a queen). Use them only for the cartoon proportions and the kind of face (big round head, simple features). Draw a PUPPET PARTS SHEET for a NEW character in the same cartoon family: a small boy of about eight from a poor mountain camp. The character is taken apart into separate pieces laid out with wide magenta gaps, so that NO piece touches or overlaps another piece or the image border. All pieces straight front view, all at the same scale as if cut from one figure.
+LEFT HALF of the image:
+1) HEAD, drawn large, about 700 pixels tall: a big round child's head with a short neck stub under it. Dark brown-black untidy hair with one tuft sticking up on top. Warm peach skin in two flat tones. The hair is one flat dark mass with a few lighter-brown flat angular locks, cut-paper style. Small ears and a small round nose in warm salmon-rose (reddened by cold; salmon, not purple-pink). Two eye whites as clean, plain cream upright ovals, each about one fifth of the head width, clearly SEPARATED by a gap of skin between them (they do not touch each other). The head has NO eyebrows, NO pupils and NO mouth: the eye whites are empty and the lower face is blank skin.
+RIGHT HALF of the image, top:
+2) BUST: the same boy's body from the waist up WITHOUT a head: narrow real shoulders and a visible short neck, wrapped in an oversized, far too big, patched dark-green shawl with its hood pushed down as a thick roll around the collar; two or three square patches in a lighter green and in olive-brown; flat top where the neck ends, flat bottom edge at the waist. No head, no hands.
+RIGHT HALF, middle row, left to right:
+3) LEFT EYEBROW and 4) RIGHT EYEBROW: two heavy, thick, dark brown-black eyebrow bars as two separate pieces, each slanted steeply down toward the middle like an angry scowl.
+5) and 6) TWO PUPILS: two small plain dark-brown round discs, separate.
+7) and 8) TWO EYELIDS: two skin-coloured oval pieces, each a little larger than one eye white, separate.
+RIGHT HALF, bottom row, left to right:
+9) MOUTH closed: a short dark curved line, slightly downturned. 10) MOUTH "o": a small dark round open mouth. 11) MOUTH small open: a small dark half-oval. 12) MOUTH flat: a short straight dark line.
+13) HANDS: one pair of small peach child's hands held together as a little cup, palms up, as one piece.
+Landscape 3:2 image.
+ART STYLE: flat cut-paper shapes, like pieces cut from coloured paper; hard-edged flat tone blocks, 2 to 3 flat tones per piece; NO outlines; NO soft airbrushed shading; NO gradients; NO 3D look, no highlights, no texture; clean crisp edges; simple smooth curves. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames. Pieces well separated with wide gaps of pure magenta, nothing touching.

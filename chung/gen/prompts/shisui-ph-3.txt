@@ -1,0 +1,7 @@
+A sheet of 4 separate objects for the distant background behind a Japanese village street in daylight, in a fantasy feudal-Japan ninja village world, drawn in exactly the art style of the attached reference frame: the same flat shapes, 2-4 close tones per object, the same calm level of detail and finish as the trees, rocks and props in that frame. Arrange them in 2 rows, well separated by wide gaps, each object complete and not cropped:
+1) a wide cluster of distant traditional Japanese roofs with grey-blue tiles at different heights, muted pale tones;
+2) a tall wooden watchtower with a small tiled roof, far away, muted pale tone;
+3) a very wide low green hill with a few small pines, flat single-tone silhouette layer, the whole layer ONE tone, optional jagged snow cap, NO straight vertical ridge that splits a peak into a light half and a dark half;
+4) a very wide far mountain range, palest blue-grey, flat single-tone silhouette layer, the whole layer ONE tone, optional jagged snow cap, NO straight vertical ridge that splits a peak into a light half and a dark half;
+ No characters, no people, no animals unless listed, no ground strip, no cast shadows, no text.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

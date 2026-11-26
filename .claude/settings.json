@@ -1,0 +1,58 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|compact|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat \"$CLAUDE_PROJECT_DIR/chung/skills/THE-LUAT-CUNG.md\" 2>/dev/null; python3 \"$CLAUDE_PROJECT_DIR/chung/tools/buoc.py\" --hook 2>/dev/null; python3 \"$CLAUDE_PROJECT_DIR/chung/tools/khoa_chung.py\" kiem --hook 2>/dev/null; true",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|NotebookEdit|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$CLAUDE_PROJECT_DIR/chung/tools/khoa_chung.py\"; [ -f \"$f\" ] || exit 0; python3 \"$f\" hook",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$CLAUDE_PROJECT_DIR/chung/tools/khoa_chung.py\"; [ -f \"$f\" ] || exit 0; python3 \"$f\" hook",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  },
+  "sandbox": {
+    "filesystem": {
+      "denyWrite": [
+        "./chung/src",
+        "./chung/remotion.config.ts",
+        "./chung/skills/THE-LUAT-CUNG.md",
+        "./chung/skills/LUAT-RUT-GON.md",
+        "./chung/skills/0-dao-dien.md",
+        "./chung/skills/1-dung-canh.md",
+        "./chung/skills/2-chuan-mon-do.md",
+        "./chung/skills/3-nhan-vat-dien-xuat.md",
+        "./chung/skills/4-quy-trinh.md",
+        "./chung/skills/bang-cham",
+        "./CLAUDE.md",
+        "./BAT-DAU-O-DAY.md"
+      ]
+    }
+  }
+}

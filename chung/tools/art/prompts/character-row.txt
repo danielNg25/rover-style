@@ -1,0 +1,22 @@
+# TEMPLATE: a row (or two rows) of several small characters in ONE image: crowds, villagers, courtiers.
+# Reference images to pass: one or two approved characters for the finish (gen/doom-front.png, gen/queen.png).
+# Rules that worked (gen/prompts/villagers.txt -> public/village/v-1..12, six people in two rows):
+#   - "every figure full body with feet visible, straight front view, standing, all the same scale";
+#   - give relative heights in words ("adults the same height, the girl about 80% of that");
+#   - "Leave wide gaps of pure magenta between all figures and between the rows; no figure may touch or
+#     overlap another" (the smallest gap on that sheet measured 24 px: do not ask for more than six per row);
+#   - one numbered line per person: hair, face hair, each garment with its colour, shoes;
+#   - a second row = "the same people in the same left-to-right order" with ONE changed expression and at most
+#     one raised arm each: this gives a two-state reaction (calm / startled) without a rig. Keep feet planted:
+#     walking or seated versions are refused by gen.sh and by the image tool;
+#   - avoid pink and purple garments on a magenta key (the purple waistcoat on that sheet is the one colour
+#     keycheck.py warns about); if the cast needs them, ask for a green #00B140 background instead.
+#   - cut with: tools/art/cut.py <sheet> <dir> <prefix> --names {{NAMES_ROW1_THEN_ROW2}}
+The attached images show the approved rendering style and finish. Draw a sheet of {{N: at most SIX}} small {{KIND: e.g. medieval peasant villagers}} in exactly that style, as {{ROWS: ONE ROW | TWO ROWS of the same people in the same left-to-right order}}, every figure full body with feet visible, straight front view, standing, all the same scale ({{RELATIVE_HEIGHTS}}), big round heads about 2.4 heads tall overall, large white round eyes with small dark pupils, short limbs, no outlines. Leave wide gaps of pure magenta between all figures and between the rows; no figure may touch or overlap another.
+The people, left to right:
+1. {{PERSON_1: hair, face, garments with colours, shoes}}.
+2. {{PERSON_2}}.
+3. {{PERSON_3}}.
+TOP ROW: each person stands calmly with arms down at the sides, {{CALM_EXPRESSION}}.
+{{BOTTOM ROW: the same people, now STATE_2 (expression; at most one raised arm each, feet unchanged): 1 ...; 2 ...; 3 ... | or delete this line}}
+Landscape 3:2.

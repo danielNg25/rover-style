@@ -1,0 +1,75 @@
+{
+ "id": "_template-extra",
+ "template": "extra-v1",
+ "sheet": "tools/art/template/extra-v1.png",
+ "sheet_sha256": "a357643435f75524e82ed7d4da425bac289d1ef86d40532e276c9666958fcf82",
+ "key": "#FF00FF",
+ "pad": 3,
+ "slots": {
+  "front": {
+   "file": "_template-extra/front.png",
+   "size": [
+    356,
+    786
+   ],
+   "art": [
+    86,
+    122,
+    436,
+    902
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 1.0,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "startled": {
+   "file": "_template-extra/startled.png",
+   "size": [
+    356,
+    786
+   ],
+   "art": [
+    592,
+    122,
+    942,
+    902
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 1.0,
+    "h": 1.0
+   },
+   "ok": true
+  },
+  "back": {
+   "file": "_template-extra/back.png",
+   "size": [
+    330,
+    786
+   ],
+   "art": [
+    1111,
+    122,
+    1435,
+    902
+   ],
+   "dev": {
+    "dx": 0.0,
+    "dy": 0.0,
+    "w": 1.0,
+    "h": 1.0
+   },
+   "ok": true
+  }
+ },
+ "absent": [],
+ "colours": {
+  "front": "#9C9CA4"
+ },
+ "adjust": {}
+}

@@ -1,0 +1,9 @@
+A sheet of 6 separate objects for the seasonal versions of trees in a ninja training clearing, in a fantasy feudal-Japan ninja village world, drawn in exactly the art style of the attached reference frame: the same flat shapes, 2-4 close tones per object, the same calm level of detail and finish as the trees, rocks and props in that frame. Arrange them in 2 rows, well separated by wide gaps, each object complete and not cropped:
+1) a Japanese maple in autumn: canopy of soft leaf clusters in red, orange and amber;
+2) a round leafy tree in autumn: yellow-orange canopy;
+3) a Japanese pine covered with snow on top of every needle layer;
+4) a low bush covered with snow;
+5) a scatter of fallen red and orange maple leaves as a small flat pile;
+6) a bare winter tree with thin branches and a little snow;
+Near objects keep their own natural colours (do not tint them with the sky colour). No characters, no people, no animals unless listed, no ground strip, no cast shadows, no text.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

@@ -1,0 +1,269 @@
+{
+ "sheet": "gen/wares-sheet.png",
+ "sheet_sha256": "75d6ffde973df39d0565e82315dbec8f018345772a868d035427e8ed6283656b",
+ "sheet_size": [
+  1536,
+  1024
+ ],
+ "key": "#FB04FA",
+ "prefix": "w",
+ "named": true,
+ "numbering": "names",
+ "merge_dist": 14,
+ "min_area": 1500,
+ "pieces": [
+  {
+   "n": 1,
+   "reading_n": 1,
+   "name": "loaf",
+   "file": "w-loaf.png",
+   "bbox": [
+    40,
+    120,
+    367,
+    254
+   ],
+   "w": 327,
+   "h": 134,
+   "area": 32174,
+   "centre": [
+    203.5,
+    187.0
+   ],
+   "parts": 1,
+   "row": 1
+  },
+  {
+   "n": 2,
+   "reading_n": 2,
+   "name": "roundLoaf",
+   "file": "w-roundLoaf.png",
+   "bbox": [
+    439,
+    87,
+    715,
+    292
+   ],
+   "w": 276,
+   "h": 205,
+   "area": 42722,
+   "centre": [
+    577.0,
+    189.5
+   ],
+   "parts": 1,
+   "row": 1
+  },
+  {
+   "n": 3,
+   "reading_n": 3,
+   "name": "buns",
+   "file": "w-buns.png",
+   "bbox": [
+    797,
+    132,
+    1115,
+    240
+   ],
+   "w": 318,
+   "h": 108,
+   "area": 27115,
+   "centre": [
+    956.0,
+    186.0
+   ],
+   "parts": 1,
+   "row": 1
+  },
+  {
+   "n": 4,
+   "reading_n": 4,
+   "name": "cake",
+   "file": "w-cake.png",
+   "bbox": [
+    1205,
+    49,
+    1469,
+    302
+   ],
+   "w": 264,
+   "h": 253,
+   "area": 45075,
+   "centre": [
+    1337.0,
+    175.5
+   ],
+   "parts": 1,
+   "row": 1
+  },
+  {
+   "n": 5,
+   "reading_n": 5,
+   "name": "jar",
+   "file": "w-jar.png",
+   "bbox": [
+    79,
+    391,
+    314,
+    632
+   ],
+   "w": 235,
+   "h": 241,
+   "area": 42820,
+   "centre": [
+    196.5,
+    511.5
+   ],
+   "parts": 1,
+   "row": 2
+  },
+  {
+   "n": 6,
+   "reading_n": 6,
+   "name": "jug",
+   "file": "w-jug.png",
+   "bbox": [
+    461,
+    373,
+    706,
+    639
+   ],
+   "w": 245,
+   "h": 266,
+   "area": 43003,
+   "centre": [
+    583.5,
+    506.0
+   ],
+   "parts": 1,
+   "row": 2
+  },
+  {
+   "n": 7,
+   "reading_n": 7,
+   "name": "cheese",
+   "file": "w-cheese.png",
+   "bbox": [
+    822,
+    407,
+    1075,
+    619
+   ],
+   "w": 253,
+   "h": 212,
+   "area": 39585,
+   "centre": [
+    948.5,
+    513.0
+   ],
+   "parts": 1,
+   "row": 2
+  },
+  {
+   "n": 8,
+   "reading_n": 8,
+   "name": "grapes",
+   "file": "w-grapes.png",
+   "bbox": [
+    1231,
+    372,
+    1477,
+    635
+   ],
+   "w": 246,
+   "h": 263,
+   "area": 35002,
+   "centre": [
+    1354.0,
+    503.5
+   ],
+   "parts": 1,
+   "row": 2
+  },
+  {
+   "n": 9,
+   "reading_n": 9,
+   "name": "apples",
+   "file": "w-apples.png",
+   "bbox": [
+    45,
+    717,
+    349,
+    983
+   ],
+   "w": 304,
+   "h": 266,
+   "area": 55128,
+   "centre": [
+    197.0,
+    850.0
+   ],
+   "parts": 1,
+   "row": 3
+  },
+  {
+   "n": 10,
+   "reading_n": 10,
+   "name": "pumpkin",
+   "file": "w-pumpkin.png",
+   "bbox": [
+    424,
+    698,
+    715,
+    983
+   ],
+   "w": 291,
+   "h": 285,
+   "area": 54768,
+   "centre": [
+    569.5,
+    840.5
+   ],
+   "parts": 1,
+   "row": 3
+  },
+  {
+   "n": 11,
+   "reading_n": 11,
+   "name": "flowers",
+   "file": "w-flowers.png",
+   "bbox": [
+    803,
+    692,
+    1106,
+    993
+   ],
+   "w": 303,
+   "h": 301,
+   "area": 51876,
+   "centre": [
+    954.5,
+    842.5
+   ],
+   "parts": 1,
+   "row": 3
+  },
+  {
+   "n": 12,
+   "reading_n": 12,
+   "name": "bottle",
+   "file": "w-bottle.png",
+   "bbox": [
+    1261,
+    695,
+    1409,
+    993
+   ],
+   "w": 148,
+   "h": 298,
+   "area": 28958,
+   "centre": [
+    1335.0,
+    844.0
+   ],
+   "parts": 1,
+   "row": 3
+  }
+ ],
+ "dropped": []
+}

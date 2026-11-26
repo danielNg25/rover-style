@@ -1,0 +1,266 @@
+# Skill 3: nhân vật và diễn xuất (cutout3d)
+
+> Đổi bất cứ thứ gì trong cách làm, thư viện hay bộ khuôn thì ghi ngay vào skill này và thêm một dòng vào `NHAT-KY-THAY-DOI.md`. Không ghi là mất.
+> Ai làm việc gì, file nào của ai, cổng kiểm nào phải qua: `skills/4-quy-trinh.md`.
+> Nhân vật, bảng năm tông da, bảng nét mặt, bảng tư thế tay và các hiệu ứng có ảnh trong kho: `assets/DANH-MUC.md`, nhóm `nhan-vat` và `hieu-ung`. Nhân vật hay hiệu ứng mới phải vào kho (cách làm ở `skills/2-chuan-mon-do.md`, mục Kho asset).
+
+Dùng cho hai việc: (a) **dàn người** khi dựng ảnh tĩnh (skill 1 cần phần này), và (b) **diễn xuất**: làm 8–10 giây chuyển động trong một cảnh đã có ảnh tĩnh được duyệt, theo ghi chú sân khấu.
+
+
+## Mặt chuẩn (Daniel duyệt 25/11/2026)
+
+- Mắt của mọi nhân vật mới vẽ bằng `matChuan(spec)` (`src/mould/matChuan.ts`; kho: `mat-chuan-bang-net-mat`). Số đo lấy từ video gốc: mỗi mắt khoảng 0,40 bề ngang mặt, hai mắt chạm nhau ở giữa, mắt tròn; mặt bình thường mắt mở tròn, mí chỉ hạ khi giận, buồn, chán, nheo; lông mày tách khỏi mắt. Nhân vật có lông mày riêng: `matChuan(spec, {may: false})` hoặc gọi `veMat` trong lớp `head` của mình.
+- Không tự vẽ lại mắt, không đổi cỡ, khoảng cách, vị trí mắt ở kênh. Ngày 23/11 một phiên chữa lời chê "mắt như đeo kính bảo hộ" bằng cách thu mắt còn 0,24 bề ngang mặt cho cả dàn kênh lich-su; không ai đặt cạnh video gốc, cả dàn và lô 1 phải làm lại.
+- Bị chê về mặt, dáng, tỉ lệ nhân vật: đặt mặt của mình cạnh `skills/bang-cham/mat-chuan.jpg`, tìm chỗ khác với video gốc, làm MỘT tấm mặt thử (vài nhân vật, vài nét mặt), gửi Daniel; duyệt rồi mới áp cho cả dàn.
+- `python3 tools/kiem_mat.py` không có LOI (đã nằm trong `kiem_canh.py`). Kiểu mặt riêng đã được Daniel duyệt thì ghi trong file một dòng `mat:da-duyet <ngày>`.
+- Kênh lich-su đã chuyển cả dàn sang mắt chuẩn. Tập doom-1 (đã đăng) và kênh anime-analyst còn dùng mắt của bộ khuôn: cỡ mắt đúng, nhưng mặt bình thường có nét mí kẻ ngang; đổi hay không do Daniel quyết.
+
+## Nhân vật là gì
+
+Một bộ khuôn vẽ bằng code, dùng chung cho mọi người; đổi người bằng tham số, không vẽ lại.
+
+```tsx
+const MAN: Spec = {outfit: 'vest', hair: 'sweep', build: 'adult', longLegs: true, expr: {...EXPR.smile, gaze: [18, -2]},
+  armL: {...POSES.idle[0]}, armR: {...POSES.idle[1]},
+  palette: {hair: '#6b4a2a', brow: '#3a2816', shirt: '#ece6d6', vest: '#3f6a8a', shorts: '#3d4252', shoe: '#2b2422'}};
+<Puppet3 height={1.7} pos={[x, 0, z]} spec={MAN} />     // trẻ con: build 'child', height 1.15, bỏ longLegs
+```
+
+- `outfit`: `vest` (áo sơ mi và gi-lê; cho `vest` cùng màu `shirt` thì thành áo trơn) hoặc `coat` (áo choàng dài). `hair`: `sweep`, `level`, `bald`. `beard`: màu râu. `view: 'back'` là quay lưng.
+- **Bộ áo giáp mũ trùm (`outfit: 'doom'`, thêm 22/11/2026):** mũ trùm chảy xuống thành tấm phủ vai có hai khuy, áo trong gấu răng cưa và thắt lưng, tay chân giáp to bè, găng to, áo choàng treo SAU lưng. Tham số riêng: `mask` (`'iron'` mặt nạ sắt, `'hot'` mặt nạ nung, `'none'` mặt thật trong mũ trùm, `'dark'` lòng mũ tối chỉ thấy bóng đầu), `heat` từ 1 về 0 (mặt nạ nung nguội dần, có glow; `Puppet3` tự thêm quầng sáng khi `heat` trên 0,08, tham số `glow`), `sit: true` (ngồi), `bulk` (bề ngang, mặc định 1,3), `scar: {side, heavy: true}` (sẹo nặng); màu qua `palette` (`cloak`, `cloakDark`, `cloakLight`, `cloakIn`, `tunic`, `plate`, `plateLine`, `armour`, `armourDark`, `armourLight`, `gold`, `goldDark`, `belt`, `socket`). Mặt nạ: `brow` và `mouth` không hiện, diễn bằng mắt, đầu, thân và tay. Mặt nạ rời: `paintMask`, `MASK_BOX` (bộ khuôn) và `LooseMask` (`src/lib3/kitForge.tsx`). `bulk` và `sit` chỉ có ở bộ áo này; chưa có áo choàng tung theo bước, đi hay ngồi nhìn nghiêng, tay khi nhìn từ sau lưng. Chi tiết dựng nhân vật mặc bộ áo này ở kênh phim-tv (số đo, tay, ngồi, mặt nạ nóng, nhà sư, các lần chủ kênh chê): `ghi-chu.md` của kênh phim-tv, mục "Doctor Doom trên bộ khuôn".
+  - **Vóc dáng khác người thường thì đo trên mẫu, không ước bằng mắt, và đo trên NHIỀU khung:** kẻ lưới lên ít nhất bốn khung mẫu ở các tư thế tay khác nhau (buông, giơ, dang, khoanh) và lập bảng tỉ lệ theo chiều cao TRƯỚC khi vẽ; phép thử: tay buông thẳng phải nằm đè lên thân. Bốn lần chủ kênh chê vóc Doom đều cùng gốc: đo trên một khung rồi đoán phần còn lại.
+  - **Daniel gọi "glow" là các chấm sáng nhỏ bay quanh vật nóng** (tàn lửa, bụi than, vụn kim loại), không chỉ là quầng sáng: vật nóng nào trong cảnh cũng có `Embers` hay `HotSpecks` (`src/lib3/fx.tsx`) quanh nó, thưa dần khi nguội; `Steam` cho hơi nước, `SparkBurst` cho chùm tia lửa lúc chạm.
+- **Phụ kiện thêm 22/11/2026** (bảng kho `bang-phu-kien-latveria-mu-sat-ria-khan-tap-de`), mỗi thứ là một màu trong `Spec`: `helmet` (mũ sắt có che mũi, vẽ cả nhìn trước lẫn nhìn sau), `emblem` (huy hiệu hình thoi trên ngực áo), `moustache` (ria vểnh), `goatee` (chòm râu cằm; râu quai nón đầy vẫn là `beard`), `scarf` (khăn trùm đầu, tóc dài rủ hai bên mặt), `apron` (tạp dề ngoài sơ mi của người `vest`). Dáng mặt riêng (hàm vuông, mặt dài) vẫn CHƯA có.
+- **Mỗi nhân vật có tên một dáng mặt và một bộ đồ riêng** (Daniel xem Nam tước, 22/11/2026: "vua phải quần áo nhìn đẹp hơn xịn xò lấp lánh hơn, đang tư tưởng dùng lại quá nhiều, với lại mặt cũng đang hình như dùng cùng 1 khuôn"). `faceShape`: `'round'` (mặc định), `'square'` (hàm vuông), `'long'` (mặt dài), `'heart'` (gò má rộng, cằm nhọn), `'wide'` (má xệ); trong một cảnh không để hai người có tên cùng dáng mặt, và chọn theo phiếu ngoại hình. Người quyền quý không mặc áo choàng thường tô lại màu: dùng `regal: {gold, gem}` (cổ lông chồn trắng đốm đen, nẹp vàng nạm đá dọc thân và quanh gấu, dây chuyền có mặt đá, điểm lấp lánh) và `crown` (vương miện) khi là vua. Nhân vật quan trọng mà bộ khuôn chưa có đồ xứng với họ thì báo người điều phối vẽ thêm, đừng lấy đồ có sẵn mặc tạm. Bảng kho: `bang-dang-mat-va-ao-vua`.
+- **Thêm 22/11/2026:** `messy: true` (tóc bù xù, các chỏm tóc chĩa ra khỏi khối tóc; cho đứa trẻ hoang dã); `snow` từ 0 tới 1 (tuyết đọng trên đỉnh đầu và hai vai, chỉ vẽ trên chính nhân vật; 1 là người đứng lâu trong bão, 0,5 mới lấm tấm); áo choàng `outfit: 'coat'` vẽ được trên khuôn trẻ con (`build: 'child'`), đã thử. Xem bảng kho `bang-phu-kien-latveria-mu-sat-ria-khan-tap-de`. Quỳ, khuỵu gối cho người thường: xem mục "Dáng mới 23/11/2026".
+- **Thêm 23/11/2026:** `tie` (cà vạt trên áo sơ mi của người mặc gi-lê, giá trị là màu); `skirt` (váy dài phủ từ hông tới gần mắt cá cho người mặc gi-lê, giá trị là màu; gi-lê và áo giữ nguyên); `ponytail` (tóc đuôi ngựa dài vắt ra trước vai trái của nhân vật; `true`, hoặc một màu để có nơ buộc); nhìn từ sau dùng `backHair: 'long'`; `hair: 'smooth'` (tóc chải mượt rẽ ngôi lệch, không chỏm lởm chởm: cho phụ nữ, trẻ gọn gàng; `sweep` và `level` là tóc có chỏm của nam). Xem bảng kho `bang-phu-kien-latveria-mu-sat-ria-khan-tap-de` (hai hình `tie`, `skirt + ponytail`).
+- **Thêm 23/11/2026, mặt con gái (Daniel xem Valeria: "con gái mà làm mặt con trai"):** `lashes: true` (mắt mở to: đường mi đậm ở hai phần ba ngoài của mép trên mắt và ba sợi mi; mí hạ: chỉ một phần ba ngoài của mép mí tối và ba sợi mi đứng trên đó, vì tô tối cả mép mí thì ra một hàng lông mày thẳng vắt ngang hai mắt; mắt nhắm thì mi chĩa xuống), `lips` (màu môi, vẽ dưới nét miệng ở mọi kiểu miệng), `blush` (màu má hồng), `sideLocks: true` (hai lọn tóc ôm hai bên mặt xuống quá cằm), `faceShape: 'oval'` (cằm thon mềm). Nhân vật nữ trẻ dùng đủ bộ này cùng `hair: 'smooth'`, `ponytail` hoặc `scarf`; chỉ đổi màu tóc và váy thì vẫn đọc ra là con trai. Xem bốn hình `girl…` ở bảng kho `bang-phu-kien-latveria-mu-sat-ria-khan-tap-de` và nhân vật `VALERIA` của kênh phim-tv.
+- **Thêm 23/11/2026, lớn lên:** `faceTo: {shape, k}` cho đường viền mặt nằm giữa `faceShape` và một dáng khác (k từ 0 tới 1). `src/mould/LonLen.tsx`: `<LonLen stages={[{spec, height}, …]} t={…} pos={…} pose={(spec, i) => …} />` cho một người biến đổi dần qua các nấc tuổi trong một cảnh: giữa hai nấc là MỘT hình nội suy (chiều cao, cỡ đầu `headK`, viền mặt, màu quần áo, góc tay), không chồng hai hình. `headK` là cỡ đầu (1 trẻ con, 0,8 người lớn). Hai nấc liền nhau nên chung kiểu tóc, kiểu áo và kiểu bàn tay, vì những thứ đó chỉ đổi được ở giữa quãng. Luật dùng ở skill 0, mục "Cảnh giấy, quả địa cầu, lớn lên, độ nhanh".
+- **Người chạm phải đứng trước người bị chạm.** Mỗi người là một tấm phẳng: bàn tay của A chỉ hiện trên đầu hay vai của B khi tấm của A ở gần máy hơn tấm của B (lệch khoảng 0,45 m là đủ, và phải qua kiểm vật lý). Xoa đầu, vỗ vai, nắm tay, đưa đồ: đặt người làm động tác lên trước.
+- **Người nhìn từ sau lưng (`view: 'back'`)** phải khác nhau như người nhìn từ trước. Đầu: `backHair` nhận `'bob'` (mặc định), `'long'`, `'bald'` (da đầu, tai, vành tóc thấp), `'bun'`, `'scarf'` (khăn trùm buộc sau gáy, hai đuôi), `'hat'` (mũ phớt có vành); màu khăn hay mũ ở `backCloth`. Tóc `bald` và `bun` tự ra đúng kiểu khi quay lưng. Áo choàng nhìn từ sau có nếp từ vai xuống gấu; `shawl` vẽ cả ở lưng thành khăn tam giác có tua. Một đám đông sáu người mà cùng một khối tóc tròn thì bị Daniel chê "quá đơn giản" (thần dân ở sảnh ngai, 22/11/2026).
+- **Mỗi người một màu da.** Lấy từ `SKINS` trong `src/mould/palettes.ts` (`porcelain`, `fair`, `tan`, `brown`, `dark`) và trải vào bảng màu: `palette: {...SKINS.tan, hair: ..., vest: ...}`. Nhân vật phụ dùng `skinFor(tên hoặc màu áo)` để cả nhóm tự ra nhiều tông. Một nhóm người cùng một màu da là lỗi. Với nhân vật phụ có màu tóc đã biết, dùng `skinClearOf(màu tóc, tên)`: nó tránh tông da trùng sắc độ với tóc (tóc nâu trên da sẫm đọc thành một mảng).
+- Bảng màu (`palette`): `skin`, `hair`, `hairLine`, `brow`, `shirt`, `shirtEdge`, `shirtRim`, `vest`, `shorts`, `shoe`, `button`, và `coat`, `fur` cho áo choàng. Quần phải khác sắc với áo.
+- Nét mặt có sẵn (`EXPR`): `neutral`, `smile`, `happy`, `sad`, `sadTalk`, `squint`, `angry`, `glare`, `shock`, `bored`, `smirk` (nhếch mép, khinh khỉnh). `gaze: [ngang, dọc]` là hướng nhìn.
+- Tư thế tay có sẵn (`POSES`): `idle`, `greet`, `wave`, `present`, `offer`, `open`, `cheer`, `hips`, `akimbo`, `chest`, `think`, `cross`, `point`, `pointUp`, `scold`, `fist`, `fists`, `shrug`, `explain`, `hold`, `gasp`. Đặt tư thế đứng yên: `withPose(spec, 'present')`.
+- **Nhân vật ăn sáng của cảnh** (mặc định của `Puppet3`): nhận đèn chính, đèn nền, đèn bàn, lửa và cả bóng đổ như tường và cây xung quanh, nên màu khớp với cảnh. Không truyền `tint` bằng tay để chỉnh màu theo chỗ đứng; muốn nhân vật sáng hơn thì sửa đèn của cảnh.
+- **Tóc búi và khăn choàng:** `hair: 'bun'`; `shawl: '#màu'` trên nhân vật áo dài (`outfit: 'coat'`, khăn thay cho cổ lông). Ví dụ: `BA_MAU` trong `src/mould/nguoi-mau.ts`.
+- **Vết sẹo:** `scar: {side: 'L' | 'R', fresh?: true}` trong spec; `side` tính trong không gian bộ khuôn ('L' là bên trái khung khi hình không lật, hình lật thì đảo). Ghi rõ trong danh sách cảnh quay là má nào của NHÂN VẬT rồi đổi ra bên khung cho từng cảnh.
+- **Dàn nhân vật của một đoạn phim nằm trong một file dùng chung của kênh** (`../kenh/<kênh>/cast/<ma>Cast.ts`): mọi cảnh quay và ảnh tĩnh có người của kênh lấy nhân vật từ đó, để một người giống nhau ở mọi nơi. Bối cảnh và kho của phần chung KHÔNG import file này (người mẫu cho bảng chung: `src/mould/nguoi-mau.ts`).
+- Code: `src/mould/draw.ts` (hình), `Puppet3.tsx` (đặt vào cảnh), `expr.ts`, `gestures.ts`, `act.ts`.
+- Chưa có: đi nhìn nghiêng, quay đầu (nhìn sang bên chỉ bằng mắt), gật đầu riêng, cầm đồ vật trên tay, mũ và đồng phục, nét mặt nằm giữa `smile` và `happy`. Cảnh cần những thứ đó thì báo lại, không làm giả.
+- `gaze` phải đủ lớn mới đọc được: mắt rộng 86 đơn vị, nhìn hẳn sang bên trong toàn cảnh cần khoảng 40; 18–28 chỉ đọc được ở cận cảnh.
+
+## Dàn người (khi dựng ảnh tĩnh)
+
+- Người lớn cao 1.7, trẻ con 1.15. Toàn cảnh: người cao khoảng 40–50 % khung; chân phải thấy được.
+- Người đứng bên phải mà nhìn sang trái thì thêm `flip`. Hai người nói chuyện đứng cách nhau khoảng 1.5–2.2 m, lệch độ sâu một chút.
+- Không để vật gì mọc ra từ đầu, không để dây hay cột cắt ngang người, không để cửa sáng nằm ngay sau đầu.
+- Nhân vật phải nổi trên nền: đầu nằm trên một mảng khác sắc với tóc và da.
+- Ai phải đi vào thì chừa lối đi trống trên đất.
+
+## Diễn xuất: viết bằng nhịp
+
+Mỗi nhân vật có một danh sách nhịp; máy tự sinh hình trung gian, gật đầu, nhún cổ tay, miệng nói, bước chân.
+
+```tsx
+const BEATS: Beat[] = [
+  {f: 6, body: 'walk', dist: 1611, over: 56},        // đi 1611 đơn vị trong 56 khung (người cao 1191 đơn vị; nhịp chuẩn 29 đơn vị mỗi khung)
+  {f: 68, pose: 'greet', big: true},                   // big: đổi mạnh, thêm một hình trung gian
+  {f: 86, pose: 'present', say: 22},                   // say: nói trong 22 khung
+  {f: 110, body: 'shift'},                             // dồn trọng tâm, bàn chân đứng yên
+  {f: 122, pose: 'point', body: 'leanIn', face: 'happy', look: [18, -6]},
+];
+const KEYS = perform(BEATS, {dirDefault: 1});          // người có flip: perform(BEATS, {dirDefault: -1, mirror: true})
+<Puppet3 ... spec={blink(act(BASE, KEYS, frame, {seed: 1}), frame, [30, 100, 158], 'half')} />
+```
+
+- `body`: `shift`, `leanIn`, `leanBack`, `upright`, `step` (một bước), `walk`, `bounce`, `hop`, `dip`, `recoil`, `slump`, `shiver`. `dir: 1` là sang phải màn hình, `-1` là sang trái.
+- **Đi: `pos` của `Puppet3` là điểm BẮT ĐẦU, không phải mốc đứng.** Đơn vị quãng đi tính theo chính nhân vật (1191 đơn vị bằng chiều cao của người đó), nên đổi ra mét là `dist × cao / 1191`. Muốn dừng đúng mốc: `pos.x = mốc.x − dir × dist × cao / 1191`. Ví dụ đứa trẻ cao 1.15 đi sang trái 2590 đơn vị (2.5 m) tới mốc x = 1.5 thì bắt đầu ở x = 4.0.
+- Tư thế vươn tay chỉ dùng cánh tay ở phía nhân vật quay mặt. Muốn chỉ về phía sau lưng: `swapArms(keys, từKhung, tớiKhung)` đổi sang tay kia sau khi `perform`.
+- Gật đầu chưa là một nhịp riêng; mỗi lần đổi tư thế có sẵn một cái gật nhẹ.
+- Mật độ: người đang nói có một nhịp mới ít nhất mỗi 24 khung, người nghe mỗi 48 khung. `lintBeats` kiểm giúp; một quãng đi dài tính là đang diễn, bỏ qua cảnh báo trong lúc đi.
+- Chớp mắt: `blink(spec, frame, [các khung], 'half' | 'blank' | 'swap')`, khoảng 3–4 giây một lần; `blank` cho người đang nói ở cảnh vừa và cận. Hai người không chớp cùng lúc: lệch nhau ít nhất 8 khung.
+
+## Hướng nhìn, tay và chỗ đứng khi bối cảnh bị xoay hoặc hình bị lật (lượt quay thử 21/11/2026)
+
+- **Không xoay tấm người để "quay" nhân vật (25/11/2026).** Người là tấm phẳng ăn nắng: đặt `rotY` bằng một số cụ thể thì cả người tối đi so với người đứng cạnh (cảnh thử khe suối: Itachi xoay 0,55 rad nhận nắng 0,20, Shisui 0,49; Daniel: "Itachi tối mà Shisui sáng"). Quay mặt về một phía bằng `flip` và hướng mắt (`gaze`). `rotY={-y}` để tấm quay về máy trong phòng bị xoay thì vẫn dùng. Trong phiếu giao việc viết "nhìn về phía…", đừng viết "quay hẳn người về phía…".
+- **Người chỉ có một bóng, là bóng đổ (Daniel 25/11/2026: "chỉ dùng 1 bóng, bỏ vệt tròn").** `Puppet3` không còn vẽ vệt tròn dưới chân; không tự đặt `ContactShade` dưới chân người (cảnh thử khe suối từng chồng ba vệt thành một cục đen). Người không có bóng nào thì sửa đèn của cảnh (skill 1, mục Bóng đổ). Vệt bóng cho ĐỒ VẬT thì được, ghi `bong:ok` ở cuối dòng. `python3 tools/kiem_bong.py` báo cả hai lỗi này.
+
+- **Hướng nhìn viết theo màn hình.** Bộ khuôn vẽ con ngươi trong không gian của nó; hình lật (`flip`) là hình soi gương, nên cùng một số `gaze` sẽ nhìn ngược lại. Luôn viết qua một hàm đổi dấu: `look(flip, x, y)` với x dương là nhìn sang phải khung (đang nằm ở `src/demo/DaiHoc.tsx`). Lỗi đã gặp: ảnh tĩnh của bối cảnh cho Reed nhìn ra xa Victor.
+- **Tay nào ở phía nào.** Hình không lật: `armR` nằm bên phải khung. Hình lật: `armR` nằm bên trái khung. Chọn tay ở phía người đang được nói tới, và ở phía khung còn chỗ trống; hai tay dùng chung một bộ số nên đổi `armR` thành `armL` là ra đúng hình soi gương.
+- **Trong phòng bị xoay, `spec.x` chạy theo trục x của PHÒNG**, tức là gần như theo chiều sâu, nên bước đi và dịch người từ `act` sẽ đi sai hướng. Dùng `place(yaw, chỗ đứng, spec, cao, flip, depth)` (cùng file) để chuyển quãng đi ngang sang trục ngang của màn hình; `depth` là số mét lùi xa máy (âm là tới gần), dùng khi người vừa đi ngang vừa tiến lại gần.
+- **Miệng khi nói câu nghiêm túc:** chỉ dùng `flat` xen với `o`. Miệng `aw` đọc thành hoảng sợ, miệng `open` đọc thành cười toe; cả hai sai với một lời cảnh báo nói nhỏ.
+- **Người đứng sau bàn:** tay chống bàn và dáng cúi không đọc được vì thân bị mặt bàn che; bộ khuôn chưa cúi người. Diễn bằng đầu hạ thấp, mắt và một bàn tay giơ lên trên mép bàn.
+- **Nhìn từ sau lưng** (qua vai): lưng của bộ khuôn gần như chỉ là một đĩa tóc đen, chưa thấy vai. Đây là chỗ bộ khuôn còn thiếu; đừng để lưng chiếm nhiều khung.
+- **Nền mềm với nhân vật ăn sáng:** lớp nét của `Shot` (soft) chưa có đèn, nên nhân vật ăn sáng đặt ở đó bị tối. Bối cảnh phòng thí nghiệm đã giải bằng cách vẽ theo lớp (`layer` trong `src/demo/Lab.tsx`: lớp nền vẽ người ở dạng vô hình nhưng vẫn đổ bóng, lớp người vẽ bối cảnh ở dạng vô hình nhưng vẫn che và đổ bóng lên người). Cần đưa cách này vào `src/lib3/shot.tsx` trước khi quay cận ở bối cảnh khác.
+
+## Tay: tầm với, tay trước mặt, đường đi của bàn tay (lượt quay nửa sau, 22/11/2026)
+
+- **Số đo tầm tay của bộ khuôn** (đơn vị khuôn; nhân với chiều cao người chia 1191 để ra mét): vai ở y 612, x 180 (trái) và 364 (phải); cánh tay trên dài 110, cẳng tay 108, bàn tay khoảng 80. Dùng để tính trước bàn tay có tới được một vật hay không, thay vì thử từng chút. Vật ở sát vai (cần gạt đã kéo xuống) cần tư thế gập khuỷu, tay duỗi không tới.
+- **Tay vẽ TRƯỚC mặt** (che má, che miệng): thêm `front: true` vào tư thế tay. Dùng được cho cả áo gi-lê và áo khoác (trước 22/11/2026 chỉ áo khoác). Nhìn từ sau lưng thì mọi tay đều nằm dưới đầu.
+- **Bàn tay đi từ tư thế gập (ở mặt, ở ngực) xuống buông thõng sẽ văng ngang ra ngoài như vẫy**, vì máy trộn góc vai và góc khuỷu như hai con số. Cách tránh: thêm một nhịp trung gian (tay qua ngực) và ghi góc khuỷu đích là 360 thay cho 0, để khuỷu gập vào trong. Việc đúng là cho máy đi theo đường của bàn tay; còn nợ.
+- **Đừng treo một nhịp diễn vào bàn tay nhìn từ sau lưng:** bàn tay nằm trong mảng tóc, chỉ thấy khuỷu giơ lên.
+- **Ánh sáng màu trên mặt:** đèn của bối cảnh nằm sau lưng nhân vật thì không tới mặt, và da sẫm ít ăn màu. Muốn mặt có ánh màu thì đặt một đèn màu đó ở phía ống kính, cho vào cùng chỗ với nhân vật (trong phòng thí nghiệm: trong `figures`, không phải `extra`).
+- **Bóng người tối trước nguồn sáng mạnh:** truyền `lift` nhỏ cho `Puppet3` (ví dụ 0.03) để hình không tự sáng.
+- **Cỡ đầu:** công thức `headSpan` có khi lệch (đoán 60 %, đo được 53 %). Đo đầu trên ảnh tĩnh rồi chỉnh máy, đừng tin riêng công thức.
+- **Tấm kiểm nhiều khung:** trình duyệt chỉ giữ khoảng 16 vùng vẽ WebGL; một cảnh nền mềm dùng ba vùng mỗi khung, nên một tấm kiểm chỉ chứa được bốn năm khung của cảnh nền mềm.
+
+## Bổ sung từ phép thử Tesla (22/11/2026)
+
+- **Tầm tay đổi ra mét** (người cao 1,74 m): vai cao khoảng 1,02 m; bàn tay với xa nhất khoảng 0,4 m tính từ vai; `sh 70, el 34` đưa bàn tay tới độ cao khoảng 0,95 m, cách tâm người 0,56 m; `sh 114, el 8` tới khoảng 1,2 m. Vật để tay chạm phải nằm trong tầm đó ở CẢ HAI ĐẦU của động tác (cần gạt lúc chưa kéo và lúc đã kéo).
+- **Áo `coat`:** các tư thế tay trước ngực (`cross`, `chest`, `gasp`) phải thêm `front: true`, nếu không tay nằm dưới vạt áo và mất.
+- **`POSES.chest` đặt bàn tay ở bụng.** Muốn tay lên ngực: vai khoảng 44, khuỷu khoảng −150.
+- **Hướng nhìn ở trung cảnh với mặt `happy`:** cần khoảng 48 và hạ con ngươi xuống một chút (dọc +8) mới đọc ra là nhìn sang bên; 34 là chưa đủ.
+- **Bộ khuôn chưa có (thêm vào danh sách "Chưa có"):** ria mép, tóc rẽ ngôi, dáng béo gầy, ngẩng đầu và giơ tay nhìn từ sau lưng, đi vào sâu hoặc đi ra xa máy. Nhân vật có thật vì thế khó nhận ra; đạo diễn phải biết trước.
+- **Bộ đồ:** chỉ có `vest` (sơ mi, gi-lê) và `coat` (áo choàng dài cổ lông). Chưa có áo vét, áo khoác có ve, cà vạt, mũ. `coat` chỉ dùng cho nhân vật thật sự mặc áo choàng; ở đoạn Tesla nó bị dùng tạm cho Tesla, Westinghouse và đám đông năm 1893 và Daniel thấy không đúng.
+- **Khuôn mặt mới có MỘT dáng** (Daniel, 22/11/2026: "ta có nhiều khuôn kiểu mặt mà đang dùng chung 1 kiểu suốt"). Phim mẫu có nhiều dáng đầu: đã đo 641 khuôn mặt (`tools/headshapes.py`, ảnh nhóm `out/gallery/khuon-dau-nhom.jpg`, số liệu `out/gallery/headshapes.json`). Các nhóm lớn: hàm tròn rộng (26 %), hàm vuông (19 %), mặt dài cằm thon (17 %), cằm nhọn chữ V (12 %); phần còn lại lẫn mũ trùm, râu, mặt nạ che viền mặt. `src/mould/draw.ts` chỉ vẽ dáng hàm tròn cho mọi người, nên các nhân vật giống nhau (Tesla trông như Victor). Khi làm thật, dáng mặt phải thành một thuộc tính của nhân vật, mỗi người trong dàn một dáng.
+- **Nhân vật đã có hình ở nơi khác thì vẽ theo mặt thật của họ** (Daniel, 22/11/2026: "cần dựa vào khuôn mặt thực tế nữa nếu nhân vật có xuất hiện ở chỗ khác như Doom"). Người có thật (Tesla, Edison) và nhân vật đã có trong truyện, phim (Doom, Reed): dáng mặt, tóc, râu, dáng người lấy từ hình thật hoặc hình gốc của họ, rồi mới chuyển sang nét của bộ khuôn. Không tự chọn dáng mặt tuỳ ý cho họ. Chỉ nhân vật mình tự nghĩ ra (người phụ, đám đông) mới được chia dáng mặt tự do.
+- **Soi nhiều khung cho rẻ:** `Shot` lấy cỡ theo composition nên không xếp được nhiều cảnh lên một tấm kiểm. Cách rẻ nhất: dựng video 720 một lần rồi cắt khung bằng ffmpeg.
+
+## Luật chuyển động (đã soi trên phim mẫu)
+
+- **Nhân vật đổi hình mỗi hai khung**; máy quay, lửa, hạt đổi mỗi khung.
+- **Đứng thì bàn chân ghim tại chỗ.** Dồn trọng tâm, ngả người, nhịp nói chỉ dịch phần thân phía trên. Không trượt cả hình, không nhún cả hình khi nói. Máy tự lo việc này.
+- **Bước một bước:** một chân bước ra, thân theo sau, chân kia khép lại. Tự sinh khi thân dịch quá tầm.
+- **Đi:** hai chân thẳng đứng dưới thân; mỗi bước là một bàn chân rút thẳng lên khoảng một phần mười chiều dài chân rồi hạ xuống; không đưa ngang, không bắt chéo.
+- **Một động tác kéo dài bao lâu** (Daniel, 21/11/2026: "cử động hơi nhanh quá"). Đo trên phim mẫu, bỏ chuyển động máy quay, mỗi cảnh thứ ba, n = 241 động tác nằm trọn trong cảnh (`tools/steps.py ... --stats`): một động tác dài 11 khung ở trung vị, tức 6 hình, mỗi hình giữ 2 khung; một phần tư dài 6 khung trở xuống, một phần tư dài 16 khung trở lên. Bản đầu của mình chỉ đi qua 1–2 hình trung gian (trung vị 6 khung), tức nhanh gấp đôi.
+  - Máy tự tính số hình trung gian theo QUÃNG ĐƯỜNG bộ phận phải đi (`paceArm`, `paceBody`, `paceHead` trong `src/mould/act.ts`): tay buông lên chỉ trỏ là 4 hình trung gian (10 khung), giơ tay cao là 6 hình (14 khung), nhích cổ tay là bật ngay. `inb` trong nhịp chỉ làm chậm thêm, không làm nhanh hơn.
+  - Nhịp tăng tốc rồi lắng: rời tư thế cũ nhanh, vào tư thế mới chậm dần.
+  - Mỗi bộ phận (từng tay, đầu, thân) chạy động tác riêng: một nhịp đổi miệng xen giữa không cắt ngang động tác tay.
+  - Khi viết nhịp: hai nhịp cho CÙNG một tay phải cách nhau đủ cho động tác trước tới nơi (quãng lớn: 14 khung), nếu không máy sẽ rút ngắn và động tác lại nhanh. Một cảnh 2 giây chỉ chứa được một hai động tác tay lớn.
+  - Muốn một cú giật có chủ ý (hất tay, tát, giật mình): thêm `fast: true` vào nhịp đó; chỉ khi ấy hình đầu của cú vung lớn mới là hình nhoè.
+- **Giữa các động tác là quãng giữ có trôi nhẹ**, không đứng chết. Ít động tác mà rõ tốt hơn nhiều động tác vụn.
+- **Người nghe phản ứng trễ** 2–6 khung sau người nói; mắt đi trước tay.
+
+## Kiểm vật lý (Daniel, 21/11/2026: tay nhân vật xuyên qua đồng hồ treo tường)
+
+Nhân vật là một tấm phẳng, nên "xuyên qua đồ vật" hiện ra thành đồ vật che mất một phần người từ ngay sát phía trước. Mắt soi từng khung dễ sót; có công cụ soi MỌI khung:
+
+```
+cd shorts-claude && UV_CACHE_DIR="$TMPDIR/uvcache" UV_TOOL_DIR="$TMPDIR/uvtools" UV_PYTHON_INSTALL_DIR="$TMPDIR/uvpy" \
+  uv run --offline --no-project --with opencv-python-headless --with numpy python cutout3d/chung/tools/vatly.py <comp> [<comp> ...]
+```
+
+- Chạy ngoài sandbox. Mỗi nhân vật tự vẽ thêm dấu (`PHYS` trong `src/mould/Puppet3.tsx`), bề dày nửa thân mặc định 0,12 m.
+- **Tím = lỗi:** có vật nằm trong 0,12 m ngay trước mặt phẳng nhân vật và che một phần người (tay trong đồng hồ, bụng trong mép bàn). Phải về 0 khung.
+- **Xanh dương = cảnh báo:** có vật nằm trong 0,12 m ngay sau nhân vật (lưng, tay lún vào tường). Mở ảnh `out/vatly/<comp>.jpg` ra xem.
+- **Xanh lá:** phần người bị che bởi vật ở xa phía trước (đứng sau bàn); bình thường.
+- Cách sửa gần như luôn là dời chỗ đứng: người phải cách tường, tủ, đồng hồ, mép bàn ít nhất nửa thân cộng tầm tay của động tác sẽ diễn ở đó. Khi chọn chỗ đứng, xem sơ đồ vị trí của bối cảnh trước.
+- Chạy công cụ này cho mọi cảnh có người trước khi gửi Daniel, sau mỗi lần đổi chỗ đứng hoặc đổi động tác tay.
+- Chưa kiểm được: hai nhân vật chồng lên nhau, và bàn chân có chạm đất không (vẫn phải soi bằng mắt).
+
+## Chuyển động của cảnh
+
+- **Lửa:** lưỡi lửa giữ hình, đầu lưỡi nghiêng chậm và mượt trên mọi khung (`Fire` trong `src/lib3/kit.tsx`, truyền `f` là số khung). Không đổi hình ngẫu nhiên mỗi khung.
+- **Hạt lơ lửng** chọn theo thứ có trong cảnh: tàn lửa bay lên chậm rồi tắt, đom đóm trôi rất chậm (`Fireflies`), bụi nắng trong luồng nắng, tuyết. Từ 24/11/2026 hạt TỰ SINH theo nguồn sáng và cây hoa (`lib3/buiNguon`, skill 1 mục Không khí): người diễn không tự rải hạt; chỉ thêm `Fireflies`, `Motes` khi cảnh cần thứ nguồn không tự có, và ghi `hat:ok` cùng dòng.
+- **Khói** (`LocoSmoke`): các cụm bay lên, nở ra, trôi theo gió rồi tan; cụm non phải chồng lên nhau, nếu không trông như chuỗi hạt.
+- **Lá bay** (`FlyingLeaves` trong `src/lib3/kit.tsx`): lá rơi chậm theo gió, xoay và lật; phần lớn bay sau lưng nhân vật, thêm vài chiếc bay TRƯỚC nhân vật (`order={600}`) nhưng đừng để chúng đi ngang mặt.
+- **Chấm lơ lửng** (`Motes`, món cũ; cảnh mới để `Sun`, đèn, lửa tự sinh bụi): bụi vàng trong nắng thấp, bụi trong vùng sáng đèn bàn, thiêu thân quanh đèn đường; mỗi chấm trôi chậm quanh chỗ của nó và có quầng nhỏ.
+- **Quầng sáng** (`Halo` trong `src/lib3/look.tsx`): nắng thấp hắt từ một phía, cửa sổ có ánh máy "thở" (bán kính đổi chậm theo khung), đèn đường. Daniel muốn các cảnh ngoài trời có những thứ này cho sống động (21/11/2026).
+- **Hiệu ứng lớn** (`src/lib3/fx.tsx`, có ảnh trong kho, nhóm `hieu-ung`): cửa ánh sáng xoáy `Portal`, tia điện `Arc`, giấy bị hút `FlyingPapers`, vụ nổ từ ô cửa `Explosion`, khói trôi `SmokeDrift`, tàn lửa `Embers`, chớp trắng `Flash`, rung máy `Shake`. Tất cả chạy mỗi khung theo `f`.
+  - Thêm 22/11/2026: `RingLightning` (sét bò quanh một cái vòng), `BulbHalo` (đầu cực bật sáng, quầng nhiều cạnh), `beyondTex` (bức tranh của phía bên kia cho `Portal`). `Portal` nhận `inside` (tranh bên trong) và nhận nhân vật làm con: `Puppet3` với `order` thấp (vẽ sau tranh, trước viền), `cast={false}`, `lit={false}`, `tint` nhạt, `opacity` để hiện dần. `Explosion` nhận `star` (hình sao phẳng) và `clouds` (mây phẳng).
+  - Cảnh phô diễn hiệu ứng dài 64 tới 96 khung, kích hoạt sớm, các lớp vào lần lượt, rồi giữ; xem `skills/0-dao-dien.md`, mục Cảnh phô diễn hiệu ứng.
+  - Một hiệu ứng lớn là điểm nhấn của MỘT cảnh quay. Vụ nổ đi theo thứ tự: chớp trắng 2 khung, nổ ở khung kế, rung máy 6 khung rồi đứng yên hẳn, người trong cảnh phản ứng trễ 2 đến 4 khung (động tác `fast`), các thứ xung quanh thay đổi lần lượt (cửa sổ bật đèn từng cái).
+  - Trong phòng bị xoay, các hiệu ứng phẳng nhận `rotY={-yaw}` để quay mặt về ống kính; riêng `Portal` nằm trong mặt phẳng của cái vòng nên đặt thẳng vào nhóm của cái vòng.
+  - Ánh sáng màu hắt lên tường và lên mặt là đèn của bối cảnh (nhân vật ăn sáng nên tự nhận màu), không tô tay lên nhân vật.
+- **Dây cờ, lều, đèn, cây** đứng yên.
+- Món trong thư viện có phần chuyển động thì nhận `f`; nếu cảnh đang dùng bản tĩnh, bật bản động qua tham số của cảnh (ví dụ `moving`), không sửa bố cục.
+- **Máy quay** trượt hoặc đẩy rất chậm, đều tốc từ khung đầu: `dx` trong khoảng ±0.25, `dz` tới −0.4 cho 10 giây. Từ 24/11/2026 dùng kiểu máy có tên (`Shot may={{kieu, D, muc}}`, skill 1, mục Máy quay và chỗ đứng), không tự viết dx/dz.
+
+## Cách làm một đoạn
+
+1. Đọc ghi chú sân khấu; mở ảnh tĩnh đã duyệt. Không dời chỗ đứng đáng kể; cần dời thì trả về bước dựng cảnh.
+2. Viết comp mới trong cùng file cảnh: `<Scene f={frame} dx={...} dz={...}>` với các `Puppet3` diễn theo nhịp; đăng kí comp 24 khung một giây.
+3. Dựng vài khung lẻ trước (`./still.sh <comp> <khung>`), mở ra xem; rồi dựng video. Bản để kiểm nhanh: `./render-video.sh <comp> 1` (720 dòng). Bản gửi cho Daniel: `./render-video.sh <comp> 2` (2560×1440, vì màn hình của Daniel là 2K); ở độ phân giải thấp hơn mép nhân vật vỡ răng cưa khi bị phóng lên. Ảnh tĩnh gửi Daniel: `./still.sh <comp> <khung> 2`. Cả hai lệnh phải chạy ngoài sandbox.
+4. Tự soi: cắt dải khung liên tiếp phóng to phần chân lúc đi và lúc đứng; dải khung lửa hoặc hạt; bốn khung toàn cảnh rải dọc đoạn. Xem: chân có trượt không, có bắt chéo không, tư thế có rõ không, có ai chạm mép vật gì khi di chuyển không.
+
+Kiểm quãng đi so với mặt đất: trên dải khung liên tiếp, chân phải thẳng dưới thân, mỗi lần chỉ một bàn chân nhấc; khi dừng, hai chân đứng ngay dưới thân từ khung đầu tiên (không bước thêm). Lúc đi, bàn chân trôi theo thân như phim mẫu; nếu trông như trượt thì giảm tốc độ đi.
+
+Không xem được video chạy thì nói rõ là chỉ kiểm qua khung.
+- **Thêm 23/11/2026, bóng người:** `src/mould/BongNguoi.tsx`: `bongTex(spec, {blur, them, themKey, catDuoi})` cho hình bóng một tông của một nhân vật ở đúng tư thế đang có; `<BongNguoi spec height pos color opacity />` đặt nó lên rèm hoặc vách như đặt một `Puppet3`. `them` vẽ thêm gối, chăn vào cùng tấm bằng toạ độ của bộ khuôn; `catDuoi` cắt phần dưới của người. Luật dùng ở skill 0, mục "Bóng người vẽ lên rèm, lên vách". Cái bóng Doom ở `d1c4-21` còn dùng hàm riêng trong file cảnh (có khoét mắt mặt nạ); khi cần dùng lại thì chuyển sang công cụ này.
+- **Thêm 23/11/2026, người ốm:** `eyeBags` (màu của quầng tối dưới mỗi mắt), dùng cùng bảng da xám nhợt và `lips` màu nhợt; xem `BARONESS` của kênh phim-tv. `phaNac(a, b, f)` của `LonLen.tsx` pha được hai bảng màu của cùng một người (da xám dần khi chết rét, mặt đỏ dần khi giận).
+
+## Dáng mới 23/11/2026
+
+Tất cả bật bằng trường mới; không khai báo thì hình không đổi (đã so 292 ảnh đối chứng). Tấm trình bày: composition `khuon-dang-moi`, ảnh `kenh/phim-tv/out/bo-khuon/dang-moi.jpg`.
+
+```tsx
+// Dáng người (`vest`, `coat`, người lớn, trẻ con): 'stand' | 'sit' | 'kneel' | 'buckle' (quỳ hai gối, nhìn chính diện) | 'fall' (ngã chúi, hai gối và hai bàn tay chạm đất) | 'lie'
+<Puppet3 height={1.68} pos={[x, 0, z]} spec={withPose({...VICTOR, posture: 'sit'}, 'knees')} />   // mặt ghế cao seatHeight(cao) mét (mould/dang.ts)
+// Chuyển dáng trên MỘT hình, qua act:
+const KEYS = perform([{f: 6, posture: 'kneel', pose: 'knees'}, {f: 40, posture: 'stand', pose: 'idle'}]);
+// 'fall' tự đặt hai tay thẳng xuống đất, không cần khoá tay. Chuỗi chương 9: perform([{f: 14, posture: 'buckle'}, {f: 22, posture: 'fall'}]): gối chạm đất ở khung 20, tay chạm tuyết ở khung 28. Ngẩng đầu: head.dy âm
+// Tay dài: ArmPose.len (mặc định 1). POSES.reachUp, POSES.reachBoard, POSES.prop (tay buông, chỗ xuất phát trước khi chống), POSES.knees (tay trên đùi)
+// Bàn tay rời từ mép khung: at = chỗ CỔ TAY; from = phía cẳng tay đi ra
+<BanTayRoi spec={VICTOR} height={1.68} at={[1.2, 1.1, 0.4]} from="right" hand="open" />   // bare: tay trần; flip: đổi bên ngón cái
+// Đầu quấn băng, chỉ hở mắt: mí, hướng nhìn, chớp mắt vẫn diễn; không có miệng và lông mày
+const VICTOR_BANG = {...VICTOR, bandage: true};   // hoặc bandage: {color: '#cfc6b2', tail: false}
+// Lông mày trên mặt nhìn thẳng: browFront: true. Mí sạch khi đổi nét mặt: {f: 10, expr: {...EXPR.shock}, resetLid: true} (Key hoặc Beat)
+```
+
+- `flip` đổi bên gối dựng khi quỳ và đổi hướng đầu khi nằm. Người nằm có tấm rộng hơn (`boxOf`), `Puppet3` tự lo; điểm thấp nhất tự chạm đất ở mọi hình trung gian.
+- Đặt đồ cho khớp: ngồi cần ghế cao `seatHeight(cao)`; `fall` thì hai bàn tay nằm ngoài hai gối, rộng hơn vai một chút; `buckle` và `fall` của áo `coat` xoè vạt trên đất, cần chỗ trống hai bên.
+- **Chưa làm được:** dáng mới cho `outfit: 'doom'` (Doom vẫn dùng `sit` riêng); nhìn nghiêng thật (đầu băng chỉ nghiêng bằng `head.rot` và `gaze`); đi khi đang ở dáng thấp; `BongNguoi` và các hàm bóng tự viết vẫn dùng `BOX` nên CHƯA dùng được cho người `lie`. Áo `coat` che chân nên ngồi, quỳ, khuỵu của áo này khác nhau ít hơn áo `vest`: đọc bằng chiều cao và nếp vải.
+
+- **Thêm 23/11/2026, Doom nhìn từ sau lưng:** `{...DOOM, view: 'back', backDetail: true}` vẽ mũ trùm có chóp và đường may giữa, cổ áo, tấm phủ vai, áo choàng nhiều nếp với gấu so le, hai tay giáp và găng theo `armL`, `armR`. `backDetail: {tense: 1}` cho vai gồng. Không có cờ thì vẫn là khối cũ. `rim: {side: 'R', color: '#ff8a3a', amount: 1}` thêm viền sáng cứng ở một bên hình (`side` tính trong không gian bộ khuôn, hình lật thì đảo), dùng được cho mọi nhân vật. Tay buông bị áo che một phần; muốn thấy nắm tay ở cảnh cận thì gập khuỷu đưa găng ra hai bên (`{sh: 28, el: 104, hand: 'fist'}`). **Đèn `phu` của `Forge` đặt trước tấm người sẽ tẩy áo xanh thành xanh bạc hà:** đặt nó SAU tấm người (z nhỏ hơn z của người).
+
+## Dàn lô 10-14 (23/11/2026)
+
+Mọi trường dưới đây chỉ có tác dụng khi được khai báo. Nhân vật ở `kenh/phim-tv/cast/doomCast.ts`, tấm trình bày `kenh/phim-tv/out/lo-10-14/dan-nhan-vat.jpg` (dựng riêng từ `cast/DanNhanVat.tsx`, không nằm trong Root).
+
+```tsx
+// Sẹo: `scar` cũ KHÔNG vẽ gì; phải có paint: true. 'L' là bên trái KHUNG khi hình không lật (má phải của nhân vật); hình lật thì đổi sang 'R'
+{...VICTOR, scar: {side: 'L', fresh: true, paint: true}}     // DOOM_BARE đã bật sẵn; DOOM_SEO = DOOM_BARE + mặt vuông + lông mày; DOOM_LANH không sẹo
+// Găng Doom cho bàn tay rời
+<BanTayRoi spec={DOOM} height={HEIGHT.doom} at={[x, y, z]} from="right" hand="fist" gauntlet />
+// Tay co giãn của Reed: REED_FF, REED_LAB đã có wideCard. stretch tối đa khoảng 2,9 ngang, 2,5 lên cao (đầu ngón cách vai khoảng 1 m); xa hơn thì dời Reed lại gần
+const KEYS = [{f: 38, armR: {sh: 86, el: 0, hand: 'open', stretch: 1.05}}, {f: 44, armR: {sh: 86, stretch: 2.6, bow: 20}}];   // `act` nội suy stretch; `el` bị bỏ qua khi stretch > 1
+// Người lửa: quầng và tàn lửa đi kèm, lưỡi lửa bám viền ở mọi tư thế; k 0..1 là độ bùng
+<NguoiLua spec={JOHNNY_LUA} height={HEIGHT_FF.johnny} pos={[x, 0, z]} f={f} k={1} />
+// Sue tàng hình: <Puppet3 spec={SUE_TRONG} opacity={0.25} ... />. Surfer: <VanLuot pos={[x, yChan - 0.03, z]} len={2} chi={false} /> rồi Puppet3 SURFER đặt ở yChan
+// Mắt sáng: expr.glow = màu; thêm blank: true thì chỉ còn đốm sáng (DOOM_ROBOT). Reed giả lộ mặt: {...EXPR.smirk, glow: '#3dff8e'}
+```
+
+- Trường mới của `Spec`: `temples`, `longHair`, `suit {glove, boot, line, belt, plain}`, `broad`, `wideCard`, `rock`, `flame {t, k}`, `sheen`, `dust`, `cape`. `suit` dựng trên `vest`, nên Fantastic Four và anh hùng tự chế dùng được `posture` (`buckle`, `fall`).
+- Tên dùng trong danh sách cảnh: `REED_LAB`, `REED_FF`, `REED_DOOM`, `SUE`, `SUE_TRONG`, `JOHNNY`, `JOHNNY_LUA`, `BEN_NGUOI`, `BEN_DA`, `DOOM_ROBOT`, `DOOM_COSMIC`, `DOOM_DUSTY`, `DOOM_LANH`, `DOOM_SEO`, `SURFER`, `SURFER_DRAINED`, `OLD_KING(_SIT)`, `DAN_LATVERIA`, `LINH_GAC(_SIT)`, `THO_A`, `THO_B`, `DAN_NY`, `TRE_NY`, `ME_NY`, `CON_NY`, `RAU_DEN`, `LAU_LA`, `HERO_AOCHOANG`, `HERO_DOVANG`, `AC_SUNG`, `AC_MATTAI`.
+- **Đổi tấm giữa cảnh là lỗi:** `wideCard` phải có từ khung đầu của người dùng tay co giãn; đừng bật tắt trong một cảnh.
+- **Chưa làm được:** Doom vẫn chưa có `posture`; tay co giãn không gập khuỷu; `dust` nằm yên trên tấm, không chạy theo tay.
+- **Johnny lửa (làm lại 23/11, Daniel: "chưa giống lửa"):** luôn đặt bằng `<NguoiLua spec={JOHNNY_LUA} height={HEIGHT_FF.johnny} pos={...} f={f} k={k} light={3} />`. `k` 0→1 là bùng từ chân lên đầu (0 là `JOHNNY` thường), `light` là ánh lửa hắt lên cảnh. Hình lửa đổi mỗi 2 khung; tấm rộng và cao hơn người thường nên `res` mặc định 1,5. Mặt và trán là lõi sáng trơn, lửa mọc từ mọi viền và liếm lên, trong thân có vệt lửa dài hai sắc. Còn yếu: lưỡi lửa ở thân và chân nhìn ngắn hơn mức 15–30 % vì nửa gốc nằm sau thân; đầu lửa tách ra trên đỉnh đầu có khung hơi to.
+- **Ben đá (làm lại 23/11, Daniel: "cần phải người to lên"):** `HEIGHT_FF.ben` = 2,42; đỉnh đầu thật ở 2,20 m, giơ tay tới 2,43 m, thân rộng khoảng 1,04 m. Vóc nằm trong `rock` (`arm`, `fist`, `leg`, `out`, `legOut`, `tall`, `headDy`, `size`, `dark`); `buckle`, `fall` vẫn dùng được. **Các mốc cũ tính cho Ben 1,95 m, đã tính lại theo máy (chưa dựng thử trong cảnh):** `d1c14` cảnh 7 phải nâng máy lên y từ 2,7 (đầu Ben đang cao hơn chân Doom); cảnh 9 (Ben cao 87 % khung) và 17 (72 %) nên lùi máy; cảnh 22 đầu Ben ở đúng giữa khung, muốn "dưới trái" thì lùi hoặc nâng máy; `d1c13` cảnh 9 Ben sát Johnny, dãn hàng thêm 0,3 m. Các cảnh `d1c11` 4, 6, 7, `d1c12` 18, 19, `d1c13` 11, 17, `d1c14` 10 vẫn lọt khung. Chưa có mốc nên chưa tính: `d1c11` 17, 22, `d1c12` 23, `d1c13` 7.
+
+## Dáng đánh nhau (23/11/2026)
+
+Bật bằng `posture` và pose mới; không khai báo thì hình không đổi (30 ảnh đối chứng `d1mo`, `d1c2`–`d1c9` trùng từng byte). Tấm trình bày: composition `dang-danh-nhau`, cảnh mẫu `dang-danh-nhau-ben`, `-johnny`, `-khien`, ảnh `kenh/phim-tv/out/lo-10-14/dang-danh-nhau.jpg`. Mọi dáng hướng về bên PHẢI khung; hướng trái thì `flip`.
+
+```tsx
+import {withDang, dangKey} from 'mould/gestures';   // tên: dam lao nhay ne hat chongDo banTia banTia2 bay bayChui benVung benDap reedDam sueKhien
+import {handWorld, feetWorld} from 'mould/draw';
+import {SaoVaCham, VongXungKich, NenNut, ManhVo, KhoiPhang, TiaNangLuong, KhienSue, VetTocDo, DuoiLua} from 'lib3/kitDanhNhau';
+// Ảnh tĩnh, hoặc hình xuất phát của act. Doom thêm capeT: f để áo gợn
+const ben = act(withDang(BEN_DA, 'benVung'), [dangKey(18, 'benDap', {fast: true, inb: 1})], f, {live: 0.5});
+// Tia bắt đầu ĐÚNG ở bàn tay, đuôi lửa ĐÚNG ở cổ chân (tính từ spec đang diễn, cùng height, pos, flip với Puppet3)
+<TiaNangLuong f={f} a={handWorld(doom, 1.96, pos, true, 'R')} b={dich} kieu="doom" rong={0.15} p={(f - 3) / 9} sang={2} />   // kieu: doom, lua, bac
+<DuoiLua f={f} a={feetWorld(johnny, HEIGHT_FF.johnny, jp)} b={duoi} r={0.32} />                                                // order 488: nằm sau thân
+// Va chạm tại khung VA: sao, vòng, nứt, mảnh, khói, rung, chớp
+<SaoVaCham f={f} at={VA} pos={tay} r={0.86} /><VongXungKich f={f} at={VA} pos={dat} r={3} /><NenNut pos={dat} r={2.7} p={(f - VA + 1) / 5} />
+<ManhVo f={f} at={VA} pos={dat} s={0.095} huong={[1.2, 2.6]} /><KhoiPhang f={f} at={VA + 1} pos={dat} s={1.15} rong={3} order={470} />
+<KhienSue f={f} pos={truocTaySue} r={0.98} mo={(f + 3) / 6} va={VA} />   // tia dừng ở mặt khiên: x = tâm khiên + khoảng 0,65 r
+```
+
+- Người bay dùng `NguoiLua` (Johnny) hoặc `Puppet3`; `rise` có sẵn trong dáng, nâng thêm bằng y của `pos`. Bay theo đường chéo xuống thì dùng `bayChui`, để thân, tay, tia và đuôi nằm trên cùng một đường.
+- Sao va chạm r 0,8–1 ở trung cảnh; to hơn là che mất cả hai người. Mảnh vỡ `s` dưới 0,12 ở trung cảnh.
+- **Chưa làm được:** `bay` cho Ben, Reed, Sue (dáng chạy nhưng hình chưa đẹp, kịch bản không cần); áo `coat` mới có code, chưa soi hình; nhìn nghiêng thật (đòn vẫn là thân chính diện xoay trong mặt phẳng tấm); chuyển từ `sit`, `kneel` sang dáng đánh chưa thử.
+
+## Dàn lô 15-17 (23/11/2026)
+
+Mọi trường dưới đây chỉ có tác dụng khi được khai báo. Nhân vật ở `kenh/phim-tv/cast/doomCast.ts`, tấm trình bày `kenh/phim-tv/out/lo-15-17/dan-nhan-vat.jpg` (dựng riêng từ `cast/DanNhanVat1517.tsx`).
+
+```tsx
+// Mắt đờ của người bị thao túng, dùng được trên mọi nhân vật có mặt. MAT_DO.tim: Purple Man điều khiển; MAT_DO.xanh: Doom điều khiển
+const KEYS = [{f: 8, expr: MAT_DO.tim}, {f: 40, expr: {...EXPR.shock}, resetLid: true}];   // resetLid (hoặc dazed: undefined) trả về mắt thường
+// Purple Man dùng năng lực: {f: 31, expr: PURPLE_NANG_LUC}. Tổng thống quỳ quay lưng: {...TONG_THONG_1, view: 'back', posture: 'kneel'} (qua act: posture: 'kneel')
+// Sáu lính khác mặt: linhThuong(i), đầu trần linhThuong(i, true). Cố vấn ngồi: CO_VAN_1_SIT, _2_SIT, _3_SIT
+```
+
+- `PURPLE_MAN` dùng `broad: 0.84` chứ không dùng `slim`, vì `slim` mất tác dụng khi có `posture` và người sẽ đổi bề ngang đột ngột lúc gục.
+- **Chưa làm được:** áo `coat` ngồi khác đứng rất ít, cố vấn cần bàn che chân; `rolled` chưa áp cho tay chống đất của dáng `fall`.

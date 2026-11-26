@@ -1,0 +1,20 @@
+[
+ {
+  "n": 1,
+  "file": "nt-sua-1.png",
+  "w": 346,
+  "h": 300,
+  "mo-ta": "khóm cỏ khô trong tuyết",
+  "loai": "phẳng (Sprite)",
+  "nguon": "gen/shisui-sua-1.png"
+ },
+ {
+  "n": 2,
+  "file": "nt-sua-2.png",
+  "w": 192,
+  "h": 152,
+  "mo-ta": "khóm cỏ khô nhỏ trong tuyết",
+  "loai": "phẳng (Sprite)",
+  "nguon": "gen/shisui-sua-1.png"
+ }
+]

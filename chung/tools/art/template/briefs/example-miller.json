@@ -1,0 +1,20 @@
+{
+  "id": "miller",
+  "role": "the village miller; named support",
+  "function": "warns",
+  "age_build": "a broad man of about fifty",
+  "build": "heavy",
+  "silhouette": "a wide flat cap and a big moustache",
+  "colour": "flour-dusted ochre, with a dark brown accent",
+  "skin": "warm tan",
+  "hair": "short grey hair under a wide flat ochre cap; a big grey moustache (drawn on the head piece)",
+  "costume": "ochre work shirt with rolled sleeves under a dark brown apron; brown trousers, heavy dark boots",
+  "motif": "a small wheat-ear emblem on the apron",
+  "default_expression": "doubtful",
+  "flip_expression": "afraid",
+  "prop": "a wooden flour scoop",
+  "back_view": true,
+  "iris": "grey-blue",
+  "iris_hex": "#6f8fa8",
+  "brow": "thick"
+}

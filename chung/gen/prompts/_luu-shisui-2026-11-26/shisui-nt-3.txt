@@ -1,0 +1,8 @@
+A sheet of 5 separate objects for the props of a samurai checkpoint on a snowy mountain pass, in a fantasy feudal-Japan ninja village world, drawn in exactly the art style of the attached reference frame: the same flat shapes, 2-4 close tones per object, the same calm level of detail and finish as the trees, rocks and props in that frame. Arrange them in 2 rows, well separated by wide gaps, each object complete and not cropped:
+1) a tall wooden flag pole with two long plain dark-red banners (no crest, no writing);
+2) a rope fence segment: three wooden stakes with a sagging rope;
+3) a plain samurai camp tent of off-white cloth on wooden poles;
+4) a clump of dry winter grass poking through snow;
+5) a second smaller clump of dry grass;
+Near objects keep their own natural colours (do not tint them with the sky colour). No characters, no people, no animals unless listed, no ground strip, no cast shadows, no text.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

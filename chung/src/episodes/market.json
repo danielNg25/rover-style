@@ -1,0 +1,485 @@
+{
+ "id": "market",
+ "places": {
+  "square": {
+   "kind": "street",
+   "seed": 1,
+   "centre": {
+    "name": "Bakery",
+    "wares": [
+     [
+      "wares/w-loaf.png",
+      0.62
+     ],
+     [
+      "wares/w-cake.png",
+      0.46
+     ],
+     [
+      "wares/w-buns.png",
+      0.56
+     ],
+     [
+      "wares/w-roundLoaf.png",
+      0.5
+     ],
+     [
+      "wares/w-jar.png",
+      0.3
+     ],
+     [
+      "wares/w-jug.png",
+      0.34
+     ]
+    ],
+    "shelf": [
+     [
+      "wares/w-bottle.png",
+      0.17
+     ],
+     [
+      "wares/w-jar.png",
+      0.24
+     ],
+     [
+      "wares/w-cheese.png",
+      0.36
+     ],
+     [
+      "wares/w-bottle.png",
+      0.17
+     ],
+     [
+      "wares/w-grapes.png",
+      0.3
+     ],
+     [
+      "wares/w-jug.png",
+      0.26
+     ]
+    ]
+   },
+   "shops": [
+    "Books",
+    "Cafe"
+   ],
+   "loose": [
+    [
+     "wares/w-pumpkin.png",
+     0.62
+    ],
+    [
+     "wares/w-flowers.png",
+     0.5
+    ],
+    [
+     "wares/w-pumpkin.png",
+     0.42
+    ]
+   ]
+  }
+ },
+ "cast": {
+  "customer": {
+   "build": "adult",
+   "hair": "sweep",
+   "palette": {
+    "hair": "#3a2a22",
+    "hairLine": "#5a463c",
+    "vest": "#6a4a7a",
+    "shirt": "#e9e2d0",
+    "shirtEdge": "#cfc6ae",
+    "shirtRim": "#f4efe2",
+    "shorts": "#3f3a44",
+    "shoe": "#2a2428"
+   }
+  },
+  "helper": {
+   "build": "adult",
+   "hair": "level",
+   "face": "smile",
+   "look": [
+    18,
+    -6
+   ],
+   "palette": {
+    "hair": "#6b4a2a",
+    "hairLine": "#8a6a44",
+    "shirt": "#e8ecef",
+    "shirtEdge": "#c3ccd4",
+    "shirtRim": "#f6f8fa",
+    "vest": "#3f6a8a",
+    "shorts": "#4a4f5c",
+    "shoe": "#2a2c33",
+    "brow": "#3a2816"
+   }
+  },
+  "baker": {
+   "build": "adult",
+   "hair": "sweep",
+   "face": "smile",
+   "look": [
+    -16,
+    -4
+   ],
+   "palette": {
+    "skinA": "#c98f68",
+    "skinB": "#b98060",
+    "skinC": "#a87256",
+    "skin": "#b98060",
+    "hair": "#2a2420",
+    "vest": "#7a8f3a",
+    "shirt": "#f1ead8",
+    "shirtEdge": "#d6ccb2",
+    "shirtRim": "#faf6ea",
+    "shorts": "#5a4a3c",
+    "shoe": "#33261f"
+   }
+  },
+  "child": {
+   "build": "child",
+   "hair": "level",
+   "face": "bored",
+   "look": [
+    -10,
+    20
+   ],
+   "palette": {
+    "hair": "#b5602e",
+    "hairLine": "#d08a4a",
+    "brow": "#7a3a18",
+    "vest": "#b9463c",
+    "shirt": "#f4e6b8",
+    "shirtEdge": "#d8c48a",
+    "shirtRim": "#fbf2d2",
+    "shorts": "#3f5a7a",
+    "shoe": "#2f2620"
+   }
+  }
+ },
+ "scenes": [
+  {
+   "id": "stall",
+   "place": "square",
+   "cast": [
+    "customer",
+    "helper",
+    "baker",
+    "child"
+   ],
+   "acting": {
+    "customer": {
+     "role": "listener",
+     "dir": 1,
+     "beats": [
+      {
+       "f": 8,
+       "body": "shift"
+      },
+      {
+       "f": 20,
+       "pose": "greet",
+       "big": true
+      },
+      {
+       "f": 44,
+       "pose": "akimbo",
+       "body": "leanIn"
+      },
+      {
+       "f": 76,
+       "pose": "idle",
+       "body": "upright"
+      },
+      {
+       "f": 104,
+       "pose": "point",
+       "big": true,
+       "body": "step"
+      },
+      {
+       "f": 132,
+       "pose": "hips",
+       "body": "leanBack"
+      },
+      {
+       "f": 160,
+       "pose": "idle",
+       "body": "upright"
+      },
+      {
+       "f": 196,
+       "pose": "cheer",
+       "big": true,
+       "body": "bounce"
+      },
+      {
+       "f": 224,
+       "pose": "hips"
+      }
+     ]
+    },
+    "helper": {
+     "role": "speaker",
+     "dir": 1,
+     "beats": [
+      {
+       "f": 6,
+       "face": "smile",
+       "look": [
+        18,
+        -6
+       ]
+      },
+      {
+       "f": 28,
+       "pose": "wave",
+       "big": true,
+       "body": "bounce"
+      },
+      {
+       "f": 48,
+       "pose": "present",
+       "body": "leanIn",
+       "say": 30
+      },
+      {
+       "f": 70,
+       "pose": "explain"
+      },
+      {
+       "f": 86,
+       "pose": "akimbo",
+       "body": "upright",
+       "face": "smile",
+       "look": [
+        18,
+        -6
+       ]
+      },
+      {
+       "f": 104,
+       "look": [
+        -20,
+        4
+       ]
+      },
+      {
+       "f": 114,
+       "pose": "open",
+       "big": true,
+       "face": "happy",
+       "body": "bounce",
+       "say": 30
+      },
+      {
+       "f": 136,
+       "pose": "chest"
+      },
+      {
+       "f": 150,
+       "pose": "shrug",
+       "face": "smile",
+       "body": "shift"
+      },
+      {
+       "f": 172,
+       "pose": "hips",
+       "look": [
+        24,
+        0
+       ]
+      },
+      {
+       "f": 194,
+       "pose": "point",
+       "dir": 1,
+       "body": "leanIn"
+      },
+      {
+       "f": 216,
+       "pose": "idle",
+       "body": "upright",
+       "face": "happy"
+      }
+     ]
+    },
+    "baker": {
+     "role": "speaker",
+     "dir": -1,
+     "beats": [
+      {
+       "f": 4,
+       "face": "smile",
+       "look": [
+        -16,
+        -4
+       ]
+      },
+      {
+       "f": 18,
+       "pose": "hips",
+       "body": "shift"
+      },
+      {
+       "f": 40,
+       "body": "dip"
+      },
+      {
+       "f": 54,
+       "pose": "cross",
+       "body": "leanBack"
+      },
+      {
+       "f": 76,
+       "body": "dip",
+       "look": [
+        -22,
+        2
+       ]
+      },
+      {
+       "f": 88,
+       "pose": "point",
+       "big": true,
+       "face": "happy",
+       "body": "leanIn",
+       "say": 24
+      },
+      {
+       "f": 112,
+       "pose": "explain",
+       "face": "smile"
+      },
+      {
+       "f": 132,
+       "pose": "think",
+       "body": "upright"
+      },
+      {
+       "f": 152,
+       "pose": "fist",
+       "face": "happy",
+       "body": "bounce"
+      },
+      {
+       "f": 176,
+       "pose": "akimbo",
+       "face": "smile"
+      },
+      {
+       "f": 198,
+       "pose": "open",
+       "body": "leanBack",
+       "face": "happy",
+       "say": 20
+      },
+      {
+       "f": 212,
+       "pose": "chest",
+       "body": "upright"
+      },
+      {
+       "f": 228,
+       "pose": "hips"
+      }
+     ]
+    },
+    "child": {
+     "role": "listener",
+     "dir": -1,
+     "beats": [
+      {
+       "f": 10,
+       "face": "bored",
+       "look": [
+        -10,
+        20
+       ],
+       "body": "slump"
+      },
+      {
+       "f": 50,
+       "pose": "akimbo",
+       "look": [
+        14,
+        18
+       ]
+      },
+      {
+       "f": 92,
+       "pose": "cross",
+       "body": "shift"
+      },
+      {
+       "f": 136,
+       "look": [
+        -18,
+        22
+       ],
+       "body": "dip"
+      },
+      {
+       "f": 168,
+       "look": [
+        -22,
+        -20
+       ],
+       "body": "upright"
+      },
+      {
+       "f": 184,
+       "face": "shock",
+       "look": [
+        -20,
+        -28
+       ],
+       "pose": "gasp",
+       "big": true,
+       "body": "recoil"
+      },
+      {
+       "f": 206,
+       "face": "happy",
+       "look": [
+        -18,
+        -24
+       ],
+       "pose": "pointUp",
+       "big": true,
+       "body": "hop"
+      },
+      {
+       "f": 222,
+       "pose": "cheer",
+       "body": "hop"
+      }
+     ]
+    }
+   },
+   "shots": [
+    {
+     "len": 84,
+     "size": "wide",
+     "camera": "down"
+    },
+    {
+     "len": 78,
+     "size": "medium",
+     "on": [
+      "helper",
+      "baker"
+     ],
+     "camera": "right"
+    },
+    {
+     "len": 78,
+     "size": "close",
+     "on": "child",
+     "camera": "push"
+    }
+   ],
+   "gain": 1.2
+  }
+ ]
+}

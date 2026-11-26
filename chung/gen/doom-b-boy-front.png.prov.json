@@ -1,0 +1,18 @@
+{
+ "time": "2026-11-21T00:57:16",
+ "run": "doom-b-art",
+ "output": "doom-b-boy-front.png",
+ "output_sha256": "59b767d8495f3342719a4e170904736b72a6f22ed0c1d093c3dd846cecb49eac",
+ "prompt_file": "gen/prompts/doom-b-boy-front.txt",
+ "prompt_sha256": "d74c699b0604da66b767bdb7c2ad8c6d5450b99cc902689105e47a076dfe519e",
+ "refs": [
+  {
+   "path": "/Users/daniel/WorkStation/Personal/video/shorts-claude/rover-lab/gen/doom-front.png",
+   "sha256": "5651e8ceb1e55ca1b27f7f4a3f1a6baf5c4b7b5b3c1c86e3f821efc01baebf12"
+  },
+  {
+   "path": "/Users/daniel/WorkStation/Personal/video/shorts-claude/rover-lab/gen/queen.png",
+   "sha256": "046620078e5cd350ecdc36570ae15e0e6b8f1a31fd2509001f52e24e232f0f5b"
+  }
+ ]
+}

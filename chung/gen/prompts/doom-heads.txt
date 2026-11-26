@@ -1,0 +1,7 @@
+The first attached image is the approved character. Draw a 2x2 grid of FOUR versions of this character's HEAD ONLY (green hood with dark inner opening + light-grey riveted metal mask), each large, straight front view, same size, well separated with wide magenta gaps, none touching each other or the image border. Each head is cut off cleanly with a flat bottom edge just under the chin where the hood ends: no shoulders, no mantle, no clasps, no body. The hood and mask drawing must be IDENTICAL in all four; only the eyes and brows change:
+top-left = ANGRY: thick brows slanting down toward the nose, narrow slanted black eye slits, small cream pupils centred.
+top-right = NEUTRAL: brows level, eye slits horizontal and a little taller, pupils centred.
+bottom-left = SAD: brows slanting up toward the centre, eye slits drooping toward the outside, pupils looking slightly down.
+bottom-right = SQUINT: brows low and almost level, eye slits very thin, pupils centred.
+Square 1:1 image.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

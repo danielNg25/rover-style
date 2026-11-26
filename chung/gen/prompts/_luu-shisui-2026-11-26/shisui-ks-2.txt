@@ -1,0 +1,8 @@
+A sheet of 5 separate objects for a narrow rocky ravine with a small waterfall, in a fantasy feudal-Japan ninja village world, drawn in exactly the art style of the attached reference frame: the same flat shapes, 2-4 close tones per object, the same calm level of detail and finish as the trees, rocks and props in that frame. Arrange them in 2 rows, well separated by wide gaps, each object complete and not cropped:
+1) a tall left cliff wall of the ravine made of three or four big rounded rock masses stacked, moss and small ferns on the shoulders, a few hanging vines, each rock is ONE rounded mass with two or three big soft planes, lighter top, darker side, close tones, no low-poly triangle facets;
+2) a tall right cliff wall, different shape, same style;
+3) a small waterfall: white-blue water pouring over THREE stepped rock ledges, the water follows each step, shifts sideways and gets wider going down, white foam at every step;
+4) a cluster of white foam and splash rings for the foot of a waterfall;
+5) a low wide rock ledge with a lit top, each rock is ONE rounded mass with two or three big soft planes, lighter top, darker side, close tones, no low-poly triangle facets;
+Near objects keep their own natural colours (do not tint them with the sky colour). No characters, no people, no animals unless listed, no ground strip, no cast shadows, no text.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

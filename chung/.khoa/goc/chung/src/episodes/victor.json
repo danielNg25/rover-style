@@ -1,0 +1,550 @@
+{
+ "id": "victor",
+ "narration": [
+  "Victor lớn lên trong một trại du mục nghèo, bên người cha làm thầy thuốc.",
+  "Một đêm, lính của bá tước ập tới. Hai cha con bỏ chạy vào núi tuyết.",
+  "Người cha nhường áo cho con, và không qua khỏi cái lạnh.",
+  "Bên nấm mộ, cậu bé thề: từ nay, không ai được phép chà đạp lên mình nữa."
+ ],
+ "places": {
+  "camp": {
+   "kind": "camp",
+   "seed": 1
+  },
+  "pass": {
+   "kind": "snow",
+   "seed": 2
+  },
+  "grave": {
+   "kind": "snow",
+   "seed": 3,
+   "grave": {
+    "name": "WERNER\nVON DOOM",
+    "years": "1886 - 1931"
+   }
+  }
+ },
+ "cast": {
+  "father": {
+   "build": "adult",
+   "hair": "bald",
+   "beard": "#b9b4ac",
+   "palette": {
+    "skinA": "#d9a37c",
+    "skinB": "#c99573",
+    "skinC": "#b7866a",
+    "skin": "#c99573",
+    "brow": "#8a857d",
+    "vest": "#5a7a4a",
+    "shirt": "#e6dcc2",
+    "shirtEdge": "#cbbf9f",
+    "shirtRim": "#f2ead6",
+    "shorts": "#5a4a3c",
+    "shoe": "#33261f"
+   }
+  },
+  "fatherCoat": {
+   "build": "adult",
+   "hair": "bald",
+   "beard": "#b9b4ac",
+   "palette": {
+    "skinA": "#d9a37c",
+    "skinB": "#c99573",
+    "skinC": "#b7866a",
+    "skin": "#c99573",
+    "brow": "#8a857d",
+    "vest": "#5a7a4a",
+    "shirt": "#e6dcc2",
+    "shirtEdge": "#cbbf9f",
+    "shirtRim": "#f2ead6",
+    "shorts": "#5a4a3c",
+    "shoe": "#33261f"
+   },
+   "outfit": "coat"
+  },
+  "boy": {
+   "build": "child",
+   "hair": "sweep",
+   "palette": {}
+  },
+  "boyCoat": {
+   "build": "child",
+   "hair": "sweep",
+   "outfit": "coat",
+   "palette": {}
+  }
+ },
+ "scenes": [
+  {
+   "id": "camp",
+   "place": "camp",
+   "cast": [
+    "father",
+    "boy"
+   ],
+   "acting": {
+    "father": {
+     "role": "speaker",
+     "beats": [
+      {
+       "f": 4,
+       "face": "smile",
+       "look": [
+        18,
+        -4
+       ]
+      },
+      {
+       "f": 14,
+       "pose": "present",
+       "say": 24
+      },
+      {
+       "f": 38,
+       "pose": "explain"
+      },
+      {
+       "f": 58,
+       "pose": "chest",
+       "body": "leanIn"
+      },
+      {
+       "f": 78,
+       "pose": "point",
+       "face": "happy",
+       "say": 20
+      },
+      {
+       "f": 100,
+       "pose": "hips",
+       "face": "smile"
+      }
+     ]
+    },
+    "boy": {
+     "role": "listener",
+     "beats": [
+      {
+       "f": 8,
+       "face": "neutral",
+       "look": [
+        -16,
+        -8
+       ]
+      },
+      {
+       "f": 30,
+       "pose": "akimbo"
+      },
+      {
+       "f": 62,
+       "face": "happy",
+       "look": [
+        -16,
+        -10
+       ],
+       "pose": "open",
+       "body": "bounce"
+      },
+      {
+       "f": 96,
+       "pose": "chest",
+       "face": "smile"
+      }
+     ]
+    }
+   },
+   "shots": [
+    {
+     "len": 60,
+     "size": "wide",
+     "camera": "down",
+     "say": "Victor lớn lên trong một trại du mục nghèo,"
+    },
+    {
+     "len": 54,
+     "size": "medium",
+     "on": [
+      "father",
+      "boy"
+     ],
+     "camera": "right",
+     "say": "bên người cha làm thầy thuốc."
+    }
+   ],
+   "gain": 1.6
+  },
+  {
+   "id": "flight",
+   "place": "pass",
+   "cast": [
+    "fatherCoat",
+    "boy"
+   ],
+   "acting": {
+    "fatherCoat": {
+     "role": "speaker",
+     "beats": [
+      {
+       "f": 6,
+       "face": "squint",
+       "look": [
+        -22,
+        0
+       ]
+      },
+      {
+       "f": 12,
+       "pose": "point",
+       "body": "step",
+       "big": true
+      },
+      {
+       "f": 24,
+       "body": "step"
+      },
+      {
+       "f": 34,
+       "pose": "wave",
+       "big": true,
+       "say": 14
+      },
+      {
+       "f": 46,
+       "body": "step"
+      },
+      {
+       "f": 54,
+       "pose": "offer",
+       "face": "sad",
+       "look": [
+        20,
+        6
+       ]
+      },
+      {
+       "f": 64,
+       "pose": "explain",
+       "body": "leanIn",
+       "say": 18
+      },
+      {
+       "f": 86,
+       "pose": "chest"
+      },
+      {
+       "f": 104,
+       "pose": "idle",
+       "body": "upright"
+      }
+     ]
+    },
+    "boy": {
+     "role": "listener",
+     "beats": [
+      {
+       "f": 8,
+       "face": "sad",
+       "look": [
+        -14,
+        6
+       ],
+       "pose": "cross"
+      },
+      {
+       "f": 18,
+       "body": "step"
+      },
+      {
+       "f": 30,
+       "body": "step",
+       "pose": "open"
+      },
+      {
+       "f": 42,
+       "body": "hop"
+      },
+      {
+       "f": 52,
+       "look": [
+        16,
+        -4
+       ],
+       "body": "step",
+       "pose": "cross"
+      },
+      {
+       "f": 64,
+       "face": "shock",
+       "look": [
+        -18,
+        -20
+       ],
+       "pose": "gasp",
+       "body": "recoil",
+       "big": true
+      },
+      {
+       "f": 78,
+       "face": "sad",
+       "look": [
+        -20,
+        10
+       ],
+       "body": "shift"
+      },
+      {
+       "f": 90,
+       "pose": "cross",
+       "body": "shiver"
+      },
+      {
+       "f": 100,
+       "body": "dip"
+      }
+     ]
+    }
+   },
+   "shots": [
+    {
+     "len": 60,
+     "size": "wide",
+     "camera": "left",
+     "say": "Một đêm, lính của bá tước ập tới."
+    },
+    {
+     "len": 48,
+     "size": "medium",
+     "on": "boy",
+     "camera": "push",
+     "say": "Hai cha con bỏ chạy vào núi tuyết."
+    }
+   ]
+  },
+  {
+   "id": "cloak",
+   "place": "pass",
+   "cast": [
+    "father",
+    "boyCoat"
+   ],
+   "acting": {
+    "father": {
+     "role": "speaker",
+     "beats": [
+      {
+       "f": 4,
+       "face": "smile",
+       "look": [
+        18,
+        4
+       ],
+       "pose": "offer",
+       "body": "leanIn"
+      },
+      {
+       "f": 18,
+       "pose": "present",
+       "say": 16
+      },
+      {
+       "f": 36,
+       "pose": "cross",
+       "body": "shiver"
+      },
+      {
+       "f": 46,
+       "face": "sad",
+       "look": [
+        10,
+        20
+       ],
+       "body": "slump"
+      },
+      {
+       "f": 56,
+       "face": "sadTalk",
+       "look": [
+        14,
+        10
+       ],
+       "say": 12
+      },
+      {
+       "f": 70,
+       "face": "squint",
+       "body": "shiver"
+      },
+      {
+       "f": 80,
+       "face": "bored",
+       "look": [
+        0,
+        26
+       ],
+       "body": "dip"
+      },
+      {
+       "f": 90,
+       "look": [
+        0,
+        30
+       ]
+      }
+     ]
+    },
+    "boyCoat": {
+     "role": "listener",
+     "beats": [
+      {
+       "f": 6,
+       "face": "smile",
+       "look": [
+        -18,
+        -10
+       ]
+      },
+      {
+       "f": 16,
+       "pose": "chest",
+       "body": "dip"
+      },
+      {
+       "f": 40,
+       "face": "sad",
+       "look": [
+        -18,
+        -6
+       ],
+       "body": "shift"
+      },
+      {
+       "f": 60,
+       "pose": "gasp"
+      },
+      {
+       "f": 80,
+       "body": "dip"
+      }
+     ]
+    }
+   },
+   "shots": [
+    {
+     "len": 54,
+     "size": "medium",
+     "on": [
+      "father",
+      "boyCoat"
+     ],
+     "camera": "hold",
+     "say": "Người cha nhường áo cho con,"
+    },
+    {
+     "len": 42,
+     "size": "close",
+     "on": "father",
+     "camera": "push",
+     "say": "và không qua khỏi cái lạnh."
+    }
+   ]
+  },
+  {
+   "id": "grave",
+   "place": "grave",
+   "cast": [
+    "boyCoat"
+   ],
+   "acting": {
+    "boyCoat": {
+     "role": "speaker",
+     "beats": [
+      {
+       "f": 4,
+       "face": "sad",
+       "look": [
+        -22,
+        12
+       ]
+      },
+      {
+       "f": 8,
+       "body": "step"
+      },
+      {
+       "f": 16,
+       "body": "step",
+       "pose": "offer",
+       "big": true
+      },
+      {
+       "f": 26,
+       "pose": "chest",
+       "body": "dip",
+       "big": true
+      },
+      {
+       "f": 36,
+       "body": "shift",
+       "pose": "open"
+      },
+      {
+       "f": 44,
+       "face": "sadTalk",
+       "look": [
+        -20,
+        -4
+       ],
+       "say": 10,
+       "pose": "chest"
+      },
+      {
+       "f": 58,
+       "face": "squint",
+       "look": [
+        0,
+        10
+       ],
+       "body": "upright"
+      },
+      {
+       "f": 68,
+       "face": "angry",
+       "pose": "fist",
+       "big": true,
+       "say": 34
+      },
+      {
+       "f": 84,
+       "body": "leanIn"
+      },
+      {
+       "f": 94,
+       "pose": "fists",
+       "big": true
+      },
+      {
+       "f": 104,
+       "face": "glare"
+      }
+     ]
+    }
+   },
+   "shots": [
+    {
+     "len": 54,
+     "size": "wide",
+     "camera": "push",
+     "say": "Bên nấm mộ, cậu bé thề:"
+    },
+    {
+     "len": 60,
+     "size": "close",
+     "on": "boyCoat",
+     "camera": "push",
+     "say": "từ nay, không ai được phép chà đạp lên mình nữa."
+    }
+   ]
+  }
+ ]
+}

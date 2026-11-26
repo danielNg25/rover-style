@@ -1,0 +1,11 @@
+The attached image shows only the approved finish (flat vector cut-out, no outlines); do NOT draw that character. Draw a SHEET of separate flat-vector animals and objects, each one well separated by wide flat magenta gaps, nothing touching or overlapping, all side views, simple geometric storybook flat style with very subtle shading and no outlines:
+1. a large grey African elephant walking to the RIGHT, big rounded ear flap, white tusk, trunk hanging down, legs mid-stride;
+2. a small grey baby elephant walking to the right;
+3. a tall reticulated giraffe standing, facing LEFT, long neck upright, cream body with brown polygon spots, small horns;
+4. a slender impala antelope walking to the right, tan-orange back, white belly, short curved dark horns;
+5. a white egret standing, facing left, long neck S-curved, thin dark legs;
+6. a black-and-white vulture perched, front three-quarter view, bald pale head;
+7. a grey-blue dolphin leaping, body arched, facing RIGHT, white belly, long beak, dorsal fin;
+8. a small cream-sailed three-masted sailing ship, side view, brown hull, little red flags.
+Landscape 3:2.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

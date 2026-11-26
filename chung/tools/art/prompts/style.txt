@@ -1,0 +1,10 @@
+# STYLE BLOCK. tools/art/gen.sh appends this to every prompt that does not already contain "ART STYLE".
+# Lines starting with "#" are notes for us and are never sent.
+# Why each clause is there:
+#   "no outlines", "flat colour fills", "very subtle soft gradients": the reference channel's finish.
+#   "perfectly flat solid magenta #FF00FF everywhere": the cutter keys on one colour; a floor, a shadow or a
+#     glow becomes part of the piece. Magenta is far from every palette used so far EXCEPT pink and purple
+#     garments: run tools/art/keycheck.py on the sheet, and for a pink/purple character ask for
+#     "solid green #00B140" instead (never for a green character).
+#   "no text, no labels, no numbers, no frames": the tool likes to number the pieces of a parts sheet.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

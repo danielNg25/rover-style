@@ -1,0 +1,9 @@
+A sheet of SIX separate street props for a Berlin street around 1914-1930, drawn in exactly the art style of the attached reference frames: flat shapes, 2-4 close tones per object, lighter front and darker side, a few inner lines, no outlines. Arrange in 2 rows of 3, well separated by wide gaps, each object complete and not cropped:
+1) a young linden street tree with a lobed rounded canopy in three greens and a thin trunk with a small iron tree guard;
+2) a round advertising column (Litfass column) with a dark green domed cap, covered with posters shown only as plain coloured rectangles (no letters);
+3) a wooden two-wheeled handcart with a few sacks;
+4) a small green wooden newspaper kiosk with a striped awning, papers shown as plain shapes (no letters);
+5) a wooden park bench with cast-iron legs;
+6) a tall cast-iron gas street lamp with a four-sided glass lantern.
+No characters, no ground, no cast shadows, no text anywhere.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.

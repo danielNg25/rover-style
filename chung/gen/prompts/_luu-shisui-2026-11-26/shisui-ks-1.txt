@@ -1,0 +1,9 @@
+A sheet of 6 separate objects for a shallow mountain stream where ninja train standing on flat rocks, in a fantasy feudal-Japan ninja village world, drawn in exactly the art style of the attached reference frame: the same flat shapes, 2-4 close tones per object, the same calm level of detail and finish as the trees, rocks and props in that frame. Arrange them in 2 rows, well separated by wide gaps, each object complete and not cropped:
+1) a large flat-topped stepping boulder: a wide bright sunlit top plane a person can stand on, rounded darker sides, two moss patches, each rock is ONE rounded mass with two or three big soft planes, lighter top, darker side, close tones, no low-poly triangle facets;
+2) a medium flat-topped stepping boulder, same style;
+3) a small flat-topped stepping stone, same style;
+4) a big rounded boulder beside a waterfall, each rock is ONE rounded mass with two or three big soft planes, lighter top, darker side, close tones, no low-poly triangle facets;
+5) a small pile of mossy river stones;
+6) a fallen mossy log with a broken end;
+Warm grey stone, fresh green moss. Near objects keep their own natural colours (do not tint them with the sky colour). No characters, no people, no animals unless listed, no ground strip, no cast shadows, no text.
+ART STYLE (must match the attached reference exactly): flat 2D vector cut-out cartoon; no outlines; flat colour fills with very subtle soft gradients; a few tapered darker fold strokes on cloth; smooth organic hand-drawn curves; clean crisp edges. BACKGROUND: perfectly flat solid magenta #FF00FF everywhere, no floor, no shadows, no glow, no text, no labels, no numbers, no frames.
