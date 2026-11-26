@@ -3,10 +3,11 @@
 # Soát:  python3 tools/kiem_loi_ta.py gen/prompts/_mau-tranh-boi-canh.txt        Lời tả gửi Codex:  thêm --in
 # Tả ĐÚNG bảng thiết kế của bối cảnh: nơi chốn, giờ và ánh sáng, từng lớp từ xa tới gần, dải đất cho người đứng, bộ màu.
 # KHÔNG nối style.txt (đó là cho tấm đồ nền hồng). Ảnh mẫu kiểu vẽ: 2–3 khung của bộ cảnh mẫu cùng loại cảnh.
-A concept picture for a cut-paper stage set, drawn in exactly the art style of the attached reference frames: flat shapes, 2-4 close flat tones per object, a few inner lines, no outlines; the sky and the water are flat bands of colour, not gradients.
-PLACE AND TIME: a rocky cliff edge above a quiet lake in old rural Japan, at dusk just after sunset. The sky goes from warm orange at the horizon to violet above, with a pale moon and a few fireflies. The light is low and soft; lit windows glow warm.
-FAR LAYER: two or three ranges of low simple hills in flat violet tones, each range one tone, lighter with distance.
-MIDDLE LAYER: on the far shore, a small village of tiled-roof wooden houses on a dark cliff, a few windows lit; the lake below reflects the orange sky in one calm band.
+A concept picture for a stage set, drawn in exactly the art style of the attached reference frames.
+# Kiểu giấy cắt, màu trầm và các lớp giấy chồng nhau do kiem_loi_ta.py tự thêm; ở đây chỉ tả CẢNH, tên màu viết bản trầm.
+PLACE AND TIME: a rocky cliff edge above a quiet lake in old rural Japan, at dusk just after sunset. The sky is three flat horizontal paper bands: muted peach-orange at the horizon, mauve, then dusty violet above, with a pale moon and a few fireflies. The light is low and soft; lit windows glow warm.
+FAR LAYER: two or three ranges of low simple hills in dusty violet tones, each range one tone, lighter with distance.
+MIDDLE LAYER: on the far shore, a small village of tiled-roof wooden houses on a slate blue-grey cliff built from two or three stacked paper layers, a few windows lit; the lake below is one flat paper band of muted peach-orange.
 NEAR LAYER, LEFT: a tall leaning pine with flat dark-green needle pads and a warm brown trunk. NEAR LAYER, RIGHT: two large boulders stacked, each built from two or three flat planes, with a patch of moss, and a low dark bush.
 ON THE GROUND STRIP: a broad flat ledge of grey-brown stone slabs running across the whole width; on it, towards the right, a small stone lantern with a lit flame, and towards the left a mossy fallen log with a few tufts of dry grass. The middle of the ledge stays empty.
-COLOURS: muted violets and slate blues for rock and hills, deep greens for the pine and moss, warm orange only in the sky, the water band and the small lights.
+COLOURS: dusty violet, mauve and slate blue-grey for hills and rock, warm grey-brown for the ledge, sage and moss green for the pine and bushes, muted peach-orange only in the low sky band, the water band and the small lights.

@@ -46,11 +46,19 @@ CAU_SAN_KHAU = ('STAGE VIEW (important): ONE wide 16:9 illustration of the whole
 
 # Kiểu vẽ của kênh gốc (Daniel 26/11/2026, kèm một khung video gốc: "style của kênh gốc là màu là các mảng riêng biệt chứ ko phải gradient";
 # ảnh gen "dùng gradient để thể hiện màu sắc, rồi bóng và rất nhiều đường nét cong, tròn"). Câu này được thêm vào MỌI lời tả.
-CAU_KIEU_VE = ('STYLE (must follow, overrides anything else in this prompt): flat cut-paper look exactly as in the attached reference. '
-               'Every colour is its own separate FLAT patch with a hard, crisp edge. NO gradients of any kind, no soft shading, no airbrush, no glow, no blur, no soft shadows, no cast shadows. '
-               'Light and shade are shown only by a second (at most a third) flat patch of a close tone with a crisp edge. '
-               'Shapes are simple and geometric: straight edges and angular corners, with only a few plain large arcs; no wavy, bubbly, puffy or ornate curved outlines. '
-               'No outlines, no texture, no grain.')
+# Sửa cùng ngày: kiểu của kênh gốc là GIẤY CẮT XẾP LỚP, màu trầm như giấy thủ công (Daniel: "video gốc giống như là các mảnh giấy ghép lại
+# với nhau"; "thêm phần yêu cầu là paper cut thì đã ra đúng hơn"). Bản đầu ghi "cạnh thẳng, góc gãy" làm ảnh ra kiểu low-poly.
+CAU_KIEU_VE = ('STYLE (must follow, overrides anything else in this prompt): CUT PAPER, exactly as in the attached reference. '
+               'Every element is a separate piece of matte coloured paper cut out with scissors. Each piece is ONE flat colour, with at most one second flat patch of a close tone for its shade side. '
+               'NO gradients of any kind, no soft shading, no airbrush, no glow, no blur. '
+               'Shapes are big and simple, with clean scissor-cut edges and slightly softened corners: no wavy, bubbly or ornate outlines, and no low-poly faceting into many small polygons. '
+               'Very faint matte paper grain; no outlines, no ink lines, no painted texture. '
+               'COLOUR MOOD: muted and slightly greyed, low contrast, like coloured craft paper; no saturated pure colours.')
+CAU_GIAY_CANH = ('LAYERS: the picture must look like a small stage diorama made of cut paper: each hill range, cliff, water band, rock, tree, bush and the ground ledge is its own paper piece, '
+                 'laid in front of the piece behind it at a slightly different depth. Where one paper piece overlaps another, a thin dark shadow line shows along its edge, so the stacked layers read clearly. '
+                 'The sky and the water are flat horizontal paper bands. Distant layers are paler and greyer, as if seen through a light haze.')
+CAU_GIAY_DO = 'Each object is drawn alone: no shadow of any kind under, behind or beside it.'
+DOI_MAU_RUC = re.compile(r'\b(vivid|vibrant|saturated|neon)\b', re.I)
 DOI_GRADIENT = re.compile(r'(?<!no )(?<!without )(?<!not )((very |soft |subtle |gentle )+gradients?|gradients? only|smooth organic|hand-drawn curves|organic curves|soft shad(ing|ows?)|airbrush)', re.I)
 
 
@@ -85,7 +93,11 @@ def doc(duong):
     ta = '\n'.join(than).strip()
     g = DOI_GRADIENT.search(ta)
     if g: loi.append(f'LOI  kieu-ve  lời tả đòi "{g.group(0)}": kênh gốc vẽ mỗi màu một MẢNG PHẲNG riêng, mép sắc, hình khối cạnh thẳng góc gãy; không gradient, không bóng mềm, không nét cong mềm. Xoá cụm đó (đoạn kiểu vẽ cũ của gen/prompts/style.txt cũng xoá, nối lại bản mới)')
-    if ten_canh:                                           # tranh bối cảnh mẫu: tranh của cả cảnh, không có bảng món
+    for cau in re.split(r'(?<=[.;:!?])\s+', ta):                 # màu rực: chỉ bắt khi câu đó không phải câu cấm
+        r = DOI_MAU_RUC.search(cau)
+        if r and not re.search(r'\b(no|not|never|avoid|without)\b', cau, re.I):
+            loi.append(f'LOI  mau-ruc  lời tả đòi màu "{r.group(0)}": màu của kênh gốc trầm, ngả xám, tương phản thấp như giấy thủ công. Đổi tên màu sang bản trầm (muted peach-orange, dusty violet, slate blue-grey…)'); break
+    if ten_canh:                                         # tranh bối cảnh mẫu: tranh của cả cảnh, không có bảng món
         if mon: loi.append('LOI  lan-loai  file có cả #CANH lẫn #MON: tranh bối cảnh mẫu và tấm đồ là hai file lời tả riêng')
         if len(ten_canh) > 1 or len(ten_canh[0]) < 2: loi.append('LOI  canh  cần đúng MỘT dòng  #CANH <tên bối cảnh>')
         if len(ta) < 200: loi.append('LOI  ta-ngan  lời tả tranh bối cảnh quá ngắn: tả nơi chốn, giờ và ánh sáng, từng lớp từ xa tới gần với các món của lớp, dải đất cho người đứng, bộ màu (theo bảng thiết kế của bối cảnh)')
@@ -126,7 +138,7 @@ def main(args):
         print(f'\nLỜI TẢ CHƯA ĐƯỢC GEN: {len(loi)} lỗi ở {args[0]}. Cách ghi bảng món:  python3 tools/kiem_loi_ta.py', file=sys.stderr)
         return 1
     huong = CAU_SAN_KHAU if ten_canh else cau_huong(mon)
-    day_du = ta + ('\n' + huong if huong else '') + '\n' + CAU_KIEU_VE
+    day_du = ta + ('\n' + huong if huong else '') + '\n' + CAU_KIEU_VE + '\n' + (CAU_GIAY_CANH if ten_canh else CAU_GIAY_DO)
     if in_ra:
         for d in canh: print(d, file=sys.stderr)
         print(day_du); return 0
