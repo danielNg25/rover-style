@@ -1,2 +1,6 @@
 # Không đổi kiểu xuống dòng ở bất kỳ máy nào: khoá phần chung so mã băm từng byte của file.
 * -text
+
+# Hai file nhật ký chỉ thêm dòng: khi hai máy cùng thêm thì git giữ dòng của cả hai, không báo xung đột.
+/CHANGELOG.md merge=union
+/chung/NHAT-KY-THAY-DOI.md merge=union
