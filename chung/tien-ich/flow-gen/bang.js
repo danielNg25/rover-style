@@ -52,7 +52,9 @@ function veViec({v, h, xong, bo}) {
   const mo = document.createElement('div'); mo.className = 'mo';
   mo.textContent = `${v.loai === 'canh' ? 'tranh bối cảnh mẫu' : 'tấm đồ nền hồng'} · ${v.anh_mau.length} ảnh mẫu · lưu vào ${v.luu_vao}`; o.append(mo);
   const anh = document.createElement('div'); anh.className = 'anh'; o.append(anh);
-  (async () => { for (const t of v.anh_mau) { const f = await (await h.getFileHandle(t)).getFile(); const i = document.createElement('img'); i.src = URL.createObjectURL(f); i.title = t; anh.append(i); } })();
+  (async () => { for (const t of v.anh_mau) { const f = await (await h.getFileHandle(t)).getFile(); const i = document.createElement('img'); i.src = URL.createObjectURL(f); i.title = t; anh.append(i); }
+    if (xong) { try { const f = await (await goc.getFileHandle(v.luu_vao.replace(/^gen\//, ''))).getFile(); const i = document.createElement('img'); i.src = URL.createObjectURL(f); i.className = 'kq'; i.title = 'Ảnh đã lưu: ' + v.luu_vao; anh.append(i); } catch { /* chưa có quyền đọc: bỏ qua hình này */ } }
+  })();
   const hang = document.createElement('div'); hang.className = 'hang';
   const nut = (chu, lop, lam) => { const b = document.createElement('button'); b.textContent = chu; if (lop) b.className = lop; b.onclick = async () => { try { if (!(await coQuyen())) return; await lam(b); } catch (e) { bao('Lỗi: ' + (e.message || e), 'loi'); } }; hang.append(b); return b; };
   nut('Đưa vào trang gen', 'chinh', async () => { document.querySelectorAll('.viec').forEach((e) => e.classList.remove('dang')); o.classList.add('dang'); await duaVao(v, h); });
