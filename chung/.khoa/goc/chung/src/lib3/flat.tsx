@@ -71,19 +71,26 @@ export const WareRow: React.FC<{from: V3; to: V3; kinds: Ware[]; colors?: Partia
  *  depth; small, detailed, complex things are generated 2D pictures, which look better and cost less than modelling).
  *  src = a cut-out PNG under public/ made with ./gen.sh (style reference: a reference crop) and tools/art/cut.py.
  *  w = width in the world (height follows the picture); pos = middle of its bottom edge. */
-export const Pic2D: React.FC<{src: string; w: number; pos?: V3; cast?: boolean; flip?: boolean; contact?: boolean}> = ({src, w, pos = [0, 0, 0], cast = true, flip, contact = true}) => {
+/** chinh (26/11/2026, phiếu P1126-09): chỉnh NHẸ màu riêng của một tấm ảnh, đặt chồng lên phép khớp theo cảnh (PIC_FIT) ở dưới.
+ *  sat = độ rực (0,5–1,3), lum = độ sáng (0,6–1,2), tint + amount = phủ một màu (amount 0–0,4). Số ngoài khoảng bị kẹp lại; không đổi
+ *  được sắc màu của ảnh. Không truyền thì vẽ như trước. Đây là đường HỢP LỆ để chỉnh màu một ảnh: không tự viết tấm ảnh, không lọc màu. */
+export type ChinhMau = {sat?: number; lum?: number; tint?: string; amount?: number};
+const kepMau = (v: number | undefined, md: number, a: number, b: number) => Math.min(b, Math.max(a, v ?? md));
+export const Pic2D: React.FC<{src: string; w: number; pos?: V3; cast?: boolean; flip?: boolean; contact?: boolean; chinh?: ChinhMau}> = ({src, w, pos = [0, 0, 0], cast = true, flip, contact = true, chinh}) => {
   const tex = useTextures([src]), grade = useContext(GradeCtx);
+  const cSat = kepMau(chinh?.sat, 1, 0.5, 1.3), cLum = kepMau(chinh?.lum, 1, 0.6, 1.2), cAm = kepMau(chinh?.amount, 0, 0, 0.4), cTint = chinh?.tint;
   // fitted to the scene: the picture is redrawn with the scene's saturation, brightness and cast (look.tsx PIC_FIT), so a
   // generated picture takes the colours of the place it stands in; the scene light then shades the card as a whole
   const fitted = useMemo(() => {
     if (!tex) return null;
     const img = tex[src].image as HTMLImageElement, f = PIC_FIT[grade], cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height; const c = cv.getContext('2d')!;
-    c.filter = `saturate(${f.sat}) brightness(${f.lum})`; c.drawImage(img, 0, 0); c.filter = 'none';
+    c.filter = `saturate(${f.sat * cSat}) brightness(${f.lum * cLum})`; c.drawImage(img, 0, 0); c.filter = 'none';
     c.globalCompositeOperation = 'source-atop'; c.globalAlpha = f.amount; c.fillStyle = f.tint; c.fillRect(0, 0, cv.width, cv.height);
+    if (cTint && cAm > 0) { c.globalAlpha = cAm; c.fillStyle = cTint; c.fillRect(0, 0, cv.width, cv.height); }   // màu riêng của món, phủ nhẹ
     // a soft darker foot, as if the thing stood on the surface
     c.globalAlpha = 1; const g = c.createLinearGradient(0, cv.height * 0.8, 0, cv.height); g.addColorStop(0, 'rgba(40,30,30,0)'); g.addColorStop(1, 'rgba(40,30,30,0.22)'); c.fillStyle = g; c.fillRect(0, cv.height * 0.8, cv.width, cv.height * 0.2);
     const t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return {t, ar: img.height / img.width};
-  }, [tex, src, grade]);
+  }, [tex, src, grade, cSat, cLum, cAm, cTint]);
   if (!fitted) return null;
   const h = w * fitted.ar;
   return (

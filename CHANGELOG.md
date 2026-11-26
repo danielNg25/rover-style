@@ -48,6 +48,7 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 - **Bỏ lớp ấm hậu kỳ mặc định.** `src/lib3/look.tsx`: `Finish` mặc định không còn phủ `#f3e2c4` 6 %. Mọi `Shot` không truyền `finish` dựng lại sẽ bớt ngả vàng. (Phiên shisui-1 sửa; Daniel cho giữ.)
 - **Bóng người không còn cụt ở phiến lát, mép sàn.** `src/lib3/kit.tsx`: mặt đất thấp hơn chân tới 15 cm hoặc cao hơn tới 8 cm vẫn tính là đất (trước ±6 cm). (Phiên shisui-1 sửa; Daniel cho giữ.)
 - **Núi một sắc.** `src/lib3/depth.tsx`: `paintPeak` thêm tuỳ chọn `motSac` (mặc định tắt, nơi khác không đổi). `src/demo/NuiTuyet.tsx`: dãy núi xa một sắc, bỏ 40 vệt tam giác, sườn không còn mảng chia dọc; bối cảnh núi tuyết dựng lại sẽ khác. (Phiên shisui-1 sửa; Daniel cho giữ.)
+- **`Pic2D` nhận tham số màu `chinh` (phiếu P1126-09).** `src/lib3/flat.tsx`: `chinh={{sat, lum, tint, amount}}` chỉnh nhẹ màu riêng của một tấm ảnh, chồng lên phép khớp theo cảnh; số bị kẹp (sat 0,5–1,3; lum 0,6–1,2; amount 0–0,4) nên không đổi được sắc màu của ảnh. Không truyền thì hình không đổi một điểm ảnh (đã dựng so trước và sau). Đây là đường hợp lệ để chỉnh màu một ảnh, thay cho tự viết tấm ảnh và lọc màu (`kiem_cam.py` cấm). Món kho (`MonHang`) chưa có tham số này.
 
 ### Công cụ
 
