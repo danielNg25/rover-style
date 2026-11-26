@@ -11,7 +11,7 @@ Dán lời tả và đính ảnh mẫu của một việc trong hàng chờ `chu
 1. Trên trang gen, bấm một lần vào ô nhập lời tả.
 2. Trong bảng, bấm **Đưa vào trang gen** ở việc cần làm. Kiểm trên trang: đúng lời tả, đủ ảnh mẫu.
 3. Bấm tạo trên trang, tải tấm ưng ý về.
-4. Bấm **Lưu ảnh đã tải về**, chọn file vừa tải: ảnh được ghi vào `chung/gen/<tên>.png`. Báo phiên tên việc đã có ảnh.
+4. Bấm **Lấy ảnh mới nhất trên trang** rồi bấm vào tấm muốn lưu (xem kích cỡ ghi dưới tấm). Hoặc tải ảnh về, bấm **Lưu ảnh đã tải về**, chọn file vừa tải: ảnh được ghi vào `chung/gen/<tên>.png`. Báo phiên tên việc đã có ảnh.
 
 Việc không cần nữa: bấm **Bỏ việc này** (ẩn khỏi hàng chờ, khôi phục lại được).
 

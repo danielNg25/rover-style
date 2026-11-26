@@ -55,6 +55,7 @@ function veViec({v, h, xong, bo}) {
   const nut = (chu, lop, lam) => { const b = document.createElement('button'); b.textContent = chu; if (lop) b.className = lop; b.onclick = async () => { try { await lam(b); } catch (e) { bao('Lỗi: ' + (e.message || e), 'loi'); } }; hang.append(b); return b; };
   nut('Đưa vào trang gen', 'chinh', async () => { document.querySelectorAll('.viec').forEach((e) => e.classList.remove('dang')); o.classList.add('dang'); await duaVao(v, h); });
   nut('Chép lời tả', '', async () => { await navigator.clipboard.writeText(await docChu(h, 'loi-ta.txt')); bao('Đã chép lời tả của ' + v.ten + '.'); });
+  nut('Lấy ảnh mới nhất trên trang', 'chinh', async () => { await layAnhTrang(v, o); });
   nut('Lưu ảnh đã tải về', '', async () => { await luuAnh(v); });
   if (bo) nut('Khôi phục', '', async () => { await h.removeEntry('da-bo.txt'); bao('Đã khôi phục việc ' + v.ten + '.'); await docHangCho(); });
   else nut('Bỏ việc này', '', async () => {
@@ -108,6 +109,54 @@ async function trongTrang(loiTa, anh, cach) {
     }
   }
   return {ok: true, bao: ghi};
+}
+
+// Chạy TRONG trang gen: các ảnh lớn trên trang, mới xuất hiện xếp trước.
+async function anhTrenTrang() {
+  const ds = [...document.querySelectorAll('img')].filter((i) => i.complete && i.naturalWidth >= 500 && i.naturalHeight >= 280 && i.currentSrc)
+    .map((i, k) => ({i, t: i.__c3dT || 0, k})).sort((a, b) => (b.t - a.t) || (a.k - b.k)).slice(0, 8);
+  const ra = [];
+  for (const {i, t} of ds) {
+    let src = i.currentSrc;
+    if (/^(blob|data):/.test(src)) {   // nguồn chỉ trang đọc được: đổi sang dữ liệu để gửi về bảng
+      try { const b = await (await fetch(src)).blob(); src = await new Promise((ok) => { const r = new FileReader(); r.onload = () => ok(r.result); r.readAsDataURL(b); }); } catch { continue; }
+    }
+    ra.push({src, w: i.naturalWidth, h: i.naturalHeight, moi: t > 0});
+  }
+  return ra;
+}
+
+async function ghiAnh(v, blob, nguon) {
+  const ten = v.luu_vao.replace(/^gen\//, '');
+  let du = blob;
+  if (!/png$/i.test(blob.type)) { const bm = await createImageBitmap(blob), cv = new OffscreenCanvas(bm.width, bm.height); cv.getContext('2d').drawImage(bm, 0, 0); du = await cv.convertToBlob({type: 'image/png'}); }
+  if ((await goc.requestPermission({mode: 'readwrite'})) !== 'granted') { bao('Chưa được quyền ghi vào thư mục gen.', 'loi'); return; }
+  const w = await (await goc.getFileHandle(ten, {create: true})).createWritable(); await w.write(du); await w.close();
+  bao(`Đã lưu ${nguon} thành chung/${v.luu_vao}. Báo phiên là ảnh của "${v.ten}" đã có.`, 'xong'); await docHangCho();
+}
+
+async function layAnhTrang(v, o) {
+  const [tab] = await chrome.tabs.query({active: true, currentWindow: true});
+  const [kq] = await chrome.scripting.executeScript({target: {tabId: tab.id}, func: anhTrenTrang});
+  const ds = (kq && kq.result) || [];
+  o.querySelector('.chon-anh')?.remove();
+  if (!ds.length) { bao('Không thấy ảnh lớn nào trên trang. Chờ ảnh gen xong (hoặc bấm mở ảnh to) rồi bấm lại; không được thì tải về và dùng "Lưu ảnh đã tải về".', 'loi'); return; }
+  const khung = document.createElement('div'); khung.className = 'chon-anh';
+  const nhac = document.createElement('div'); nhac.className = 'mo'; nhac.textContent = 'Bấm vào tấm muốn lưu (mới nhất ở đầu):'; khung.append(nhac);
+  for (const a of ds) {
+    const b = document.createElement('button'); b.className = 'tam' + (a.moi ? ' moi' : ''); b.title = `${a.w}×${a.h}`;
+    const im = document.createElement('img'); im.src = a.src; b.append(im);
+    const c = document.createElement('span'); c.textContent = `${a.w}×${a.h}` + (a.moi ? ' · mới' : ''); b.append(c);
+    b.onclick = async () => {
+      try {
+        const blob = await (await fetch(a.src, /^https?:/.test(a.src) ? {credentials: 'include'} : {})).blob();
+        if (!/^image\//.test(blob.type)) throw new Error('trang không cho lấy ảnh này trực tiếp');
+        await ghiAnh(v, blob, `ảnh ${a.w}×${a.h} trên trang`);
+      } catch (e) { bao('Không lấy được ảnh này (' + (e.message || e) + '). Tải ảnh về rồi dùng "Lưu ảnh đã tải về".', 'loi'); }
+    };
+    khung.append(b);
+  }
+  o.append(khung); bao(`Thấy ${ds.length} ảnh lớn trên trang. Ảnh trên trang có thể là bản xem trước nhỏ hơn bản tải về: xem kích cỡ ghi dưới mỗi tấm.`);
 }
 
 async function luuAnh(v) {
