@@ -7,6 +7,7 @@
   h1 { font-size: 15px; margin: 0 0 8px; }
   button { font: inherit; padding: 6px 10px; border: 1px solid var(--vien); border-radius: 6px; background: transparent; color: var(--chu); cursor: pointer; }
   button.chinh { border-color: var(--nhan); color: var(--nhan); font-weight: 600; }
+  button.tu { border-color: #c77a1e; color: #c77a1e; }
   button:disabled { opacity: .45; cursor: default; }
   .mo { color: var(--mo); font-size: 12.5px; }
   .viec { border: 1px solid var(--vien); border-radius: 8px; padding: 9px; margin: 8px 0; }
@@ -18,7 +19,7 @@
   .co .nhan { background: var(--xong); } .chua .nhan { background: var(--loi); }
   .viec h2 { font-size: 14px; margin: 0 0 3px; overflow-wrap: anywhere; }
   .hang { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
-  .anh { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; } .anh img { height: 46px; border-radius: 4px; border: 1px solid var(--vien); } .anh img.kq { height: 64px; border: 3px solid var(--xong); margin-left: 8px; }
+  .anh { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; } .anh img { height: 46px; border-radius: 4px; border: 1px solid var(--vien); } .anh .mau { padding: 2px; border-radius: 6px; line-height: 0; } .anh .mau.vua { border-color: var(--nhan); border-width: 2px; } .anh img.kq { height: 64px; border: 3px solid var(--xong); margin-left: 8px; }
   .chon-anh { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; } .chon-anh .mo { width: 100%; }
   .tam { padding: 3px; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 11px; } .tam img { width: 132px; border-radius: 4px; display: block; } .tam.moi { border-color: var(--xong); border-width: 2px; }
   .xong { color: var(--xong); } .loi { color: var(--loi); }
@@ -30,9 +31,8 @@
   <h1>Hàng chờ gen ảnh (cutout3d)</h1>
   <div class="hang"><button id="chon" class="chinh">Chọn thư mục cutout3d</button><button id="tai" disabled>Đọc lại</button></div>
   <div class="mo" id="dau" style="margin-top:6px">Chọn thư mục <b>cutout3d</b> của dự án (chọn <b>chung</b> hay <b>gen</b> cũng được). Chỉ phải chọn một lần.</div>
-  <div style="margin-top:8px" class="mo">Cách đính ảnh mẫu:
-    <select id="cach"><option value="dan">dán vào ô nhập</option><option value="file">ô chọn file của trang</option><option value="tha">thả vào ô nhập</option></select>
-  </div>
+  <div style="margin-top:8px" class="mo">Làm tay (an toàn): chép lời tả rồi dán; bấm từng hình mẫu để chép rồi dán; tải ảnh về rồi bấm lưu.<br>Hai nút viền cam "Tự …" tự điền và tự lấy ảnh trên trang; Flow từng báo hoạt động bất thường khi dùng. Cách tự đính ảnh mẫu:
+    <select id="cach"><option value="dan">dán vào ô nhập</option><option value="file">ô chọn file của trang</option><option value="tha">thả vào ô nhập</option></select></div>
   <div id="bao"></div>
   <div id="ds"></div>
   <script src="bang.js"></script>

@@ -1,9 +1,10 @@
-// Bảng bên cạnh: đọc hàng chờ chung/gen/cho-gen, đưa lời tả và ảnh mẫu của một việc vào trang gen đang mở, rồi lưu ảnh về gen/<tên>.png.
+// Bảng bên cạnh: đọc hàng chờ chung/gen/cho-gen. Từ bản 0.5 có HAI cách dùng.
+// Làm tay (mặc định, không đụng vào trang gen): chép lời tả rồi dán, bấm hình mẫu để chép ảnh rồi dán, tải ảnh về rồi bấm lưu.
+// Tự động (hai nút "Tự …"): đọc và sửa trang gen; Flow từng báo "hoạt động bất thường" (26/11/2026). Chỉ xin quyền với trang khi bấm.
 const $ = (id) => document.getElementById(id);
 let goc = null;          // FileSystemDirectoryHandle của chung/gen
 const bao = (t, loai = '') => { $('bao').textContent = t; $('bao').className = loai; };
 
-// ---- nhớ thư mục đã chọn (IndexedDB giữ được handle)
 const kho = () => new Promise((ok, loi) => { const r = indexedDB.open('c3d', 1); r.onupgradeneeded = () => r.result.createObjectStore('k'); r.onsuccess = () => ok(r.result); r.onerror = () => loi(r.error); });
 const nho = async (v) => { const d = await kho(); d.transaction('k', 'readwrite').objectStore('k').put(v, 'goc'); };
 const lay = async () => { const d = await kho(); return new Promise((ok) => { const r = d.transaction('k').objectStore('k').get('goc'); r.onsuccess = () => ok(r.result || null); r.onerror = () => ok(null); }); };
@@ -12,25 +13,21 @@ const lay = async () => { const d = await kho(); return new Promise((ok) => { co
 const coQuyen = async () => { if (!goc) { bao('Chưa chọn thư mục cutout3d.', 'loi'); return false; } if ((await goc.queryPermission({mode: 'readwrite'})) === 'granted') return true; if ((await goc.requestPermission({mode: 'readwrite'})) === 'granted') return true; bao('Chưa được quyền với thư mục gen: bấm "Cho phép" khi Chrome hỏi.', 'loi'); return false; };
 const coFile = async (thuMuc, ten) => { try { await thuMuc.getFileHandle(ten); return true; } catch { return false; } };
 const docChu = async (thuMuc, ten) => (await (await thuMuc.getFileHandle(ten)).getFile()).text();
+const thanhPNG = async (blob) => { if (/png$/i.test(blob.type)) return blob; const bm = await createImageBitmap(blob), cv = new OffscreenCanvas(bm.width, bm.height); cv.getContext('2d').drawImage(bm, 0, 0); return cv.convertToBlob({type: 'image/png'}); };
 
 // Người dùng chọn cutout3d, chung hay gen đều được: tự tìm tới thư mục gen (nơi có cho-gen).
 async function timGen(h) {
-  for (const duong of [[], ['gen'], ['chung', 'gen']]) {
-    try { let t = h; for (const d of duong) t = await t.getDirectoryHandle(d); await t.getDirectoryHandle('cho-gen'); return t; } catch { /* thử đường kế */ }
-  }
-  for (const duong of [['chung', 'gen'], ['gen']]) {   // chưa có cho-gen (chưa phiên nào xếp việc): vẫn nhận thư mục gen
-    try { let t = h; for (const d of duong) t = await t.getDirectoryHandle(d); return t; } catch { /* thử đường kế */ }
-  }
+  for (const duong of [[], ['gen'], ['chung', 'gen']]) { try { let t = h; for (const d of duong) t = await t.getDirectoryHandle(d); await t.getDirectoryHandle('cho-gen'); return t; } catch { /* thử đường kế */ } }
+  for (const duong of [['chung', 'gen'], ['gen']]) { try { let t = h; for (const d of duong) t = await t.getDirectoryHandle(d); return t; } catch { /* thử đường kế */ } }
   return null;
 }
 
 async function docHangCho() {
   $('ds').textContent = '';
   let cho;
-  try { cho = await goc.getDirectoryHandle('cho-gen'); }
-  catch { bao('Hàng chờ trống: chưa phiên nào xếp việc (thư mục gen chưa có "cho-gen").'); return; }
+  try { cho = await goc.getDirectoryHandle('cho-gen'); } catch { bao('Hàng chờ trống: chưa phiên nào xếp việc (thư mục gen chưa có "cho-gen").'); return; }
   const viec = [];
-  for await (const [ten, h] of cho.entries()) {
+  for await (const [, h] of cho.entries()) {
     if (h.kind !== 'directory' || !(await coFile(h, 'viec.json'))) continue;
     try { const v = JSON.parse(await docChu(h, 'viec.json')); viec.push({v, h, xong: await coFile(goc, v.luu_vao.replace(/^gen\//, '')), bo: await coFile(h, 'da-bo.txt')}); } catch { /* việc hỏng: bỏ qua */ }
   }
@@ -39,10 +36,7 @@ async function docHangCho() {
   const con = viec.filter((x) => !x.bo), daBo = viec.filter((x) => x.bo);
   bao(`${con.filter((x) => !x.xong).length} việc chờ gen, ${con.filter((x) => x.xong).length} việc đã có ảnh` + (daBo.length ? `, ${daBo.length} việc đã bỏ.` : '.'));
   for (const x of con) veViec(x);
-  if (daBo.length) {
-    const n = document.createElement('button'); n.textContent = `Hiện ${daBo.length} việc đã bỏ`; n.style.marginTop = '6px';
-    n.onclick = () => { n.remove(); for (const x of daBo) veViec(x); }; $('ds').append(n);
-  }
+  if (daBo.length) { const n = document.createElement('button'); n.textContent = `Hiện ${daBo.length} việc đã bỏ`; n.style.marginTop = '6px'; n.onclick = () => { n.remove(); for (const x of daBo) veViec(x); }; $('ds').append(n); }
 }
 
 function veViec({v, h, xong, bo}) {
@@ -52,17 +46,27 @@ function veViec({v, h, xong, bo}) {
   const mo = document.createElement('div'); mo.className = 'mo';
   mo.textContent = `${v.loai === 'canh' ? 'tranh bối cảnh mẫu' : 'tấm đồ nền hồng'} · ${v.anh_mau.length} ảnh mẫu · lưu vào ${v.luu_vao}`; o.append(mo);
   const anh = document.createElement('div'); anh.className = 'anh'; o.append(anh);
-  (async () => { for (const t of v.anh_mau) { const f = await (await h.getFileHandle(t)).getFile(); const i = document.createElement('img'); i.src = URL.createObjectURL(f); i.title = t; anh.append(i); }
-    if (xong) { try { const f = await (await goc.getFileHandle(v.luu_vao.replace(/^gen\//, ''))).getFile(); const i = document.createElement('img'); i.src = URL.createObjectURL(f); i.className = 'kq'; i.title = 'Ảnh đã lưu: ' + v.luu_vao; anh.append(i); } catch { /* chưa có quyền đọc: bỏ qua hình này */ } }
+  (async () => {
+    for (const [k, t] of v.anh_mau.entries()) {
+      const f = await (await h.getFileHandle(t)).getFile(); const b = document.createElement('button'); b.className = 'mau'; b.title = 'Bấm để chép ảnh mẫu này, rồi dán vào trang gen (Cmd+V)';
+      const i = document.createElement('img'); i.src = URL.createObjectURL(f); b.append(i);
+      b.onclick = async () => {
+        try { await navigator.clipboard.write([new ClipboardItem({'image/png': await thanhPNG(f)})]); anh.querySelectorAll('.mau').forEach((x) => x.classList.remove('vua')); b.classList.add('vua'); bao(`Đã chép ảnh mẫu ${k + 1}/${v.anh_mau.length} của "${v.ten}". Sang trang gen bấm Cmd+V để dán.`, 'xong'); }
+        catch (e) { bao('Không chép được ảnh (' + (e.message || e) + '). Dùng "Mở thư mục việc" rồi lấy ảnh trong Finder.', 'loi'); }
+      };
+      anh.append(b);
+    }
+    if (xong) { try { const f = await (await goc.getFileHandle(v.luu_vao.replace(/^gen\//, ''))).getFile(); const i = document.createElement('img'); i.src = URL.createObjectURL(f); i.className = 'kq'; i.title = 'Ảnh đã lưu: ' + v.luu_vao; anh.append(i); } catch { /* chưa có quyền đọc */ } }
   })();
   const hang = document.createElement('div'); hang.className = 'hang';
   const nut = (chu, lop, lam) => { const b = document.createElement('button'); b.textContent = chu; if (lop) b.className = lop; b.onclick = async () => { try { if (!(await coQuyen())) return; await lam(b); } catch (e) { bao('Lỗi: ' + (e.message || e), 'loi'); } }; hang.append(b); return b; };
-  nut('Đưa vào trang gen', 'chinh', async () => { document.querySelectorAll('.viec').forEach((e) => e.classList.remove('dang')); o.classList.add('dang'); await duaVao(v, h); });
-  nut('Lấy ảnh mới nhất trên trang', 'chinh', async () => { await layAnhTrang(v, o); });
-  nut('Lưu ảnh đã tải về', '', async () => { await luuAnh(v); });
-  nut('Mở thư mục ảnh', '', async () => {
+  nut('Chép lời tả', 'chinh', async () => { await navigator.clipboard.writeText(await docChu(h, 'loi-ta.txt')); bao(`Đã chép lời tả của "${v.ten}". Sang trang gen bấm Cmd+V. Ảnh mẫu: bấm từng hình ở trên để chép, rồi dán.`, 'xong'); });
+  nut('Lưu ảnh đã tải về', 'chinh', async () => { await luuAnh(v); });
+  nut('Tự đưa vào trang gen', 'tu', async () => { if (!(await quyenTrang())) return; document.querySelectorAll('.viec').forEach((e) => e.classList.remove('dang')); o.classList.add('dang'); await duaVao(v, h); });
+  nut('Tự lấy ảnh mới nhất trên trang', 'tu', async () => { if (!(await quyenTrang())) return; await layAnhTrang(v, o); });
+  nut(xong ? 'Mở thư mục ảnh' : 'Mở thư mục việc', '', async () => {
     let r;
-    try { r = await chrome.runtime.sendNativeMessage('com.cutout3d.mo_thu_muc', {ten: xong ? v.luu_vao.replace(/^gen\//, '') : ''}); }
+    try { r = await chrome.runtime.sendNativeMessage('com.cutout3d.mo_thu_muc', xong ? {ten: v.luu_vao.replace(/^gen\//, '')} : {viec: v.ten}); }
     catch (e) { bao('Chưa cài cầu nối mở thư mục. Chạy MỘT lần trong Terminal (ở thư mục cutout3d):\n  bash chung/tien-ich/flow-gen/cai-may.sh ' + chrome.runtime.id + '\nrồi bấm lại nút này.', 'loi'); return; }
     bao(r && r.ok ? 'Đã mở ' + r.thu_muc + (r.chon ? ' (chọn sẵn ' + r.chon + ')' : '') + '.' : 'Không mở được thư mục: ' + ((r && r.loi) || 'không rõ'), r && r.ok ? '' : 'loi');
   });
@@ -75,6 +79,14 @@ function veViec({v, h, xong, bo}) {
   o.append(hang); $('ds').append(o);
 }
 
+// ---- HAI TÍNH NĂNG TỰ ĐỘNG (Daniel muốn giữ). Chúng đọc và sửa trang gen; Flow từng báo "hoạt động bất thường" khi dùng.
+// Extension không có sẵn quyền với trang nào: chỉ xin quyền với đúng trang đang mở, vào lúc bấm một trong hai nút này.
+const TRANG = ['https://flow.google.com/*', 'https://labs.google/*', 'https://*.googleusercontent.com/*', 'https://storage.googleapis.com/*'];
+async function quyenTrang() {
+  if (await chrome.permissions.contains({origins: TRANG})) return true;
+  if (await chrome.permissions.request({origins: TRANG})) return true;
+  bao('Chưa được quyền với trang gen nên không tự điền được. Dùng cách làm tay: Chép lời tả, bấm hình mẫu để chép, Lưu ảnh đã tải về.', 'loi'); return false;
+}
 const thanhDataURL = (f) => new Promise((ok, loi) => { const r = new FileReader(); r.onload = () => ok(r.result); r.onerror = () => loi(r.error); r.readAsDataURL(f); });
 
 async function duaVao(v, h) {
@@ -180,12 +192,7 @@ async function layAnhTrang(v, o) {
 async function luuAnh(v) {
   const [fh] = await showOpenFilePicker({types: [{description: 'Ảnh', accept: {'image/*': ['.png', '.jpg', '.jpeg', '.webp']}}]});
   const f = await fh.getFile(), ten = v.luu_vao.replace(/^gen\//, '');
-  let du = f;
-  if (!/png$/i.test(f.type)) {   // nơi lưu là .png: đổi sang PNG cho đúng đuôi
-    const bm = await createImageBitmap(f), cv = new OffscreenCanvas(bm.width, bm.height); cv.getContext('2d').drawImage(bm, 0, 0); du = await cv.convertToBlob({type: 'image/png'});
-  }
-  if ((await goc.requestPermission({mode: 'readwrite'})) !== 'granted') { bao('Chưa được quyền ghi vào thư mục chung/gen.', 'loi'); return; }
-  const w = await (await goc.getFileHandle(ten, {create: true})).createWritable(); await w.write(du); await w.close();
+  const w = await (await goc.getFileHandle(ten, {create: true})).createWritable(); await w.write(await thanhPNG(f)); await w.close();
   bao(`Đã lưu ${f.name} thành chung/${v.luu_vao}. Báo phiên là ảnh của "${v.ten}" đã có.`, 'xong'); await docHangCho();
 }
 
@@ -194,10 +201,10 @@ $('chon').onclick = async () => {
     const h = await showDirectoryPicker({mode: 'readwrite'}), g = await timGen(h);
     if (!g) { bao('Không thấy thư mục gen trong "' + h.name + '". Hãy chọn thư mục cutout3d của dự án.', 'loi'); return; }
     goc = g; await nho(goc); $('tai').disabled = false; $('dau').textContent = 'Đã chọn: ' + h.name + (h.name === 'gen' ? '' : ' (dùng thư mục gen bên trong)'); await docHangCho();
-  }
-  catch (e) { if (e.name !== 'AbortError') bao('Lỗi: ' + e.message, 'loi'); }
+  } catch (e) { if (e.name !== 'AbortError') bao('Lỗi: ' + e.message, 'loi'); }
 };
-$('tai').onclick = async () => { if ((await goc.requestPermission({mode: 'readwrite'})) === 'granted') await docHangCho(); };
+$('tai').onclick = async () => { if (await coQuyen()) await docHangCho(); };
+(async () => { const h = await lay(); if (h) { goc = h; $('tai').disabled = false; $('dau').textContent = 'Thư mục đã nhớ: ' + h.name + '. Bấm "Đọc lại" để mở hàng chờ.'; } })();
+
 chrome.storage.local.get('cach').then((x) => { if (x.cach) $('cach').value = x.cach; });
 $('cach').onchange = () => chrome.storage.local.set({cach: $('cach').value});
-(async () => { const h = await lay(); if (h) { goc = h; $('tai').disabled = false; $('dau').textContent = 'Thư mục đã nhớ: ' + h.name + '. Bấm "Đọc lại" để mở hàng chờ.'; } })();
