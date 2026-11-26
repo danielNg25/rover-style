@@ -8,6 +8,8 @@ const kho = () => new Promise((ok, loi) => { const r = indexedDB.open('c3d', 1);
 const nho = async (v) => { const d = await kho(); d.transaction('k', 'readwrite').objectStore('k').put(v, 'goc'); };
 const lay = async () => { const d = await kho(); return new Promise((ok) => { const r = d.transaction('k').objectStore('k').get('goc'); r.onsuccess = () => ok(r.result || null); r.onerror = () => ok(null); }); };
 
+// Sau khi tải lại extension, Chrome thu quyền thư mục: phải xin lại trong một lần bấm của người dùng.
+const coQuyen = async () => { if (!goc) { bao('Chưa chọn thư mục cutout3d.', 'loi'); return false; } if ((await goc.queryPermission({mode: 'readwrite'})) === 'granted') return true; if ((await goc.requestPermission({mode: 'readwrite'})) === 'granted') return true; bao('Chưa được quyền với thư mục gen: bấm "Cho phép" khi Chrome hỏi.', 'loi'); return false; };
 const coFile = async (thuMuc, ten) => { try { await thuMuc.getFileHandle(ten); return true; } catch { return false; } };
 const docChu = async (thuMuc, ten) => (await (await thuMuc.getFileHandle(ten)).getFile()).text();
 
@@ -52,13 +54,15 @@ function veViec({v, h, xong, bo}) {
   const anh = document.createElement('div'); anh.className = 'anh'; o.append(anh);
   (async () => { for (const t of v.anh_mau) { const f = await (await h.getFileHandle(t)).getFile(); const i = document.createElement('img'); i.src = URL.createObjectURL(f); i.title = t; anh.append(i); } })();
   const hang = document.createElement('div'); hang.className = 'hang';
-  const nut = (chu, lop, lam) => { const b = document.createElement('button'); b.textContent = chu; if (lop) b.className = lop; b.onclick = async () => { try { await lam(b); } catch (e) { bao('Lỗi: ' + (e.message || e), 'loi'); } }; hang.append(b); return b; };
+  const nut = (chu, lop, lam) => { const b = document.createElement('button'); b.textContent = chu; if (lop) b.className = lop; b.onclick = async () => { try { if (!(await coQuyen())) return; await lam(b); } catch (e) { bao('Lỗi: ' + (e.message || e), 'loi'); } }; hang.append(b); return b; };
   nut('Đưa vào trang gen', 'chinh', async () => { document.querySelectorAll('.viec').forEach((e) => e.classList.remove('dang')); o.classList.add('dang'); await duaVao(v, h); });
   nut('Lấy ảnh mới nhất trên trang', 'chinh', async () => { await layAnhTrang(v, o); });
   nut('Lưu ảnh đã tải về', '', async () => { await luuAnh(v); });
-  if (xong) nut('Xem ảnh đã lưu', '', async () => {
-    const f = await (await goc.getFileHandle(v.luu_vao.replace(/^gen\//, ''))).getFile();
-    await chrome.tabs.create({url: URL.createObjectURL(f)}); bao(`Đã mở chung/${v.luu_vao} (${Math.round(f.size / 1024)} KB) ở thẻ mới.`);
+  nut('Mở thư mục ảnh', '', async () => {
+    let r;
+    try { r = await chrome.runtime.sendNativeMessage('com.cutout3d.mo_thu_muc', {ten: xong ? v.luu_vao.replace(/^gen\//, '') : ''}); }
+    catch (e) { bao('Chưa cài cầu nối mở thư mục. Chạy MỘT lần trong Terminal (ở thư mục cutout3d):\n  bash chung/tien-ich/flow-gen/cai-may.sh ' + chrome.runtime.id + '\nrồi bấm lại nút này.', 'loi'); return; }
+    bao(r && r.ok ? 'Đã mở ' + r.thu_muc + (r.chon ? ' (chọn sẵn ' + r.chon + ')' : '') + '.' : 'Không mở được thư mục: ' + ((r && r.loi) || 'không rõ'), r && r.ok ? '' : 'loi');
   });
   if (bo) nut('Khôi phục', '', async () => { await h.removeEntry('da-bo.txt'); bao('Đã khôi phục việc ' + v.ten + '.'); await docHangCho(); });
   else nut('Bỏ việc này', '', async () => {

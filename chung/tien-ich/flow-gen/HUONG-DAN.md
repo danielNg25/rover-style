@@ -17,6 +17,6 @@ Việc không cần nữa: bấm **Bỏ việc này** (ẩn khỏi hàng chờ, 
 
 Ảnh mẫu không vào trang: đổi **Cách đính ảnh mẫu** (dán, ô chọn file, thả) rồi thử lại; không cách nào được thì mở `cho-gen/<tên>/` lấy `loi-ta.txt` và ảnh mẫu bằng tay.
 
-Việc đã có ảnh: nút **Xem ảnh đã lưu** mở ảnh ở thẻ mới.
+Nút **Mở thư mục ảnh** mở `chung/gen` trong Finder, chọn sẵn ảnh của việc đó. Cần cài cầu nối một lần: `bash chung/tien-ich/flow-gen/cai-may.sh <mã extension>` (mã hiện trong bảng khi bấm nút lần đầu). Nó ghi một file khai báo vào thư mục NativeMessagingHosts của Chrome; gỡ thì xoá file đó.
 
 Phiên xếp việc: `GEN_QUA=flow ./gen.sh <tên>.png gen/prompts/<tên>.txt <ảnh mẫu…>` hoặc `python3 tools/xep_gen.py …`; xem hàng chờ: `python3 tools/xep_gen.py --xem`.

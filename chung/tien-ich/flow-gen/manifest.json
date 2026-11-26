@@ -1,13 +1,14 @@
 {
   "manifest_version": 3,
   "name": "cutout3d: hàng chờ gen ảnh",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Đọc hàng chờ chung/gen/cho-gen của dự án cutout3d, dán lời tả và đính ảnh mẫu vào trang gen ảnh đang mở.",
   "permissions": [
     "sidePanel",
     "scripting",
     "activeTab",
-    "storage"
+    "storage",
+    "nativeMessaging"
   ],
   "host_permissions": [
     "https://flow.google.com/*",
