@@ -17,7 +17,7 @@ Dự án: hoạt hình cắt giấy 2,5D bằng code (Remotion + three.js). `chu
 
 ## Quy trình một tập
 
-Làm đúng thứ tự. Ở bước có cổng: gửi Daniel thứ ghi ở cột "Cổng" rồi DỪNG; có lời duyệt mới sang bước sau. Bước 4–7 làm theo lô 5 chương, cả lô gửi một lần. Mọi lệnh chạy trong `chung/`.
+Làm đúng thứ tự. **Trước khi bắt tay vào một bước, viết một dòng nêu số bước, tên bước và skill, mục sẽ làm theo** (ví dụ: "Bước 5 `boi-canh`: skill 1 mục Cảnh mẫu của cảnh, skill 2 mục Thẻ làm một món"), rồi mới làm; agent mở đầu báo cáo bằng vai của mình và các mục skill đã đọc. Ở bước có cổng: gửi Daniel thứ ghi ở cột "Cổng" rồi DỪNG; có lời duyệt mới sang bước sau. Bước 4–7 làm theo lô 5 chương, cả lô gửi một lần. Mọi lệnh chạy trong `chung/`.
 
 | # | Bước | Làm gì, theo luật nào | Cổng: gửi Daniel rồi dừng |
 |---|---|---|---|

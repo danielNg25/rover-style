@@ -18,8 +18,8 @@
    "co": 11714
   },
   "CLAUDE.md": {
-   "bam": "4804905aa66d229ef2a703374551836709edfb397c5da6b175065d0eae0483b3",
-   "co": 7548
+   "bam": "f40aec5fc3192bcb0f3292145c81c9537121e14979e23025a9bd715872656812",
+   "co": 7895
   },
   "chung/compare.sh": {
    "bam": "93fdda1711eadadca8b5241612c7e13aab8565241f80f03395effec7e467a3d3",
@@ -82,8 +82,8 @@
    "co": 38762
   },
   "chung/skills/1-dung-canh.md": {
-   "bam": "2f4b95fa4405d2ab4f7437d806fbb9f24575fbcd2e7b6aca88c77043a01506a7",
-   "co": 45448
+   "bam": "130bc570501065fe974381e4ca6ef0c55d92ea991ffd450cfd5865191a319ee5",
+   "co": 46353
   },
   "chung/skills/2-chuan-mon-do.md": {
    "bam": "bb71e6782cc7833dcf89ead58664896b96dd20e20d7d491609aeaf9a8da68834",
@@ -1158,8 +1158,8 @@
    "co": 8047
   },
   "chung/tools/do_mau_khuon.py": {
-   "bam": "02798ab473e0a87fbadfbd1f3c368bbbdcbbda573d804dfa630ded630477178b",
-   "co": 7326
+   "bam": "d7379b2497dc401b03728a631020514d29dcf521f0ad3394aea798e4946559f4",
+   "co": 9092
   },
   "chung/tools/do_nhay.py": {
    "bam": "65313aaa42ae2c10ac5339ad7f86d883e3963736666810d73d739adee5b3228b",

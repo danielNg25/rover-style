@@ -68,8 +68,19 @@ def main(a):
         if K:
             l, cc = khoang(K, k, 'L'), khoang(K, k, 'C')
             print(f"{k:26}{'bộ mẫu':7}" + (f"            L {l[0]:.2f}–{l[1]:.2f}   C {cc[0]:.3f}–{cc[1]:.3f}   ({sum(1 for d in K if d[k])}/{len(K)} khung có vai này)" if l else '  (không khung nào có)'))
-    if not K: return 0
+    # Bảng màu của kênh gốc (đo 573 khung, 26/11/2026): màu ở nửa trái của ô chọn màu, góc sáng-rực gần như trống, khung nào cũng có vùng gần xám.
+    a = np.asarray(Image.open(a[0]).convert('RGB').resize((320, 180))).astype(np.float32) / 255; mx, mn = a.max(-1), a.min(-1); dd = mx - mn; S = np.where(mx > 0, dd / np.maximum(mx, 1e-6), 0)
+    H = np.where(mx == a[..., 0], ((a[..., 1] - a[..., 2]) / np.maximum(dd, 1e-6)) % 6, np.where(mx == a[..., 1], (a[..., 2] - a[..., 0]) / np.maximum(dd, 1e-6) + 2, (a[..., 0] - a[..., 1]) / np.maximum(dd, 1e-6) + 4)) * 60
+    am, xam, ruc, goc = float(((S > .25) & ((H < 70) | (H >= 345))).mean()), float((S < .15).mean()), float((S > .6).mean()), float(((S > .7) & (mx > .7)).mean())
+    print(f"{'bảng màu':26}{ai:7}  màu ấm rõ {am * 100:.0f} %   gần xám {xam * 100:.0f} %   vùng rực (S > 0,6) {ruc * 100:.0f} %   góc sáng-rực {goc * 100:.1f} %   (video gốc, mức giữa: 24 %, 15 %, dưới 10 %, 0,7 %)")
     canh = []
+    if am > 0.85: canh.append(f"CANH bang-mau  cả khung ngả ấm ({am * 100:.0f} % là màu ấm rõ): xem đèn có phải đèn chiều muộn / đèn vàng không, mặt lớn có quá vàng cam không")
+    if xam < 0.05: canh.append(f"CANH bang-mau  gần như không có vùng xám hay trầm ({xam * 100:.0f} %): cho một mặt lớn (đất, tường, trời) về gần xám")
+    if ruc > 0.30: canh.append(f"CANH bang-mau  vùng rực chiếm {ruc * 100:.0f} % khung: mặt lớn chọn ở phần ba bên trái của bảng màu")
+    if goc > 0.03: canh.append(f"CANH bang-mau  màu vừa sáng vừa rực chiếm {goc * 100:.1f} % khung: rực thì kéo tối xuống, sáng thì kéo nhạt đi")
+    if not K:
+        for d in canh: print(d)
+        return 0
     for k in VAI[:3]:
         l, cc = khoang(K, k, 'L'), khoang(K, k, 'C')
         if not (A[k] and l and A[k]['pt'] > 0.03): continue
