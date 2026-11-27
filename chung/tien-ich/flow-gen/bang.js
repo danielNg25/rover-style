@@ -67,13 +67,6 @@ function veViec({v, h, xong, bo}) {
     if (r && r.ok) { anh.querySelectorAll('.mau').forEach((x) => x.classList.add('vua')); bao(`Đã chép cả ${r.so} ảnh mẫu của "${v.ten}". Sang trang gen bấm Cmd+V MỘT lần.`, 'xong'); }
     else bao('Không chép được: ' + ((r && r.loi) || 'không rõ') + '. Bấm từng hình để chép.', 'loi');
   });
-  if (v.anh_mau.length) nut('Chép ảnh mẫu + lời tả', 'chinh', async () => {
-    let r;
-    try { r = await chrome.runtime.sendNativeMessage('com.cutout3d.mo_thu_muc', {chep: v.ten, loi_ta: true}); }
-    catch (e) { bao('Nút này cần cầu nối. Chạy MỘT lần trong Terminal (ở thư mục cutout3d):\n  bash chung/tien-ich/flow-gen/cai-may.sh ' + chrome.runtime.id + '\nrồi bấm lại.', 'loi'); return; }
-    if (r && r.ok) { anh.querySelectorAll('.mau').forEach((x) => x.classList.add('vua')); bao(`Đã chép ${r.so} ảnh mẫu VÀ lời tả của "${v.ten}". Sang trang gen bấm Cmd+V một lần. Trang chỉ nhận ảnh (hoặc chỉ nhận chữ) thì dùng hai nút chép riêng.`, 'xong'); }
-    else bao('Không chép được: ' + ((r && r.loi) || 'không rõ') + '.', 'loi');
-  });
   nut('Lấy ảnh tải mới nhất', 'chinh', async () => {
     if (xong && !confirm(`Việc "${v.ten}" đã có ảnh. Thay bằng ảnh mới nhất trong thư mục Tải về?`)) return;
     const goi = (chac) => chrome.runtime.sendNativeMessage('com.cutout3d.mo_thu_muc', {lay: v.ten, chac});

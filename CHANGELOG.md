@@ -16,6 +16,8 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 
 - **Extension hàng chờ gen 0.10.0: nút "Chép ảnh mẫu + lời tả".** Cầu nối đưa cả các file ảnh mẫu và lời tả vào bộ nhớ tạm trong một lần chép; trang gen có nhận cả hai trong một lần dán hay không thì chưa thử. `chung/tien-ich/flow-gen/bang.js`, `may/mo_thu_muc.py`, `manifest.json`. Hình không đổi.
 
+- **Extension hàng chờ gen 0.10.1: bỏ nút "Chép ảnh mẫu + lời tả".** Daniel thử: trang gen không nhận cả ảnh và chữ trong một lần dán. Nút "Chép cả N ảnh mẫu" chạy được, giữ nguyên. `chung/tien-ich/flow-gen/bang.js`, `manifest.json`. Hình không đổi.
+
 ### Luật
 
 - **Nới luật màu (phiếu P1127-01, P1127-02; Daniel: "hướng của luật thì đúng, nhưng cách áp đang quá cứng, và áp cho Doom là sai chỗ").** Luật chọn màu của 26/11 chỉ còn áp cho MẶT LỚN (tường, sàn, trời, đất). Màu nhận diện của nhân vật, nơi chốn, lửa và nguồn sáng được miễn, giữ rực. Số đo của `chung/tools/do_mau_khuon.py` chỉ là cảnh báo để nhìn lại ảnh: không đặt làm đích trong phiếu giao; bỏ cảnh báo "góc sáng-rực", cảnh báo vùng rực ghi rõ phải giữ màu nhận diện. Thứ đã duyệt (tập Doom) không sửa theo luật màu. `chung/tools/kiem_loi_ta.py`: câu màu trong lời tả gen cho màu nhận diện rực ở vùng nhỏ; chữ vivid, saturated chỉ còn là cảnh báo. Sửa ở skill 1 (dòng Màu), skill 2 (dòng Kiểu vẽ của ảnh gen). Hình không đổi.
