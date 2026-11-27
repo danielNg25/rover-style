@@ -28,6 +28,10 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 
 - **Nới luật màu (phiếu P1127-01, P1127-02; Daniel: "hướng của luật thì đúng, nhưng cách áp đang quá cứng, và áp cho Doom là sai chỗ").** Luật chọn màu của 26/11 chỉ còn áp cho MẶT LỚN (tường, sàn, trời, đất). Màu nhận diện của nhân vật, nơi chốn, lửa và nguồn sáng được miễn, giữ rực. Số đo của `chung/tools/do_mau_khuon.py` chỉ là cảnh báo để nhìn lại ảnh: không đặt làm đích trong phiếu giao; bỏ cảnh báo "góc sáng-rực", cảnh báo vùng rực ghi rõ phải giữ màu nhận diện. Thứ đã duyệt (tập Doom) không sửa theo luật màu. `chung/tools/kiem_loi_ta.py`: câu màu trong lời tả gen cho màu nhận diện rực ở vùng nhỏ; chữ vivid, saturated chỉ còn là cảnh báo. Sửa ở skill 1 (dòng Màu), skill 2 (dòng Kiểu vẽ của ảnh gen). Hình không đổi.
 
+### Engine (dựng lại thì hình đổi)
+
+- **Mặt nhân vật một màu da phẳng (phiếu P1127-05; Daniel: "kênh của mình tuyệt đối không có gradient, kiểu cắt giấy mà").** Hàm vẽ đầu nhìn thẳng thôi phủ vòng nâu tối dần ra viền (`form`) và thôi dùng dải màu chéo `skinA`→`skinB`→`skinC`; mặt, hai tai, mí mắt tô `skinB`. Mảng da che mắt cũ của mắt chuẩn cũng phẳng. File: `chung/src/mould/draw.ts`, `chung/src/mould/matChuan.ts`. DỰNG LẠI THÌ HÌNH ĐỔI ở mọi kênh: mọi mặt nhìn thẳng mất vòng tối quanh viền; cảnh đã duyệt dựng lại sẽ khác cảnh cũ cạnh nó. `kenh/anime-analyst/cast/ninjaAddOns.ts` tự chép dải màu này: phiên kênh đó tự sửa. Bản thử chép `draw.ts` trước ngày này (phiếu P1127-04) phải chép lại bốn dòng sửa.
+
 ## 2026-11-26
 
 ### Sau khi lấy về

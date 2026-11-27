@@ -26,7 +26,7 @@ const MO = (v: number) => -80 + (v + 58) * (160 / 138);
 export const veMat = (c: C2, s: Spec, o: MatOpt = {}) => {
   const K = s.palette ?? {}, e = s.expr, {rx, ry} = MAT, y0 = MAT.y + (s.faceDy ?? 0) * 0.4, kx = rx / 86, nhan = o.nhan ?? 0;
   if (!s.noEyes) {   // spec cũ chưa tắt mắt của bộ khuôn: tô da che đi (đường lui; nên dùng `matChuan(spec)` để khỏi cần)
-    const da = c.createLinearGradient(70, 200, 470, 500); da.addColorStop(0, K.skinA ?? '#dba57d'); da.addColorStop(0.45, K.skinB ?? '#cb9875'); da.addColorStop(1, K.skinC ?? '#b98a6e');
+    const da = K.skinB ?? '#cb9875';   // một màu da phẳng, như mặt
     c.beginPath(); c.ellipse(196, 292, 96, s.beard ? 84 : 96, 0, 0, Math.PI * 2); c.ellipse(361, 292, 96, s.beard ? 84 : 96, 0, 0, Math.PI * 2); c.fillStyle = da; c.fill();
   }
   const coMi = !!(s.lashes || o.mi), vien = K.lidEdge ?? '#85624b', mi = coMi ? (K.brow ?? '#2a1f18') : vien, trang = s.whites ?? '#f6f2ea';

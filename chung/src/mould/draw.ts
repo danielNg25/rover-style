@@ -215,7 +215,7 @@ const DAZED_LID = 4;
 const lashes = (c: C, x: number, y: number, out: number, up: number) => {
   ([[8, 40], [34, 44], [60, 34]] as number[][]).forEach(([deg, len]) => { const a = (deg * Math.PI) / 180; fillP(c, blade([x, y], [x + out * Math.cos(a) * len, y - up * Math.sin(a) * len], up * out * -3, 9), K.brow); });
 };
-const eye = (c: C, side: 'L' | 'R', e: Expr, skin: CanvasGradient, white: CanvasGradient, dy: number, lash = false) => {
+const eye = (c: C, side: 'L' | 'R', e: Expr, skin: string | CanvasGradient, white: CanvasGradient, dy: number, lash = false) => {
   const cx = EYE[side], cy = EYE.y + dy, out = side === 'L' ? -1 : 1, xo = cx + out * (EYE.rx + 5), xi = cx - out * (EYE.rx + 5), xm = cx - out * 81;
   if (e.closed) { strokeP(c, `M${cx - 66},${cy + 14} Q${cx},${cy + 56} ${cx + 66},${cy + 14}`, lash ? K.brow : K.lidEdge, lash ? 9 : 7); if (lash) lashes(c, cx + out * 62, cy + 18, out, -1); return; }
   const lid0 = (side === 'L' ? e.lidL : e.lidR) ?? (e.upper === 'none' ? null : LID[e.upper]);
@@ -319,9 +319,8 @@ const headFront = (c: C, s: Spec) => {
   }
   // 'bun': the level hair with a knot standing on the crown (drawn first, so the hair mass covers its foot)
   if (s.hair === 'bun') { ell(c, 272, 42, 66, 50, K.hair); strokeP(c, 'M226,44 Q272,14 318,44', K.hairLine, 5); }
-  const skin = c.createLinearGradient(70, 200, 470, 500); skin.addColorStop(0, K.skinA); skin.addColorStop(0.45, K.skinB); skin.addColorStop(1, K.skinC);
+  const skin = K.skinB;   // mặt, tai, mí: MỘT màu da phẳng (Daniel 27/11/2026: "kênh của mình tuyệt đối không có gradient, kiểu cắt giấy mà"); không chuyển sắc, không vòng tối ra viền
   const white = c.createLinearGradient(110, 0, 444, 0); white.addColorStop(0, s.whites ?? K.whiteA); white.addColorStop(1, s.whites ?? K.whiteB);
-  const form = c.createRadialGradient(215, 285, 186, 215, 285, 300); form.addColorStop(0, 'rgba(138,90,68,0)'); form.addColorStop(1, 'rgba(138,90,68,0.3)');
   const hairD = soft([...h.top, ...h.lock, [300, 300]], [...h.spikes, n + 2]);
   if (!bald) fillP(c, hairD, K.hair);
   if (s.temples && !bald) {   // the two temples in another colour, a jagged upper edge, cut to the hair
@@ -341,7 +340,7 @@ const headFront = (c: C, s: Spec) => {
   const jn = (() => { const a = jawNums(s.faceShape ?? 'round'); if (!s.faceTo) return a; const b = jawNums(s.faceTo.shape), k = Math.max(0, Math.min(1, s.faceTo.k)); return a.map((x, q) => x + (b[q] - x) * k); })();
   const jaw = `C${jn.slice(0, 6).join(' ')} L${jn[6]},${jn[7]} C${jn.slice(8).join(' ')}`;
   const face = `M81,300 C81,${h.skull + 60} 190,${h.skull} 272,${h.skull} C354,${h.skull} 463,${h.skull + 60} 463,300 ${jaw} Z`;
-  fillP(c, face, skin); fillP(c, face, form);
+  fillP(c, face, skin);
   if (ROCK) rockTex(c, face, 50, 90, 490, 590);
   if (ROCK?.arm) { const m = 'M166,398 L232,376 L312,376 L378,398 L396,486 L330,530 L214,530 L148,486 Z'; fillP(c, m, K.skinB); strokeP(c, m, ROCK.crack, 8, 'butt'); }
   if (s.blush) ([132, 412] as number[]).forEach((bx) => { const g = c.createRadialGradient(bx, 404, 4, bx, 404, 50); g.addColorStop(0, s.blush + 'b0'); g.addColorStop(1, s.blush + '00'); c.save(); c.clip(new Path2D(face)); c.translate(0, 404 * (1 - 0.62)); c.scale(1, 0.62); ell(c, bx, 404, 50, 50, g); c.restore(); });
