@@ -41,22 +41,6 @@ if lay:
     except Exception as e:
         tra({'ok': False, 'loi': str(e)})
     sys.exit(0)
-chep = os.path.basename(str(t.get('chep') or ''))          # chép MỌI ảnh mẫu của một việc vào bộ nhớ tạm (như chép nhiều file trong Finder)
-if chep:
-    try:
-        d = GEN / 'cho-gen' / chep
-        anh = [str(d / os.path.basename(a)) for a in json.loads((d / 'viec.json').read_text(encoding='utf-8')).get('anh_mau', [])]
-        anh = [a for a in anh if os.path.isfile(a)]
-        if not anh: raise RuntimeError('việc này không có ảnh mẫu')
-        if sys.platform != 'darwin': raise RuntimeError('chép nhiều ảnh một lần mới làm cho macOS')
-        js = ('ObjC.import("AppKit"); function run(argv) { var pb = $.NSPasteboard.generalPasteboard; pb.clearContents; '
-              'var u = $.NSMutableArray.alloc.init; var chu = argv.shift(); for (var i = 0; i < argv.length; i++) u.addObject($.NSURL.fileURLWithPath(argv[i])); var ok = pb.writeObjects(u); if (chu) ok = ok && pb.setStringForType($(chu), "public.utf8-plain-text"); return String(ok) + " " + pb.pasteboardItems.count; }')
-        r = subprocess.run(['/usr/bin/osascript', '-l', 'JavaScript', '-e', js, (d / 'loi-ta.txt').read_text(encoding='utf-8') if t.get('loi_ta') else ''] + anh, capture_output=True, text=True, timeout=15)
-        if r.returncode or r.stdout.split() != ['true', str(len(anh))]: raise RuntimeError((r.stderr or r.stdout).strip() or 'không ghi được bộ nhớ tạm')
-        tra({'ok': True, 'so': len(anh), 'loi_ta': bool(t.get('loi_ta'))})
-    except Exception as e:
-        tra({'ok': False, 'loi': str(e)})
-    sys.exit(0)
 ten = os.path.basename(str(t.get('ten') or ''))
 f = GEN / ten if ten else None
 viec = os.path.basename(str(t.get('viec') or ''))          # mở thư mục của một việc trong hàng chờ
