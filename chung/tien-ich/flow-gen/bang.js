@@ -67,7 +67,16 @@ function veViec({v, h, xong, bo}) {
     if (r && r.ok) { anh.querySelectorAll('.mau').forEach((x) => x.classList.add('vua')); bao(`Đã chép cả ${r.so} ảnh mẫu của "${v.ten}". Sang trang gen bấm Cmd+V MỘT lần.`, 'xong'); }
     else bao('Không chép được: ' + ((r && r.loi) || 'không rõ') + '. Bấm từng hình để chép.', 'loi');
   });
-  nut('Lưu ảnh đã tải về', 'chinh', async () => { await luuAnh(v); });
+  nut('Lấy ảnh tải mới nhất', 'chinh', async () => {
+    if (xong && !confirm(`Việc "${v.ten}" đã có ảnh. Thay bằng ảnh mới nhất trong thư mục Tải về?`)) return;
+    const goi = (chac) => chrome.runtime.sendNativeMessage('com.cutout3d.mo_thu_muc', {lay: v.ten, chac});
+    let r;
+    try { r = await goi(false); if (r && r.cu) { if (!confirm(`Ảnh mới nhất trong Tải về là "${r.anh}", tải cách đây ${r.phut} phút. Vẫn dùng ảnh này cho "${v.ten}"?`)) return; r = await goi(true); } }
+    catch (e) { bao('Nút này cần cầu nối. Chạy MỘT lần trong Terminal (ở thư mục cutout3d):\n  bash chung/tien-ich/flow-gen/cai-may.sh ' + chrome.runtime.id + '\nrồi bấm lại. Trong lúc đó: kéo thả ảnh vào ô việc.', 'loi'); return; }
+    if (!(r && r.ok)) { bao('Không lấy được ảnh: ' + ((r && r.loi) || 'không rõ') + '. Kéo thả ảnh vào ô việc thay thế.', 'loi'); return; }
+    await docHangCho(); bao(`Đã lấy "${r.anh}" (tải cách đây ${r.phut} phút) làm ${r.luu}. Nhìn hình viền xanh trong thẻ "${v.ten}": sai ảnh thì kéo thả ảnh đúng vào thẻ.`, 'xong');
+  });
+  nut('Lưu ảnh đã tải về', '', async () => { await luuAnh(v); });
   nut(xong ? 'Mở thư mục ảnh' : 'Mở thư mục việc', '', async () => {
     let r;
     try { r = await chrome.runtime.sendNativeMessage('com.cutout3d.mo_thu_muc', xong ? {ten: v.luu_vao.replace(/^gen\//, '')} : {viec: v.ten}); }

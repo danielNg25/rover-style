@@ -17,6 +17,30 @@ def tra(d):
 
 
 t = doc() or {}
+lay = os.path.basename(str(t.get('lay') or ''))            # lấy ảnh MỚI NHẤT trong thư mục Tải về làm ảnh của một việc
+if lay:
+    try:
+        import shutil, time
+        v = json.loads((GEN / 'cho-gen' / lay / 'viec.json').read_text(encoding='utf-8'))
+        dich = GEN / os.path.basename(str(v['luu_vao']))
+        tai = Path.home() / 'Downloads'
+        ds = [f for f in tai.iterdir() if f.is_file() and f.suffix.lower() in ('.png', '.jpg', '.jpeg', '.webp')]
+        if not ds: raise RuntimeError('không thấy ảnh nào trong ' + str(tai))
+        moi = max(ds, key=lambda f: f.stat().st_mtime)
+        phut = int((time.time() - moi.stat().st_mtime) / 60)
+        if phut >= 10 and not t.get('chac'):
+            tra({'ok': False, 'cu': True, 'anh': moi.name, 'phut': phut}); sys.exit(0)
+        tam = dich.with_name(dich.name + '.tam.png')
+        if moi.suffix.lower() == '.png': shutil.copyfile(moi, tam)
+        elif sys.platform == 'darwin':
+            r = subprocess.run(['/usr/bin/sips', '-s', 'format', 'png', str(moi), '--out', str(tam)], capture_output=True, text=True, timeout=30)
+            if r.returncode or not tam.is_file(): raise RuntimeError('không đổi được sang PNG: ' + (r.stderr or r.stdout).strip()[:200])
+        else: raise RuntimeError('ảnh không phải PNG; đổi định dạng mới làm cho macOS')
+        os.replace(tam, dich)
+        tra({'ok': True, 'anh': moi.name, 'phut': phut, 'luu': 'chung/gen/' + dich.name})
+    except Exception as e:
+        tra({'ok': False, 'loi': str(e)})
+    sys.exit(0)
 chep = os.path.basename(str(t.get('chep') or ''))          # chép MỌI ảnh mẫu của một việc vào bộ nhớ tạm (như chép nhiều file trong Finder)
 if chep:
     try:
