@@ -20,6 +20,8 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 
 - **Extension hàng chờ gen 0.10.2: bỏ nút "Chép cả N ảnh mẫu".** Daniel thử: dán nhiều ảnh một lần vào Flow lúc được lúc thiếu, và Flow báo "hoạt động bất thường" cho lượt tạo đó. Ảnh mẫu lại chép từng hình như trước; cầu nối bỏ lệnh `chep`. `chung/tien-ich/flow-gen/bang.js`, `may/mo_thu_muc.py`, `HUONG-DAN.md`, `manifest.json`. Hình không đổi.
 
+- **Extension hàng chờ gen 0.10.3: bỏ nút "Lấy ảnh tải mới nhất".** macOS không cho cầu nối đọc thư mục Tải về trên máy Daniel. Lưu ảnh bằng kéo thả vào ô việc hoặc nút "Lưu ảnh đã tải về"; cầu nối chỉ còn mở thư mục. `chung/tien-ich/flow-gen/bang.js`, `may/mo_thu_muc.py`, `HUONG-DAN.md`, `manifest.json`. Hình không đổi.
+
 ### Luật
 
 - **Nới luật màu (phiếu P1127-01, P1127-02; Daniel: "hướng của luật thì đúng, nhưng cách áp đang quá cứng, và áp cho Doom là sai chỗ").** Luật chọn màu của 26/11 chỉ còn áp cho MẶT LỚN (tường, sàn, trời, đất). Màu nhận diện của nhân vật, nơi chốn, lửa và nguồn sáng được miễn, giữ rực. Số đo của `chung/tools/do_mau_khuon.py` chỉ là cảnh báo để nhìn lại ảnh: không đặt làm đích trong phiếu giao; bỏ cảnh báo "góc sáng-rực", cảnh báo vùng rực ghi rõ phải giữ màu nhận diện. Thứ đã duyệt (tập Doom) không sửa theo luật màu. `chung/tools/kiem_loi_ta.py`: câu màu trong lời tả gen cho màu nhận diện rực ở vùng nhỏ; chữ vivid, saturated chỉ còn là cảnh báo. Sửa ở skill 1 (dòng Màu), skill 2 (dòng Kiểu vẽ của ảnh gen). Hình không đổi.

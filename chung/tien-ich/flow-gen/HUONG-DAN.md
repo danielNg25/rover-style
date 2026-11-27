@@ -11,8 +11,7 @@ Bảng bên cạnh trang gen, đọc hàng chờ `chung/gen/cho-gen/`. Extension
 1. **Chép lời tả**, sang trang gen bấm Cmd+V.
 2. Bấm từng **hình mẫu** trong thẻ để chép ảnh đó, sang trang gen bấm Cmd+V. Mỗi lần chép một ảnh.
 3. Tạo ảnh trên trang, tải tấm ưng ý về.
-4. **Lấy ảnh tải mới nhất** (nút ở từng việc): lấy file ảnh mới nhất trong thư mục `~/Downloads` làm ảnh của việc đó; ảnh tải quá 10 phút thì bảng hỏi lại. Cần cầu nối. Hoặc:
-   **Kéo ảnh vừa tải từ danh sách tải về của Chrome (hoặc từ Finder) thả vào ô của việc**: ảnh được ghi vào `chung/gen/<tên>.png`, thẻ chuyển sang xanh. Việc đã có ảnh thì bảng hỏi trước khi thay. Nút **Lưu ảnh đã tải về** (chọn file) vẫn còn.
+4. **Kéo ảnh vừa tải từ danh sách tải về của Chrome (hoặc từ Finder) thả vào ô của việc**: ảnh được ghi vào `chung/gen/<tên>.png`, thẻ chuyển sang xanh. Việc đã có ảnh thì bảng hỏi trước khi thay. Nút **Lưu ảnh đã tải về** (chọn file) vẫn còn.
 
 Việc không cần nữa: **Bỏ việc này** (khôi phục lại được).
 

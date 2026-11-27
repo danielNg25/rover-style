@@ -60,16 +60,7 @@ function veViec({v, h, xong, bo}) {
   const hang = document.createElement('div'); hang.className = 'hang';
   const nut = (chu, lop, lam) => { const b = document.createElement('button'); b.textContent = chu; if (lop) b.className = lop; b.onclick = async () => { try { if (!(await coQuyen())) return; await lam(b); } catch (e) { bao('Lỗi: ' + (e.message || e), 'loi'); } }; hang.append(b); return b; };
   nut('Chép lời tả', 'chinh', async () => { await navigator.clipboard.writeText(await docChu(h, 'loi-ta.txt')); bao(`Đã chép lời tả của "${v.ten}". Sang trang gen bấm Cmd+V. Ảnh mẫu: bấm từng hình ở trên để chép, rồi dán.`, 'xong'); });
-  nut('Lấy ảnh tải mới nhất', 'chinh', async () => {
-    if (xong && !confirm(`Việc "${v.ten}" đã có ảnh. Thay bằng ảnh mới nhất trong thư mục Tải về?`)) return;
-    const goi = (chac) => chrome.runtime.sendNativeMessage('com.cutout3d.mo_thu_muc', {lay: v.ten, chac});
-    let r;
-    try { r = await goi(false); if (r && r.cu) { if (!confirm(`Ảnh mới nhất trong Tải về là "${r.anh}", tải cách đây ${r.phut} phút. Vẫn dùng ảnh này cho "${v.ten}"?`)) return; r = await goi(true); } }
-    catch (e) { bao('Nút này cần cầu nối. Chạy MỘT lần trong Terminal (ở thư mục cutout3d):\n  bash chung/tien-ich/flow-gen/cai-may.sh ' + chrome.runtime.id + '\nrồi bấm lại. Trong lúc đó: kéo thả ảnh vào ô việc.', 'loi'); return; }
-    if (!(r && r.ok)) { bao('Không lấy được ảnh: ' + ((r && r.loi) || 'không rõ') + '. Kéo thả ảnh vào ô việc thay thế.', 'loi'); return; }
-    await docHangCho(); bao(`Đã lấy "${r.anh}" (tải cách đây ${r.phut} phút) làm ${r.luu}. Nhìn hình viền xanh trong thẻ "${v.ten}": sai ảnh thì kéo thả ảnh đúng vào thẻ.`, 'xong');
-  });
-  nut('Lưu ảnh đã tải về', '', async () => { await luuAnh(v); });
+  nut('Lưu ảnh đã tải về', 'chinh', async () => { await luuAnh(v); });
   nut(xong ? 'Mở thư mục ảnh' : 'Mở thư mục việc', '', async () => {
     let r;
     try { r = await chrome.runtime.sendNativeMessage('com.cutout3d.mo_thu_muc', xong ? {ten: v.luu_vao.replace(/^gen\//, '')} : {viec: v.ten}); }
