@@ -6,6 +6,10 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 
 ## 2026-11-27
 
+### Công cụ
+
+- **Extension hàng chờ gen 0.7.0: kéo thả ảnh.** Kéo ảnh đã tải từ danh sách tải về của Chrome hoặc từ Finder, thả vào ô của một việc là lưu thành ảnh của việc đó (trước chỉ có nút chọn file). `chung/tien-ich/flow-gen/bang.js`, `bang.html`. Máy khác: bấm tải lại extension ở `chrome://extensions`. Hình không đổi.
+
 ### Luật
 
 - **Nới luật màu (phiếu P1127-01, P1127-02; Daniel: "hướng của luật thì đúng, nhưng cách áp đang quá cứng, và áp cho Doom là sai chỗ").** Luật chọn màu của 26/11 chỉ còn áp cho MẶT LỚN (tường, sàn, trời, đất). Màu nhận diện của nhân vật, nơi chốn, lửa và nguồn sáng được miễn, giữ rực. Số đo của `chung/tools/do_mau_khuon.py` chỉ là cảnh báo để nhìn lại ảnh: không đặt làm đích trong phiếu giao; bỏ cảnh báo "góc sáng-rực", cảnh báo vùng rực ghi rõ phải giữ màu nhận diện. Thứ đã duyệt (tập Doom) không sửa theo luật màu. `chung/tools/kiem_loi_ta.py`: câu màu trong lời tả gen cho màu nhận diện rực ở vùng nhỏ; chữ vivid, saturated chỉ còn là cảnh báo. Sửa ở skill 1 (dòng Màu), skill 2 (dòng Kiểu vẽ của ảnh gen). Hình không đổi.
