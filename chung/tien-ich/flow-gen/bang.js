@@ -60,6 +60,13 @@ function veViec({v, h, xong, bo}) {
   const hang = document.createElement('div'); hang.className = 'hang';
   const nut = (chu, lop, lam) => { const b = document.createElement('button'); b.textContent = chu; if (lop) b.className = lop; b.onclick = async () => { try { if (!(await coQuyen())) return; await lam(b); } catch (e) { bao('Lỗi: ' + (e.message || e), 'loi'); } }; hang.append(b); return b; };
   nut('Chép lời tả', 'chinh', async () => { await navigator.clipboard.writeText(await docChu(h, 'loi-ta.txt')); bao(`Đã chép lời tả của "${v.ten}". Sang trang gen bấm Cmd+V. Ảnh mẫu: bấm từng hình ở trên để chép, rồi dán.`, 'xong'); });
+  if (v.anh_mau.length > 1) nut(`Chép cả ${v.anh_mau.length} ảnh mẫu`, 'chinh', async () => {
+    let r;
+    try { r = await chrome.runtime.sendNativeMessage('com.cutout3d.mo_thu_muc', {chep: v.ten}); }
+    catch (e) { bao('Chép nhiều ảnh một lần cần cầu nối. Chạy MỘT lần trong Terminal (ở thư mục cutout3d):\n  bash chung/tien-ich/flow-gen/cai-may.sh ' + chrome.runtime.id + '\nrồi bấm lại. Trong lúc đó: bấm từng hình để chép.', 'loi'); return; }
+    if (r && r.ok) { anh.querySelectorAll('.mau').forEach((x) => x.classList.add('vua')); bao(`Đã chép cả ${r.so} ảnh mẫu của "${v.ten}". Sang trang gen bấm Cmd+V MỘT lần.`, 'xong'); }
+    else bao('Không chép được: ' + ((r && r.loi) || 'không rõ') + '. Bấm từng hình để chép.', 'loi');
+  });
   nut('Lưu ảnh đã tải về', 'chinh', async () => { await luuAnh(v); });
   nut(xong ? 'Mở thư mục ảnh' : 'Mở thư mục việc', '', async () => {
     let r;

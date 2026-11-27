@@ -10,6 +10,7 @@ Bảng bên cạnh trang gen, đọc hàng chờ `chung/gen/cho-gen/`. Extension
 ## Dùng
 1. **Chép lời tả**, sang trang gen bấm Cmd+V.
 2. Bấm từng **hình mẫu** trong thẻ để chép ảnh đó, sang trang gen bấm Cmd+V. Mỗi lần chép một ảnh.
+   Việc có từ hai ảnh mẫu: nút **Chép cả N ảnh mẫu** đưa mọi ảnh vào bộ nhớ tạm, sang trang gen dán một lần (cần cầu nối `cai-may.sh`, chỉ macOS).
 3. Tạo ảnh trên trang, tải tấm ưng ý về.
 4. **Kéo ảnh vừa tải từ danh sách tải về của Chrome (hoặc từ Finder) thả vào ô của việc**: ảnh được ghi vào `chung/gen/<tên>.png`, thẻ chuyển sang xanh. Việc đã có ảnh thì bảng hỏi trước khi thay. Nút **Lưu ảnh đã tải về** (chọn file) vẫn còn.
 
