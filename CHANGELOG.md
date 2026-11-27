@@ -10,7 +10,7 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 
 - **Extension hàng chờ gen 0.7.0: kéo thả ảnh.** Kéo ảnh đã tải từ danh sách tải về của Chrome hoặc từ Finder, thả vào ô của một việc là lưu thành ảnh của việc đó (trước chỉ có nút chọn file). `chung/tien-ich/flow-gen/bang.js`, `bang.html`, `manifest.json`, `HUONG-DAN.md` (code vào ở commit kế sau dòng này). Máy khác: bấm tải lại extension ở `chrome://extensions`. Hình không đổi.
 
-- **Extension hàng chờ gen 0.8.0: chép mọi ảnh mẫu một lần.** Nút "Chép cả N ảnh mẫu" nhờ cầu nối đưa các file ảnh mẫu của việc vào bộ nhớ tạm của macOS, dán một lần ở trang gen. `chung/tien-ich/flow-gen/bang.js`, `may/mo_thu_muc.py`. Máy khác: tải lại extension; chưa cài cầu nối thì chạy `cai-may.sh`. Hình không đổi.
+- **Extension hàng chờ gen 0.8.0: chép mọi ảnh mẫu một lần.** Nút "Chép cả N ảnh mẫu" nhờ cầu nối đưa các file ảnh mẫu của việc vào bộ nhớ tạm của macOS, dán một lần ở trang gen. `chung/tien-ich/flow-gen/bang.js`, `may/mo_thu_muc.py`, `manifest.json` (commit `ee96cb8` lỡ ghi `manifest.json` rỗng, commit kế sửa lại: lấy bản từ commit kế đó trở đi). Máy khác: tải lại extension; chưa cài cầu nối thì chạy `cai-may.sh`. Hình không đổi.
 
 ### Luật
 
