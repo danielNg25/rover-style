@@ -13,6 +13,7 @@
   .viec.co { border-color: var(--xong); border-left-width: 6px; background: color-mix(in srgb, var(--xong) 14%, var(--nen)); }
   .viec.chua { border-color: var(--loi); border-left-width: 6px; background: color-mix(in srgb, var(--loi) 12%, var(--nen)); }
   .viec.bo { opacity: .6; border-style: dashed; } .bo .nhan { background: var(--mo); }
+  .viec.tha { outline: 3px dashed var(--nhan); outline-offset: 2px; }
   .viec.dang { outline: 2px solid var(--nhan); outline-offset: 1px; }
   .nhan { display: inline-block; font-size: 12px; font-weight: 700; padding: 1px 7px; border-radius: 10px; color: var(--nen); margin-bottom: 4px; }
   .co .nhan { background: var(--xong); } .chua .nhan { background: var(--loi); }
@@ -30,7 +31,7 @@
   <h1>Hàng chờ gen ảnh (cutout3d)</h1>
   <div class="hang"><button id="chon" class="chinh">Chọn thư mục cutout3d</button><button id="tai" disabled>Đọc lại</button></div>
   <div class="mo" id="dau" style="margin-top:6px">Chọn thư mục <b>cutout3d</b> của dự án (chọn <b>chung</b> hay <b>gen</b> cũng được). Chỉ phải chọn một lần.</div>
-  <div style="margin-top:8px" class="mo">Extension không đụng vào trang gen: chép lời tả rồi dán (Cmd+V); bấm từng hình mẫu để chép rồi dán; tải ảnh về rồi bấm lưu.</div>
+  <div style="margin-top:8px" class="mo">Extension không đụng vào trang gen: chép lời tả rồi dán (Cmd+V); bấm từng hình mẫu để chép rồi dán; tải ảnh về rồi <b>kéo ảnh từ danh sách tải về của Chrome thả vào ô của việc</b> (hoặc bấm "Lưu ảnh đã tải về").</div>
   <div id="bao"></div>
   <div id="ds"></div>
   <script src="bang.js"></script>

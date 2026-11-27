@@ -8,7 +8,7 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 
 ### Công cụ
 
-- **Extension hàng chờ gen 0.7.0: kéo thả ảnh.** Kéo ảnh đã tải từ danh sách tải về của Chrome hoặc từ Finder, thả vào ô của một việc là lưu thành ảnh của việc đó (trước chỉ có nút chọn file). `chung/tien-ich/flow-gen/bang.js`, `bang.html`. Máy khác: bấm tải lại extension ở `chrome://extensions`. Hình không đổi.
+- **Extension hàng chờ gen 0.7.0: kéo thả ảnh.** Kéo ảnh đã tải từ danh sách tải về của Chrome hoặc từ Finder, thả vào ô của một việc là lưu thành ảnh của việc đó (trước chỉ có nút chọn file). `chung/tien-ich/flow-gen/bang.js`, `bang.html`, `manifest.json`, `HUONG-DAN.md` (code vào ở commit kế sau dòng này). Máy khác: bấm tải lại extension ở `chrome://extensions`. Hình không đổi.
 
 ### Luật
 

@@ -1,5 +1,5 @@
 // Bảng bên cạnh: đọc hàng chờ chung/gen/cho-gen. KHÔNG đọc, KHÔNG sửa trang web nào (Flow chặn extension tự điền, 26/11/2026).
-// Mọi thao tác trên trang do tay người làm: chép lời tả rồi dán, bấm hình mẫu để chép ảnh rồi dán, tải ảnh về rồi bấm lưu.
+// Mọi thao tác trên trang do tay người làm: chép lời tả rồi dán, bấm hình mẫu để chép ảnh rồi dán, tải ảnh về rồi kéo thả vào ô của việc (hoặc bấm lưu).
 const $ = (id) => document.getElementById(id);
 let goc = null;          // FileSystemDirectoryHandle của chung/gen
 const bao = (t, loai = '') => { $('bao').textContent = t; $('bao').className = loai; };
@@ -73,15 +73,41 @@ function veViec({v, h, xong, bo}) {
     const w = await (await h.getFileHandle('da-bo.txt', {create: true})).createWritable(); await w.write('Daniel bỏ việc này trong extension flow-gen, ' + new Date().toLocaleString('vi-VN') + '\n'); await w.close();
     bao('Đã bỏ việc ' + v.ten + '.'); await docHangCho();
   });
+  if (!bo) nhanTha(o, v, xong);
   o.append(hang); $('ds').append(o);
 }
 
-async function luuAnh(v) {
-  const [fh] = await showOpenFilePicker({types: [{description: 'Ảnh', accept: {'image/*': ['.png', '.jpg', '.jpeg', '.webp']}}]});
-  const f = await fh.getFile(), ten = v.luu_vao.replace(/^gen\//, '');
+const laAnh = (f) => /^image\//.test(f.type) || /\.(png|jpe?g|webp)$/i.test(f.name);
+async function ghiAnh(v, f) {
+  const ten = v.luu_vao.replace(/^gen\//, '');
   const w = await (await goc.getFileHandle(ten, {create: true})).createWritable(); await w.write(await thanhPNG(f)); await w.close();
   bao(`Đã lưu ${f.name} thành chung/${v.luu_vao}. Báo phiên là ảnh của "${v.ten}" đã có.`, 'xong'); await docHangCho();
 }
+async function luuAnh(v) {
+  const [fh] = await showOpenFilePicker({types: [{description: 'Ảnh', accept: {'image/*': ['.png', '.jpg', '.jpeg', '.webp']}}]});
+  await ghiAnh(v, await fh.getFile());
+}
+// Thả ảnh (kéo từ danh sách tải về của Chrome, hoặc từ Finder) lên ô của một việc: lưu thành ảnh của việc đó.
+function nhanTha(o, v, xong) {
+  let dem = 0;
+  const coTep = (e) => [...(e.dataTransfer?.types || [])].includes('Files');
+  o.addEventListener('dragenter', (e) => { if (!coTep(e)) return; e.preventDefault(); dem++; o.classList.add('tha'); });
+  o.addEventListener('dragover', (e) => { if (!coTep(e)) return; e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; });
+  o.addEventListener('dragleave', () => { dem = Math.max(0, dem - 1); if (!dem) o.classList.remove('tha'); });
+  o.addEventListener('drop', async (e) => {
+    e.preventDefault(); e.stopPropagation(); dem = 0; o.classList.remove('tha');
+    try {
+      const tep = [...e.dataTransfer.files].filter(laAnh);
+      if (!tep.length) { bao('Thứ vừa thả không phải file ảnh. Kéo ảnh từ danh sách tải về của Chrome (hoặc từ Finder), không kéo thẳng từ trang gen.', 'loi'); return; }
+      if (tep.length > 1) { bao('Mỗi việc chỉ nhận một ảnh: thả từng ảnh lên đúng ô của việc đó.', 'loi'); return; }
+      if ((await goc.queryPermission({mode: 'readwrite'})) !== 'granted') { bao('Chưa có quyền ghi vào thư mục gen: bấm "Đọc lại", chọn "Cho phép", rồi thả lại ảnh.', 'loi'); return; }
+      if (xong && !confirm(`Việc "${v.ten}" đã có ảnh. Thay bằng ${tep[0].name}?`)) return;
+      await ghiAnh(v, tep[0]);
+    } catch (err) { bao('Lỗi khi lưu ảnh thả vào: ' + (err.message || err), 'loi'); }
+  });
+}
+// Thả trượt ra ngoài ô: không để Chrome mở ảnh đè lên bảng.
+for (const k of ['dragover', 'drop']) document.addEventListener(k, (e) => e.preventDefault());
 
 $('chon').onclick = async () => {
   try {

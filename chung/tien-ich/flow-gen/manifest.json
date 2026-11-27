@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "cutout3d: hàng chờ gen ảnh",
-  "version": "0.6.0",
-  "description": "Đọc hàng chờ chung/gen/cho-gen của dự án cutout3d: chép lời tả và ảnh mẫu để dán tay vào trang gen, lưu ảnh đã tải về đúng chỗ. Không đọc, không sửa trang web nào.",
+  "version": "0.7.0",
+  "description": "Đọc hàng chờ chung/gen/cho-gen của dự án cutout3d: chép lời tả và ảnh mẫu để dán tay vào trang gen, kéo thả ảnh đã tải về vào đúng việc để lưu. Không đọc, không sửa trang web nào.",
   "permissions": [
     "sidePanel",
     "nativeMessaging",
