@@ -34,7 +34,7 @@ export type ArmPose = {sh: number; el?: number; wrist?: number; hand?: Hand; sho
   dai?: number};   // smear: the blurred drawing of a fast swing (v3 A7)
 export type Leg = {dx?: number; lift?: number; toe?: number};
 export type Spec = {
-  view?: 'front' | 'back'; outfit: 'vest' | 'coat' | 'doom'; hair: 'sweep' | 'level' | 'bald' | 'bun' | 'smooth'; expr: Expr;
+  view?: 'front' | 'back'; outfit: 'vest' | 'coat' | 'doom'; hair: 'sweep' | 'level' | 'bald' | 'bun' | 'smooth' | 'part' | 'victory' | 'slick'; expr: Expr;
   /** outfit 'doom' only (Doctor Doom: hood, cloak over a tunic, armour): what covers the face. 'iron' (default) = the riveted mask,
    *  whose eye openings show the mould's own eyes, so the lids, the gaze and the brow of `expr` still play; 'hot' = the same mask
    *  still glowing from the forge; 'none' = the bare face inside the hood (skin, scar and expression from the usual fields). */
@@ -136,6 +136,21 @@ export type Spec = {
   capeT?: number;
   /** (23/11/2026) người `vest`: tay áo xắn tới dưới khuỷu, cẳng tay để trần. Không khai báo: tay áo dài như cũ */
   rolled?: boolean;
+  /** ---- THỬ 27/11/2026 (tập cap-1): chỉ có tác dụng khi được khai báo; không khai báo thì hình KHÔNG đổi ----
+   *  gaunt 0..1: người gầy thật: tay và chân mảnh hơn, thêm cổ (đầu nâng lên, cổ da hiện giữa cằm và cổ áo). Dùng cùng `slim` (vai hẹp).
+   *  hair 'part' (rẽ ngôi lệch, chải sang một bên, thập niên 1940), 'victory' (hai cuộn victory rolls, tóc chấm vai, uốn vào trong), 'slick' (chải bóng ra sau, trán cao).
+   *  jacket: áo vét quân phục trên người `vest` (vạt áo cùng màu `palette.shirt` để tay áo ăn màu): shirt = áo sơ mi trong, lapel = màu ve áo,
+   *    epaulets = màu cầu vai, belt = màu thắt lưng, buttons = màu cúc, pockets = túi ngực và túi bụng.
+   *  skirtStyle 'pencil': váy bút chì (hẹp, thẳng, tới dưới gối) khi có `skirt`. highWaist: y của cạp quần cao (quần phủ từ đó xuống hông), braces: màu dây đeo quần.
+   *  star: màu ngôi sao giữa ngực; stripes: [màu a, màu b] sọc ngang ở bụng; straps: màu hai dây đeo da và túi thắt lưng (bộ chiến trường Captain America).
+   *  cap: mũ trên đầu nhìn từ trước: 'steel' (mũ sắt tròn M1 có dây quai), 'garrison' (mũ ca lô); mark = màu chữ A, wings = màu đôi cánh hai bên mũ.
+   *  shield: khiên tròn cầm trước người (rim, mid vòng ngoài và vòng giữa, centre tâm, star ngôi sao). */
+  gaunt?: number;
+  jacket?: {shirt?: string; lapel?: string; epaulets?: string; belt?: string; buttons?: string; pockets?: boolean};
+  skirtStyle?: 'pencil'; highWaist?: number; braces?: string;
+  star?: string; stripes?: [string, string]; straps?: string;
+  cap?: {kind: 'steel' | 'garrison'; color: string; trim?: string; mark?: string; wings?: string};
+  shield?: {rim: string; mid: string; centre: string; star: string; fist?: string; x?: number; y?: number; r?: number};
 };
 /** The part of the mould space a figure can reach (arms spread or raised); the texture covers exactly this. */
 export const BOX = {x: -240, y: -24, w: 1024, h: 1244};   // widened 22/11/2026: Doom's shoulders are broad, and his spread arms reach x -228 and 772
@@ -162,6 +177,7 @@ const K0 = {skinA: '#dba57d', skinB: '#cb9875', skinC: '#b98a6e', skin: '#cb9875
 /** the colours in use while one figure is drawn: the defaults above with that figure's own palette over them */
 let K = {...K0};
 /** set from the figure being drawn (drawFigureBase): gloves over the hands, stone plates, a metal sheen */
+let THIN_A = 1, THIN_L = 1;   // thử: tay, chân mảnh (spec.gaunt)
 let FIRE_BODY = false, GLOVE: {a: string; d: string} | null = null, ROCK: RockBody | null = null, SHEEN: string | null = null, ROLLED = false;
 export type Palette = Partial<typeof K0>;
 /** CHANNEL ADD-ONS (23/11/2026). A channel registers painters from its own folder; a figure asks for them with `spec.addOns`.
@@ -215,7 +231,7 @@ const DAZED_LID = 4;
 const lashes = (c: C, x: number, y: number, out: number, up: number) => {
   ([[8, 40], [34, 44], [60, 34]] as number[][]).forEach(([deg, len]) => { const a = (deg * Math.PI) / 180; fillP(c, blade([x, y], [x + out * Math.cos(a) * len, y - up * Math.sin(a) * len], up * out * -3, 9), K.brow); });
 };
-const eye = (c: C, side: 'L' | 'R', e: Expr, skin: string | CanvasGradient, white: CanvasGradient, dy: number, lash = false) => {
+const eye = (c: C, side: 'L' | 'R', e: Expr, skin: string | CanvasGradient, white: string | CanvasGradient, dy: number, lash = false) => {
   const cx = EYE[side], cy = EYE.y + dy, out = side === 'L' ? -1 : 1, xo = cx + out * (EYE.rx + 5), xi = cx - out * (EYE.rx + 5), xm = cx - out * 81;
   if (e.closed) { strokeP(c, `M${cx - 66},${cy + 14} Q${cx},${cy + 56} ${cx + 66},${cy + 14}`, lash ? K.brow : K.lidEdge, lash ? 9 : 7); if (lash) lashes(c, cx + out * 62, cy + 18, out, -1); return; }
   const lid0 = (side === 'L' ? e.lidL : e.lidR) ?? (e.upper === 'none' ? null : LID[e.upper]);
@@ -310,13 +326,14 @@ const headFront = (c: C, s: Spec) => {
   const full = s.addOns?.find((a) => ADD_ONS[a.id]?.headFull);
   if (full) { ADD_ONS[full.id].headFull!(c, s, full.opt ?? {}); return; }
   if (s.bandage) { bandagedHead(c, s); return; }
-  const bald = s.hair === 'bald', h = bald ? {...HAIR.sweep, skull: 90} : HAIR[s.hair === 'sweep' ? 'sweep' : s.hair === 'smooth' ? 'smooth' : 'level'], n = h.top.length, e = s.expr, dy = s.faceDy ?? 0;
+  const bald = s.hair === 'bald', h = bald ? {...HAIR.sweep, skull: 90} : HAIR[s.hair === 'sweep' ? 'sweep' : (s.hair === 'smooth' || s.hair === 'part' || s.hair === 'victory' || s.hair === 'slick') ? 'smooth' : 'level'], n = h.top.length, e = s.expr, dy = s.faceDy ?? 0;
   runAddOns(c, s, 'headBack');
   if (s.longHair && !bald) {   // long hair behind the face, over the shoulders, down to the chest, in a cut edge
     const col = typeof s.longHair === 'string' ? s.longHair : K.hair, ln = shadeHex(col, 0.78);
     fillP(c, 'M64,230 C14,420 8,640 40,800 L78,772 L104,822 L138,770 L150,560 L410,560 L410,770 L440,822 L470,772 L504,800 C536,640 530,420 480,230 Z', col);
     strokeP(c, 'M58,420 Q44,600 62,752 M100,520 Q90,650 104,780 M486,420 Q500,600 482,752 M444,520 Q454,650 440,780', ln, 5);
   }
+  if (s.hair === 'victory') victoryBack(c);
   // 'bun': the level hair with a knot standing on the crown (drawn first, so the hair mass covers its foot)
   if (s.hair === 'bun') { ell(c, 272, 42, 66, 50, K.hair); strokeP(c, 'M226,44 Q272,14 318,44', K.hairLine, 5); }
   const skin = K.skinB;   // mặt, tai, mí: MỘT màu da phẳng (Daniel 27/11/2026: "kênh của mình tuyệt đối không có gradient, kiểu cắt giấy mà"); không chuyển sắc, không vòng tối ra viền
@@ -363,6 +380,8 @@ const headFront = (c: C, s: Spec) => {
     strokeP(c, 'M70,300 Q90,214 150,170 Q272,112 394,170 Q454,214 474,300', d, 7); fillP(c, blade([200, 40], [150, 160], 5, 7), d); fillP(c, blade([344, 40], [394, 160], 5, 7), d);
   }
   if (s.messy && s.hair !== 'bald') [[118, 150, 78, 96], [168, 84, 140, 22], [236, 52, 226, -14], [300, 50, 318, -16], [366, 80, 398, 20], [424, 146, 470, 100], [96, 230, 52, 214], [448, 228, 494, 210]].forEach(([x1, y1, x2, y2]) => fillP(c, blade([x1, y1], [x2, y2], 6, 20), K.hair));
+  hairDeco(c, s);
+  if (s.cap) capDraw(c, s);
   if (s.helmet) helmet(c, s.helmet, false);
   if (s.crown) {
     const d = shadeHex(s.crown, 0.72), l = shadeHex(s.crown, 1.3), top = s.hair === 'bald' ? 96 : 40;
@@ -509,11 +528,11 @@ const arm = (c: C, side: 'L' | 'R', p: ArmPose, sleeve: string, edge: string, ri
   if (p.stretch !== undefined && p.stretch > 1) { rubberArm(c, a, p, sleeve, edge, rim); return; }
   c.save(); c.translate(a.x + a.out * (ROCK?.out ?? 0), SH_Y); c.rotate(a.k * p.sh * rad);
   if (p.smear) { c.filter = 'blur(7px)'; c.globalAlpha = 0.8; }
-  if (upper) { c.save(); if (ROCK?.arm) c.scale(ROCK.arm, 1); if (rim) seg(c, 0, 0, 0, UL, 70, rim); seg(c, 0, 0, 0, UL, 64, sleeve); if (ROCK || SHEEN) armLook(c, UL, 32); c.restore(); }
+  if (upper) { c.save(); if (ROCK?.arm) c.scale(ROCK.arm, 1); if (rim) seg(c, 0, 0, 0, UL, 70 * THIN_A, rim); seg(c, 0, 0, 0, UL, 64 * THIN_A, sleeve); if (ROCK || SHEEN) armLook(c, UL, 32); c.restore(); }
   c.translate(0, UL); c.rotate(a.k * (p.el ?? 0) * rad);
   c.save(); c.translate(0, FL); c.rotate(a.k * (p.wrist ?? 0) * rad); c.scale(1.12 * (ROCK?.fist ?? 1), 1.12 * (ROCK?.fist ?? 1)); hand(c, p.hand ?? 'relaxed', a.out); if (ROCK?.fist && (p.hand ?? 'relaxed') === 'relaxed') rockTex(c, 'M-30,26 Q-30,-2 -2,-2 L2,-2 Q30,-2 30,26 L30,62 Q30,90 2,90 L-2,90 Q-30,90 -30,62 Z', -36, -8, 36, 94);
   if (ROCK?.fist && (p.hand === 'fist' || p.hand === 'grip')) { rockTex(c, 'M-34,20 Q-34,-4 -8,-4 L8,-4 Q34,-4 34,20 L34,42 Q34,66 8,66 L-8,66 Q-34,66 -34,42 Z', -40, -10, 40, 72); seg(c, -33, 30, 33, 30, 4, ROCK.crack, 'butt'); [-17, 0, 17].forEach((kx) => seg(c, kx, 30, kx, 65, 4, ROCK!.crack, 'butt')); } c.restore();
-  c.save(); if (ROCK?.arm) c.scale(ROCK.arm, 1);
+  c.save(); if (ROCK?.arm) c.scale(ROCK.arm, 1); if (THIN_A !== 1) c.scale(THIN_A, 1);
   // forearm: a sleeve that widens toward the cuff
   const d = `M-33,0 Q-36,-34 0,-34 Q36,-34 33,0 L43,${FL - 6} Q43,${FL + 8} 30,${FL + 8} L-30,${FL + 8} Q-43,${FL + 8} -43,${FL - 6} Z`;
   if (rim) strokeP(c, d, rim, 6); fillP(c, d, sleeve); if (ROLLED) rolledSleeve(c, FL, edge); if (ROCK || SHEEN) armLook(c, FL, 36, d); if (!ROLLED) seg(c, -41, FL - 12, 41, FL - 12, 3, edge, 'butt');
@@ -543,9 +562,9 @@ const vestLegs = (c: C, s: Spec, u: UpT) => {
   (['L', 'R'] as const).forEach((sd) => {
     const lo = (ROCK?.legOut ?? 0) * (sd === 'L' ? -1 : 1), wl = ROCK?.leg ?? 1, g = sd === 'L' ? s.legL : s.legR, [hx, hy] = u.pt(HIPS[sd] + lo, HIP_Y), ax = ANK[sd] + lo + (g?.dx ?? 0), ay = 1160 - (g?.lift ?? 0);
     const q = (t0: number, t1: number, w0: number, w1: number, f: string) => { const X = (t: number) => hx + (ax - hx) * t, Y = (t: number) => hy + (ay - hy) * t; fillP(c, `M${X(t0) - w0},${Y(t0)} L${X(t0) + w0},${Y(t0)} L${X(t1) + w1},${Y(t1)} L${X(t1) - w1},${Y(t1)} Z`, f); };
-    if (s.longLegs) { q(0, 1, 31, 26, K.shorts); if (!FIRE_BODY) q(0, 1, 6, 5, shadeHex(K.shorts, 0.9)); }   // a crease down the trouser leg
+    if (s.longLegs) { q(0, 1, 31 * THIN_L, 26 * THIN_L, K.shorts); if (!FIRE_BODY) q(0, 1, 6, 5, shadeHex(K.shorts, 0.9)); }   // a crease down the trouser leg
     else { q(0, 1, 27 * wl, 23 * wl, K.skin); if (ROCK) rockTex(c, `M${hx - 27 * wl},${hy} L${hx + 27 * wl},${hy} L${ax + 23 * wl},${ay} L${ax - 23 * wl},${ay} Z`, Math.min(hx, ax) - 34 * wl, hy, Math.max(hx, ax) + 34 * wl, ay); q(0, 0.36, 33 * wl, 31 * wl, K.shorts); q(0.34, 0.37, 31 * wl, 31 * wl, shadeHex(K.shorts, 0.78)); }   // bare legs under shorts with a hem
-    if (s.suit?.boot) q(0.62, 1, s.longLegs ? 30 : 26, s.longLegs ? 27 : 24, s.suit.boot);
+    if (s.suit?.boot) q(0.62, 1, (s.longLegs ? 30 : 26) * THIN_L, (s.longLegs ? 27 : 24) * THIN_L, s.suit.boot);
     if (SHEEN) fillP(c, blade([hx + (ax - hx) * 0.08 - 12, hy + (ay - hy) * 0.08], [hx + (ax - hx) * 0.92 - 10, hy + (ay - hy) * 0.92], 2, 10), SHEEN);
     shoeAt(c, sd, ANK[sd] + lo, g, (k) => `M${-k * 34},0 Q${-k * 40},-51 ${-k * 8},-55 L${k * 8},-55 Q${k * 62},-47 ${k * 86},0 Z`);
   });
@@ -555,8 +574,10 @@ const vestUpper = (c: C, s: Spec, back = false) => {
   fillP(c, 'M190,866 L354,866 L350,962 Q346,986 312,988 Q286,988 272,964 Q258,988 232,988 Q198,986 194,962 Z', K.shorts);
   if (!FIRE_BODY) seg(c, 190, 893, 354, 893, 14, shadeHex(K.shorts, 0.74), 'butt');   // the garment's shadow on the hips: where the body ends and the legs begin
   fillP(c, 'M182,572 Q272,548 362,572 L376,884 L168,884 Z', K.shirt);
+  if (s.gaunt && !back) { fillP(c, 'M244,480 L300,480 L308,600 L236,600 Z', K.skinC); fillP(c, 'M244,480 L300,480 L302,540 Q272,556 242,540 Z', K.skinDark); }
   if (ROCK?.arm) bruteTorso(c);
   if (back) { fillP(c, 'M184,580 Q272,556 360,580 L374,884 L170,884 Z', K.vest); seg(c, 272, 640, 272, 884, 2.5, shadeHex(K.vest, 0.8), 'butt'); strokeP(c, 'M196,640 Q272,668 348,640', shadeHex(K.vest, 0.8), 2.5); }
+  else if (s.jacket) jacketFront(c, s);
   else if (s.suit) suitChest(c, s);
   else {
     fillP(c, 'M184,580 L226,560 L246,690 L242,884 L170,884 Z', K.vest); fillP(c, 'M360,580 L318,560 L298,690 L302,884 L374,884 Z', K.vest);
@@ -1086,7 +1107,8 @@ const scarMarks = (c: C, sc: NonNullable<Spec['scar']>, face: string) => {
 };
 
 const chestExtras = (c: C, s: Spec) => {
-  if (s.skirt) {   // drawn over the legs and the hip piece: a bell from the waistband to the ankles, folds, a hem band
+  if (s.skirt && s.skirtStyle === 'pencil') pencilSkirt(c, s.skirt);
+  else if (s.skirt) {   // drawn over the legs and the hip piece: a bell from the waistband to the ankles, folds, a hem band
     const d = shadeHex(s.skirt, 0.78), l = shadeHex(s.skirt, 1.12);
     fillP(c, 'M178,858 L366,858 L412,1126 Q272,1150 132,1126 Z', s.skirt);
     strokeP(c, 'M214,880 Q204,1000 186,1124 M258,880 Q254,1010 246,1136 M300,880 Q308,1010 316,1136 M340,880 Q356,1000 374,1122', d, 5);
@@ -1101,6 +1123,7 @@ const chestExtras = (c: C, s: Spec) => {
   }
   if (s.apron) { const d = shadeHex(s.apron, 0.76); strokeP(c, 'M226,640 Q210,600 200,572 M318,640 Q334,600 344,572', d, 9); fillP(c, 'M222,636 L322,636 L330,760 L356,772 L366,940 Q272,958 178,940 L188,772 L214,760 Z', s.apron); strokeP(c, 'M188,772 Q272,790 356,772', d, 6); fillP(c, 'M240,820 L304,820 L300,880 L244,880 Z', d); }
   if (s.emblem) { fillP(c, 'M272,640 L318,706 L272,772 L226,706 Z', shadeHex(s.emblem, 0.7)); fillP(c, 'M272,654 L308,706 L272,758 L236,706 Z', s.emblem); }
+  costumeExtras(c, s);
   runAddOns(c, s, 'chest');
 };
 // ---------- dáng đánh nhau (23/11/2026): chỉ chạy khi posture có `hanh` ----------
@@ -1164,12 +1187,13 @@ export const feetWorld = (s: Spec, height: number, pos: [number, number, number]
 const drawFigureBase = (c: C, s: Spec) => {
   K = {...K0, ...(s.palette ?? {})};
   if (s.palette?.skinB && !s.palette.skin) K.skin = s.palette.skinB;
+  THIN_A = 1 - 0.34 * (s.gaunt ?? 0); THIN_L = 1 - 0.32 * (s.gaunt ?? 0);
   GLOVE = s.suit?.glove ? {a: s.suit.glove, d: s.suit.gloveDark ?? shadeHex(s.suit.glove, 0.72)} : null; ROCK = s.rock ?? null; SHEEN = s.sheen ?? null; ROLLED = !!s.rolled && s.outfit === 'vest';
   const back = s.view === 'back', hd = s.head ?? {}, u = upperT(s);
   const hs = s.headK ?? (s.build === 'adult' ? 0.8 : 1);   // Doom's masked face is the size of any adult's face; only the hood adds to it
   const sink = s.posture !== undefined && s.outfit !== 'doom' ? resolvePosture(s.posture).sink : 0;   // a body pitched forward: the head sits lower between the shoulders
   const slim = s.outfit === 'vest' && s.posture === undefined ? s.slim ?? 1 : 1;
-  const headT = (fn: () => void) => { c.save(); c.translate(272 + (hd.dx ?? 0), 548 + (hd.dy ?? 0) + (s.rock?.headDy ?? 0) + sink - (s.outfit === 'doom' ? D_HEAD_UP : 0)); if (slim !== 1) c.scale(1 / slim, 1); if (s.broad && s.outfit !== 'doom') c.scale(1 / s.broad, 1); c.rotate((((hd.rot ?? 0) + (s.posture !== undefined ? resolvePosture(s.posture).faceUp ?? 0 : 0)) * Math.PI) / 180); c.scale(hs, hs); c.translate(-272, -548); fn(); c.restore(); };
+  const headT = (fn: () => void) => { c.save(); c.translate(272 + (hd.dx ?? 0), 548 + (hd.dy ?? 0) - 30 * (s.gaunt ?? 0) + (s.rock?.headDy ?? 0) + sink - (s.outfit === 'doom' ? D_HEAD_UP : 0)); if (slim !== 1) c.scale(1 / slim, 1); if (s.broad && s.outfit !== 'doom') c.scale(1 / s.broad, 1); c.rotate((((hd.rot ?? 0) + (s.posture !== undefined ? resolvePosture(s.posture).faceUp ?? 0 : 0)) * Math.PI) / 180); c.scale(hs, hs); c.translate(-272, -548); fn(); c.restore(); };
   if (s.outfit === 'doom') {
     // bulk 1.3 is the build measured on the reference (the geometry above); another value scales the breadth about the centre line
     const B = (s.bulk ?? 1.3) / 1.3, sit = !!s.sit && !back, us = s.sit ? upperT({...s, hipDy: (s.hipDy ?? 0) - SIT}) : u;
@@ -1218,6 +1242,7 @@ const drawFigureBase = (c: C, s: Spec) => {
     const bowed = s.posture !== undefined && resolvePosture(s.posture).squash < 0.98;   // a body pitched forward: the head comes down in front of the shoulders
     if (ROCK?.arm && !back && bowed) bruteShoulders(c);
     vestHead();
+    if (s.shield && !back) shieldDraw(c, s);
     if (ROCK?.arm && !back && !bowed) bruteShoulders(c);
     if (!back && !noArms) (['L', 'R'] as const).forEach((sd) => { const p = sd === 'L' ? s.armL : s.armR; if (p?.front) arm(c, sd, p, K.shirt, K.shirtEdge, K.shirtRim); });
     if (back) fillP(c, 'M196,572 Q272,540 348,572 L352,598 Q272,574 192,598 Z', K.shirt);   // collar band over the foot of the head: no neck
@@ -1428,6 +1453,7 @@ export type LooseArm = {hand?: Hand; len?: number; wrist?: number; bare?: boolea
   gauntlet?: boolean};
 export const looseArmBox = (len = 900) => ({x: -130, y: -len - 10, w: 260, h: len + 190});
 export const paintLooseArm = (canvas: HTMLCanvasElement, s: Spec, a: LooseArm, scale: number) => {
+  THIN_A = 1; THIN_L = 1;
   const len = a.len ?? 900, B = looseArmBox(len), w = Math.round(B.w * scale), h = Math.round(B.h * scale);
   if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
   const c = canvas.getContext('2d')!;
@@ -1461,3 +1487,111 @@ export const paintLooseArm = (canvas: HTMLCanvasElement, s: Spec, a: LooseArm, s
  *  is drawn at 0.8 about the chin and a bald head ends at the skull, so both stand lower than the nominal height.
  *  The camera frames medium and close shots from this, not from the nominal height. */
 export const headSpan = (s: Pick<Spec, 'build' | 'hair' | 'headK'>) => { const k = s.headK ?? (s.build === 'adult' ? 0.8 : 1), top = 548 - (548 - (s.hair === 'bald' ? 90 : HAIR_TOP)) * k, n = SOLE_Y - HAIR_TOP; return {top: (SOLE_Y - top) / n, size: (548 - top) / n}; };
+
+// ======================================================================================================================================
+// THỬ 27/11/2026 (tập cap-1): các kiểu mới, CHỈ THÊM. Mọi thứ dưới đây chạy khi spec khai báo trường mới; không khai báo thì hình không đổi.
+// ======================================================================================================================================
+const starPath = (cx: number, cy: number, R: number) => poly(Array.from({length: 10}, (_, i) => { const r = i % 2 ? R * 0.4 : R, a = -Math.PI / 2 + (i * Math.PI) / 5; return [cx + r * Math.cos(a), cy + r * Math.sin(a)] as Pt; }));
+const mirrorX = (d: string) => d.replace(/(-?\d+(\.\d+)?),(-?\d+(\.\d+)?)/g, (_m, x, _a, y) => `${544 - Number(x)},${y}`);
+
+/** áo vét quân phục (người `vest`, nhìn trước): sơ mi trong chữ V, hai ve áo có khía, cúc, túi, thắt lưng. Thân áo là mảng `K.shirt` đã tô, nên tay áo cùng màu. */
+const jacketFront = (c: C, s: Spec) => {
+  const j = s.jacket!, base = K.shirt, dk = shadeHex(base, 0.7), inner = j.shirt ?? '#d8cfae', lap = j.lapel ?? shadeHex(base, 1.08), btn = j.buttons ?? '#c9b45a';
+  fillP(c, 'M230,552 L272,746 L314,552 L296,546 L248,546 Z', inner); strokeP(c, 'M272,640 L272,746', shadeHex(inner, 0.8), 2);
+  const L = 'M208,572 L246,552 L274,742 L262,754 L214,642 L236,620 L204,598 Z';
+  [L, mirrorX(L)].forEach((d) => { fillP(c, d, lap); strokeP(c, d, dk, 3.5); });
+  seg(c, 272, 746, 272, 884, 3, dk, 'butt');
+  [786, 836].forEach((y) => { ell(c, 262, y, 7, 7, btn); ell(c, 262, y, 3, 3, shadeHex(btn, 0.7)); });
+  if (j.pockets) {
+    ([[194, 690, 244, 736], [196, 792, 246, 840]] as number[][]).forEach(([x0, y0, x1, y1], i) => [0, 1].forEach((m) => {
+      const X0 = m ? 544 - x1 : x0, X1 = m ? 544 - x0 : x1;
+      fillP(c, `M${X0},${y0} L${X1},${y0} L${X1},${y1} L${X0},${y1} Z`, shadeHex(base, 0.94)); strokeP(c, `M${X0},${y0} L${X1},${y0} L${X1},${y1} L${X0},${y1} Z`, dk, 2.5);
+      fillP(c, `M${X0},${y0} L${X1},${y0} L${X1},${y0 + 16} L${(X0 + X1) / 2},${y0 + 24} L${X0},${y0 + 16} Z`, shadeHex(base, 1.04)); strokeP(c, `M${X0},${y0 + 16} L${(X0 + X1) / 2},${y0 + 24} L${X1},${y0 + 16}`, dk, 2.5);
+      if (i === 0) ell(c, (X0 + X1) / 2, y0 + 19, 4.5, 4.5, btn);
+    }));
+  }
+  if (j.belt) { fillP(c, 'M170,848 L374,848 L376,884 L168,884 Z', j.belt); seg(c, 170, 850, 374, 850, 3, shadeHex(j.belt, 0.7), 'butt'); fillP(c, 'M256,850 L288,850 L288,882 L256,882 Z', btn); fillP(c, 'M262,856 L282,856 L282,876 L262,876 Z', shadeHex(j.belt, 0.8)); }
+};
+/** váy bút chì: hẹp, thẳng, tới dưới gối; chân dưới váy là màu `palette.shorts` (vớ) */
+const pencilSkirt = (c: C, col: string) => {
+  const d = shadeHex(col, 0.78);
+  fillP(c, 'M176,880 L368,880 L358,1068 Q272,1084 186,1068 Z', col); fillP(c, 'M330,882 L368,880 L358,1068 Q344,1072 326,1074 Z', shadeHex(col, 0.9));
+  strokeP(c, 'M272,930 L272,1080', d, 3); seg(c, 176, 886, 368, 886, 14, d, 'butt'); strokeP(c, 'M188,1058 Q272,1074 356,1058', d, 6);
+};
+/** quần cạp cao, dây đeo quần, sọc đỏ trắng ở bụng, hai dây đeo da và túi thắt lưng, ngôi sao giữa ngực, cầu vai: trên thân đã vẽ (chạy sau tay áo) */
+const costumeExtras = (c: C, s: Spec) => {
+  const torso = 'M182,572 Q272,548 362,572 L376,884 L168,884 Z';
+  if (s.highWaist) { const y = s.highWaist, d = shadeHex(K.shorts, 0.74); fillP(c, `M171,${y} L373,${y} L348,884 L196,884 Z`, K.shorts); seg(c, 171, y + 3, 373, y + 3, 7, d, 'butt'); strokeP(c, `M272,${y + 8} L272,884`, d, 2.5); }
+  if (s.braces) { const d = shadeHex(s.braces, 0.72), y = (s.highWaist ?? 860) + 6; [-1, 1].forEach((k) => { const xt = 272 + k * 66, xb = 272 + k * 56; fillP(c, `M${xt - 9},560 L${xt + 9},560 L${xb + 9},${y} L${xb - 9},${y} Z`, s.braces!); strokeP(c, `M${xt - 9},560 L${xb - 9},${y} M${xt + 9},560 L${xb + 9},${y}`, d, 2.5); ell(c, xb, y - 4, 7, 7, K.button); }); }
+  if (s.stripes) { c.save(); c.clip(new Path2D(torso)); for (let i = 0; i < 5; i++) { c.fillStyle = s.stripes[i % 2]; c.fillRect(150, 762 + i * 17.6, 244, 17.8); } c.restore(); }
+  if (s.straps) {
+    const t = s.straps, d = shadeHex(t, 0.68);
+    [-1, 1].forEach((k) => { const x = 272 + k * 58; fillP(c, `M${x - 10},564 L${x + 10},564 L${x + 10},852 L${x - 10},852 Z`, t); strokeP(c, `M${x - 10},564 L${x - 10},852 M${x + 10},564 L${x + 10},852`, d, 3); [600, 650].forEach((yy) => seg(c, x, yy, x, yy + 18, 2.5, d, 'butt')); });
+    fillP(c, 'M168,848 L376,848 L376,884 L168,884 Z', t); seg(c, 170, 850, 374, 850, 3, d, 'butt'); fillP(c, 'M256,850 L288,850 L288,882 L256,882 Z', '#c9b45a'); fillP(c, 'M262,856 L282,856 L282,876 L262,876 Z', d);
+    [[180, 838], [330, 838]].forEach(([x, y]) => { c.fillStyle = shadeHex(t, 0.84); c.beginPath(); c.roundRect(x, y, 38, 44, 6); c.fill(); strokeP(c, `M${x},${y + 14} L${x + 38},${y + 14}`, d, 2.5); });
+  }
+  if (s.star) { fillP(c, starPath(274, 684, 60), shadeHex(s.star, 0.74)); fillP(c, starPath(272, 678, 58), s.star); }
+  if (s.jacket?.epaulets) { const e = s.jacket.epaulets, d = shadeHex(e, 0.66); (['M190,578 L250,556 L254,584 L196,608 Z', 'M354,578 L294,556 L290,584 L348,608 Z']).forEach((p, i) => { fillP(c, p, e); strokeP(c, p, d, 3); ell(c, i ? 302 : 242, 568, 5, 5, s.jacket!.buttons ?? '#c9b45a'); }); }
+};
+
+// ---- tóc ----
+/** tóc dài chấm vai nằm sau đầu, đuôi uốn vào trong (victory rolls) */
+const victoryBack = (c: C) => {
+  const d = shadeHex(K.hair, 0.7);
+  fillP(c, 'M70,250 C16,380 10,520 38,640 C54,692 134,704 152,640 L152,582 L164,580 Q272,546 380,580 L392,582 L392,640 C410,704 490,692 506,640 C534,520 528,380 474,250 Z', K.hair);
+  [[96, 650], [448, 650]].forEach(([x, y]) => { ell(c, x, y, 62, 44, K.hair); strokeP(c, `M${x - 36},${y - 6} Q${x},${y - 34} ${x + 36},${y - 6}`, d, 5); strokeP(c, `M${x - 24},${y + 10} Q${x},${y - 8} ${x + 24},${y + 10}`, d, 4); });
+};
+/** phần tóc vẽ đè lên trán, sau khi mặt đã vẽ: rẽ ngôi lệch chải sang phải, chải bóng ra sau, hoặc hai cuộn victory rolls */
+const hairDeco = (c: C, s: Spec) => {
+  const hc = K.hair, hl = K.hairLine, dk = shadeHex(hc, 0.62);
+  if (s.hair === 'part') {
+    fillP(c, 'M84,330 C56,250 54,170 88,116 C128,52 196,10 272,10 C352,10 432,42 470,108 C502,164 494,252 468,330 L458,268 C448,230 410,214 362,222 C320,176 252,146 198,154 C152,164 124,200 108,268 Z', hc);
+    strokeP(c, 'M200,126 C268,84 384,96 446,176', hl, 14); strokeP(c, 'M218,152 C286,116 372,128 434,206', hl, 8); strokeP(c, 'M120,214 C128,170 156,140 196,130', hl, 8);
+    strokeP(c, 'M198,154 C204,110 212,66 228,22', dk, 6);
+  } else if (s.hair === 'slick') {
+    fillP(c, 'M82,340 C54,250 52,170 86,116 C128,50 196,12 272,10 C348,12 424,50 458,116 C492,170 490,250 462,340 L446,290 C436,236 384,172 272,164 C160,172 108,236 98,290 Z', hc);
+    ([['M116,206 C150,112 236,60 276,56', 12], ['M158,178 C204,112 296,72 364,88', 10], ['M222,160 C290,112 384,102 436,164', 9]] as [string, number][]).forEach(([d, w]) => strokeP(c, d, hl, w));
+    strokeP(c, 'M104,290 C112,240 150,190 214,172', dk, 5);
+  } else if (s.hair === 'victory') {
+    fillP(c, 'M82,340 C54,250 52,170 86,116 C128,50 196,12 272,10 C348,12 424,50 458,116 C492,170 490,250 462,340 L444,296 C432,244 390,212 330,198 C300,176 244,176 214,198 C154,212 112,244 100,296 Z', hc);
+    strokeP(c, 'M272,24 C268,80 262,140 250,190', dk, 5);
+    [-1, 1].forEach((k) => {
+      c.save(); c.translate(272 + k * 120, 84); c.rotate(k * 0.7);
+      ell(c, 0, 0, 96, 50, hc); strokeP(c, 'M-86,-6 C-40,-40 40,-40 86,-6', dk, 4); strokeP(c, 'M-70,18 C-30,34 30,34 70,18', dk, 4);
+      ell(c, k * -62, 4, 26, 26, shadeHex(hc, 1.12)); strokeP(c, `M${k * -62 - 14},4 C${k * -62},-18 ${k * -62 + 14},-4 ${k * -62},10 C${k * -62 - 8},16 ${k * -62 - 6},2 ${k * -62},4`, dk, 3.5);
+      strokeP(c, 'M-60,-22 C-20,-34 30,-34 66,-18', hl, 7);
+      c.restore();
+    });
+  }
+};
+
+// ---- mũ ----
+const capDraw = (c: C, s: Spec) => {
+  const cp = s.cap!, col = cp.color, d = shadeHex(col, 0.7), l = mixHex(col, '#ffffff', 0.16), mark = cp.mark;
+  if (cp.kind === 'steel') {
+    fillP(c, 'M54,238 C38,80 166,-20 272,-20 C378,-20 506,80 490,238 Q272,170 54,238 Z', col);
+    fillP(c, 'M118,116 C168,46 262,22 338,38 C282,50 200,72 150,136 Z', l);
+    ([-1, 1] as const).forEach((k) => strokeP(c, `M${272 + k * 202},250 Q${272 + k * 212},330 ${272 + k * 176},408`, cp.trim ?? '#6d4a2e', 12));
+    fillP(c, 'M44,234 Q272,164 500,234 Q504,260 486,256 Q272,198 58,256 Q40,260 44,234 Z', d);
+    if (mark) { strokeP(c, 'M236,166 L272,62 L308,166', mark, 20); seg(c, 250, 128, 294, 128, 14, mark, 'butt'); }
+    if (cp.wings) ([-1, 1] as const).forEach((k) => { const x = 272 + k * 188, cw = cp.wings!; [[96, -94, 4], [112, -50, 3], [104, -8, 2]].forEach(([dx, ey, b]) => { const y0 = 200; fillP(c, blade([x - k * 6, y0 - 14 + (ey + 94) * 0.1], [x + k * dx, y0 + ey - 10], b * k * 5, 30), cw); strokeP(c, blade([x - k * 6, y0 - 14 + (ey + 94) * 0.1], [x + k * dx, y0 + ey - 10], b * k * 5, 30), shadeHex(cw, 0.8), 2.5); }); });
+  } else {
+    c.save(); c.translate(272, 160); c.rotate(-0.07); c.translate(-272, -160);
+    fillP(c, 'M92,232 L112,104 Q124,52 190,40 L272,26 L354,40 Q420,52 432,104 L452,226 Q440,200 400,192 Q272,150 144,192 Q104,204 92,232 Z', col);
+    fillP(c, 'M272,26 L354,40 Q420,52 432,104 L452,226 Q440,200 400,192 Q330,170 272,166 Z', shadeHex(col, 0.9));
+    strokeP(c, 'M272,28 Q268,100 272,166', d, 6); strokeP(c, 'M130,100 Q150,62 200,52', l, 7);
+    strokeP(c, 'M92,230 Q104,204 144,192 Q272,150 400,192 Q440,200 452,224', cp.trim ?? l, 8);
+    ell(c, 168, 128, 16, 16, '#c9b45a'); ell(c, 168, 128, 7, 7, shadeHex('#c9b45a', 0.7));
+    c.restore();
+  }
+};
+
+// ---- khiên ----
+const shieldDraw = (c: C, s: Spec) => {
+  const sh = s.shield!, x = sh.x ?? 190, y = sh.y ?? 800, r = sh.r ?? 140;
+  ell(c, x + 6, y + 8, r + 4, r + 4, 'rgba(40,30,20,0.18)');
+  ell(c, x, y, r + 5, r + 5, shadeHex(sh.rim, 0.62)); ell(c, x, y, r, r, sh.rim); ell(c, x, y, r * 0.78, r * 0.78, sh.mid); ell(c, x, y, r * 0.56, r * 0.56, sh.rim); ell(c, x, y, r * 0.38, r * 0.38, sh.centre);
+  fillP(c, starPath(x, y, r * 0.31), sh.star);
+  c.fillStyle = sh.fist ?? '#6d4a2e'; c.beginPath(); c.roundRect(x - r - 12, y + 6, 58, 66, 22); c.fill(); strokeP(c, `M${x - r + 8},${y + 24} L${x - r + 8},${y + 58}`, shadeHex(sh.fist ?? '#6d4a2e', 0.65), 3); seg(c, x - r + 20, y + 22, x - r + 20, y + 58, 3, shadeHex(sh.fist ?? '#6d4a2e', 0.65), 'butt');
+  strokeP(c, `M${x - r * 0.74},${y - r * 0.42} A${r * 0.86},${r * 0.86} 0 0 1 ${x - r * 0.2},${y - r * 0.84}`, 'rgba(255,255,255,0.28)', 8);
+};
