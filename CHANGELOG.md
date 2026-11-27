@@ -31,6 +31,7 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 ### Engine (dựng lại thì hình đổi)
 
 - **Mặt nhân vật một màu da phẳng (phiếu P1127-05; Daniel: "kênh của mình tuyệt đối không có gradient, kiểu cắt giấy mà").** Hàm vẽ đầu nhìn thẳng thôi phủ vòng nâu tối dần ra viền (`form`) và thôi dùng dải màu chéo `skinA`→`skinB`→`skinC`; mặt, hai tai, mí mắt tô `skinB`. Mảng da che mắt cũ của mắt chuẩn cũng phẳng. File: `chung/src/mould/draw.ts`, `chung/src/mould/matChuan.ts`. DỰNG LẠI THÌ HÌNH ĐỔI ở mọi kênh: mọi mặt nhìn thẳng mất vòng tối quanh viền; cảnh đã duyệt dựng lại sẽ khác cảnh cũ cạnh nó. `kenh/anime-analyst/cast/ninjaAddOns.ts` tự chép dải màu này: phiên kênh đó tự sửa. Bản thử chép `draw.ts` trước ngày này (phiếu P1127-04) phải chép lại bốn dòng sửa.
+- **Bỏ gradient trên quần áo, giáp, mũ của nhân vật (phiếu P1127-06; Daniel: "có đồng ý duyệt bỏ hết").** Áo khoác tô `K.coat`, áo choàng `K.cloak`, giáp Doom `K.armour`, mũ sắt một màu, lòng mũ trùm một màu, lòng trắng mắt `whiteA`; má hồng thành đĩa phẳng trong mờ. Chưa đụng quầng nóng của mặt nạ nung, đốm than, tuyết phủ. File: `chung/src/mould/draw.ts`. DỰNG LẠI THÌ HÌNH ĐỔI ở mọi kênh: áo khoác, áo choàng, giáp mất dải sáng giữa (rõ nhất ở Doom).
 
 ## 2026-11-26
 

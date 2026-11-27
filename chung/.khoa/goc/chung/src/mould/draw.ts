@@ -320,7 +320,7 @@ const headFront = (c: C, s: Spec) => {
   // 'bun': the level hair with a knot standing on the crown (drawn first, so the hair mass covers its foot)
   if (s.hair === 'bun') { ell(c, 272, 42, 66, 50, K.hair); strokeP(c, 'M226,44 Q272,14 318,44', K.hairLine, 5); }
   const skin = K.skinB;   // mặt, tai, mí: MỘT màu da phẳng (Daniel 27/11/2026: "kênh của mình tuyệt đối không có gradient, kiểu cắt giấy mà"); không chuyển sắc, không vòng tối ra viền
-  const white = c.createLinearGradient(110, 0, 444, 0); white.addColorStop(0, s.whites ?? K.whiteA); white.addColorStop(1, s.whites ?? K.whiteB);
+  const white = s.whites ?? K.whiteA;
   const hairD = soft([...h.top, ...h.lock, [300, 300]], [...h.spikes, n + 2]);
   if (!bald) fillP(c, hairD, K.hair);
   if (s.temples && !bald) {   // the two temples in another colour, a jagged upper edge, cut to the hair
@@ -343,7 +343,7 @@ const headFront = (c: C, s: Spec) => {
   fillP(c, face, skin);
   if (ROCK) rockTex(c, face, 50, 90, 490, 590);
   if (ROCK?.arm) { const m = 'M166,398 L232,376 L312,376 L378,398 L396,486 L330,530 L214,530 L148,486 Z'; fillP(c, m, K.skinB); strokeP(c, m, ROCK.crack, 8, 'butt'); }
-  if (s.blush) ([132, 412] as number[]).forEach((bx) => { const g = c.createRadialGradient(bx, 404, 4, bx, 404, 50); g.addColorStop(0, s.blush + 'b0'); g.addColorStop(1, s.blush + '00'); c.save(); c.clip(new Path2D(face)); c.translate(0, 404 * (1 - 0.62)); c.scale(1, 0.62); ell(c, bx, 404, 50, 50, g); c.restore(); });
+  if (s.blush) ([132, 412] as number[]).forEach((bx) => { const g = s.blush + '66'; c.save(); c.clip(new Path2D(face)); c.translate(0, 404 * (1 - 0.62)); c.scale(1, 0.62); ell(c, bx, 404, 40, 40, g); c.restore(); });
   if (s.eyeBags) ([EYE.L, EYE.R] as number[]).forEach((ex) => { c.save(); c.globalAlpha = 0.6; fillP(c, blade([ex - 62, EYE.y + EYE.ry + 2 + dy * 0.4], [ex + 62, EYE.y + EYE.ry + 2 + dy * 0.4], -13, 16), s.eyeBags as string); c.restore(); });
   if (!s.noEyes) { eye(c, 'L', e, skin, white, dy * 0.4, s.lashes); eye(c, 'R', e, skin, white, dy * 0.4, s.lashes); }
   if (s.browFront) { const by = 192 + (e.browY ?? 0) * 0.62 + dy * 0.4; brow(c, 'L', e.brow, by, 17); brow(c, 'R', e.brow, by, 17); }
@@ -393,7 +393,7 @@ function regalDress(c: C, r: {gold: string; gem?: string}) {
 }
 /** An iron helmet over the head: a dome, a brim band, a nose guard (front) or a neck guard (back). */
 function helmet(c: C, col: string, back: boolean) {
-  const d = shadeHex(col, 0.7), l = shadeHex(col, 1.3), g = c.createLinearGradient(80, 0, 470, 0); g.addColorStop(0, l); g.addColorStop(0.5, col); g.addColorStop(1, d);
+  const d = shadeHex(col, 0.7), l = shadeHex(col, 1.3), g = col;
   if (back) { fillP(c, 'M62,300 C50,90 170,0 272,0 C374,0 494,90 482,300 L482,430 Q272,500 62,430 Z', g); strokeP(c, 'M62,300 Q272,360 482,300', d, 8); }
   else { fillP(c, 'M70,200 C58,72 170,0 272,0 C374,0 486,72 474,200 Q272,152 70,200 Z', g); strokeP(c, 'M70,198 Q272,150 474,198', d, 12); fillP(c, 'M256,158 L288,158 L292,330 Q272,344 252,330 Z', col); strokeP(c, 'M256,158 L252,330 Q272,344 292,330 L288,158', d, 4); }
   fillP(c, blade([272, 6], [272, back ? 290 : 150], 2, 9), d);
@@ -421,8 +421,8 @@ const WRAP_BACK: Strip[] = [
 const wrapStrips = (c: C, list: Strip[], t: ReturnType<typeof wrapTones>) => list.forEach(([pts, tone]) => { fillP(c, poly(pts), t[tone]); seg(c, pts[3][0], pts[3][1], pts[2][0], pts[2][1], 3.5, t.deep, 'butt'); });
 const wrapTail = (c: C, s: Spec, t: ReturnType<typeof wrapTones>) => { if (typeof s.bandage === 'object' && s.bandage.tail === false) return; fillP(c, poly([[424, 482], [510, 540], [522, 604], [486, 566], [468, 618], [404, 528]]), t.dark); seg(c, 424, 482, 510, 540, 3, t.deep, 'butt'); };
 const bandagedHead = (c: C, s: Spec) => {
-  const t = wrapTones(s), e = s.expr, dy = (s.faceDy ?? 0) * 0.4, white = c.createLinearGradient(110, 0, 444, 0);
-  white.addColorStop(0, s.whites ?? K.whiteA); white.addColorStop(1, s.whites ?? K.whiteB);
+  const t = wrapTones(s), e = s.expr, dy = (s.faceDy ?? 0) * 0.4, white = s.whites ?? K.whiteA;
+
   wrapTail(c, s, t);
   fillP(c, WRAP, t.mid);
   c.save(); const rest = new Path2D(WRAP); rest.addPath(new Path2D(WRAP_SLIT)); c.clip(new Path2D(WRAP)); c.clip(rest, 'evenodd'); wrapStrips(c, WRAP_FRONT, t); c.restore();
@@ -592,7 +592,7 @@ const coatUpper = (c: C, s: Spec, back: boolean, hemK = 1) => {
   // the coat hangs from the shoulders: the hem trails by `sway` and spreads by `flare`
   const fl = s.flare ?? 0, X = (x: number, k = 1) => 272 + (x - 272) * (1 + fl * k);
   c.save(); c.translate(0, 520); c.transform(1, 0, (s.sway ?? 0) / 545, 1, 0, 0); if (hemK !== 1) c.scale(1, hemK); c.translate(0, -520);   // hemK: a body that sits or kneels gathers the coat, the hem stays on the ground
-  const g = c.createLinearGradient(X(70), 0, X(536), 0); g.addColorStop(0, K.coat); g.addColorStop(0.5, K.coatLight); g.addColorStop(1, K.coat);
+  const g = K.coat;
   fillP(c, coatPath(fl), g);
   [[168, 620, 126, 1010], [372, 640, 420, 1000], [224, 700, 214, 1040]].forEach(([x1, y1, x2, y2]) => fillP(c, blade([x1, y1], [X(x2), y2], 2, 9), K.coatDark));
   seg(c, 272, back ? 560 : 610, 272, 1052, 3, K.coatDark, 'butt');
@@ -609,7 +609,7 @@ const coatUpper = (c: C, s: Spec, back: boolean, hemK = 1) => {
 const HOOD_OUT = 'M42,650 C22,400 10,67 272,67 C534,67 522,400 502,650 Q272,676 42,650 Z';   // a round arch 1.2 masks wide; its foot lies on the mantle
 const HOOD_IN = 'M80,540 L80,330 C80,206 160,141 272,141 C384,141 464,206 464,330 L464,540 Q464,596 272,604 Q80,596 80,540 Z';   // a little wider than the mask: the dark inside of the hood shows around it
 const MASK = 'M90,300 C90,232 132,200 200,200 L344,200 C412,200 454,232 454,300 L454,472 C454,526 420,558 366,560 L178,560 C124,558 90,526 90,472 Z';   // nearly square, as the reference's (364 wide, 360 high)
-const cloakGrad = (c: C, x0: number, x1: number) => { const g = c.createLinearGradient(x0, 0, x1, 0); g.addColorStop(0, K.cloak); g.addColorStop(0.5, K.cloakLight); g.addColorStop(1, K.cloak); return g; };
+const cloakGrad = (c: C, x0: number, x1: number) => { return K.cloak; };
 const rivet = (c: C, x: number, y: number) => { ell(c, x, y, 10, 10, K.armourDark); ell(c, x, y, 7, 7, K.armourLight); ell(c, x - 2, y - 2, 2.5, 2.5, '#ffffff'); };
 /** The iron mask itself, in the head's own units. eyes = the expression whose eyes show in the slots (null: empty slots, for the
  *  mask as a thing lying on the anvil). heat 0..1 = how much it still glows. */
@@ -657,7 +657,7 @@ const maskHeat = (c: C, heat: number) => {
  *  mask as a thing lying on the anvil). heat 0..1 = how much it still glows (see maskHeat); every line of it changes with heat. */
 const maskPlate = (c: C, e: Expr | null, heat: number, whites?: string) => {
   const k = Math.max(0, Math.min(1, heat)), glow = Math.max(0, Math.min(1, (k - 0.2) / 0.6));
-  const metal = c.createLinearGradient(100, 200, 440, 560); metal.addColorStop(0, K.armourLight); metal.addColorStop(0.5, K.armour); metal.addColorStop(1, K.armourDark);
+  const metal = K.armour;
   fillP(c, MASK, metal);
   if (k > 0) maskHeat(c, k);
   const line = mixHex(K.armourDark, '#4e1208', k * 1.6), lit = mixHex(K.armourLight, '#fff1c2', glow), edge = mixHex(K.socket, '#5c1508', k * 1.4);
@@ -667,7 +667,7 @@ const maskPlate = (c: C, e: Expr | null, heat: number, whites?: string) => {
   strokeP(c, 'M120,372 L150,520 M424,372 L394,520', mixHex(K.armourDark, '#ffe6a2', glow), 3);
   // eye openings: two slanted slots cut in the plate (the slant is the mask's own scowl). The mould's eyes sit behind them,
   // so the gaze, a blink and the lids of the expression still play; the brow of the expression is not drawn on a mask.
-  const white = c.createLinearGradient(110, 0, 444, 0); white.addColorStop(0, whites ?? K.whiteA); white.addColorStop(1, whites ?? K.whiteB);
+  const white = whites ?? K.whiteA;
   const keep = K.lidEdge; K.lidEdge = K.socket;
   (['L', 'R'] as const).forEach((sd) => {
     const mx = (x: number) => (sd === 'L' ? x : 557 - x), slot = soft([[mx(112), 252], [mx(264), 296], [mx(260), 346], [mx(124), 350]], [0, 1]);
@@ -707,7 +707,7 @@ const doomHead = (c: C, s: Spec) => {
     // a face we are not shown yet: the inside of the hood in shadow, and in it the black shape of his own head (the hair's
     // outline tells there is a man in there; Daniel, 22/11/2026: "vẫn để bóng của đầu victor ở sau"). The head is painted on a
     // spare canvas and turned into one flat colour, so no feature of the face shows.
-    const g = c.createRadialGradient(272, 380, 60, 272, 380, 320); g.addColorStop(0, '#2a5a3a'); g.addColorStop(1, '#16321f'); fillP(c, HOOD_IN, g);
+    const g = '#1f4530'; fillP(c, HOOD_IN, g);
     const t = document.createElement('canvas'); t.width = c.canvas.width; t.height = c.canvas.height;
     const x = t.getContext('2d')!; x.setTransform(c.getTransform()); x.translate(272, 560); x.scale(0.74, 0.74); x.translate(-272, -548); headFront(x, {...s, beard: undefined});   // smaller than the opening: the head's outline and the hair must stand clear of the hood's edge
     x.setTransform(1, 0, 0, 1, 0, 0); x.globalCompositeOperation = 'source-in'; x.fillStyle = '#050b08'; x.fillRect(0, 0, t.width, t.height);
@@ -833,9 +833,9 @@ const doomCape = (c: C, s: Spec, back = false) => {
     c.restore(); return;
   }
   fillP(c, whole, K.cloakIn);
-  const gl = c.createLinearGradient(X(-394), 0, X(-200), 0); gl.addColorStop(0, K.cloak); gl.addColorStop(1, K.cloakLight);
+  const gl = K.cloak;
   fillP(c, `${left} L${X(-250)},1152 C${X(-256)},1040 ${X(-272)},900 ${X(-262)},770 C${X(-254, 0.6)},690 ${X(-244, 0.3)},640 ${X(-236, 0)},560 L${X(-200, 0)},500 Z`, gl);
-  const gr = c.createLinearGradient(X(200), 0, X(374), 0); gr.addColorStop(0, K.cloakLight); gr.addColorStop(1, K.cloak);
+  const gr = K.cloak;
   fillP(c, `${right} L${X(240)},1152 C${X(246)},1040 ${X(262)},900 ${X(254)},770 C${X(248, 0.6)},690 ${X(242, 0.3)},640 ${X(236, 0)},560 L${X(200, 0)},500 Z`, gr);
   fillP(c, blade([X(-240, 0.5), 650], [X(-328), 1128], 8, 5), K.cloakDark); fillP(c, blade([X(232, 0.5), 650], [X(312), 1128], -8, 5), K.cloakDark);   // one fold down each edge
   c.restore();
