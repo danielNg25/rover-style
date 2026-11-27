@@ -6,8 +6,8 @@
    "co": 2137
   },
   ".claude/workflows/dung-canh-3d.js": {
-   "bam": "1f83b3031a82611599c7b346b535f99f86167013af5071c6b974512bf0ffdc2d",
-   "co": 49941
+   "bam": "6bd3b8efc174f22824d1c97adbdabe27002852c3b7c910f3d6118bff4d92fe0f",
+   "co": 52323
   },
   ".claude/workflows/video-script.js": {
    "bam": "c60d2aba968ca1ba49137daccc89188d864e38ee2929680d91067ffa12d0a662",
@@ -18,8 +18,8 @@
    "co": 11714
   },
   "CLAUDE.md": {
-   "bam": "f40aec5fc3192bcb0f3292145c81c9537121e14979e23025a9bd715872656812",
-   "co": 7895
+   "bam": "b6ca6a5d124bb5950f7cde92acb1ce15cbd360da9b493688a9412916b7afe3dc",
+   "co": 8090
   },
   "chung/compare.sh": {
    "bam": "93fdda1711eadadca8b5241612c7e13aab8565241f80f03395effec7e467a3d3",
@@ -82,8 +82,8 @@
    "co": 38762
   },
   "chung/skills/1-dung-canh.md": {
-   "bam": "116d406b97eb783a4a542cc1bca4a1ef5a5a649ee21bada512ed125297f71797",
-   "co": 46475
+   "bam": "50558af543d6e0767a672f54ea9f091e713dfe337721f55b07ca9045cf478739",
+   "co": 46707
   },
   "chung/skills/2-chuan-mon-do.md": {
    "bam": "33587461b49d4088cbcf0be45df4a36fce424408c797ac3a14a86bed2fab6bd3",
@@ -102,8 +102,8 @@
    "co": 14751
   },
   "chung/skills/THE-LUAT-CUNG.md": {
-   "bam": "b8c5c01c662b131900dc154a02c708905c734e63504c4b322c3d7ceae76adbec",
-   "co": 6964
+   "bam": "64f2a61cc6dd61113ece55d2e97d37a1a8d1ea99c7a1e60d2d367bb1d649b0b0",
+   "co": 7641
   },
   "chung/skills/bang-cham/BANG-CHAM.md": {
    "bam": "e50eb323a4873c7537646a431f507b088c1968576d3495dbf83c38f89e5d182a",
@@ -1382,12 +1382,16 @@
    "co": 14771
   },
   "chung/tools/kiem_cam.py": {
-   "bam": "29c01734de592de5578895eb0a1b94b8e0517d9ebdd76aca451ded7f1b09e6e2",
-   "co": 9601
+   "bam": "79d23f0e2c2d09413dce3048d2bb6b257ab03c42c143c1b3c1e0b0f3cd5f9939",
+   "co": 14016
   },
   "chung/tools/xep_gen.py": {
    "bam": "c9c66e3293f53f1707ff57ff289f968669983176a04dcdb5f403eaff13b51b41",
    "co": 3824
+  },
+  "chung/tools/truot_may.py": {
+   "bam": "7674798ff8a1aa7a5c7c9925ed3c71b5331d30bbaab94f6c8ae49cf187f04d83",
+   "co": 6544
   }
  }
 }

@@ -15,6 +15,12 @@ Thoát 1 nếu có LOI. Chỉ rà file của kênh (đường dẫn có /kenh/);
   LOI  ep-thu-tu        renderOrder ghi tay: vật nào che vật nào do vị trí 3D quyết định (thẻ luật 3).
   LOI  tam-anh-tu-viet  mesh đứng có planeGeometry + map mà không castShadow: tấm ảnh tự viết thay Sprite / Pic2D / Plate của engine,
                         mất bóng và mất lớp che (skill 2, mục Phẳng hay khối).
+  LOI  da-phang         paintRock(...): đá vẽ thành tấm phẳng. Đá là KHỐI (thẻ luật 13): lấy món đá khối của kho (python3 tools/kho.py tim đá)
+                        hoặc dựng khối theo tranh Codex. Daniel 27/11/2026: "đá thì đáng ra phải là 3d, thì lại làm 2d".
+  LOI  cay-co-tu-ve     file của kênh tự viết hàm vẽ cây, cỏ, bụi, lá, tán bằng canvas (ve…/paint…/draw… có Cay, Tree, Tuft, Grass, Bui,
+                        Bush, Leaf, Thong, Pine, Maple…): cây cỏ lấy nét từ ảnh gen kiểu giấy cắt, không tự vẽ bằng code (thẻ luật 13).
+  LOI  lat-sang-toi     <Sprite … flip> trên món vẽ hai sắc sáng/tối (paintTuft, paintRock, bảng màu light/dark): lật gương làm mặt sáng
+                        đổi bên, cả cảnh phải sáng cùng một phía.
   CANH den-diem         <pointLight> tự đặt: đèn bàn, đèn lồng, lửa lấy món kho có sẵn đèn (thẻ luật 5).
   CANH lop-am           warm / warmAmount khác 0: lớp ấm phủ cả khung đã bỏ khỏi mặc định (Daniel 26/11: "nên bỏ lớp ấm đi").
 Bỏ qua một dòng cố ý: ghi  cam:ok <lý do>  cùng dòng (báo Daniel lý do).
@@ -22,6 +28,8 @@ Bỏ qua một dòng cố ý: ghi  cam:ok <lý do>  cùng dòng (báo Daniel lý
 MỐC (luật mới chỉ áp cho chương sau; thứ đã duyệt không đổi): kenh/<kênh>/kiem-cam-moc.json ghi số chỗ đã có của từng file lúc lập mốc.
 File có số chỗ không vượt mốc thì không báo; vượt mốc thì báo cả file. File chưa có trong mốc (file mới) thì chỗ nào cũng báo.
 Mốc chỉ lập MỘT lần cho mỗi kênh; đã có thì --lap-moc từ chối. Lập lại mốc là việc Daniel quyết.
+Khi công cụ có MÃ MỚI:  python3 tools/kiem_cam.py --bo-sung-moc <mã> [mã…] [--tru <file> …]  ghi thêm số chỗ của RIÊNG các mã đó vào mốc
+đã có (không đụng số của mã cũ; mã nào mốc đã ghi rồi thì bỏ qua). --tru: file đang dựng dở, chưa duyệt, không đưa vào mốc.
 """
 import json
 import re
@@ -32,8 +40,12 @@ from pathlib import Path
 GOC = Path(__file__).resolve().parent.parent          # chung/
 KENH = GOC.parent / 'kenh'
 BO_QUA = ('/_thu-mau/', 'node_modules', '/out/', '/_luu/', '.bak', '/cong-cu/', '/demo-before/')
-LOI_MA = {'tat-bong', 'loc-mau', 'ep-thu-tu', 'tam-anh-tu-viet'}
+LOI_MA = {'tat-bong', 'loc-mau', 'ep-thu-tu', 'tam-anh-tu-viet', 'da-phang', 'cay-co-tu-ve', 'lat-sang-toi'}
+RX_TU_VE = re.compile(r'\b(?:const|function)\s+((?:ve|paint|draw)\w*?(?:Cay|Tree|Tuft|Grass|Bush|Leaf|Thong|Pine|Maple|Bui(?=[A-Z]|\b)|Tan(?=[A-Z]|\b)|La(?=[A-Z]|\b)|Co(?=[A-Z]|\b))\w*)\s*(?:=\s*\(|\()')
 LOI_TA = {
+    'da-phang': 'paintRock: đá vẽ thành tấm phẳng. Đá là KHỐI (thẻ luật 13): lấy món đá khối của kho (python3 tools/kho.py tim đá) hoặc dựng khối theo tranh Codex',
+    'cay-co-tu-ve': 'hàm tự vẽ cây, cỏ, bụi, lá bằng canvas: cây cỏ lấy nét từ ảnh gen kiểu giấy cắt (./gen.sh, thẻ luật 13), không tự vẽ bằng code. Tên hàm trùng chữ nhưng không phải cây cỏ (cờ, cổ…) thì ghi  cam:ok <là gì>',
+    'lat-sang-toi': 'Sprite lật gương (flip) trên món hai sắc sáng/tối: mặt sáng đổi bên. Cả cảnh sáng cùng một phía: bỏ flip, muốn khác dáng thì đổi seed, cỡ hoặc dùng món khác',
     'tat-bong': 'tắt bóng của một món không phải khối B: vật đứng phải đổ bóng (thẻ luật 5). Chi tiết mỏng thì ráp bằng B; cố ý thì ghi  bong:ok <lý do>',
     'loc-mau': 'lọc màu bằng bộ lọc canvas/CSS: không lọc màu hậu kỳ, không tô lại ảnh món (thẻ luật 11). Chỉnh nhẹ màu một ảnh thì dùng tham số chinh của Pic2D; còn lại sửa ở nguồn: lời tả Codex, màu vật liệu, đèn',
     'ep-thu-tu': 'renderOrder ghi tay: vật nào che vật nào do vị trí 3D quyết định (thẻ luật 3). Đặt vật ở đúng độ sâu của nó',
@@ -69,6 +81,11 @@ def cho_sai(s):
         if 'cam:ok' in d: continue
         for ma, rx in THEO_DONG:
             if rx.search(d): ra.append((ma, k))
+        if re.search(r'\bpaintRock\s*\(', d) and not re.search(r'\b(const|function)\s+paintRock\b', d): ra.append(('da-phang', k))
+        if RX_TU_VE.search(d) and re.search(r'Canvas|Ctx|\bc\s*[:,)]', d): ra.append(('cay-co-tu-ve', k))
+    for m in re.finditer(r'<Sprite\b', s):
+        _, tag = the_mo(s, m.start())
+        if re.search(r'paintTuft|paintRock|\blight\s*:', tag) and re.search(r'\bflip\b(?!\s*=\s*\{\s*false\s*\})', tag) and not mien(dau(m.start())): ra.append(('lat-sang-toi', dau(m.start())))
     for m in re.finditer(r'<([A-Z]\w*)\b', s):
         if m.group(1) == 'B': continue
         _, tag = the_mo(s, m.start())
@@ -139,8 +156,33 @@ def lap_moc(args):
     return 0
 
 
+def bo_sung_moc(args):
+    """Công cụ có mã mới: ghi số chỗ của RIÊNG các mã đó vào mốc đã có, để file đã duyệt không bị báo. Không đụng số của mã cũ."""
+    tru = {str(Path(a).resolve()) for a in args[args.index('--tru') + 1:]} if '--tru' in args else set()
+    ma_moi = set(args[:args.index('--tru')] if '--tru' in args else args)
+    if not ma_moi or not ma_moi <= set(LOI_TA): print('Dùng: --bo-sung-moc <mã> [mã…] [--tru <file> …]; mã có: ' + ', '.join(sorted(LOI_TA))); return 2
+    for k in sorted(p.name for p in KENH.glob('*') if p.is_dir() and not p.name.startswith('_')):
+        dich, moc = KENH / k / 'kiem-cam-moc.json', doc_moc(k)
+        if moc is None: print(f'{k}: chưa có mốc, bỏ qua (lập bằng --lap-moc)'); continue
+        da = set(moc.get('bo_sung', {}))
+        lam = ma_moi - da
+        if not lam: print(f'{k}: mốc đã ghi {", ".join(sorted(ma_moi))} rồi; không ghi lại.'); continue
+        tong = 0
+        for f in cac_file([str(KENH / k)]):
+            if str(f.resolve()) in tru: continue
+            dem = {}
+            for ma, _ in cho_sai(f.read_text(encoding='utf-8', errors='replace')):
+                if ma in lam: dem[ma] = dem.get(ma, 0) + 1
+            if dem: moc.setdefault('file', {}).setdefault(cua_kenh(f)[1], {}).update(dem); tong += sum(dem.values())
+        moc.setdefault('bo_sung', {}).update({ma: time.strftime('%Y-%m-%d %H:%M') for ma in lam})
+        dich.write_text(json.dumps(moc, ensure_ascii=False, indent=1), encoding='utf-8')
+        print(f'{k}: ghi thêm {tong} chỗ cũ của {", ".join(sorted(lam))} vào mốc')
+    return 0
+
+
 def main(args):
     if args and args[0] == '--lap-moc': return lap_moc(args[1:])
+    if args and args[0] == '--bo-sung-moc': return bo_sung_moc(args[1:])
     files = list(cac_file(args))
     loi, canh, cu = kiem(files)
     for d in loi + canh[:200]: print(d)

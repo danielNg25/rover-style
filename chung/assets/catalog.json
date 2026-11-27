@@ -230,16 +230,6 @@
   "code": "src/lib3/depth.tsx"
  },
  {
-  "id": "tang-da-ba-sac",
-  "nhom": "thien-nhien",
-  "kenh": "chung",
-  "ten": "Tảng đá",
-  "mo_ta": "Tảng đá có ba mặt sáng, vừa, tối.",
-  "hop_voi": "ven đường, bãi cỏ, trại",
-  "goi": "<Sprite name=\"...\" art={(c, W, H) => paintRock(c, W, H, [ba màu]?)} px={[240, 150]} w={0.7} pos={[x, 0, z]} />",
-  "code": "src/lib3/depth.tsx"
- },
- {
   "id": "trau-nuoc-co-co-dau-tren-lung",
   "nhom": "con-vat",
   "kenh": "chung",

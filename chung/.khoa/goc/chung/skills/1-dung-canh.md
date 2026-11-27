@@ -53,7 +53,7 @@ Mức phải đạt là khung của video gốc: `skills/bang-cham/` và bộ c�
 
 - Căn phòng là hộp thật (tường, trần, sàn là khối) để tự chắn nắng và nhận vệt nắng.
 - Nhìn chéo vào một góc phòng bằng cách **xoay cả nhóm phòng** khoảng 0.45 rad (máy không xoay được); bọc phòng trong `RoomCtx.Provider value={góc}`.
-- Các lớp: cảnh ngoài cửa sổ (`Plate`); vỏ phòng; đồ gắn tường; bục hoặc bàn chính cùng nhân vật; các hàng bàn ghế lùi dần; mặt bàn gần nhất làm tiền cảnh. Không dùng `Plate` tiền cảnh trong phòng.
+- Các lớp: cảnh ngoài cửa sổ, gồm ít nhất HAI lớp thật ở hai độ sâu (cây hoặc nhà gần là `Sprite` cách cửa vài mét, nền xa là `Plate`; không dán một bức tranh sau ô cửa: máy dời thì lớp gần phải trôi nhanh hơn lớp xa); vỏ phòng; đồ gắn tường; bục hoặc bàn chính cùng nhân vật; các hàng bàn ghế lùi dần; mặt bàn gần nhất làm tiền cảnh. Không dùng `Plate` tiền cảnh trong phòng.
 - Ánh sáng buổi sáng: phòng phải SÁNG. `hemisphereLight` khoảng 1.95 và `Sun` (trong `src/lib3/room.tsx`) cường độ khoảng 5, thấp khoảng 22°, chéo khoảng 35° về phía tường chính. Không để vật gì đứng chắn cửa sổ; song cửa mảnh.
 - Loại cảnh đặt bằng `GradeCtx.Provider value="brightInterior"`; khi đó `Sprite` tự ăn sáng của phòng.
 
