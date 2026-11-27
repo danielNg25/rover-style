@@ -170,6 +170,7 @@ const CAM = `CẤM, đọc trước mọi thứ khác (tools/kiem_canh.py báo L
 (7) không dùng paintRock, không dựng đá hay đồ cứng thành tấm phẳng: đá là KHỐI (món đá khối của kho, hoặc khối dựng theo tranh Codex);
 (8) không lật gương (flip) món vẽ hai sắc sáng tối: cả cảnh sáng cùng MỘT phía;
 (9) mỗi lớp xa gần là một tấm RIÊNG đặt ở độ sâu RIÊNG; không gộp hai rặng núi, hai dải cây vào một tấm; cảnh ngoài cửa sổ có ít nhất HAI lớp thật (cây hoặc nhà gần, nền xa), không dán một bức tranh sau ô cửa.
+(10) không tô chuyển sắc (gradient) lên người, đồ vật, tường, sàn, cây, quần áo: mỗi mảng MỘT màu phẳng, cần mặt tối thì thêm một mảng phẳng thứ hai. Quầng sáng của đèn, nến, lửa và trời chuyển màu thì được.
 Engine thiếu thứ bạn cần thì GHI VÀO BÁO CÁO (con_yeu), không đi vòng, không tự vá. Trước khi báo xong: python3 tools/kiem_canh.py <các file vừa sửa> phải không còn LOI.
 `
 const dung = (n) => { const m = mauCua(n); return agent(`${CAM}${CHUNG}

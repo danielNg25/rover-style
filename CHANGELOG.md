@@ -27,6 +27,7 @@ Phần chung gồm engine (`chung/src`), công cụ (`chung/tools`, `chung/*.sh`
 ### Luật
 
 - **Nới luật màu (phiếu P1127-01, P1127-02; Daniel: "hướng của luật thì đúng, nhưng cách áp đang quá cứng, và áp cho Doom là sai chỗ").** Luật chọn màu của 26/11 chỉ còn áp cho MẶT LỚN (tường, sàn, trời, đất). Màu nhận diện của nhân vật, nơi chốn, lửa và nguồn sáng được miễn, giữ rực. Số đo của `chung/tools/do_mau_khuon.py` chỉ là cảnh báo để nhìn lại ảnh: không đặt làm đích trong phiếu giao; bỏ cảnh báo "góc sáng-rực", cảnh báo vùng rực ghi rõ phải giữ màu nhận diện. Thứ đã duyệt (tập Doom) không sửa theo luật màu. `chung/tools/kiem_loi_ta.py`: câu màu trong lời tả gen cho màu nhận diện rực ở vùng nhỏ; chữ vivid, saturated chỉ còn là cảnh báo. Sửa ở skill 1 (dòng Màu), skill 2 (dòng Kiểu vẽ của ảnh gen). Hình không đổi.
+- **Luật không gradient, giữ bằng công cụ (phiếu P1127-07; Daniel: "kênh của mình tuyệt đối không có gradient, kiểu cắt giấy mà"; quầng sáng và trời: "2 cái ánh sáng này để nguyên").** `kiem_cam.py` có mã LOI `gradient`: gradient thẳng màu đặc trên người, đồ vật, tường, sàn, cây. Không bắt gradient tròn (quầng đèn, lửa, hạt), dải trong suốt `rgba` (vệt nắng, bóng) và trời. Thẻ luật điều 13, skill 2, khối CẤM của workflow `dung-canh-3d` (mục 10) ghi cùng luật. Code cũ của ba kênh đã vào mốc (`--bo-sung-moc gradient`: 50 chỗ, gồm cả file đang làm dở). Hình không đổi. Máy khác: chạy `python3 tools/kiem_cam.py --bo-sung-moc gradient` một lần.
 
 ### Engine (dựng lại thì hình đổi)
 

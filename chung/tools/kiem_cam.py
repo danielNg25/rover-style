@@ -40,11 +40,16 @@ from pathlib import Path
 GOC = Path(__file__).resolve().parent.parent          # chung/
 KENH = GOC.parent / 'kenh'
 BO_QUA = ('/_thu-mau/', 'node_modules', '/out/', '/_luu/', '.bak', '/cong-cu/', '/demo-before/')
-LOI_MA = {'tat-bong', 'loc-mau', 'ep-thu-tu', 'tam-anh-tu-viet', 'da-phang', 'cay-co-tu-ve', 'lat-sang-toi'}
+LOI_MA = {'tat-bong', 'loc-mau', 'ep-thu-tu', 'tam-anh-tu-viet', 'da-phang', 'cay-co-tu-ve', 'lat-sang-toi', 'gradient'}
+# gradient THẲNG tô màu đặc lên người, đồ vật, tường, sàn, cây (Daniel 27/11/2026: "kênh của mình tuyệt đối không có gradient, kiểu cắt giấy mà").
+# KHÔNG bắt: gradient tròn (quầng đèn, lửa, hạt), dải mờ trong suốt rgba (vệt nắng, bóng, mặt nạ) và trời: "2 cái ánh sáng này để nguyên".
+RX_GRADIENT = re.compile(r'createLinearGradient\s*\(|linear-gradient\s*\(|<linearGradient\b')
+RX_TROI = re.compile(r'sky|tr[oờ]i|hoang.?hon|binh.?minh|chan.?troi', re.I)
 RX_TU_VE = re.compile(r'\b(?:const|function)\s+((?:ve|paint|draw)\w*?(?:Cay|Tree|Tuft|Grass|Bush|Leaf|Thong|Pine|Maple|Bui(?=[A-Z]|\b)|Tan(?=[A-Z]|\b)|La(?=[A-Z]|\b)|Co(?=[A-Z]|\b))\w*)\s*(?:=\s*\(|\()')
 LOI_TA = {
     'da-phang': 'paintRock: đá vẽ thành tấm phẳng. Đá là KHỐI (thẻ luật 13): lấy món đá khối của kho (python3 tools/kho.py tim đá) hoặc dựng khối theo tranh Codex',
     'cay-co-tu-ve': 'hàm tự vẽ cây, cỏ, bụi, lá bằng canvas: cây cỏ lấy nét từ ảnh gen kiểu giấy cắt (./gen.sh, thẻ luật 13), không tự vẽ bằng code. Tên hàm trùng chữ nhưng không phải cây cỏ (cờ, cổ…) thì ghi  cam:ok <là gì>',
+    'gradient': 'tô chuyển sắc (gradient thẳng, màu đặc) lên người, đồ vật, tường, sàn, cây: kênh vẽ kiểu giấy cắt, mỗi mảng MỘT màu phẳng; cần mặt tối thì thêm một mảng phẳng thứ hai (thẻ luật 13). Quầng sáng, vệt nắng trong suốt và trời không bị bắt; dòng là trời mà bị bắt thì ghi  cam:ok trời',
     'lat-sang-toi': 'Sprite lật gương (flip) trên món hai sắc sáng/tối: mặt sáng đổi bên. Cả cảnh sáng cùng một phía: bỏ flip, muốn khác dáng thì đổi seed, cỡ hoặc dùng món khác',
     'tat-bong': 'tắt bóng của một món không phải khối B: vật đứng phải đổ bóng (thẻ luật 5). Chi tiết mỏng thì ráp bằng B; cố ý thì ghi  bong:ok <lý do>',
     'loc-mau': 'lọc màu bằng bộ lọc canvas/CSS: không lọc màu hậu kỳ, không tô lại ảnh món (thẻ luật 11). Chỉnh nhẹ màu một ảnh thì dùng tham số chinh của Pic2D; còn lại sửa ở nguồn: lời tả Codex, màu vật liệu, đèn',
@@ -83,6 +88,7 @@ def cho_sai(s):
             if rx.search(d): ra.append((ma, k))
         if re.search(r'\bpaintRock\s*\(', d) and not re.search(r'\b(const|function)\s+paintRock\b', d): ra.append(('da-phang', k))
         if RX_TU_VE.search(d) and re.search(r'Canvas|Ctx|\bc\s*[:,)]', d): ra.append(('cay-co-tu-ve', k))
+        if RX_GRADIENT.search(d) and 'rgba(' not in d and 'transparent' not in d and not RX_TROI.search(' '.join(dong[max(0, k - 3):k])): ra.append(('gradient', k))
     for m in re.finditer(r'<Sprite\b', s):
         _, tag = the_mo(s, m.start())
         if re.search(r'paintTuft|paintRock|\blight\s*:', tag) and re.search(r'\bflip\b(?!\s*=\s*\{\s*false\s*\})', tag) and not mien(dau(m.start())): ra.append(('lat-sang-toi', dau(m.start())))
